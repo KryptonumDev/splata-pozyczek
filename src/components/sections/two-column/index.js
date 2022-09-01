@@ -9,15 +9,12 @@ export default function TwoColumn({ data }) {
     )
 }
 
-export const query = graphql`
-  fragment blokTekstowy on WpPage {
-    homepage{
-        blokTekstowy{
-            text
-        }
-    }
-  }
-`
+// export const query = graphql`
+//   fragment blokTekstowy on WpPage {
+//     homepage{
+//     }
+//   }
+// `
 
 const Wrapper = styled.section`
 `

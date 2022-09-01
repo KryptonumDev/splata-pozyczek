@@ -8,7 +8,6 @@ export default function Page({ data: { wpPage: { homepage } } }) {
     return (
         <main>
             <CallToAction data={homepage.callToAction} />
-            <TwoColumn data={homepage.blokTekstowy} />
             <Calculator/>
         </main>
     )
@@ -19,7 +18,6 @@ export const query = graphql`
         wpPage(id: {eq: $id}){
                 id
                 ...callToAction
-                ...blokTekstowy
         }
     }
 `
