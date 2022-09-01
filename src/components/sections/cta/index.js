@@ -10,7 +10,7 @@ export default function CallToAction({ data }) {
             <Container>
                 <Content color={''}>
                     <TextPart>
-                        <p>{''}</p>
+                        <p>{data.text}</p>
                         <FilledButton />
                     </TextPart>
                 </Content>

@@ -7,8 +7,8 @@ import TwoColumn from "../components/sections/two-column"
 export default function Page({ data: { wpPage: { homepage } } }) {
     return (
         <main>
-            {/* <CallToAction data={homepage.callToAction} />
-            <TwoColumn data={homepage.blokTekstowy} /> */}
+            <CallToAction data={homepage.callToAction} />
+            <TwoColumn data={homepage.blokTekstowy} />
             <Calculator/>
         </main>
     )
