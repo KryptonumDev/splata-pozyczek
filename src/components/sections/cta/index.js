@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { Container } from "../../atoms/container"
 import { FilledButton } from '../../atoms/buttons'
+import { graphql } from "gatsby"
 
 export default function CallToAction({ data }) {
     return (
@@ -18,6 +19,21 @@ export default function CallToAction({ data }) {
     )
 }
 
+export const query = graphql`
+  fragment callToAction on WpPage {
+    homepage{
+        callToAction{
+            text
+            button{
+                text
+                link
+            }
+            colorSchem
+        }
+    }
+  }
+`
+
 const Wrapper = styled.section`
 `
 
@@ -27,7 +43,7 @@ const Content = styled.section`
     background-color: ${props => props.color};
 `
 
-const TextPart = styled.di`
+const TextPart = styled.div`
     max-width: 678px;
     padding: 24px;
     display: grid;

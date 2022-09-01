@@ -1,39 +1,25 @@
 import { graphql } from "gatsby"
 import React from "react"
+import Calculator from "../components/sections/calculator"
+import CallToAction from "../components/sections/cta"
+import TwoColumn from "../components/sections/two-column"
 
-export default function Page({ data }) {
+export default function Page({ data: { wpPage: { homepage } } }) {
     return (
         <main>
-            {data.allWpPage.nodes[0].blocks.block.map(el => (
-                <div>
-                    {el.switch}
-                </div>
-            ))}
+            {/* <CallToAction data={homepage.callToAction} />
+            <TwoColumn data={homepage.blokTekstowy} /> */}
+            <Calculator/>
         </main>
     )
 }
 
 export const query = graphql`
     query page($id: String!) {
-        allWpPage(filter: {id: {eq: $id}}){
-            nodes{
+        wpPage(id: {eq: $id}){
                 id
-                blocks {
-                    blocks {
-                    switch
-                    text {
-                        text
-                    }
-                    cta {
-                        text
-                        button {
-                        text
-                        url
-                        }
-                    }
-                    }
-                }
-            }
+                ...callToAction
+                ...blokTekstowy
         }
     }
 `

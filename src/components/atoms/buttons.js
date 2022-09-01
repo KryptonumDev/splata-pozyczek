@@ -2,6 +2,7 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 
 export const OutlinedButton = styled(Link)`
+    display: block;
     font-family: 'Source Sans Pro';
     font-weight: 600;
     font-size: 16px;
@@ -33,6 +34,7 @@ export const OutlinedButton = styled(Link)`
 `
 
 export const FilledButton = styled(Link)`
+    display: block;
     font-family: 'Source Sans Pro';
     font-weight: 600;
     font-size: 16px;

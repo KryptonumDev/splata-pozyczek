@@ -5,12 +5,17 @@
  }
 
  *{
-    font-family: 'Arsenal';
+    font-family: 'Source Sans Pro';
     color: #191820;
+    margin: 0;
  }
 
  body{
    background: #FEF5F5;
+ }
+
+ main{
+   margin-top: 180px;
  }
 
  .h1 {
