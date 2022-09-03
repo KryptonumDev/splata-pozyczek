@@ -9,10 +9,9 @@ import WhatIsCredit from "../components/sections/what-is-credit"
 import Faq from "../components/sections/faq"
 
 export default function Page({ data: { wpPage: { seo, blocks: { pageBuilder } } } }) {
-  debugger
   return (
     <main>
-      {pageBuilder.map(el => {
+      {pageBuilder?.map(el => {
         switch (el.switch) {
           case 'heroHomepage':
             return <Hero data={el.hero} />
