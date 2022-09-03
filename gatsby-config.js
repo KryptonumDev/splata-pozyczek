@@ -10,5 +10,25 @@ module.exports = {
         "url": "https://test.splatapozyczek.pl/graphql"
       }
     }, 
-    "gatsby-plugin-styled-components"]
+    'gatsby-plugin-image',
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          placeholder: `blurred`,
+          quality: 90,
+        },
+      },
+    },
+    'gatsby-transformer-sharp',
+    "gatsby-plugin-styled-components",
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: './src/images/'
+      },
+      __key: 'images'
+    }
+  ]
 };

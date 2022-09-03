@@ -24,6 +24,7 @@ export default function Header({ data }) {
 
 const Wrapper = styled.header`
     position: fixed;
+    z-index: 10000;
     left: 0;
     right: 0;
     top: 0;

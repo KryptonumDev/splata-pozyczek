@@ -1,26 +1,38 @@
  @import './normalize.css';
 
- :root{
-   --shadow: 0px 4px 8px 3px rgba(97, 152, 193, 0.15), 0px 1px 3px rgba(97, 152, 193, 0.25);
+ :root {
+    --shadow: 0px 4px 8px 3px rgba(97, 152, 193, 0.15), 0px 1px 3px rgba(97, 152, 193, 0.25);
 
-   --color-dark: #1F428F;
-   --color-medium: #3B5BA9;
-   --color-light: #F2F4FF;
-   --color-white: #FEF5F5;
+    --color-dark: #002B73;
+    --color-medium: #3B5BA9;
+    --color-light: #F2F4FF;
+    --color-white: #FEF5F5;
  }
 
- *{
+ * {
     font-family: 'Source Sans Pro';
     color: #191820;
     margin: 0;
+    padding: 0;
+    text-decoration: none;
  }
 
- body{
-   background: #FEF5F5;
+ a,
+ strong {
+    color: inherit;
  }
 
- main{
-   margin-top: 180px;
+ a {
+    text-decoration: underline;
+    color: #FCCF4F;
+ }
+
+ body {
+    background: #FEF5F5;
+ }
+
+ main {
+    margin-top: 180px;
  }
 
  .h1 {
@@ -30,41 +42,41 @@
     letter-spacing: -0.02em;
  }
 
- .h2{
+ .h2 {
     font-weight: 700;
     font-size: 60px;
     line-height: 110%;
     letter-spacing: -0.02em;
  }
 
- .h3{
+ .h3 {
     font-weight: 700;
     font-size: 54px;
     line-height: 111%;
     letter-spacing: -0.02em;
  }
 
- .h4{
+ .h4 {
     font-weight: 700;
     font-size: 38px;
     line-height: 118%;
     letter-spacing: -0.01em;
  }
 
- .h5{
+ .h5 {
     font-weight: 700;
     font-size: 29px;
     line-height: 128%;
     letter-spacing: -0.005em;
  }
 
- .h6{
+ .h6 {
     font-weight: 700;
     font-size: 20px;
     line-height: 130%;
  }
 
- .sub1{
+ .sub1 {
     font-style: italic;
     font-weight: 700;
     font-size: 17px;
@@ -72,14 +84,14 @@
     letter-spacing: 0.02em;
  }
 
- .sub2{
+ .sub2 {
     font-weight: 700;
     font-size: 14px;
     line-height: 136%;
     letter-spacing: 0.02em;
  }
 
- .body1{
+ .body1 {
     font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 400;
@@ -88,7 +100,7 @@
     font-feature-settings: 'pnum' on, 'onum' on;
  }
 
- .body2{
+ .body2 {
     font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 400;
@@ -97,14 +109,14 @@
     font-feature-settings: 'pnum' on, 'onum' on;
  }
 
- .body3{
+ .body3 {
     font-weight: 400;
     font-size: 11px;
     line-height: 127%;
     font-feature-settings: 'pnum' on, 'onum' on;
  }
 
- .button{
+ .button {
     font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 600;

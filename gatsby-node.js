@@ -2,10 +2,10 @@ const fs = require('fs')
 const { resolve } = require('path')
 
 exports.createPages = async ({
-    graphql,
-    actions: { createPage },
+  graphql,
+  actions: { createPage },
 }) => {
-    const { data: { allWpPage: { nodes } } } = await graphql(`
+  const { data: { allWpPage: { nodes } } } = await graphql(`
     query {
       allWpPage{
         nodes {
@@ -16,13 +16,13 @@ exports.createPages = async ({
     }
   `);
 
-    nodes.forEach(({ id, uri }) => {
-        createPage({
-            path: uri,
-            component: resolve('src/templates/page.jsx'),
-            context: {
-                id
-            },
-        });
+  nodes.forEach(({ id, uri }) => {
+    createPage({
+      path: uri,
+      component: resolve('src/templates/page.jsx'),
+      context: {
+        id
+      },
     });
+  });
 }

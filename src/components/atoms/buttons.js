@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 export const OutlinedButton = styled(Link)`
     display: block;
+    width: fit-content;
     font-family: 'Source Sans Pro';
     font-weight: 600;
     font-size: 16px;
@@ -13,6 +14,7 @@ export const OutlinedButton = styled(Link)`
     border: 2px solid #050505;
     border-radius: 4px;
     padding: 10px 44px;
+    text-decoration: unset;
 
     transition: background .3s cubic-bezier(0.39, 0.575, 0.565, 1);
 
@@ -35,6 +37,7 @@ export const OutlinedButton = styled(Link)`
 
 export const FilledButton = styled(Link)`
     display: block;
+    width: fit-content;
     font-family: 'Source Sans Pro';
     font-weight: 600;
     font-size: 16px;
@@ -45,6 +48,7 @@ export const FilledButton = styled(Link)`
     box-shadow: 0px 1px 3px 1px rgba(97, 152, 193, 0.15), 0px 1px 2px rgba(97, 152, 193, 0.25);
     border-radius: 4px;
     padding: 10px 44px;
+    text-decoration: unset;
 
     transition: background .3s cubic-bezier(0.39, 0.575, 0.565, 1);
 
