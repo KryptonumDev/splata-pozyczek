@@ -22,7 +22,7 @@ export default function HelpTypes({ data: { title, text, types } }) {
                                     <p className="body2" dangerouslySetInnerHTML={{ __html: textParser(el.text) }} />
                                     {el.link.text && el.link.url
                                         ? <FilledButton to={el.link.url}>{el.link.text}</FilledButton>
-                                        : <Placeholder />}
+                                        : null}
                                 </div>
                             </Item>
                         ))}
@@ -63,10 +63,6 @@ const Wrapper = styled.section`
     margin-top: 80px;
 `
 
-const Placeholder = styled.div`
-    height: 48px;
-`
-
 const Content = styled.div`
     max-width: 1000px;
     margin: 0 auto;
@@ -75,6 +71,10 @@ const Content = styled.div`
     .body1{
         max-width: 540px;
         margin: 24px auto 0 auto;
+    }
+
+    .h4, .h6{
+        font-family: 'Arsenal';
     }
 `
 
@@ -104,7 +104,7 @@ const Item = styled.div`
         }
 
         a{
-            margin-top: 4px;
+            margin-top: 16px;
         }
     }
 `

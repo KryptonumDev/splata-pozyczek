@@ -57,6 +57,7 @@ const Content = styled.section`
     background-color: ${props => props.background};
     p{
         color: ${props => props.color};
+        font-family: 'Arsenal';
     }
     
 `

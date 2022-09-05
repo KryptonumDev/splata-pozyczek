@@ -75,7 +75,7 @@ const TextPart = styled.div`
 
     .h6{
         color: #75757A;
-        margin-top: 24px;
+        margin-top: 12px;
     }
 `
 

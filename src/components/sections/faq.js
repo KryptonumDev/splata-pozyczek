@@ -85,6 +85,10 @@ const Grid = styled.div`
 
 const Item = styled.details`
 
+    a{
+        color: #3B5BA9;
+    }
+
     summary{
         padding: 12px;
         display: grid;

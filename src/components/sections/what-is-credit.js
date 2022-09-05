@@ -50,6 +50,10 @@ fragment whatIsCredit on WpPage_Blocks_pageBuilder {
 
 const Wrapper = styled.section`
     margin-top: 80px;
+
+    .h4{
+        font-family: 'Arsenal';
+    }
 `
 
 const Content = styled.div`

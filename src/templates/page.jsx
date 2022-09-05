@@ -7,6 +7,9 @@ import CallToAction from '../components/sections/cta'
 import HelpTypes from "../components/sections/typt-pomocy"
 import WhatIsCredit from "../components/sections/what-is-credit"
 import Faq from "../components/sections/faq"
+import OurExperts from "../components/sections/our-experts"
+import ThreeColumnText from "../components/sections/three-column-text"
+import RepeaterFourColumnText from "../components/sections/four-column-text"
 
 export default function Page({ data: { wpPage: { seo, blocks: { pageBuilder } } } }) {
   return (
@@ -27,6 +30,12 @@ export default function Page({ data: { wpPage: { seo, blocks: { pageBuilder } } 
             return <CallToAction data={el.cta} />
           case 'faq':
             return <Faq data={el.faq} />
+          case 'ourExperts':
+            return <OurExperts data={el.ourExperts} />
+          case 'threeColumnText':
+            return <ThreeColumnText data={el.threeColumnText} />
+          case 'repeaterFourColumnText':
+            return <RepeaterFourColumnText data={el.repeaterFourColumnText} />
           default:
             return null
         }
@@ -53,6 +62,9 @@ export const query = graphql`
                 ...effectiveSolutions
                 ...types
                 ...whatIsCredit
+                ...ourExperts
+                ...threeColumnText
+                ...repeaterFourColumnText
               }
             }
         }
