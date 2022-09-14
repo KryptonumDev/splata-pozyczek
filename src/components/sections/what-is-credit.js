@@ -49,10 +49,11 @@ fragment whatIsCredit on WpPage_Blocks_pageBuilder {
 `
 
 const Wrapper = styled.section`
-    margin-top: 80px;
+    margin-top: var(--section);
 
     .h4{
         font-family: 'Arsenal';
+        font-size: clamp(30px, 4.296875vw, 38px);
     }
 `
 
@@ -66,32 +67,47 @@ const Plate = styled.div`
     grid-template-columns: 1fr 1fr;
     grid-gap: 32px;
     justify-content: space-between;
-    padding: 32px;
+    padding:  clamp(16px, ${24 / 768 * 100}vw, 32px);
     box-shadow: var(--shadow);
     border-radius: 4px;
     background-color: var(--color-light);
-    margin-bottom: 32px;
+    margin-bottom:  clamp(24px, ${24 / 768 * 100}vw, 32px);
+
+    @media (max-width: 640px) {
+        grid-template-columns: 1fr;
+        grid-gap: 12px;
+    }
 `
 
 const Grid = styled.div`
     columns: 2;
-    margin-top: 24px;
+    margin-top: clamp(12px, ${24 / 768 * 100}vw, 24px);
+
+    @media (max-width: 580px) {
+        columns: 1;
+    }
 
 `
 
 const Item = styled.div`
     break-inside: avoid;
-    margin-top: 16px;
+    margin-top: clamp(12px, ${12 / 768 * 100}vw, 16px);
     display: grid;
     grid-template-columns: 48px auto;
-    grid-gap: 16px;
+    grid-gap: clamp(8px, ${12 / 768 * 100}vw, 16px);
 
     &:first-child{
-     margin-top: 0;   
+        margin-top: 0;   
     }
 
     img{
-        width: 48px;
-        height: 48px;
+        width: clamp(44px,  ${48 / 768 * 100}vw,48px);
+        height: clamp(44px,  ${48 / 768 * 100}vw,48px);
+    }
+
+    @media (max-width: 580px){
+        p{
+            margin-top: 4px;
+        }
     }
 `

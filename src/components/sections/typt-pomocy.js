@@ -60,7 +60,7 @@ fragment types on WpPage_Blocks_pageBuilder {
 
 
 const Wrapper = styled.section`
-    margin-top: 80px;
+    margin-top: var(--section);
 `
 
 const Content = styled.div`
@@ -70,29 +70,48 @@ const Content = styled.div`
 
     .body1{
         max-width: 540px;
-        margin: 24px auto 0 auto;
+        margin: clamp(16px, ${16 / 768 * 100}vw, 24px) auto 0 auto;
+    }
+
+    .h4{
+        font-size: clamp(30px, 4.296875vw, 38px);
     }
 
     .h4, .h6{
         font-family: 'Arsenal';
     }
+
+    @media (max-width: 640px) {
+        text-align: left;
+        .body1{
+            margin: clamp(16px, ${16 / 768 * 100}vw, 24px) 0 0 0;
+        }
+    }
 `
 
 const Grid = styled.div`
-    margin-top: 48px;
+    margin-top: clamp( 36px, ${36 / 768 * 100}vw, 48px);
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 32px;
+
+    @media (max-width: 640px) {
+        grid-template-columns: 1fr;
+        grid-gap: 24px;
+    }
 `
 
 const Item = styled.div`
     border-radius: 4px; 
     box-shadow: var(--shadow);
     background-color: var(--color-white);
+    max-width: 480px;
+    margin: 0 auto;
 
     .image{
         border-top-left-radius: 4px;
         border-top-right-radius: 4px;
+        height: 200px;
     }
 
     .text{
@@ -100,11 +119,16 @@ const Item = styled.div`
         text-align: left;
 
         .body2{
-            margin-top: 8px;
+            margin-top: clamp(4px, ${8 / 768 * 100}vw, 8px);
         }
 
         a{
             margin-top: 16px;
+            font-size: clamp(14px, ${14 / 768 * 100}vw, 16px );
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
         }
     }
 `

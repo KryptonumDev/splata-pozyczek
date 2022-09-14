@@ -54,14 +54,15 @@ const Content = styled.div`
     .h4{
         text-align: center;
         color: var(--color-white);
-        margin-bottom: 64px;
+        margin-bottom: clamp(24px, ${24 / 768 * 100}vw, 58px);
     }
 `
 
 const Grid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(${props => props.items}, 1fr);
-    grid-gap: 26px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 32px;
 `
 
 const Item = styled.div`
@@ -71,6 +72,7 @@ const Item = styled.div`
 
     img{
         margin-bottom: 12px;
+        width: clamp(48px, ${56 / 768 * 100}vw, 76px);
     }
 
     .h6{
@@ -78,5 +80,6 @@ const Item = styled.div`
         color: var(--color-white);
         font-family: 'Arsenal';
         width: min-content;
+        font-size: 20px !important;
     }
 `

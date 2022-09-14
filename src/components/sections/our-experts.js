@@ -66,7 +66,7 @@ const Wrapper = styled.section`
     .h4{
         font-family: 'Arsenal';
         text-align: center;
-        margin-bottom: 32px;
+        margin-bottom: clamp(16px, ${24 / 768 * 100}vw, 32px);
     }
 `
 
@@ -74,11 +74,23 @@ const Grid = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 32px;
+
+    @media (max-width: 1140px) {
+        grid-template-columns: 1fr 1fr;
+        width: fit-content;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 536px) {
+        grid-template-columns: 1fr;
+    }
 `
 
 const GridItem = styled.div`
     border-radius: 4px;
     box-shadow: var(--shadow);
+    max-width: 344px;
+    width: 100%;
 
     .text{
         padding: 12px;

@@ -30,11 +30,29 @@ fragment threeColumnText on WpPage_Blocks_pageBuilder {
 
 
 const Wrapper = styled.section`
-    margin-top: 80px;
+    margin-top: var(--section);
 `
 
 const Grid = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 32px;
+
+    @media (max-width: 768px) {
+        display: block;
+        columns: 2;
+        p{
+            break-inside: avoid;
+
+            &:nth-child(2){
+                margin-top: 8px;
+            }
+        }
+    }
+
+    @media (max-width: 640px) {
+        display: grid;
+    grid-template-columns: 1fr;
+        grid-gap: 8px;
+    }
 `

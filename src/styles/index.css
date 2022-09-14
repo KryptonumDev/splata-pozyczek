@@ -2,6 +2,7 @@
 
  :root {
     --shadow: 0px 4px 8px 3px rgba(97, 152, 193, 0.15), 0px 1px 3px rgba(97, 152, 193, 0.25);
+    --section: clamp(40px, 10.4166666667vw, 80px);
 
     --color-dark: #002B73;
     --color-medium: #3B5BA9;
@@ -27,12 +28,17 @@
     color: #FCCF4F;
  }
 
+ html {
+    overflow-x: hidden;
+ }
+
  body {
     background: #FEF5F5;
+    overflow-x: hidden;
  }
 
  main {
-    margin-top: 180px;
+    margin-top: clamp(110px, 23.4375vw, 200px);
  }
 
  .h1 {
@@ -58,7 +64,8 @@
 
  .h4 {
     font-weight: 700;
-    font-size: 38px;
+    /* 33/768*100 */
+    font-size: clamp(33px, 4.296875vw, 38px);
     line-height: 118%;
     letter-spacing: -0.01em;
  }
@@ -72,7 +79,8 @@
 
  .h6 {
     font-weight: 700;
-    font-size: 20px;
+    /* 18/768*100 */
+    font-size: clamp(18px, 2.34375vw, 20px);
     line-height: 130%;
  }
 
@@ -120,7 +128,8 @@
     font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
+    /* 15/768*100 */
+    font-size: clamp(15px, 1.953125vw, 16px);
     line-height: 125%;
     letter-spacing: 0.003em;
  }

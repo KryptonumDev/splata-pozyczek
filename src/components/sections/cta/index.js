@@ -48,7 +48,7 @@ fragment cta on WpPage_Blocks_pageBuilder {
 `
 
 const Wrapper = styled.section`
-    margin-top: 80px;
+    margin-top: var(--section);
 `
 
 const Content = styled.section`
@@ -64,14 +64,19 @@ const Content = styled.section`
 
 const TextPart = styled.div`
     max-width: 678px;
-    padding: 24px;
+    padding: clamp(16px, ${20 / 768 * 100}vw, 20px);
     display: grid;
-    grid-gap: 24px;
+    grid-gap: clamp(16px, ${16 / 768 * 100}vw, 24px);
     align-items: center;
     justify-content: center;
     text-align: center;
     margin: 0 auto;
     a{
         margin: 0 auto;
+
+        @media (max-width: 450px) {
+            width: 100%;
+            box-sizing: border-box;
+        }
     }
 `
