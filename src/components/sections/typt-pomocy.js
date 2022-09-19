@@ -20,8 +20,8 @@ export default function HelpTypes({ data: { title, text, types } }) {
                                 <div className="text">
                                     <h3 className="h6" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
                                     <p className="body2" dangerouslySetInnerHTML={{ __html: textParser(el.text) }} />
-                                    {el.link.text && el.link.url
-                                        ? <FilledButton to={el.link.url}>{el.link.text}</FilledButton>
+                                    {el.link
+                                        ? <FilledButton target={el.link.target} to={el.link.url}>{el.link.title}</FilledButton>
                                         : null}
                                 </div>
                             </Item>
@@ -42,8 +42,9 @@ fragment types on WpPage_Blocks_pageBuilder {
         title
         text
         link {
-          url
-          text
+            url
+            title
+            target
         }
         img {
           altText

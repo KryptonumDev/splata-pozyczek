@@ -19,9 +19,9 @@ export default function Hero({ data: { text, pageTitle, przyciski, background } 
                         <Buttons>
                             {przyciski.map((el, index) => {
                                 if (index === 0) {
-                                    return <FilledButton key={el.name} to={el.url}>{el.name}</FilledButton>
+                                    return <FilledButton target={el.link.target} key={el.link.title} to={el.link.url}>{el.link.title}</FilledButton>
                                 }
-                                return <OutlinedButton key={el.name} to={el.url}>{el.name}</OutlinedButton>
+                                return <OutlinedButton target={el.link.target} key={el.link.title} to={el.link.url}>{el.link.title}</OutlinedButton>
                             })}
                         </Buttons>
                     </TextPart>
@@ -39,8 +39,11 @@ export const query = graphql`
       pageTitle
       text
       przyciski {
-        url
-        name
+        link{
+            url
+            title
+            target
+        }
       }
       background {
         altText

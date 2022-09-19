@@ -12,7 +12,7 @@ export default function Faq({ data: { title, repeater } }) {
         let second = []
 
         repeater.forEach((el, index) => {
-            if (index === 0 || index % 2) {
+            if (index === 0 || !(index % 2)) {
                 first.push(el)
             } else {
                 second.push(el)

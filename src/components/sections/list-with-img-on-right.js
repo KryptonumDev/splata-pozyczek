@@ -1,0 +1,151 @@
+import React from "react"
+import styled from "styled-components"
+import { graphql } from "gatsby"
+import { Container } from "../atoms/container"
+import { textParser } from './../../helpers/wysiwyg-modification'
+import { FilledButton } from "../atoms/buttons"
+import { GatsbyImage } from "gatsby-plugin-image"
+import Light from './../../images/check-light.svg'
+import Medium from './../../images/check-medium.svg'
+
+export default function ListWithImgOnRight({ data: { title, list, link, img, textUnderImg } }) {
+    return (
+        <Wrapper>
+            <Container>
+                <Content light={Light} medium={Medium} >
+                    <div>
+                        <h2 className="h6" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                        <div className="body1" dangerouslySetInnerHTML={{ __html: list }} />
+                        <FilledButton className="button" to={link.url} target={link.target}>{link.title}</FilledButton>
+                    </div>
+                    <div>
+                        <GatsbyImage className="img" image={img.localFile.childImageSharp.gatsbyImageData} alt={img.altText} />
+                        <span className="sub1">{textUnderImg}</span>
+                    </div>
+                </Content>
+            </Container>
+        </Wrapper>
+    )
+}
+
+export const query = graphql`
+  fragment listWithImgOnRight on WpPage_Blocks_pageBuilder {
+    listWithImgOnRight {
+      title
+      list
+      link {
+        target
+        title
+        url
+      }
+      textUnderImg
+      img {
+        altText
+        localFile {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+      }
+    }
+  }
+`
+
+const Wrapper = styled.section`
+    margin-top: var(--section);
+`
+
+const Content = styled.div`
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto clamp(280px, ${340 / 768 * 100}vw, 380px);
+    grid-gap: 32px;
+
+    @media (max-width: 640px) {
+        display: flex;
+        flex-direction: column-reverse;
+        max-width: 380px;
+        margin: 0 auto;
+        grid-gap: 16px;
+    }
+
+    .body1{
+        margin: 16px 0;
+    }
+
+    .button{
+        @media (max-width: 640px){
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    ul{
+        display: grid;
+        grid-gap: 16px;
+
+        @media (max-width: 640px){
+            grid-gap: 12px;
+        }
+
+        li{
+            padding-left: clamp(44px, ${44 / 768 * 100}vw, 64px);
+            min-height: 32px;
+            padding-top: 5.5px;
+            position: relative;
+            list-style: none;
+            color: #75757A;
+
+            @media (max-width: 640px){
+                padding-left: 32px;
+                min-height: 24px;
+            }
+
+            span{
+                font-weight: 600;
+            }
+
+            strong{
+                color: #000;
+            }
+
+            a{
+                color: #3B5BA9;
+                font-weight: 600;
+            }
+
+            &::before{
+                content: url(${props => props.light});
+                position: absolute;
+                left: clamp(4px, ${4 / 768 * 100}vw, 16px);
+                top: 0;
+                width: 32px;
+                height: 32px;
+                position: absolute;
+
+                @media (max-width: 640px){
+                    transform: scale(.75);
+                    left: 0;
+                }
+            }
+
+            &:first-child{
+                &::before{
+                    content: url(${props => props.medium});
+                }
+            }
+        }
+    }
+
+    .sub1{
+        display: block;
+        margin-top: 8px;
+    }
+
+    .img{
+        box-shadow: var(--shadow);
+        border-radius: 4px;
+    }
+`

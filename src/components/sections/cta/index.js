@@ -17,7 +17,7 @@ const colors = {
     'light': '#050505'
 }
 
-export default function CallToAction({ data: { colorSchem, text, button } }) {
+export default function CallToAction({ data: { colorSchem, text, plainText, link } }) {
 
 
     return (
@@ -25,8 +25,13 @@ export default function CallToAction({ data: { colorSchem, text, button } }) {
             <Container>
                 <Content color={colors[colorSchem]} background={background[colorSchem]}>
                     <TextPart>
-                        <p className="h6" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
-                        <FilledButton to={button.link}>{button.text}</FilledButton>
+                        <div>
+                            <p className="h6" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
+                            {plainText ?
+                                <p className="body1" dangerouslySetInnerHTML={{ __html: textParser(plainText) }} />
+                                : null}
+                        </div>
+                        <FilledButton target={link.target} to={link.url}>{link.title}</FilledButton>
                     </TextPart>
                 </Content>
             </Container>
@@ -38,10 +43,12 @@ export const query = graphql`
 fragment cta on WpPage_Blocks_pageBuilder {
     cta {
       text
+      plainText
       colorSchem
-      button {
-        text
-        link
+      link {
+        url
+        title
+        target
       }
     }
 }
@@ -55,9 +62,13 @@ const Content = styled.section`
     box-shadow: var(--shadow);
     border-radius: 8px;
     background-color: ${props => props.background};
-    p{
+    .h6{
         color: ${props => props.color};
         font-family: 'Arsenal';
+    }
+
+    .body1{
+        color: ${props => props.color};
     }
     
 `
@@ -78,5 +89,9 @@ const TextPart = styled.div`
             width: 100%;
             box-sizing: border-box;
         }
+    }
+
+    .body1{
+        margin-top: 4px;
     }
 `

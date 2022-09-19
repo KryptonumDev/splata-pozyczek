@@ -110,7 +110,9 @@ const Item = styled.div`
         }
         p{
             color: #DAE2FF;
-
+        }
+        a{
+            color: #FCCF4F;
         }
     }
 

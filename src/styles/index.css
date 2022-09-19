@@ -16,6 +16,7 @@
     margin: 0;
     padding: 0;
     text-decoration: none;
+    box-sizing: border-box;
  }
 
  a,
@@ -25,7 +26,7 @@
 
  a {
     text-decoration: underline;
-    color: #FCCF4F;
+    color: #3B5BA9;
  }
 
  html {
@@ -132,4 +133,35 @@
     font-size: clamp(15px, 1.953125vw, 16px);
     line-height: 125%;
     letter-spacing: 0.003em;
+ }
+
+ .filled {
+    display: block;
+    width: fit-content;
+    font-family: 'Source Sans Pro';
+    border: none;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: 0.003em;
+    color: #050505 !important;
+    background: linear-gradient(315deg, #FCCF4F 0%, #E7DCBF 99.99%);
+    box-shadow: 0px 1px 3px 1px rgba(97, 152, 193, 0.15), 0px 1px 2px rgba(97, 152, 193, 0.25);
+    border-radius: 4px;
+    padding: 10px 44px;
+    text-decoration: unset;
+    transition: background-color .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+ }
+
+ .filled:hover {
+    background: linear-gradient(315deg, #EDBD35 0%, #E6D9AC 99.99%);
+ }
+
+ .filled:focus {
+    background: linear-gradient(315deg, #B98901 0%, #E6BC7E 99.99%);
+ }
+
+ .filled:disabled {
+    color: #B2B2B8;
+    background: #E1E1EB;
  }

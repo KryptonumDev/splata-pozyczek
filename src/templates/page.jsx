@@ -10,8 +10,19 @@ import Faq from "../components/sections/faq"
 import OurExperts from "../components/sections/our-experts"
 import ThreeColumnText from "../components/sections/three-column-text"
 import RepeaterFourColumnText from "../components/sections/four-column-text"
+import ShortContactForm from "../components/sections/short-contact-form.js"
+import HeroForm from "../components/sections/hero-contact-form.js"
+import FourTilesWithTitle from "../components/sections/four-tiles-with-title"
+import FourBigTextTiles from "../components/sections/four-big-text-tiles"
+import TwoColumnsCompare from "../components/sections/two-columns-compare"
+import ListWithImgOnRight from "../components/sections/list-with-img-on-right"
+import StepsToCredit from "../components/sections/steps-to-credit"
+import TwoColumnCompareColored from "../components/sections/two-columns-compare-colored"
+import LongPanelWithIcon from "../components/sections/long-panel-with-icon"
+import ThreeColumnTextWithTitles from "../components/sections/three-column-text-with-titles"
+import TwoColumnText from "../components/sections/two-column-text"
 
-export default function Page({ data: { wpPage: { seo, blocks: { pageBuilder } } } }) {
+export default function Page({ data: { wpPage: { title, seo, blocks: { pageBuilder } } } }) {
   return (
     <main>
       {pageBuilder?.map(el => {
@@ -36,18 +47,41 @@ export default function Page({ data: { wpPage: { seo, blocks: { pageBuilder } } 
             return <ThreeColumnText data={el.threeColumnText} />
           case 'repeaterFourColumnText':
             return <RepeaterFourColumnText data={el.repeaterFourColumnText} />
+          case 'shortContactForm':
+            return <ShortContactForm data={el.shortContactForm} />
+          case 'heroForm':
+            return <HeroForm data={el.heroForm} title={title} />
+          case 'fourTilesWithTitle':
+            return <FourTilesWithTitle data={el.fourTilesWithTitle} />
+          case 'fourBigTextTiles':
+            return <FourBigTextTiles data={el.fourBigTextTiles} />
+          case 'twoColumnsCompare':
+            return <TwoColumnsCompare data={el.twoColumnsCompare} />
+          case 'listWithImgOnRight':
+            return <ListWithImgOnRight data={el.listWithImgOnRight} />
+          case 'stepsToCredit':
+            return <StepsToCredit data={el.stepsToCredit} />
+          case 'twoColumnCompareColored':
+            return <TwoColumnCompareColored data={el.twoColumnCompareColored} />
+          case 'longPanelWithIcon':
+            return <LongPanelWithIcon data={el.longPanelWithIcon} />
+          case 'threeColumnTextWithTitles':
+            return <ThreeColumnTextWithTitles data={el.threeColumnTextWithTitles} />
+          case 'twoColumnText':
+            return <TwoColumnText data={el.twoColumnText} />
           default:
             return null
         }
       })}
     </main>
   )
-}
-
+} // longPanelWithIcon    
 
 export const query = graphql`
     query page($id: String!) {
         wpPage(id: {eq: $id}){
+            slug
+            title
             id
             seo {
               fullHead
@@ -65,6 +99,17 @@ export const query = graphql`
                 ...ourExperts
                 ...threeColumnText
                 ...repeaterFourColumnText
+                ...shortContactForm
+                ...heroForm
+                ...fourTilesWithTitle
+                ...fourBigTextTiles
+                ...twoColumnsCompare
+                ...listWithImgOnRight
+                ...stepsToCredit
+                ...twoColumnCompareColored
+                ...longPanelWithIcon
+                ...threeColumnTextWithTitles
+                ...twoColumnText
               }
             }
         }

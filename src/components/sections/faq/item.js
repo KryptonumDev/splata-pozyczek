@@ -1,9 +1,10 @@
 import React from "react"
 import styled from "styled-components"
 import { textParser } from '../../../helpers/wysiwyg-modification'
+import Medium from '../../../images/check-medium.svg'
 
 const FaqItem = ({ el, open }) => (
-    <Item key={el.question} open={open}>
+    <Item medium={Medium} key={el.question} open={open}>
         <summary
             itemProp='mainEntity'
             itemType='https://schema.org/Question'>
@@ -55,6 +56,53 @@ const Item = styled.details`
     .body2{
         margin-top: 8px;
         display: block;
+
+        * + *{
+            margin-top: 8px;
+        }
+
+
+        ul{
+        display: grid;
+        grid-gap: 12px;
+
+            li{
+                margin-top: 0;
+                padding-left: 32px;
+                min-height: 24px;
+                padding-top: 1.5px;
+                position: relative;
+                list-style: none;
+                color: #75757A;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 21px;
+
+                span{
+                    font-weight: 600;
+                }
+
+                strong{
+                    color: #000;
+                }
+
+                a{
+                    color: #3B5BA9;
+                    font-weight: 600;
+                }
+
+                &::before{
+                    content: url(${props => props.medium});
+                    position: absolute;
+                    left: -4px;
+                    top: -4px;
+                    width: 32px;
+                    height: 32px;
+                    transform: scale(.75);
+                    position: absolute;
+                }
+            }
+        }
     }
 
     &[open]{

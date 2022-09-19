@@ -17,16 +17,16 @@ export const OutlinedButton = styled(Link)`
     padding: 10px 44px;
     text-decoration: unset;
 
-    transition: background .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+    transition: background-color .3s cubic-bezier(0.39, 0.575, 0.565, 1), color .3s cubic-bezier(0.39, 0.575, 0.565, 1);
 
     &:hover{
         color: #FEF5F5;
-        background: #050505;
+        background-color: #050505;
     }
 
     &:focus{
         color: #FEF5F5;
-        background: #505052;
+        background-color: #505052;
     }
 
     &:disabled{
@@ -40,18 +40,19 @@ export const FilledButton = styled(Link)`
     display: block;
     width: fit-content;
     font-family: 'Source Sans Pro';
+    border: none;
     font-weight: 600;
     font-size: 16px;
     line-height: 125%;
     letter-spacing: 0.003em;
-    color: #050505;
+    color: #050505 !important;
     background: linear-gradient(315deg, #FCCF4F 0%, #E7DCBF 99.99%);
     box-shadow: 0px 1px 3px 1px rgba(97, 152, 193, 0.15), 0px 1px 2px rgba(97, 152, 193, 0.25);
     border-radius: 4px;
     padding: 10px 44px;
     text-decoration: unset;
 
-    transition: background .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+    transition: background-color .3s cubic-bezier(0.39, 0.575, 0.565, 1);
 
     &:hover{
         background: linear-gradient(315deg, #EDBD35 0%, #E6D9AC 99.99%);
@@ -62,7 +63,7 @@ export const FilledButton = styled(Link)`
     }
 
     &:disabled{
-        color: #B2B2B8;
+        color: #B2B2B8 !important;
         background: #E1E1EB;
     }
 `
