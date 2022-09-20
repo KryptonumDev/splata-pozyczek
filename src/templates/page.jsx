@@ -21,6 +21,12 @@ import TwoColumnCompareColored from "../components/sections/two-columns-compare-
 import LongPanelWithIcon from "../components/sections/long-panel-with-icon"
 import ThreeColumnTextWithTitles from "../components/sections/three-column-text-with-titles"
 import TwoColumnText from "../components/sections/two-column-text"
+import BlogSlider from "../components/sections/blog-slider"
+import TwoColumnRepeater from "../components/sections/two-column-repeater"
+import ThreeStepsWithLongPanel from "../components/sections/three-steps-with-long-panel"
+import TextWithImgOnLeft from "../components/sections/text-with-img-on-left"
+import Calculator from "../components/sections/calculator"
+import CreditTypes from "../components/sections/credit-types"
 
 export default function Page({ data: { wpPage: { title, seo, blocks: { pageBuilder } } } }) {
   return (
@@ -69,13 +75,25 @@ export default function Page({ data: { wpPage: { title, seo, blocks: { pageBuild
             return <ThreeColumnTextWithTitles data={el.threeColumnTextWithTitles} />
           case 'twoColumnText':
             return <TwoColumnText data={el.twoColumnText} />
+          case 'blogSlider':
+            return <BlogSlider />
+          case 'twoColumnFlex':
+            return <TwoColumnRepeater data={el.twoColumnFlex} />
+          case 'threeStepsWithLongPanel':
+            return <ThreeStepsWithLongPanel data={el.threeStepsWithLongPanel} />
+          case 'textWithImgOnLeft':
+            return <TextWithImgOnLeft data={el.textWithImgOnLeft} />
+          case 'calculator':
+            return <Calculator data={el.calculator} />
+          case 'creditTypes':
+            return <CreditTypes data={el.creditTypes} />
           default:
             return null
         }
       })}
     </main>
   )
-} // longPanelWithIcon    
+} // creditTypes       
 
 export const query = graphql`
     query page($id: String!) {
@@ -110,6 +128,11 @@ export const query = graphql`
                 ...longPanelWithIcon
                 ...threeColumnTextWithTitles
                 ...twoColumnText
+                ...twoColumnRepeater
+                ...textWithImgOnLeft
+                ...threeStepsWithLongPanel
+                ...calculator
+                ...creditTypes
               }
             }
         }

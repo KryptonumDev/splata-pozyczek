@@ -125,6 +125,10 @@
     font-feature-settings: 'pnum' on, 'onum' on;
  }
 
+ strong{
+   color: #050505;
+   }
+
  .button {
     font-family: 'Source Sans Pro';
     font-style: normal;

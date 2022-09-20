@@ -22,6 +22,7 @@ export default function Calculator({ data }) {
     return (
         <Wrapper>
             <Container className="small">
+                    <h2 className="h4">Skorzystaj z naszego kalkulatora.</h2>
                 <Content>
                     <Options>
                         <div>
@@ -58,8 +59,8 @@ export default function Calculator({ data }) {
                             <p className="body1">Rata miesięczna</p>
                             <span className="h5">{(calculatedSum / time).toFixed(2)} zł</span>
                         </div>
-                        <FilledButton>Skontaktuj się z nami</FilledButton>
-                        <p>Powyższe wyliczenia oraz parametry mogą się różnić od ostatecznej decyzji banku,
+                        <FilledButton className="filled">Skontaktuj się z nami</FilledButton>
+                        <p className="anotation">Powyższe wyliczenia oraz parametry mogą się różnić od ostatecznej decyzji banku,
                             tym samym nie stanowią oferty w rozumieniu ustawy z dnia 23 kwietnia 1964 r. –
                             Kodeks cywilny (Dz. U. z 1964 r., Nr 16, poz. 93, z późniejszymi zmianami).</p>
                     </Review>
@@ -69,15 +70,107 @@ export default function Calculator({ data }) {
     )
 }
 
-// export const query = graphql`
-//   fragment blok on WpPage {
-//     homepage{
-//         id
-//     }
-//   }
-// `
+export const query = graphql`
+  fragment calculator on WpPage_Blocks_pageBuilder {
+    calculator {
+        fieldGroupName
+    }
+  }
+`
 
 const Wrapper = styled.section`
+    margin-top: var(--section);
+
+    input[type=range] {
+    height: 26px;
+    -webkit-appearance: none;
+    margin: 10px 0;
+    width: 100%;
+    background: transparent;
+    }
+    input[type=range]:focus {
+    outline: none;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 0px 0px 0px #000000;
+    background: linear-gradient(315deg, #FFECB6 0%, #F2E7DA 99.99%, #F2EEDA 100%);
+    border-radius: 4px;
+    border: 0px solid #000000;
+    }
+    input[type=range]::-webkit-slider-thumb {
+    box-shadow: 0px 0px 0px #000000;
+    border: 0px solid #000000;
+    height: 20px;
+    width: 20px;
+    border-radius: 50px;
+    background: linear-gradient(315deg, #B98901 0%, #E6BC7E 99.99%);
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -7px;
+    }
+    input[type=range]:focus::-webkit-slider-runnable-track {
+    background: linear-gradient(315deg, #FFECB6 0%, #F2E7DA 99.99%, #F2EEDA 100%);
+    }
+    input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 0px 0px 0px #000000;
+    background: transparent;
+    border-radius: 4px;
+    border: 0px solid #000000;
+    }
+    input[type=range]::-moz-range-thumb {
+    box-shadow: 0px 0px 0px #000000;
+    border: 0px solid #000000;
+    height: 20px;
+    width: 20px;
+    border-radius: 50px;
+    background: linear-gradient(315deg, #B98901 0%, #E6BC7E 99.99%);
+    cursor: pointer;
+    }
+    input[type=range]::-ms-track {
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+    }
+    input[type=range]::-ms-fill-lower {
+    background: linear-gradient(315deg, #FFECB6 0%, #F2E7DA 99.99%, #F2EEDA 100%);
+    border: 0px solid #000000;
+    border-radius: 8px;
+    box-shadow: 0px 0px 0px #000000;
+    }
+    input[type=range]::-ms-fill-upper {
+    background: linear-gradient(315deg, #FFECB6 0%, #F2E7DA 99.99%, #F2EEDA 100%);
+    border: 0px solid #000000;
+    border-radius: 8px;
+    box-shadow: 0px 0px 0px #000000;
+    }
+    input[type=range]::-ms-thumb {
+    margin-top: 1px;
+    box-shadow: 0px 0px 0px #000000;
+    border: 0px solid #000000;
+    height: 20px;
+    width: 20px;
+    border-radius: 50px;
+    background: linear-gradient(315deg, #B98901 0%, #E6BC7E 99.99%);
+    cursor: pointer;
+    }
+    input[type=range]:focus::-ms-fill-lower {
+    background: linear-gradient(315deg, #FFECB6 0%, #F2E7DA 99.99%, #F2EEDA 100%);
+    }
+    input[type=range]:focus::-ms-fill-upper {
+    background: linear-gradient(315deg, #FFECB6 0%, #F2E7DA 99.99%, #F2EEDA 100%);
+    }
 `
 
 const Content = styled.div`
@@ -108,6 +201,11 @@ const Review = styled.div`
     padding: 41px 64px;
     box-sizing: border-box;
     height: fit-content;
+
+    .filled{
+        margin-bottom: 48px;
+        margin-top: 16px;
+    }
 
     .body1{
         font-weight: 600;

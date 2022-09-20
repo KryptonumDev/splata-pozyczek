@@ -2,10 +2,27 @@ import { Link } from "gatsby"
 import React, { useState } from "react"
 import { useForm } from "react-hook-form"
 import styled from "styled-components"
-import { FilledButton } from './../../atoms/buttons'
+import { FilledButton } from '../../atoms/buttons'
 import axios from "axios"
+import { graphql, useStaticQuery } from "gatsby"
 
-export default function Form({ setIsSended, data: { linkSecond, linkPrivacy, linkNewsletter, messageTheme } }) {
+export default function Form({ setIsSended }) {
+
+    const { wpPage: { formyKontaktowe: { linkPrivacyPolicy, additionalInform, meesageThemes } } } = useStaticQuery(graphql`
+    query {
+        wpPage(id: {eq: "cG9zdDo2MzQ="}) {
+            formyKontaktowe {
+              additionalInform
+              linkPrivacyPolicy {
+                url
+              }
+              meesageThemes {
+                theme
+              }
+            }
+        }
+    }
+  `)
 
     const { reset, register, handleSubmit, watch, formState: { errors } } = useForm()
     const [sendedCount, changeSendedCount] = useState(0)
@@ -56,8 +73,8 @@ export default function Form({ setIsSended, data: { linkSecond, linkPrivacy, lin
             <label className="input">
                 <span className="label body2">Wybierz temat*</span>
                 <select {...register("theme")} >
-                    {messageTheme.map(el => (
-                        <option key={el.text} value={el.text}>{el.text}</option>
+                    {meesageThemes.map(el => (
+                        <option key={el.theme} value={el.theme}>{el.theme}</option>
                     ))}
                 </select>
             </label>
@@ -74,17 +91,17 @@ export default function Form({ setIsSended, data: { linkSecond, linkPrivacy, lin
                 </label>
                 <label className="checkbox sub">
                     <input  {...register("privacyOne", { required: true })} type='checkbox' />
-                    <span className="label body3">Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to={linkPrivacy.url}>Polityce prywatności</Link>*</span>
+                    <span className="label body3">Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to={linkPrivacyPolicy.url}>Polityce prywatności</Link>*</span>
                     {errors.privacyOne && <span className="error">This field is required</span>}
                 </label>
                 <label className="checkbox sub">
                     <input  {...register("privacyTwo", { required: true })} type='checkbox' />
-                    <span className="label body3">Wyrażam zgodę, aby moje dane osobowe były przetwarzane <Link to={linkNewsletter.url}>czytaj więcej</Link>*</span>
+                    <span className="label body3">Wyrażam zgodę, aby moje dane osobowe były przetwarzane <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link>*</span>
                     {errors.privacyTwo && <span className="error">This field is required</span>}
                 </label>
                 <label className="checkbox sub">
                     <input  {...register("privacyThree", { required: true })} type='checkbox' />
-                    <span className="label body3">Wyrażam zgodę na otrzymywanie od Habza Group Sp. z o.o. <Link to={linkSecond.url}>czytaj więcej</Link>*</span>
+                    <span className="label body3">Wyrażam zgodę na otrzymywanie od Habza Group Sp. z o.o. <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link>*</span>
                     {errors.privacyThree && <span className="error">This field is required</span>}
                 </label>
                 <span className="required body3">*  – Pola obowiązkowe</span>

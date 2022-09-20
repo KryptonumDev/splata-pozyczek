@@ -4,8 +4,9 @@ import { Container } from "../../atoms/container"
 import { graphql } from "gatsby"
 import Breadcrumbs from "../../moleculas/breadcrumbs"
 import { textParser } from "../../../helpers/wysiwyg-modification"
+import { FilledButton } from "../../atoms/buttons"
 
-export default function HeroForm({ data: { pageTitle, text, formaKontaktowa }, title }) {
+export default function HeroForm({ data: { pageTitle, text, link }, title }) {
   return (
     <Wrapper>
       <Container>
@@ -15,6 +16,9 @@ export default function HeroForm({ data: { pageTitle, text, formaKontaktowa }, t
             <h1 className="h4" dangerouslySetInnerHTML={{ __html: textParser(pageTitle) }} />
             {text
               ? <p className="h6" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
+              : null}
+            {link?.url
+              ? <FilledButton target={link.target} to={link.url}>{link.titile}</FilledButton>
               : null}
           </TextPart>
           <form>
@@ -32,17 +36,10 @@ export const query = graphql`
     heroForm {
       pageTitle
       text
-      formaKontaktowa {
+      link{
         title
-        messageTheme {
-          text
-        }
-        linkSecond {
-          url
-        }
-        linkPrivacy {
-          url
-        }
+        target
+        url
       }
     }
   }

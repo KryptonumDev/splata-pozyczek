@@ -3,8 +3,8 @@ import styled from "styled-components"
 import { graphql } from "gatsby"
 import { Container } from "../../atoms/container"
 import { textParser } from './../../../helpers/wysiwyg-modification'
-import Form from "./form"
 import { FilledButton } from "../../atoms/buttons"
+import Form from "../../moleculas/forms/short"
 
 export default function ShortContactForm({ data }) {
     const [isSended, setIsSended] = useState(false)
@@ -15,7 +15,7 @@ export default function ShortContactForm({ data }) {
                 <Box>
                     <Content>
                         <h2 className="h4" dangerouslySetInnerHTML={{ __html: textParser(data.title) }} />
-                        <Form data={data} setIsSended={setIsSended} />
+                        <Form setIsSended={setIsSended} />
                     </Content>
                     <Success isSended={isSended}>
                         <span className="h5 first">Dziękujemy</span>
@@ -33,18 +33,6 @@ export const query = graphql`
 fragment shortContactForm on WpPage_Blocks_pageBuilder {
     shortContactForm {
       title
-      linkSecond{
-        url
-      }
-      linkPrivacy{
-        url
-      }
-      linkNewsletter{
-        url
-      }
-      messageTheme {
-        text
-      }
     }
 }
 `
