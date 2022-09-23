@@ -38,6 +38,15 @@ export default function Page({ data: { wpPage: { title, seo, blocks: { pageBuild
         ? <Hero data={pageBuilder[0].hero} />
         : null}
 
+      {pageBuilder?.map(el => {
+        switch (el.switch) {
+          case 'heroHomepage':
+            return <Hero data={el.hero} />
+          default:
+            return null
+        }
+      })}
+
       {/* {pageBuilder?.map(el => {
         switch (el.switch) {
           case 'heroHomepage':
