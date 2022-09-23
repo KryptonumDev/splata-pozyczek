@@ -73,6 +73,7 @@ const Item = styled.div`
     img{
         margin-bottom: 12px;
         width: clamp(48px, ${56 / 768 * 100}vw, 76px);
+        height: clamp(48px, ${56 / 768 * 100}vw, 76px);
     }
 
     .h6{

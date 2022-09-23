@@ -182,6 +182,10 @@ const Grid = styled.div`
                 }
             }
 
+            strong{
+                color: #F2F4FF;
+            }
+
             &.body2{
                 grid-area: d;
                 padding: 0 24px 24px 24px;

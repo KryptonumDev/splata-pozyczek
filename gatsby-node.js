@@ -17,12 +17,14 @@ exports.createPages = async ({
   `);
 
   nodes.forEach(({ id, uri }) => {
-    createPage({
-      path: uri,
-      component: resolve('src/templates/page.jsx'),
-      context: {
-        id
-      },
-    });
+    if (id !== 'cG9zdDo0MzQ=' && id !== 'cG9zdDozNzU=' && id !== 'cG9zdDo2MzQ=') {
+      createPage({
+        path: uri,
+        component: resolve('src/templates/page.jsx'),
+        context: {
+          id
+        },
+      });
+    }
   });
 }
