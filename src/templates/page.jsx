@@ -27,6 +27,8 @@ import ThreeStepsWithLongPanel from "../components/sections/three-steps-with-lon
 import TextWithImgOnLeft from "../components/sections/text-with-img-on-left"
 import Calculator from "../components/sections/calculator"
 import CreditTypes from "../components/sections/credit-types"
+import LongPanelWithTwoColumn from "../components/sections/long-panel-with-two-column"
+import FourTiles from "../components/sections/four-tiles"
 
 export default function Page({ data: { wpPage: { title, seo, blocks: { pageBuilder } } } }) {
   return (
@@ -87,6 +89,10 @@ export default function Page({ data: { wpPage: { title, seo, blocks: { pageBuild
             return <Calculator data={el.calculator} />
           case 'creditTypes':
             return <CreditTypes data={el.creditTypes} />
+          case 'longPanelWithTwoColumn':
+            return <LongPanelWithTwoColumn data={el.longPanelWithTwoColumn} />
+          case 'fourTiles':
+            return <FourTiles data={el.fourTiles} />
           default:
             return null
         }
@@ -133,6 +139,8 @@ export const query = graphql`
                 ...threeStepsWithLongPanel
                 ...calculator
                 ...creditTypes
+                ...longPanelWithTwoColumn
+                ...fourTiles
               }
             }
         }

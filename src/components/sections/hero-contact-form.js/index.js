@@ -18,7 +18,7 @@ export default function HeroForm({ data: { pageTitle, text, link }, title }) {
               ? <p className="h6" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
               : null}
             {link?.url
-              ? <FilledButton target={link.target} to={link.url}>{link.titile}</FilledButton>
+              ? <FilledButton className="link" target={link.target} to={link.url}>{link.title}</FilledButton>
               : null}
           </TextPart>
           <form>
@@ -63,6 +63,10 @@ const Content = styled.div`
   .h6{
     color: #75757A;
     font-family: 'Arsenal';
+  }
+
+  .link{
+    margin-top: 24px;
   }
 `
 

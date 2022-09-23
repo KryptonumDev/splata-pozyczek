@@ -31,24 +31,27 @@ export default function Form({ setIsSended }) {
         setIsSended(true)
 
 
-        // if (sendedCount < 3) {
-        //     axios.post('url', {
-        //          email
-        //          message
-        //          name
-        //          phone
-        //          theme
-        //     })
-        //         .then((res) => {
-        //             if (res.status === 200) {
-        //                 changeSendedCount(sendedCount + 1)
-        //                 setIsSended(true)
-        //                 reset()
-        //             } else {
-        //                 alert('wystąpił problem, sprobuj póżniej')
-        //             }
-        //         })
-        // }
+        if (sendedCount < 3) {
+            let url = 'https://test.splatapozyczek.pl/wp-json/contact-form-7/v1/contact-forms/669/feedback'
+            let body = new FormData()
+            body.append('your-email', data.email)
+            body.append("your-subject", data.message)
+            body.append('your-name', data.name)
+            body.append('your-phone', data.phone)
+            body.append('your-theme', data.theme)
+            debugger
+            axios.post(url, body)
+                .then((res) => {
+                    debugger
+                    if (res.status === 200) {
+                        changeSendedCount(sendedCount + 1)
+                        setIsSended(true)
+                        reset()
+                    } else {
+                        alert('wystąpił problem, sprobuj póżniej')
+                    }
+                })
+        }
     }
 
     // console.log(watch("example"))  watch input value by passing the name of it
