@@ -26,9 +26,9 @@ export default function CallToAction({ data: { colorSchem, text, plainText, link
                 <Content color={colors[colorSchem]} background={background[colorSchem]}>
                     <TextPart>
                         <div>
-                            <p className="h6" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
+                            <p className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
                             {plainText ?
-                                <p className="body1" dangerouslySetInnerHTML={{ __html: textParser(plainText) }} />
+                                <p className="body1 arsenal" dangerouslySetInnerHTML={{ __html: textParser(plainText) }} />
                                 : null}
                         </div>
                         <FilledButton target={link.target} to={link.url}>{link.title}</FilledButton>

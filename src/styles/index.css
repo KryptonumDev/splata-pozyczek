@@ -42,6 +42,18 @@
     margin-top: clamp(110px, 23.4375vw, 200px);
  }
 
+ a,span{
+   font-weight: bolder;
+ }
+
+ .arsenal {
+    font-family: 'Arsenal', 'Source Sans Pro';
+ }
+
+ .arsenal * {
+    font-family: 'Arsenal', 'Source Sans Pro';
+ }
+
  .h1 {
     font-weight: 700;
     font-size: 72px;
@@ -125,9 +137,9 @@
     font-feature-settings: 'pnum' on, 'onum' on;
  }
 
- strong{
-   color: #050505;
-   }
+ strong {
+    color: #050505;
+ }
 
  .button {
     font-family: 'Source Sans Pro';

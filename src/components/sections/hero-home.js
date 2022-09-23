@@ -14,8 +14,8 @@ export default function Hero({ data: { text, pageTitle, przyciski, background } 
                     <TextPart>
                         {// breadcrumbs
                         }
-                        <h1 className="h4" dangerouslySetInnerHTML={{ __html: textParser(pageTitle) }}></h1>
-                        <p className="h6" dangerouslySetInnerHTML={{ __html: textParser(text) }}></p>
+                        <h1 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(pageTitle) }}></h1>
+                        <p className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(text) }}></p>
                         <Buttons>
                             {przyciski.map((el, index) => {
                                 if (index === 0) {

@@ -10,8 +10,8 @@ export default function EffectiveSolutions({ data: { title, boldText, text, situ
             <Container>
                 <Content>
                     <TextContent>
-                        <h2 className="h4" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
-                        <p className="h6" dangerouslySetInnerHTML={{ __html: textParser(boldText) }} />
+                        <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                        <p className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(boldText) }} />
                         <p className="body1" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
                     </TextContent>
                     <Grid>
@@ -20,7 +20,7 @@ export default function EffectiveSolutions({ data: { title, boldText, text, situ
                                 <img alt={el.icon.altText} src={el.icon.localFile.publicURL} />
                                 <div className="text">
                                     <h3 className="body1">{el.title}</h3>
-                                    <p className="body2" dangerouslySetInnerHTML={{ __html: el.text }} />
+                                    <p className="body2" dangerouslySetInnerHTML={{ __html: textParser(el.text) }} />
                                 </div>
                             </Item>
                         ))}
@@ -81,6 +81,7 @@ const TextContent = styled.div`
 
     .body1{
         margin-top: clamp(12px, ${12 / 768 * 100}vw, 24px);
+        color: #75757A;
     }
 `
 
@@ -114,6 +115,20 @@ const Item = styled.div`
         a{
             color: #FCCF4F;
         }
+
+        .body2{
+            color: #DAE2FF !important;
+
+            strong{
+                color: #F2F4FF;
+            }
+            span{
+                font-weight: 600;
+            }
+            a{
+                font-weight: 600;
+            }
+        }
     }
 
     .text{
@@ -121,7 +136,12 @@ const Item = styled.div`
 
         h3{
             margin-bottom: clamp(2px, ${4 / 768 * 100}vw, 4px);
-            font-weight: 600;
+            font-weight: 700;
+        }
+
+        .body2{
+            font-weight: 400;
+            color: #6E6E70;
         }
     }
 `

@@ -33,7 +33,12 @@ import FourTiles from "../components/sections/four-tiles"
 export default function Page({ data: { wpPage: { title, seo, blocks: { pageBuilder } } } }) {
   return (
     <main>
-      {pageBuilder?.map(el => {
+      {/* test rerenderingu */}
+      {pageBuilder[0].switch === "heroHomepage"
+        ? <Hero data={pageBuilder[0].hero} />
+        : null}
+
+      {/* {pageBuilder?.map(el => {
         switch (el.switch) {
           case 'heroHomepage':
             return <Hero data={el.hero} />
@@ -96,7 +101,7 @@ export default function Page({ data: { wpPage: { title, seo, blocks: { pageBuild
           default:
             return null
         }
-      })}
+      })} */}
     </main>
   )
 } // creditTypes       

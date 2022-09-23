@@ -9,12 +9,12 @@ export default function WhatAreWeDoing({ data: { title, punkty } }) {
         <Wrapper>
             <Container>
                 <Content>
-                    <h2 className="h4" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                    <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                     <Grid items={punkty.length}>
                         {punkty.map(el => (
                             <Item key={el.text}>
                                 <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
-                                <p className="h6">{el.text}</p>
+                                <p className="h6 arsenal">{el.text}</p>
                             </Item>
                         ))}
                     </Grid>

@@ -11,7 +11,7 @@ export default function HelpTypes({ data: { title, text, types } }) {
         <Wrapper>
             <Container>
                 <Content>
-                    <h2 className="h4" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                    <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                     <p className="body1" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
                     <Grid>
                         {types.map(el => (
@@ -72,6 +72,12 @@ const Content = styled.div`
     .body1{
         max-width: 540px;
         margin: clamp(16px, ${16 / 768 * 100}vw, 24px) auto 0 auto;
+        color: #75757A;
+        font-weight: 400;
+        
+        a,span,strong{
+            font-weight: 600;
+        }
     }
 
     .h4{
@@ -121,15 +127,19 @@ const Item = styled.div`
 
         .body2{
             margin-top: clamp(4px, ${8 / 768 * 100}vw, 8px);
+            color: #75757A;
         }
 
         a{
             margin-top: 16px;
             font-size: clamp(14px, ${14 / 768 * 100}vw, 16px );
-            padding: 10px;
-            width: 100%;
             text-align: center;
             box-sizing: border-box;
+
+            @media (max-width: 480px) {
+                width: 100%;
+                padding: 12px;
+            }
         }
     }
 `
