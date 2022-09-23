@@ -34,7 +34,7 @@ export default function Page({ data: { wpPage: { title, seo, blocks: { pageBuild
   return (
     <main>
       {/* test rerenderingu */}
-      {pageBuilder[0].switch === "heroHomepage"
+      {pageBuilder && pageBuilder[0].switch === "heroHomepage"
         ? <Hero data={pageBuilder[0].hero} />
         : null}
 
