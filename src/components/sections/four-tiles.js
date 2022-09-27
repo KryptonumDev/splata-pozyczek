@@ -8,7 +8,7 @@ export default function FourTiles({ data: { title, text, tiles } }) {
     return (
         <Wrapper>
             <Container>
-                <h2 className="h4" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                 <p className="text body1" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
                 <Grid>
                     {tiles.map(el => (

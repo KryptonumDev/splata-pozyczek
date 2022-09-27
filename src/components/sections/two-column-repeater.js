@@ -15,11 +15,15 @@ export default function TwoColumnRepeater({ data: { title, text, repeater } }) {
                 <Grid>
                     {repeater.map(el => (
                         <Item>
-                            <GatsbyImage className="img" image={el.img.localFile.childImageSharp.gatsbyImageData} />
+                            {el.videoLink
+                                ? <iframe src={el.videoLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                : <GatsbyImage className="img" image={el.img.localFile.childImageSharp.gatsbyImageData} />}
                             <div className="text-part">
                                 <h3 className="h6" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
                                 <div className="body2" dangerouslySetInnerHTML={{ __html: el.text }} />
-                                <p className="body1" dangerouslySetInnerHTML={{ __html: textParser(el.tytulPrzyciskow) }} />
+                                {el.tytulPrzyciskow
+                                    ? <p className="body1" dangerouslySetInnerHTML={{ __html: textParser(el.tytulPrzyciskow) }} />
+                                    : null}
                                 <div className="buttons">
                                     {el.buttons.map((inEl, index) => {
                                         if (index) {
@@ -53,6 +57,7 @@ export const query = graphql`
             url
           }
         }
+        videoLink
         img {
           altText
           localFile {
@@ -92,13 +97,15 @@ const Wrapper = styled.section`
         }
     }
 
-    .img{
+    .img, iframe{
         margin-bottom: 100px;
         height: fit-content;
         display: block;
         box-shadow: var(--shadow);
         border-radius: 4px;
         min-width: 400px;
+        width: 100%;
+        aspect-ratio: 1.77735849057/1;
     }
 `
 
@@ -119,14 +126,14 @@ const Item = styled.div`
 
     &:nth-child(2n){
         flex-direction: row-reverse;
-        .img{
+        .img, iframe{
             margin-left: 32px;
         }
     }
 
     &:nth-child(2n+1){
         flex-direction: row;
-        .img{
+        .img, iframe{
             margin-right: 32px;
         }
     }
@@ -172,7 +179,7 @@ const Item = styled.div`
     @media (max-width: 860px) {
         flex-direction: column !important;
 
-        .img{ 
+        .img, iframe{ 
             margin: 0 0 24px 0 !important;
             width: 100%;
         }
@@ -239,7 +246,7 @@ const Item = styled.div`
     }
 
     @media (max-width: 480px) {
-        .img{
+        .img, iframe{
             min-width: unset;
             margin-bottom: 12px !important;
         }

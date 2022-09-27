@@ -13,9 +13,9 @@ export default function HeroForm({ data: { pageTitle, text, link }, title }) {
         <Content>
           <TextPart>
             <Breadcrumbs title={title} />
-            <h1 className="h4" dangerouslySetInnerHTML={{ __html: textParser(pageTitle) }} />
+            <h1 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(pageTitle) }} />
             {text
-              ? <p className="h6" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
+              ? <p className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
               : null}
             {link?.url
               ? <FilledButton className="link" target={link.target} to={link.url}>{link.title}</FilledButton>

@@ -10,7 +10,7 @@ export default function OurExperts({ data: { tytulSekcji, experts } }) {
     return (
         <Wrapper>
             <Container>
-                <h2 className="h4" dangerouslySetInnerHTML={{ __html: textParser(tytulSekcji) }} />
+                <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(tytulSekcji) }} />
                 <Grid>
                     {experts.map(el => (
                         <GridItem>
@@ -107,6 +107,7 @@ const GridItem = styled.div`
 
     .body3{
         margin-bottom: 16px;
+        margin-top: 2px;
     }
 
     .phone{

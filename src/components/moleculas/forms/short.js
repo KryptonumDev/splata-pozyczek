@@ -158,11 +158,25 @@ const Wrapper = styled.form`
         }
 
         input, select, textarea{
-            padding: 10px;
+            padding: 8px 10px;
             background: #FEF5F5;
             border: 2px solid #75757A;
             border-radius: 4px;
             width: 100%;
+
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 129%;
+            font-feature-settings: 'pnum' on, 'onum' on;
+            color: #050505;
+
+            &::placeholder{
+                color: #B2B2B8;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 129%;
+                font-feature-settings: 'pnum' on, 'onum' on;
+            }
         }
     }
 

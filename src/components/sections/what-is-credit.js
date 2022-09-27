@@ -11,10 +11,10 @@ export default function WhatIsCredit({ data: { list, listTitle, text, title } })
             <Container>
                 <Content>
                     <Plate>
-                        <h2 className="h4" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                        <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                         <p className="body1" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
                     </Plate>
-                    <h3 dangerouslySetInnerHTML={{ __html: textParser(listTitle) }} />
+                    <h3 className="arsenal h6" dangerouslySetInnerHTML={{ __html: textParser(listTitle) }} />
                     <Grid>
                         {list.map(el => (
                             <Item key={el.tekst}>
@@ -104,6 +104,11 @@ const Item = styled.div`
         width: clamp(44px,  ${48 / 768 * 100}vw,48px);
         height: clamp(44px,  ${48 / 768 * 100}vw,48px);
     }
+
+    p{
+        color: #75757A;
+    }
+    
 
     @media (max-width: 580px){
         p{

@@ -3,56 +3,53 @@ import styled from "styled-components"
 import { graphql } from "gatsby"
 import { Container } from "../atoms/container"
 import { textParser } from './../../helpers/wysiwyg-modification'
-import { FilledButton, OutlinedButton } from "../atoms/buttons"
+import { FilledButton } from "../atoms/buttons"
 import { GatsbyImage } from "gatsby-plugin-image"
 import Light from './../../images/check-light.svg'
 import Medium from './../../images/check-medium.svg'
 
-export default function ListWithImgOnRight({ data: { title, list, buttons, img, textUnderImg } }) {
+export default function ListWithImgOnLeftRepeater({ data: { title, text, repeater } }) {
     return (
         <Wrapper>
             <Container>
-                <Content light={Light} medium={Medium} >
-                    <div>
-                        <h2 className="h6" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
-                        <div className="body1" dangerouslySetInnerHTML={{ __html: list }} />
-                        <Buttons>
-                            {buttons?.map((el, index) => {
-                                if (index) {
-                                    return <OutlinedButton className="button" to={el.link.url} target={el.link.target}>{el.link.title}</OutlinedButton>
-                                }
-                                return <FilledButton className="button" to={el.link.url} target={el.link.target}>{el.link.title}</FilledButton>
-                            })}
-                        </Buttons>
-                    </div>
-                    <div>
-                        <GatsbyImage className="img" image={img.localFile.childImageSharp.gatsbyImageData} alt={img.altText} />
-                        <span className="sub1" dangerouslySetInnerHTML={{ __html: textParser(textUnderImg) }}></span>
-                    </div>
-                </Content>
+                <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                <Grid>
+                    {repeater.map(el => (
+                        <Content light={Light} medium={Medium} >
+                            <GatsbyImage className="img" image={el.img.localFile.childImageSharp.gatsbyImageData} alt={el.img.altText} />
+                            <div>
+                                <h2 className="h6" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
+                                <div className="body1" dangerouslySetInnerHTML={{ __html: el.list }} />
+                                <FilledButton className="button" to={el.link.url} target={el.link.target}>{el.link.title}</FilledButton>
+                            </div>
+                        </Content>
+                    ))}
+                </Grid>
+                <h3 className="h5 arsenal" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
             </Container>
         </Wrapper>
     )
 }
 
 export const query = graphql`
-  fragment listWithImgOnRight on WpPage_Blocks_pageBuilder {
-    listWithImgOnRight {
+  fragment listWithImgOnLeftRepeater on WpPage_Blocks_pageBuilder {
+    listWithImgOnLeftRepeater : listWithImgOnRightRepeater {
       title
-      list
-      buttons{
+      text
+      repeater {
+        title
+        list
         link {
-            target
-            title
-            url
+          url
+          title
+          target
         }
-    }
-      textUnderImg
-      img {
-        altText
-        localFile {
-          childImageSharp {
-            gatsbyImageData
+        img {
+          altText
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
           }
         }
       }
@@ -62,37 +59,53 @@ export const query = graphql`
 
 const Wrapper = styled.section`
     margin-top: var(--section);
+
+    .h4{
+        max-width: 762px;
+        text-align: center;
+        margin: 0 auto;
+        font-size: clamp(28px, 4.296875vw, 38px);
+    }
+
+    .h5{
+        max-width: 762px;
+        text-align: center;
+        margin: 0 auto;
+    }
 `
 
-const Buttons = styled.div`
+const Grid = styled.div`
     display: grid;
-    grid-gap: 8px;
+    grid-gap: clamp(24px, ${32 / 768 * 100}vw, 64px);
+    margin-top: clamp(24px, ${32 / 768 * 100}vw, 64px);
+    margin-bottom: clamp(24px, ${32 / 768 * 100}vw, 32px);
 `
 
 const Content = styled.div`
     max-width: 1000px;
+    width: 100%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: auto clamp(280px, ${340 / 768 * 100}vw, 380px);
+    align-items: center;
+    grid-template-columns: clamp(280px, ${340 / 768 * 100}vw, 380px) auto;
     grid-gap: 32px;
 
     .img{
-        width: 100%;
+        margin-bottom: clamp(0px, ${64 / 1920 * 100}vw, 64px);
+        box-shadow: var(--shadow);
+        border-radius: 4px;
+
+        @media (max-width: 640px){
+            margin-bottom: 0;
+        }
     }
 
     @media (max-width: 640px) {
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
+        max-width: 380px;
         margin: 0 auto;
         grid-gap: 16px;
-
-        .img{
-            width: auto;
-        }
-
-        .sub1{
-            max-width: 380px;
-        }
     }
 
     .body1{
@@ -186,11 +199,5 @@ const Content = styled.div`
     .sub1{
         display: block;
         margin-top: 8px;
-        letter-spacing: 0;
-    }
-
-    .img{
-        box-shadow: var(--shadow);
-        border-radius: 4px;
     }
 `

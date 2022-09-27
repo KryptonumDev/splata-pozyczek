@@ -113,7 +113,7 @@ const Wrapper = styled.footer`
         gap: 32px;
         height: 100%;
         .body2{
-            margin-top: 24px;
+            margin-top: 16px;
             margin-bottom: 32px;
         }
 
@@ -144,6 +144,10 @@ const Wrapper = styled.footer`
     .copyright{
         display: flex;
         align-items: flex-end;
+
+        p{
+            
+        }
 
         a{
             color: #75757A;
@@ -190,12 +194,13 @@ const Wrapper = styled.footer`
             display: grid;
             grid-gap: 12px;
             margin-bottom: 16px;
+            color: #F2F4FF;
         }
 
         .outlined{
             border-color: #FEF5F5;
             color: #FEF5F5;
-            margin-top: 4px;
+            margin-top: 12px;
 
             &:hover{
                 background-color: #FEF5F5;

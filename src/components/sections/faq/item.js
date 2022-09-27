@@ -53,12 +53,21 @@ const Item = styled.details`
         }
     }
 
+    .body1{
+        color: #050505;
+        font-weight: 600;
+    }
+
     .body2{
         margin-top: 8px;
         display: block;
 
         * + *{
             margin-top: 8px;
+        }
+
+        p{
+            color: #75757A;
         }
 
 

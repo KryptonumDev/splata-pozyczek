@@ -37,6 +37,10 @@ const Grid = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 32px;
+    
+    p{
+        color: #75757A;
+    }
 
     @media (max-width: 768px) {
         display: block;

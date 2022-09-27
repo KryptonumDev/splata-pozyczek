@@ -9,7 +9,7 @@ import WhatIsCredit from "../components/sections/what-is-credit"
 import Faq from "../components/sections/faq"
 import OurExperts from "../components/sections/our-experts"
 import ThreeColumnText from "../components/sections/three-column-text"
-import RepeaterFourColumnText from "../components/sections/four-column-text"
+import RepeaterFourColumnText from "../components/sections/four-column-text-repeater"
 import ShortContactForm from "../components/sections/short-contact-form.js"
 import HeroForm from "../components/sections/hero-contact-form.js"
 import FourTilesWithTitle from "../components/sections/four-tiles-with-title"
@@ -29,6 +29,15 @@ import Calculator from "../components/sections/calculator"
 import CreditTypes from "../components/sections/credit-types"
 import LongPanelWithTwoColumn from "../components/sections/long-panel-with-two-column"
 import FourTiles from "../components/sections/four-tiles"
+import ThreeCommentsWithTitle from "../components/sections/three-comments-with-title"
+import TextWithImgOnRight from "../components/sections/text-with-img-on-right"
+import FourColumnText from '../components/sections/four-column-text'
+import ExtendedListWithImgOnRight from "../components/sections/extended-list-with-img-on-right"
+import TwoColumnRepeaterAlt from "../components/sections/two-column-repeater-alt"
+import TwoColumnVideo from "../components/sections/two-column-video"
+import ListWithImgOnLeftRepeater from "../components/sections/list-with-img-on-left-repeater"
+import TextWithImgOnLeftAlt from "../components/sections/text-with-img-on-left-alt"
+import ThreeColumnsHighlighted from "../components/sections/three-columns-highlighted"
 
 export default function Page({ data: { wpPage: { title, seo, blocks: { pageBuilder } } } }) {
   return (
@@ -93,13 +102,31 @@ export default function Page({ data: { wpPage: { title, seo, blocks: { pageBuild
             return <LongPanelWithTwoColumn data={el.longPanelWithTwoColumn} />
           case 'fourTiles':
             return <FourTiles data={el.fourTiles} />
+          case "threeCommentsWithTitle":
+            return <ThreeCommentsWithTitle data={el.threeCommentsWithTitle} />
+          case 'textWithImgOnRight':
+            return <TextWithImgOnRight data={el.textWithImgOnRight} />
+          case 'fourColumnText':
+            return <FourColumnText data={el.fourColumnText} />
+          case 'extendedListWithImgOnRight':
+            return <ExtendedListWithImgOnRight data={el.extendedListWithImgOnRight} />
+          case 'twoColumnFlexAlt':
+            return <TwoColumnRepeaterAlt data={el.twoColumnFlexAlt} />
+          case 'twoColumnVideo':
+            return <TwoColumnVideo data={el.twoColumnVideo} />
+          case 'listWithImgOnLeftRepeater':
+            return <ListWithImgOnLeftRepeater data={el.listWithImgOnLeftRepeater} />
+          case 'textWithImgOnLeftAlt':
+            return <TextWithImgOnLeftAlt data={el.textWithImgOnLeftAlt} />
+          case 'threeColumnsHighlighted':
+            return <ThreeColumnsHighlighted data={el.threeColumnsHighlighted}/>
           default:
             return null
         }
       })}
     </main>
-  )
-} // creditTypes       
+  ) // threeColumnsHighlightedAlt 
+}
 
 export const query = graphql`
     query page($id: String!) {
@@ -135,12 +162,21 @@ export const query = graphql`
                 ...threeColumnTextWithTitles
                 ...twoColumnText
                 ...twoColumnRepeater
+                ...twoColumnRepeaterAlt
                 ...textWithImgOnLeft
                 ...threeStepsWithLongPanel
                 ...calculator
                 ...creditTypes
                 ...longPanelWithTwoColumn
                 ...fourTiles
+                ...threeCommentsWithTitle
+                ...textWithImgOnRight
+                ...fourColumnText
+                ...extendedListWithImgOnRight
+                ...twoColumnVideo
+                ...listWithImgOnLeftRepeater
+                ...textWithImgOnLeftAlt
+                ...threeColumnsHighlighted
               }
             }
         }

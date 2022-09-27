@@ -14,7 +14,7 @@ export default function ShortContactForm({ data }) {
             <Container>
                 <Box>
                     <Content>
-                        <h2 className="h4" dangerouslySetInnerHTML={{ __html: textParser(data.title) }} />
+                        <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(data.title) }} />
                         <Form setIsSended={setIsSended} />
                     </Content>
                     <Success isSended={isSended}>
