@@ -101,6 +101,7 @@ const Item = styled.div`
 
     img{
         width: clamp(48px, ${56 / 768 * 100}vw, 76px);
+        height: clamp(48px, ${56 / 768 * 100}vw, 76px);
     }
 
     &:nth-child(2){
