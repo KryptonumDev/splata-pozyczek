@@ -1,47 +1,125 @@
 import { graphql } from "gatsby"
-import React, { lazy, Suspense } from "react"
-
+import React from "react"
+import EffectiveSolutions from "../components/sections/effective-solutions"
+import Hero from "../components/sections/hero-home"
+import WhatAreWeDoing from "../components/sections/what-are-we-doing"
+import CallToAction from '../components/sections/cta'
+import HelpTypes from "../components/sections/typt-pomocy"
+import WhatIsCredit from "../components/sections/what-is-credit"
+import Faq from "../components/sections/faq"
+import OurExperts from "../components/sections/our-experts"
+import ThreeColumnText from "../components/sections/three-column-text"
+import RepeaterFourColumnText from "../components/sections/four-column-text-repeater"
+import ShortContactForm from "../components/sections/short-contact-form.js"
+import HeroForm from "../components/sections/hero-contact-form.js"
+import FourTilesWithTitle from "../components/sections/four-tiles-with-title"
+import FourBigTextTiles from "../components/sections/four-big-text-tiles"
+import TwoColumnsCompare from "../components/sections/two-columns-compare"
+import ListWithImgOnRight from "../components/sections/list-with-img-on-right"
+import StepsToCredit from "../components/sections/steps-to-credit"
+import TwoColumnCompareColored from "../components/sections/two-columns-compare-colored"
+import LongPanelWithIcon from "../components/sections/long-panel-with-icon"
+import ThreeColumnTextWithTitles from "../components/sections/three-column-text-with-titles"
+import TwoColumnText from "../components/sections/two-column-text"
+import BlogSlider from "../components/sections/blog-slider"
+import TwoColumnRepeater from "../components/sections/two-column-repeater"
+import ThreeStepsWithLongPanel from "../components/sections/three-steps-with-long-panel"
+import TextWithImgOnLeft from "../components/sections/text-with-img-on-left"
+import Calculator from "../components/sections/calculator"
+import CreditTypes from "../components/sections/credit-types"
+import LongPanelWithTwoColumn from "../components/sections/long-panel-with-two-column"
+import FourTiles from "../components/sections/four-tiles"
+import ThreeCommentsWithTitle from "../components/sections/three-comments-with-title"
+import TextWithImgOnRight from "../components/sections/text-with-img-on-right"
+import FourColumnText from '../components/sections/four-column-text'
+import ExtendedListWithImgOnRight from "../components/sections/extended-list-with-img-on-right"
+import TwoColumnRepeaterAlt from "../components/sections/two-column-repeater-alt"
+import TwoColumnVideo from "../components/sections/two-column-video"
+import ListWithImgOnLeftRepeater from "../components/sections/list-with-img-on-left-repeater"
+import TextWithImgOnLeftAlt from "../components/sections/text-with-img-on-left-alt"
+import ThreeColumnsHighlighted from "../components/sections/three-columns-highlighted"
 
 export default function Page({ data: { wpPage: { title, seo, blocks: { pageBuilder } } } }) {
-
-  const Hero = lazy(() => import("../components/sections/hero-home"))
-  const EffectiveSolutions = lazy(() => import("../components/sections/effective-solutions"))
-  const WhatAreWeDoing = lazy(() => import("../components/sections/what-are-we-doing"))
-  const CallToAction = lazy(() => import('../components/sections/cta'))
-  const HelpTypes = lazy(() => import("../components/sections/typt-pomocy"))
-  const WhatIsCredit = lazy(() => import("../components/sections/what-is-credit"))
-  const Faq = lazy(() => import("../components/sections/faq"))
-  const OurExperts = lazy(() => import("../components/sections/our-experts"))
-  const ThreeColumnText = lazy(() => import("../components/sections/three-column-text"))
-  const RepeaterFourColumnText = lazy(() => import("../components/sections/four-column-text-repeater"))
-  const ShortContactForm = lazy(() => import("../components/sections/short-contact-form.js"))
-
   return (
-    <main id='main'>
+    <main>
       {pageBuilder?.map(el => {
         switch (el.switch) {
           case 'heroHomepage':
-            return <Suspense><Hero data={el.hero} /></Suspense>
+            return <Hero data={el.hero} />
           case 'whatAreWeDoing':
-            return <Suspense><WhatAreWeDoing data={el.whatAreWeDoing} /></Suspense>
+            return <WhatAreWeDoing data={el.whatAreWeDoing} />
           case 'effectiveSolutions':
-            return <Suspense><EffectiveSolutions data={el.effectiveSolutions} /></Suspense>
+            return <EffectiveSolutions data={el.effectiveSolutions} />
           case 'types':
-            return <Suspense><HelpTypes data={el.types} /></Suspense>
+            return <HelpTypes data={el.types} />
           case 'whatIsCredit':
-            return <Suspense><WhatIsCredit data={el.whatIsCredit} /></Suspense>
+            return <WhatIsCredit data={el.whatIsCredit} />
           case 'cta':
-            return <Suspense><CallToAction data={el.cta} /></Suspense>
+            return <CallToAction data={el.cta} />
           case 'faq':
-            return <Suspense><Faq data={el.faq} /></Suspense>
+            return <Faq data={el.faq} />
           case 'ourExperts':
-            return <Suspense><OurExperts data={el.ourExperts} /></Suspense>
+            return <OurExperts data={el.ourExperts} />
           case 'threeColumnText':
-            return <Suspense><ThreeColumnText data={el.threeColumnText} /></Suspense>
+            return <ThreeColumnText data={el.threeColumnText} />
           case 'repeaterFourColumnText':
-            return <Suspense><RepeaterFourColumnText data={el.repeaterFourColumnText} /></Suspense>
+            return <RepeaterFourColumnText data={el.repeaterFourColumnText} />
           case 'shortContactForm':
-            return <Suspense><ShortContactForm data={el.shortContactForm} /></Suspense>
+            return <ShortContactForm data={el.shortContactForm} />
+          case 'heroForm':
+            return <HeroForm data={el.heroForm} title={title} />
+          case 'fourTilesWithTitle':
+            return <FourTilesWithTitle data={el.fourTilesWithTitle} />
+          case 'fourBigTextTiles':
+            return <FourBigTextTiles data={el.fourBigTextTiles} />
+          case 'twoColumnsCompare':
+            return <TwoColumnsCompare data={el.twoColumnsCompare} />
+          case 'listWithImgOnRight':
+            return <ListWithImgOnRight data={el.listWithImgOnRight} />
+          case 'stepsToCredit':
+            return <StepsToCredit data={el.stepsToCredit} />
+          case 'twoColumnCompareColored':
+            return <TwoColumnCompareColored data={el.twoColumnCompareColored} />
+          case 'longPanelWithIcon':
+            return <LongPanelWithIcon data={el.longPanelWithIcon} />
+          case 'threeColumnTextWithTitles':
+            return <ThreeColumnTextWithTitles data={el.threeColumnTextWithTitles} />
+          case 'twoColumnText':
+            return <TwoColumnText data={el.twoColumnText} />
+          case 'blogSlider':
+            return <BlogSlider />
+          case 'twoColumnFlex':
+            return <TwoColumnRepeater data={el.twoColumnFlex} />
+          case 'threeStepsWithLongPanel':
+            return <ThreeStepsWithLongPanel data={el.threeStepsWithLongPanel} />
+          case 'textWithImgOnLeft':
+            return <TextWithImgOnLeft data={el.textWithImgOnLeft} />
+          case 'calculator':
+            return <Calculator data={el.calculator} />
+          case 'creditTypes':
+            return <CreditTypes data={el.creditTypes} />
+          case 'longPanelWithTwoColumn':
+            return <LongPanelWithTwoColumn data={el.longPanelWithTwoColumn} />
+          case 'fourTiles':
+            return <FourTiles data={el.fourTiles} />
+          case "threeCommentsWithTitle":
+            return <ThreeCommentsWithTitle data={el.threeCommentsWithTitle} />
+          case 'textWithImgOnRight':
+            return <TextWithImgOnRight data={el.textWithImgOnRight} />
+          case 'fourColumnText':
+            return <FourColumnText data={el.fourColumnText} />
+          case 'extendedListWithImgOnRight':
+            return <ExtendedListWithImgOnRight data={el.extendedListWithImgOnRight} />
+          case 'twoColumnFlexAlt':
+            return <TwoColumnRepeaterAlt data={el.twoColumnFlexAlt} />
+          case 'twoColumnVideo':
+            return <TwoColumnVideo data={el.twoColumnVideo} />
+          case 'listWithImgOnLeftRepeater':
+            return <ListWithImgOnLeftRepeater data={el.listWithImgOnLeftRepeater} />
+          case 'textWithImgOnLeftAlt':
+            return <TextWithImgOnLeftAlt data={el.textWithImgOnLeftAlt} />
+          case 'threeColumnsHighlighted':
+            return <ThreeColumnsHighlighted data={el.threeColumnsHighlighted}/>
           default:
             return null
         }
