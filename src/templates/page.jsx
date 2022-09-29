@@ -56,7 +56,7 @@ export function Head({ data: { wpPage: { seo } }, location, pageContext }) {
   </>
 }
 
-export default function Page({ data: { wpPage: { title, seo, blocks: { pageBuilder } } } }) {
+export default function Page({ data: { wpPage: { title, blocks: { pageBuilder } } } }) {
   return (
     <main>
       {pageBuilder?.map(el => {
