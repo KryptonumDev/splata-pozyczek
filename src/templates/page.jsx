@@ -27,7 +27,6 @@ import ThreeStepsWithLongPanel from "../components/sections/three-steps-with-lon
 import TextWithImgOnLeft from "../components/sections/text-with-img-on-left"
 import Calculator from "../components/sections/calculator"
 import CreditTypes from "../components/sections/credit-types"
-import LongPanelWithTwoColumn from "../components/sections/long-panel-with-two-column"
 import FourTiles from "../components/sections/four-tiles"
 import ThreeCommentsWithTitle from "../components/sections/three-comments-with-title"
 import TextWithImgOnRight from "../components/sections/text-with-img-on-right"
@@ -38,6 +37,24 @@ import TwoColumnVideo from "../components/sections/two-column-video"
 import ListWithImgOnLeftRepeater from "../components/sections/list-with-img-on-left-repeater"
 import TextWithImgOnLeftAlt from "../components/sections/text-with-img-on-left-alt"
 import ThreeColumnsHighlighted from "../components/sections/three-columns-highlighted"
+import FourTilesExtended from "../components/sections/four-tiles-extended"
+import ThreePointsWithImgOnLeft from "../components/sections/three-points-with-img-on-left"
+import parse from 'html-react-parser'
+
+export function Head({ data: { wpPage: { seo } }, location, pageContext }) {
+  const fullHead = parse(seo.fullHead, {
+    replace: el => {
+      if (el.data === "\n") {
+        return <br />
+      }
+    }
+  })
+  return <>
+    <title>{seo.title}</title>
+    <meta name='description' content={seo.metaDesc} />
+    {fullHead}
+  </>
+}
 
 export default function Page({ data: { wpPage: { title, seo, blocks: { pageBuilder } } } }) {
   return (
@@ -98,8 +115,6 @@ export default function Page({ data: { wpPage: { title, seo, blocks: { pageBuild
             return <Calculator data={el.calculator} />
           case 'creditTypes':
             return <CreditTypes data={el.creditTypes} />
-          case 'longPanelWithTwoColumn':
-            return <LongPanelWithTwoColumn data={el.longPanelWithTwoColumn} />
           case 'fourTiles':
             return <FourTiles data={el.fourTiles} />
           case "threeCommentsWithTitle":
@@ -119,13 +134,17 @@ export default function Page({ data: { wpPage: { title, seo, blocks: { pageBuild
           case 'textWithImgOnLeftAlt':
             return <TextWithImgOnLeftAlt data={el.textWithImgOnLeftAlt} />
           case 'threeColumnsHighlighted':
-            return <ThreeColumnsHighlighted data={el.threeColumnsHighlighted}/>
+            return <ThreeColumnsHighlighted data={el.threeColumnsHighlighted} />
+          case 'fourTilesExtended':
+            return <FourTilesExtended data={el.fourTilesExtended} />
+          case "threePointsWithImgOnLeft":
+            return <ThreePointsWithImgOnLeft data={el.threePointsWithImgOnLeft} />
           default:
             return null
         }
       })}
     </main>
-  ) // threeColumnsHighlightedAlt 
+  ) // threePointsWithImgOnLeft 
 }
 
 export const query = graphql`
@@ -136,6 +155,8 @@ export const query = graphql`
             id
             seo {
               fullHead
+              title
+              metaDesc
             }
             blocks {
               pageBuilder {
@@ -167,7 +188,6 @@ export const query = graphql`
                 ...threeStepsWithLongPanel
                 ...calculator
                 ...creditTypes
-                ...longPanelWithTwoColumn
                 ...fourTiles
                 ...threeCommentsWithTitle
                 ...textWithImgOnRight
@@ -176,7 +196,9 @@ export const query = graphql`
                 ...twoColumnVideo
                 ...listWithImgOnLeftRepeater
                 ...textWithImgOnLeftAlt
+                ...fourTilesExtended
                 ...threeColumnsHighlighted
+                ...threePointsWithImgOnLeft
               }
             }
         }

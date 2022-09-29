@@ -14,7 +14,7 @@ export default function FourTiles({ data: { title, text, tiles } }) {
                     {tiles.map(el => (
                         <Item>
                             <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
-                            <div className="body1" dangerouslySetInnerHTML={{ __html: textParser(el.text) }} />
+                            <div className="body1" dangerouslySetInnerHTML={{ __html: el.text }} />
                         </Item>
                     ))}
                 </Grid>

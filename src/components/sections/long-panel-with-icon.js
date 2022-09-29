@@ -4,24 +4,30 @@ import { graphql } from "gatsby"
 import { Container } from "../atoms/container"
 import { textParser } from './../../helpers/wysiwyg-modification'
 
-export default function LongPanelWithIcon({ data: { title, text, icon } }) {
+export default function LongPanelWithIcon({ data: { template, longPanel } }) {
     return (
         <Wrapper>
             <Container>
-                <Content className="desctop">
-                    <img src={icon.localFile.publicURL} alt={icon.localFile.altText} />
-                    <div className="text">
-                        <h2 className="body1 title" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
-                        <p className="body1 sub" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
-                    </div>
-                </Content>
-                <Content className="mobile">
-                    <div className="text">
-                        <img src={icon.localFile.publicURL} alt={icon.localFile.altText} />
-                        <h2 className="body1 title" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
-                    </div>
-                    <p className="body1 sub" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
-                </Content>
+                <Grid template={template}>
+                    {longPanel.map(el => (
+                        <>
+                            <Content template={template} className="desctop">
+                                <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
+                                <div className="text">
+                                    <h2 className="body1 title" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
+                                    <div className="body1 sub" dangerouslySetInnerHTML={{ __html: el.text }} />
+                                </div>
+                            </Content>
+                            <Content className="mobile">
+                                <div className="text">
+                                    <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
+                                    <h2 className="body1 title" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
+                                </div>
+                                <div className="body1 sub" dangerouslySetInnerHTML={{ __html: el.text }} />
+                            </Content>
+                        </>
+                    ))}
+                </Grid>
             </Container>
         </Wrapper>
     )
@@ -30,16 +36,37 @@ export default function LongPanelWithIcon({ data: { title, text, icon } }) {
 export const query = graphql`
   fragment longPanelWithIcon on WpPage_Blocks_pageBuilder {
     longPanelWithIcon {
-      title
-      text
-      icon {
-        altText
-        localFile {
-          publicURL
+      template
+      longPanel {
+        title
+        text
+        icon {
+          altText
+          localFile {
+            publicURL
+          }
         }
       }
     }
   }
+`
+
+const Grid = styled.div`
+    display: grid;
+    grid-gap: clamp(24px, ${24 / 768 * 100}vw, 32px);
+
+    ${props => props.template === 'long' ? `
+
+    ` : props.template === 'longDoubled' ? `
+    
+    ` : props.template === 'medium' ? `
+        grid-template-columns: 1fr 1fr;
+
+        @media(max-width: 1024px){
+            grid-template-columns: 1fr;
+        }
+
+    ` : null}
 `
 
 const Wrapper = styled.section`
@@ -85,25 +112,40 @@ const Content = styled.div`
         height: clamp(48px, ${48 / 768 * 100}vw, 76px);
     }
 
+    .sub{
+        display: grid;
+        grid-gap: 8px;
+        color: #75757A;
+
+        ${props => props.template === 'longDoubled' ? `
+        display: block;
+        columns: 2;
+        column-gap: 32px;
+        p{
+            break-inside: avoid;
+        }
+    ` : null}
+
+        p{
+        color: #75757A;
+
+        }
+
+        strong{
+            color: #050505;
+        }
+
+        span{
+            font-weight: 600;
+        }
+    }
+
     .text{
         padding: 10px;
 
         .title{
             font-weight: 600;
         }
-
-        .sub{
-            color: #75757A;
-
-            strong{
-                color: #050505;
-            }
-
-            span{
-                font-weight: 600;
-            }
-        }
-        
 
         .body1{
             margin-bottom: 4px;

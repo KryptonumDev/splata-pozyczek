@@ -11,15 +11,15 @@ export default function ThreeColumnTextWithTitles({ data: { left, leftTitle, rig
                 <Grid>
                     <div>
                         <h3 className="body2">{leftTitle}</h3>
-                        <p className="body3" dangerouslySetInnerHTML={{ __html: textParser(left) }} />
+                        <div className="body3" dangerouslySetInnerHTML={{ __html: left }} />
                     </div>
                     <div className="second">
                         <h3 className="body2">{centerTitle}</h3>
-                        <p className="body3" dangerouslySetInnerHTML={{ __html: textParser(center) }} />
+                        <div className="body3" dangerouslySetInnerHTML={{ __html: center }} />
                     </div>
                     <div>
                         <h3 className="body2">{rightTitle}</h3>
-                        <p className="body3" dangerouslySetInnerHTML={{ __html: textParser(right) }} />
+                        <div className="body3" dangerouslySetInnerHTML={{ __html: right }} />
                     </div>
                 </Grid>
             </Container>
@@ -53,6 +53,14 @@ const Grid = styled.div`
     .body2{
         margin-bottom: 8px;
         font-weight: 600;
+    }
+
+    .body3{
+        display: grid;
+        grid-gap: 8px;
+        p{
+        color: #6F6F71;
+        }
     }
 
     @media (max-width: 768px) {

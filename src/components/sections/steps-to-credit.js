@@ -115,8 +115,8 @@ const Item = styled.div`
     }
 
     span{
-        width: 76px;
-        height: 76px;
+        width: clamp(56px, ${56 / 768 * 100}vw, 76px);
+        height: clamp(56px, ${56 / 768 * 100}vw, 76px);
         border-radius: 50%;
         background-color: var(--color-light);
         color: var(--color-medium);

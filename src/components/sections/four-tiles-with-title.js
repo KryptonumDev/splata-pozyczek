@@ -10,7 +10,9 @@ export default function FourTilesWithTitle({ data: { title, tekstWyrozniony, pla
             <Container>
                 <Content>
                     <h2 className="h4" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
-                    <p className="title body1" dangerouslySetInnerHTML={{ __html: textParser(tekstWyrozniony) }} />
+                    {tekstWyrozniony
+                        ? <p className="title body1" dangerouslySetInnerHTML={{ __html: textParser(tekstWyrozniony) }} />
+                        : null}
                     <Grid>
                         {plaszki.map(el => (
                             <Item>

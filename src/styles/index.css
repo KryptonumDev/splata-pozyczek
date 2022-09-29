@@ -155,6 +155,14 @@
     font-feature-settings: 'pnum' on, 'onum' on;
  }
 
+ .body3 p {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 127%;
+    font-feature-settings: 'pnum' on, 'onum' on;
+ }
+
+
  strong {
     color: #050505;
  }
