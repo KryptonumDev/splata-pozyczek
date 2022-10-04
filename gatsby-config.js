@@ -33,7 +33,7 @@ module.exports = {
     {
       resolve: "gatsby-omni-font-loader",
       options: {
-        mode: "async",
+        mode: "render-blocking",
         web: [{
             name: "Arsenal",
             file: "https://fonts.googleapis.com/css2?family=Arsenal:wght@400;700&display=swap",
