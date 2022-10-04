@@ -34,11 +34,6 @@ module.exports = {
       resolve: "gatsby-omni-font-loader",
       options: {
         mode: "async",
-        /* Enable font loading listener to handle FOUT */
-        enableListener: true,
-        /* Preconnect URL-s. This example is for Google Fonts */
-        preconnect: ["https://fonts.gstatic.com"],
-        /* Web fonts. File link should point to font CSS file. */
         web: [{
             name: "Arsenal",
             file: "https://fonts.googleapis.com/css2?family=Arsenal:wght@400;700&display=swap",
