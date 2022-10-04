@@ -14,7 +14,9 @@ export default function FourBigTextTiles({ data: { title, highlighted, tiles } }
                         if (!index) {
                             return <Item key={el.text}>
                                 <h3 className="body1" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
-                                <p className="body2" dangerouslySetInnerHTML={{ __html: textParser(el.text) }} />
+                                {el.text
+                                    ? <p className="body2" dangerouslySetInnerHTML={{ __html: textParser(el.text) }} />
+                                    : null}
                             </Item>
                         }
                         return null
@@ -24,7 +26,9 @@ export default function FourBigTextTiles({ data: { title, highlighted, tiles } }
                         if (index) {
                             return <Item key={el.text}>
                                 <h3 className="body1" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
-                                <p className="body2" dangerouslySetInnerHTML={{ __html: textParser(el.text) }} />
+                                {el.text
+                                    ? <p className="body2" dangerouslySetInnerHTML={{ __html: textParser(el.text) }} />
+                                    : null}
                             </Item>
                         }
                         return null
