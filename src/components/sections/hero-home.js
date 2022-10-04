@@ -25,8 +25,7 @@ export default function Hero({ data: { text, pageTitle, przyciski, background } 
                             })}
                         </Buttons>
                     </TextPart>
-                    <img className="background" src={background.localFile.publicURL} alt={background.altText} />
-                    {/* <GatsbyImage className="background" image={background.localFile.childImageSharp.gatsbyImageData} alt={background.altText} /> */}
+                    <GatsbyImage className="background" image={background.localFile.childImageSharp.gatsbyImageData} alt={background.altText} />
                 </Content>
             </Container>
         </Wrapper>
@@ -49,7 +48,6 @@ export const query = graphql`
       background {
         altText
         localFile {
-            publicURL
           childImageSharp {
             gatsbyImageData
           }

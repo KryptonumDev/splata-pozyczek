@@ -30,20 +30,5 @@ module.exports = {
       },
       __key: 'images'
     },
-    {
-      resolve: "gatsby-omni-font-loader",
-      options: {
-        mode: "render-blocking",
-        web: [{
-            name: "Arsenal",
-            file: "https://fonts.googleapis.com/css2?family=Arsenal:wght@400;700&display=swap",
-          },
-          {
-            name: "Source Sans Pro",
-            file: "https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap",
-          }
-        ],
-      },
-    }
   ]
 };
