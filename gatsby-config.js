@@ -30,5 +30,21 @@ module.exports = {
       },
       __key: 'images'
     },
+    {
+      resolve: "gatsby-omni-font-loader",
+      options: {
+        mode: "async",
+        preconnect: ["https://fonts.gstatic.com", "https://fonts.googleapis.com"],
+        web: [{
+            name: "Arsenal",
+            file: "https://fonts.googleapis.com/css2?family=Arsenal:wght@400;700",
+          },
+          {
+            name: "Source Sans Pro",
+            file: "https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700",
+          }
+        ],
+      },
+    }
   ]
 };

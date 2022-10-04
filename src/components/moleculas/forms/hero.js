@@ -31,7 +31,6 @@ export default function Form({ setIsSended, formTitle }) {
     const onSubmit = data => {
         setIsSended(true)
 
-
         if (sendedCount < 3) {
             let url = 'https://testy.kryptonum.co.uk/wp-json/contact-form-7/v1/contact-forms/945/feedback'
             let body = new FormData()
@@ -51,8 +50,6 @@ export default function Form({ setIsSended, formTitle }) {
                 })
         }
     }
-
-    // console.log(watch("example"))  watch input value by passing the name of it
 
     return (
         <Wrapper onSubmit={handleSubmit(onSubmit)}>

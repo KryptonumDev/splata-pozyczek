@@ -21,6 +21,7 @@
     "babel-plugin-styled-components": "^2.0.7",
     "framer-motion": "^7.4.0",
     "gatsby": "^4.21.1",
+    "gatsby-omni-font-loader": "^2.0.2",
     "gatsby-plugin-image": "^2.21.0",
     "gatsby-plugin-sharp": "^4.21.0",
     "gatsby-plugin-styled-components": "^5.21.0",
@@ -30,6 +31,7 @@
     "html-react-parser": "^3.0.4",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-helmet": "^6.1.0",
     "react-hook-form": "^7.35.0",
     "styled-components": "^5.3.5"
   }

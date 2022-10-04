@@ -12,8 +12,6 @@ export default function Hero({ data: { text, pageTitle, przyciski, background } 
             <Container>
                 <Content>
                     <TextPart>
-                        {// breadcrumbs
-                        }
                         <h1 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(pageTitle) }}></h1>
                         <p className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(text) }}></p>
                         <Buttons>

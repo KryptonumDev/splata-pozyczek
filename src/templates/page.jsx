@@ -42,6 +42,7 @@ import ThreePointsWithImgOnLeft from "../components/sections/three-points-with-i
 import parse from 'html-react-parser'
 import ListWithImgOnLeft from "../components/sections/list-with-img-on-left"
 import ContactForm from "../components/sections/standart-contact-form.js"
+import BlogArchive from "../components/sections/blog-archive"
 
 export function Head({ data: { wpPage: { seo } } }) {
   const fullHead = parse(seo.fullHead, {
@@ -145,6 +146,8 @@ export default function Page({ data: { wpPage: { title, blocks: { pageBuilder } 
             return <ListWithImgOnLeft data={el.listWithImgOnLeft} />
           case 'contactForm':
             return <ContactForm data={el.contactForm} />
+          case 'blogArchive':
+            return <BlogArchive data={el.blogArchive} title={title} />
           default:
             return null
         }
@@ -207,6 +210,7 @@ export const query = graphql`
                 ...threePointsWithImgOnLeft
                 ...listWithImgOnLeft
                 ...contactForm
+                ...blogArchive
               }
             }
         }

@@ -8,7 +8,7 @@ import { FilledButton } from "../../atoms/buttons"
 import Form from "../../moleculas/forms/hero"
 import Success from "../../moleculas/success-send"
 
-export default function HeroForm({ data: { pageTitle, text, link, formTitle }, title }) {
+export default function HeroForm({ data: { pageTitle, text, link, list, formTitle }, title }) {
   const [isSended, setIsSended] = useState(false)
 
   return (
@@ -20,6 +20,16 @@ export default function HeroForm({ data: { pageTitle, text, link, formTitle }, t
             <h1 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(pageTitle) }} />
             {text
               ? <p className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
+              : null}
+            {list
+              ? <List>
+                {list.map(el => (
+                  <li>
+                    <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
+                    <div className="content" dangerouslySetInnerHTML={{ __html: textParser(el.tekstObokIkony) }} />
+                  </li>
+                ))}
+              </List>
               : null}
             {link?.url
               ? <FilledButton className="link" target={link.target} to={link.url}>{link.title}</FilledButton>
@@ -42,6 +52,15 @@ export const query = graphql`
       pageTitle
       text
       formTitle : tytulFormyKontaktowej
+      list {
+        tekstObokIkony
+        icon {
+          altText
+          localFile {
+            publicURL
+          }
+        }
+      }
       link{
         title
         target
@@ -82,6 +101,21 @@ const Content = styled.div`
 
   .link{
     margin-top: 24px;
+  }
+`
+
+const List = styled.ul`
+  display: grid;
+  grid-gap: 8px;
+  margin-top: 24px;
+  
+  li{
+    display: grid;
+    grid-template-columns: 32px auto;
+
+    .content{
+      padding: 10px;
+    }
   }
 `
 
