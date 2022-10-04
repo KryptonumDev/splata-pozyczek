@@ -10,8 +10,8 @@ export default function TwoColumnText({ data: { rightBottom, rightTop, leftTitle
             <Container>
                 <Content>
                     <div className="flex first">
-                        <h2 className="h4" dangerouslySetInnerHTML={{ __html: textParser(leftTitle) }} />
-                        <h3 className="h6" dangerouslySetInnerHTML={{ __html: textParser(leftText) }} />
+                        <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(leftTitle) }} />
+                        <h3 className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(leftText) }} />
                     </div>
                     <div className="flex second">
                         <p className="body2" dangerouslySetInnerHTML={{ __html: textParser(rightTop) }} />

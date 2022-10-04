@@ -40,8 +40,10 @@ import ThreeColumnsHighlighted from "../components/sections/three-columns-highli
 import FourTilesExtended from "../components/sections/four-tiles-extended"
 import ThreePointsWithImgOnLeft from "../components/sections/three-points-with-img-on-left"
 import parse from 'html-react-parser'
+import ListWithImgOnLeft from "../components/sections/list-with-img-on-left"
+import ContactForm from "../components/sections/standart-contact-form.js"
 
-export function Head({ data: { wpPage: { seo } }, location, pageContext }) {
+export function Head({ data: { wpPage: { seo } } }) {
   const fullHead = parse(seo.fullHead, {
     replace: el => {
       if (el.data === "\n") {
@@ -139,12 +141,16 @@ export default function Page({ data: { wpPage: { title, blocks: { pageBuilder } 
             return <FourTilesExtended data={el.fourTilesExtended} />
           case "threePointsWithImgOnLeft":
             return <ThreePointsWithImgOnLeft data={el.threePointsWithImgOnLeft} />
+          case 'listWithImgOnLeft':
+            return <ListWithImgOnLeft data={el.listWithImgOnLeft} />
+          case 'contactForm':
+            return <ContactForm data={el.contactForm} />
           default:
             return null
         }
       })}
     </main>
-  ) // threePointsWithImgOnLeft 
+  )
 }
 
 export const query = graphql`
@@ -199,6 +205,8 @@ export const query = graphql`
                 ...fourTilesExtended
                 ...threeColumnsHighlighted
                 ...threePointsWithImgOnLeft
+                ...listWithImgOnLeft
+                ...contactForm
               }
             }
         }

@@ -72,7 +72,7 @@ const Wrapper = styled.section`
 
     .h6{
         padding: 10px 24px;
-        max-width: 576px;
+        max-width: 600px;
         margin: 0 auto 48px auto;
         text-align: center;
         border-radius: 4px;

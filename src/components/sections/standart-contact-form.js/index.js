@@ -2,11 +2,10 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
 import { Container } from "../../atoms/container"
-import { textParser } from './../../../helpers/wysiwyg-modification'
-import Form from "../../moleculas/forms/short"
+import Form from "../../moleculas/forms/full"
 import Success from "../../moleculas/success-send"
 
-export default function ShortContactForm({ data }) {
+export default function ContactForm({ data }) {
     const [isSended, setIsSended] = useState(false)
 
     return (
@@ -14,8 +13,7 @@ export default function ShortContactForm({ data }) {
             <Container>
                 <Box>
                     <Content>
-                        <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(data.title) }} />
-                        <Form setIsSended={setIsSended} />
+                        <Form title={data.title} setIsSended={setIsSended} />
                     </Content>
                     <Success isSended={isSended} setIsSended={setIsSended} />
                 </Box>
@@ -25,8 +23,8 @@ export default function ShortContactForm({ data }) {
 }
 
 export const query = graphql`
-fragment shortContactForm on WpPage_Blocks_pageBuilder {
-    shortContactForm {
+fragment contactForm on WpPage_Blocks_pageBuilder {
+    contactForm {
       title
     }
 }
@@ -56,18 +54,21 @@ const Box = styled.div`
     border-radius: 8px;
     background-color: var(--color-light);
     box-shadow: var(--shadow);
-    padding: 48px 0;
     overflow: hidden;
     position: relative;
 
     @media (max-width: 680px){
         padding: clamp(24px,3.125vw,48px) clamp(16px,2.725vw,32px);
     }
+
+    @media (max-width: 480px) {
+        width: calc(100% + clamp(32px,6.25vw, 160px));
+        transform: translateX(calc(clamp(16px,3.125vw,80px) * -1));
+    }
 `
 
 const Content = styled.div`
     max-width: 960px;
-    padding: 0 32px;
     box-sizing: content-box;
     margin: 0 auto;
     display: flex;

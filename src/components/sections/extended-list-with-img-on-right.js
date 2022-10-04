@@ -10,10 +10,12 @@ export default function ExtendedListWithImgOnRight({ data: { title, listTitle, l
     return (
         <Wrapper>
             <Container className="container">
-                <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                {title
+                    ? <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                    : null}
                 <Content>
                     <div>
-                        <span className="h6 arsenal">{listTitle}</span>
+                        <span className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(listTitle) }} />
                         <div className="list body1" dangerouslySetInnerHTML={{ __html: list }} />
                         <span className="body1 bold" dangerouslySetInnerHTML={{ __html: textParser(textTitle) }}></span>
                         <p className="body2" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
@@ -142,7 +144,6 @@ const Content = styled.div`
     }
 
     .h6{
-        color: var(--color-medium);
     }
 
     .image{
@@ -156,7 +157,7 @@ const Content = styled.div`
             margin: 16px 0;
             list-style: none;
             display: grid;
-            grid-gap: clamp(12px, ${12/768*100}vw, 16px);
+            grid-gap: clamp(12px, ${12 / 768 * 100}vw, 16px);
 
             li{
                 counter-increment: int;

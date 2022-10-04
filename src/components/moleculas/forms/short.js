@@ -24,7 +24,7 @@ export default function Form({ setIsSended }) {
     }
   `)
 
-    const { reset, register, handleSubmit, watch, formState: { errors } } = useForm()
+    const { reset, register, setValue, handleSubmit, getValues, watch, formState: { errors } } = useForm()
     const [sendedCount, changeSendedCount] = useState(0)
 
     const onSubmit = data => {
@@ -32,17 +32,15 @@ export default function Form({ setIsSended }) {
 
 
         if (sendedCount < 3) {
-            let url = 'https://test.splatapozyczek.pl/wp-json/contact-form-7/v1/contact-forms/669/feedback'
+            let url = 'https://testy.kryptonum.co.uk/wp-json/contact-form-7/v1/contact-forms/669/feedback'
             let body = new FormData()
             body.append('your-email', data.email)
             body.append("your-subject", data.message)
             body.append('your-name', data.name)
             body.append('your-phone', data.phone)
             body.append('your-theme', data.theme)
-            debugger
             axios.post(url, body)
                 .then((res) => {
-                    debugger
                     if (res.status === 200) {
                         changeSendedCount(sendedCount + 1)
                         setIsSended(true)
@@ -54,6 +52,38 @@ export default function Form({ setIsSended }) {
         }
     }
 
+    const inputAll = (val) => {
+        if (val.currentTarget.checked) {
+            setValue('privacyThree', true)
+            setValue('privacyTwo', true)
+            setValue('privacyOne', true)
+        } else {
+            setValue('privacyThree', false)
+            setValue('privacyTwo', false)
+            setValue('privacyOne', false)
+        }
+    }
+
+    const testCkeckboxes = (e) => {
+        let one = getValues("privacyOne")
+        let two = getValues("privacyTwo")
+        let three = getValues("privacyThree")
+
+        if (e.currentTarget.id === 'one') {
+            one = e.currentTarget.checked
+        } else if (e.currentTarget.id === 'two') {
+            two = e.currentTarget.checked
+        } else if (e.currentTarget.id === 'three') {
+            three = e.currentTarget.checked
+        }
+
+        if (one && two && three) {
+            setValue('checkAll', true)
+        } else {
+            setValue('checkAll', false)
+        }
+    }
+
     // console.log(watch("example"))  watch input value by passing the name of it
 
     return (
@@ -61,17 +91,17 @@ export default function Form({ setIsSended }) {
             <label className="input">
                 <span className="label body2">Imię i nazwisko*</span>
                 <input placeholder="" {...register("name", { required: true })} />
-                {errors.name && <span className="error">This field is required</span>}
+                {errors.name && <span className="error">Wymagane jest wypełnienie tego pola.</span>}
             </label>
             <label className="input">
                 <span className="label body2">Adres e-mail*</span>
                 <input placeholder="" {...register("email", { required: true })} />
-                {errors.email && <span className="error">This field is required</span>}
+                {errors.email && <span className="error">Wymagane jest wypełnienie tego pola.</span>}
             </label>
             <label className="input">
                 <span className="label body2">Numer telefonu*</span>
                 <input placeholder="___-___-___" {...register("phone", { required: true })} />
-                {errors.phone && <span className="error">This field is required</span>}
+                {errors.phone && <span className="error">Wymagane jest wypełnienie tego pola.</span>}
             </label>
             <label className="input">
                 <span className="label body2">Wybierz temat*</span>
@@ -84,30 +114,30 @@ export default function Form({ setIsSended }) {
             <label className="input">
                 <span className="label body2">Wiadomość*</span>
                 <textarea rows='4' placeholder="Twoja wiadomość…" {...register("message", { required: true })} />
-                {errors.message && <span className="error">This field is required</span>}
+                {errors.message && <span className="error">Wymagane jest wypełnienie tego pola.</span>}
             </label>
 
             <div>
                 <label className="checkbox">
-                    <input {...register("privacyAll")} type='checkbox' />
+                    <input {...register("checkAll")} onChange={(val) => { inputAll(val) }} type='checkbox' />
                     <span className="label body2">Akceptuję wszystkie zgody</span>
                 </label>
                 <label className="checkbox sub">
-                    <input  {...register("privacyOne", { required: true })} type='checkbox' />
-                    <span className="label body3">Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to={linkPrivacyPolicy.url}>Polityce prywatności</Link>*</span>
-                    {errors.privacyOne && <span className="error">This field is required</span>}
+                    <input {...register("privacyOne", { required: true })} id='one' onChange={(e) => { testCkeckboxes(e) }} type='checkbox' />
+                    <span className="label body3">Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to={linkPrivacyPolicy.url}>Polityce prywatności</Link><b>*</b></span>
+                    {errors.privacyOne && <span className="error">Musisz wyrazić zgodę na powyższe zapisy.</span>}
                 </label>
                 <label className="checkbox sub">
-                    <input  {...register("privacyTwo", { required: true })} type='checkbox' />
-                    <span className="label body3">Wyrażam zgodę, aby moje dane osobowe były przetwarzane <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link>*</span>
-                    {errors.privacyTwo && <span className="error">This field is required</span>}
+                    <input {...register("privacyTwo", { required: true })} id='two' onChange={(e) => { testCkeckboxes(e) }} type='checkbox' />
+                    <span className="label body3">Wyrażam zgodę, aby moje dane osobowe były przetwarzane <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b></span>
+                    {errors.privacyTwo && <span className="error">Musisz wyrazić zgodę na powyższe zapisy.</span>}
                 </label>
                 <label className="checkbox sub">
-                    <input  {...register("privacyThree", { required: true })} type='checkbox' />
-                    <span className="label body3">Wyrażam zgodę na otrzymywanie od Habza Group Sp. z o.o. <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link>*</span>
-                    {errors.privacyThree && <span className="error">This field is required</span>}
+                    <input  {...register("privacyThree", { required: true })} id='three' onChange={(e) => { testCkeckboxes(e) }} type='checkbox' />
+                    <span className="label body3">Wyrażam zgodę na otrzymywanie od Habza Group Sp. z o.o. <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b></span>
+                    {errors.privacyThree && <span className="error">Musisz wyrazić zgodę na powyższe zapisy.</span>}
                 </label>
-                <span className="required body3">*  – Pola obowiązkowe</span>
+                <span className="required body3"><b>*</b>  – Pola obowiązkowe</span>
             </div>
 
             <FilledButton as='button' type="submit">Wyślij</FilledButton>

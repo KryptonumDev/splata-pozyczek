@@ -1,12 +1,16 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { Container } from "../../atoms/container"
 import { graphql } from "gatsby"
 import Breadcrumbs from "../../moleculas/breadcrumbs"
 import { textParser } from "../../../helpers/wysiwyg-modification"
 import { FilledButton } from "../../atoms/buttons"
+import Form from "../../moleculas/forms/hero"
+import Success from "../../moleculas/success-send"
 
-export default function HeroForm({ data: { pageTitle, text, link }, title }) {
+export default function HeroForm({ data: { pageTitle, text, link, formTitle }, title }) {
+  const [isSended, setIsSended] = useState(false)
+
   return (
     <Wrapper>
       <Container>
@@ -21,9 +25,10 @@ export default function HeroForm({ data: { pageTitle, text, link }, title }) {
               ? <FilledButton className="link" target={link.target} to={link.url}>{link.title}</FilledButton>
               : null}
           </TextPart>
-          <form>
-            tu będzie forma :D
-          </form>
+          <div className="box">
+            <Form formTitle={formTitle} setIsSended={setIsSended} />
+            <Success isSended={isSended} setIsSended={setIsSended} />
+          </div>
         </Content>
       </Container>
     </Wrapper>
@@ -36,6 +41,7 @@ export const query = graphql`
     heroForm {
       pageTitle
       text
+      formTitle : tytulFormyKontaktowej
       link{
         title
         target
@@ -55,9 +61,18 @@ const Content = styled.div`
   max-width: 1000px;
   margin: 0 auto;
 
+  @media (max-width: 840px) {
+    grid-template-columns: 1fr;
+  }
+
+  .box{
+    position: relative;
+  }
+
   .h4{
     margin-top: 8px;
     margin-bottom: 12px;
+    font-size: clamp(28px, 4.296875vw, 38px);
   }
 
   .h6{

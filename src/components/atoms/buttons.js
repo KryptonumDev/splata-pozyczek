@@ -16,6 +16,7 @@ export const OutlinedButton = styled(Link)`
     border-radius: 4px;
     padding: 12px 44px;
     text-decoration: unset;
+        text-align: center;
 
     transition: background-color .3s cubic-bezier(0.39, 0.575, 0.565, 1), color .3s cubic-bezier(0.39, 0.575, 0.565, 1);
 
@@ -34,6 +35,10 @@ export const OutlinedButton = styled(Link)`
         border: 2px solid #B2B2B8;
     }
 
+    @media (max-width: 480px) {
+        width: 100%;
+        padding: 12px;
+    }
 `
 
 export const FilledButton = styled(Link)`
@@ -51,6 +56,7 @@ export const FilledButton = styled(Link)`
     border-radius: 4px;
     padding: 12px 44px;
     text-decoration: unset;
+        text-align: center;
 
     transition: background-color .3s cubic-bezier(0.39, 0.575, 0.565, 1);
 
@@ -66,6 +72,11 @@ export const FilledButton = styled(Link)`
         color: #B2B2B8 !important;
         background: #E1E1EB;
     }
+
+@media (max-width: 480px) {
+    width: 100%;
+    padding: 12px;
+}
 `
 
 export const Button = ({ url, text, className }) => (
