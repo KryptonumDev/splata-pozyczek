@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
 import { Container } from "../atoms/container"
@@ -19,7 +19,7 @@ export default function CreditTypes({ data: { title, tekst, slider } }) {
         const maxTransform = child.clientWidth - parrent.clientWidth
 
         setMaxButtonsTransform(maxTransform)
-    }, [window])
+    }, [])
 
     const transform = (direction) => {
         const transformx = x.get()

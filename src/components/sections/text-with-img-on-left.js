@@ -96,6 +96,9 @@ const Flex = styled.div`
         .body1{
             display: grid;
             grid-gap: clamp(12px, ${12 / 768 * 100}vw, 16px);
+            p{
+                color: #6F6F71;
+            }
         }
     }
 `

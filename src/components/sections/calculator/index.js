@@ -204,6 +204,10 @@ const Content = styled.div`
     grid-template-columns: 1fr 1fr;
     grid-gap: 32px;
 
+@media (max-width: 768px) {
+    grid-template-columns: 1fr 250px;
+}
+
     @media (max-width: 640px) {
         grid-template-columns: 1fr;
     }

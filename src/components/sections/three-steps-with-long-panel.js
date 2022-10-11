@@ -167,6 +167,8 @@ const LongPanel = styled.div`
     grid-template-columns: auto auto;
     
     img{
+        width: clamp(48px, ${48 / 768 * 100}vw, 76px);
+        height: clamp(48px, ${48 / 768 * 100}vw, 76px);
 
     }
 
@@ -180,6 +182,7 @@ const LongPanel = styled.div`
         column-gap: 24px;
 
         p{
+            color: #6F6F71;
             break-inside: avoid;
         }
     }
