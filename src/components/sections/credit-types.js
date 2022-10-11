@@ -193,7 +193,7 @@ const Control = styled(motion.div)`
 
             @media (max-width: 480px) {
                 padding: 0 8px 4px 8px;
-        font-size: 14px;
+                font-size: 14px;
             }
 
             &::after{
@@ -255,7 +255,7 @@ const Content = styled.div`
         margin: 0 auto;
         text-align: center;
         color: #75757A;
-        margin-top: 24px;
+        margin-top: clamp(12px, ${16 / 768 * 100}vw, 24px);
         margin-bottom: clamp(24px, ${32 / 768 * 100}vw, 48px);
 
         strong{
@@ -272,7 +272,7 @@ const InnerContent = styled.div`
 
 const Grid = styled.div`
     display: grid;
-    padding-top: 32px;
+    padding-top: clamp(24px, ${24 / 768 * 100}vw, 32px);
 `
 
 const Item = styled.div`

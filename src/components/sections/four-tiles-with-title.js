@@ -9,7 +9,7 @@ export default function FourTilesWithTitle({ data: { title, tekstWyrozniony, pla
         <Wrapper>
             <Container>
                 <Content>
-                    <h2 className="h4" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                    <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                     {tekstWyrozniony
                         ? <p className="title body1" dangerouslySetInnerHTML={{ __html: textParser(tekstWyrozniony) }} />
                         : null}
@@ -50,7 +50,7 @@ const Wrapper = styled.section`
 
     .h4{
         text-align: center;
-        margin-bottom: 16px;
+        margin-bottom: clamp(12px, ${16/768*100}vw, 16px);
         font-size: clamp(25px, 4.296875vw, 38px);
     }
 
@@ -62,7 +62,7 @@ const Wrapper = styled.section`
         box-shadow: var(--shadow);
         border-radius: 4px;
         font-weight: 600;
-        margin-bottom: 32px;
+        margin-bottom: clamp(24px, ${32/768*100}vw, 32px);
     }
 `
 
@@ -102,5 +102,7 @@ const Item = styled.div`
 
     .text{
         padding: 10px;
+         font-weight: 600;
     }
+
 `

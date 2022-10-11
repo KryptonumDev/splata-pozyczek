@@ -93,5 +93,9 @@ const TextPart = styled.div`
 
     .body1{
         margin-top: 4px;
+
+        @media (max-width: 480px) {
+            margin-top: 8px;
+        }
     }
 `

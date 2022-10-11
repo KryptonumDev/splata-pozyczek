@@ -98,6 +98,12 @@ const Content = styled.div`
         grid-gap: 12px;
         .flex{
             display: block;
+
+            &.second{
+                display: grid;
+                grid-gap: 8px;
+                grid-template-columns: 1fr;
+            }
         }
         .h4{
             margin-bottom: 12px;

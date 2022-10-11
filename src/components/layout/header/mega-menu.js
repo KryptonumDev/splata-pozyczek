@@ -32,7 +32,7 @@ export default function MegaMenu({ data, level }) {
 const Wrapper = styled.li`
     position: relative;
 
-    &:hover{
+    &:hover, &:focus-within{
         ul{
             opacity: 1;
             transform: translateY(0);
@@ -77,7 +77,7 @@ const Wrapper = styled.li`
                 padding: 4px 8px;
             }
 
-            &:hover{
+            &:hover, &:focus-within{
                 ul{
                     opacity: 1 !important;
                     transform: translateX(100%) translateY(0) !important;

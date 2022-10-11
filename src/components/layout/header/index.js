@@ -5,6 +5,7 @@ import { FilledButton } from "../../atoms/buttons"
 import { Container } from "../../atoms/container"
 import Logo from './../../../images/logo'
 import MegaMenu from "./mega-menu"
+import Menu from "./mobile-menu"
 
 export default function Header({ data }) {
 
@@ -59,6 +60,7 @@ export default function Header({ data }) {
             <span />
           </MobileButton>
         </Content>
+        <Menu data={navigacja} isOpened={isMobileMenuOpened} setMobileMenuOpened={setMobileMenuOpened}/>
       </Container>
     </Wrapper>
   )
@@ -68,15 +70,46 @@ const MobileButton = styled.button`
   display: none;
   cursor: pointer;
   width: 32px;
-  height: 3px;
-  border-radius: 4px;
-  background: #6F6F71;
+  height: 22px;
   border: unset;
   margin-left: 110px;
+  position: relative;
+  background-color: transparent;
+
+  span{
+    display: block;
+    width: 32px;
+    height: 3px;
+    border-radius: 4px;
+    background: #6F6F71;
+
+    &::after{
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 3px;
+      border-radius: 4px;
+      background: #6F6F71;
+    }
+
+    &::before{
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 3px;
+      border-radius: 4px;
+      background: #6F6F71;
+    }
+  }
 
 
   @media (max-width: 1024px) {
-    display: block;
+    display: flex;
   }
   @media (max-width: 640px){
     margin-left: 0;
@@ -146,7 +179,7 @@ const Content = styled.div`
     align-items: center;
 `
 
-const Navigation = styled.div`
+const Navigation = styled.nav`
 
     .active{
       span{
