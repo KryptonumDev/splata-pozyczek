@@ -12,17 +12,31 @@ export default function Calculator({ data }) {
     const [provision, setProvision] = useState(3)
 
     const [calculatedSum, setCalculatedSum] = useState(0)
+    const [creditPrice, setCreditPrice] = useState(0)
+    const [monthRate, setMonthRate] = useState(0)
 
     useEffect(() => {
-        let sum = (money * 100) * (percent / 100 / 12) * provision // change alghorytm
-        setCalculatedSum(sum.toFixed(2))
+        var j = (percent / 100) / 12 / 100; // interest rate
+        var n = time // months
+        var p = money * 100 // loan amount
+        var rr = provision / 100;
+        var prow = p * rr;
+
+        let pricePerMonth = (p + prow) * j * (Math.pow(1 + j, n) / (Math.pow(1 + j, n) - 1))
+
+        setCalculatedSum(pricePerMonth * n)
     }, [money, time, percent, provision])
+
+    useEffect(() => {
+        setMonthRate((calculatedSum / time).toFixed(2))
+        setCreditPrice((calculatedSum - (money * 100)).toFixed(2))
+    }, [calculatedSum])
 
 
     return (
         <Wrapper>
             <Container className="small">
-                    <h2 className="h4">Skorzystaj z naszego kalkulatora.</h2>
+                <h2 className="h4">Skorzystaj z naszego kalkulatora.</h2>
                 <Content>
                     <Options>
                         <div>
@@ -47,20 +61,22 @@ export default function Calculator({ data }) {
                         </div>
                     </Options>
                     <Review>
-                        <div>
-                            <p className="body1">Całkowita kwota do zapłaty</p>
-                            <span className="h5">{(calculatedSum * 1).toFixed(2)} zł</span>
+                        <div className="text">
+                            <div>
+                                <p className="body1">Całkowita kwota do zapłaty</p>
+                                <span className="h5">{(calculatedSum * 1).toFixed(2)} zł</span>
+                            </div>
+                            <div>
+                                <p className="body1">Całkowity koszt kredytu</p>
+                                <span className="h5">{creditPrice} zł</span>
+                            </div>
+                            <div>
+                                <p className="body1">Rata miesięczna</p>
+                                <span className="h5">{monthRate} zł</span>
+                            </div>
+                            <FilledButton className="filled">Skontaktuj się z nami</FilledButton>
                         </div>
-                        <div>
-                            <p className="body1">Całkowity koszt kredytu</p>
-                            <span className="h5">{(calculatedSum - (money * 100)).toFixed(2)} zł</span>
-                        </div>
-                        <div>
-                            <p className="body1">Rata miesięczna</p>
-                            <span className="h5">{(calculatedSum / time).toFixed(2)} zł</span>
-                        </div>
-                        <FilledButton className="filled">Skontaktuj się z nami</FilledButton>
-                        <p className="anotation">Powyższe wyliczenia oraz parametry mogą się różnić od ostatecznej decyzji banku,
+                        <p className="anotation body3">Powyższe wyliczenia oraz parametry mogą się różnić od ostatecznej decyzji banku,
                             tym samym nie stanowią oferty w rozumieniu ustawy z dnia 23 kwietnia 1964 r. –
                             Kodeks cywilny (Dz. U. z 1964 r., Nr 16, poz. 93, z późniejszymi zmianami).</p>
                     </Review>
@@ -80,6 +96,16 @@ export const query = graphql`
 
 const Wrapper = styled.section`
     margin-top: var(--section);
+
+    .h4{
+        text-align: center;
+        margin-bottom: 32px;
+        font-size: clamp(28px, 4.296875vw, 38px);
+    }
+
+    .small{
+        max-width: 1000px;
+    }
 
     input[type=range] {
     height: 26px;
@@ -177,6 +203,10 @@ const Content = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 32px;
+
+    @media (max-width: 640px) {
+        grid-template-columns: 1fr;
+    }
 `
 
 const Options = styled.div`
@@ -191,6 +221,16 @@ const Options = styled.div`
         text-align: center;
         border: 1px solid #B2B2B8;
         margin: 8px auto;
+        background-color: transparent;
+
+        
+        font-family: 'Arsenal';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 136%;
+        letter-spacing: 0.02em;
+        color: #050505;
     }
 `
 
@@ -202,8 +242,49 @@ const Review = styled.div`
     box-sizing: border-box;
     height: fit-content;
 
+    @media (max-width: 1024px) {
+        padding: clamp(12px, ${16 / 768 * 100}vw, 41px) clamp(12px, ${16 / 768 * 100}vw, 64px);
+    }
+
+    .text{
+        max-width: 260px;
+        text-align: right;
+
+        div{
+            margin-top: clamp(8px, ${16 / 768 * 100}vw, 24px);
+
+            &:first-child{
+                margin-top: 0;
+            }
+        }
+
+        .filled{
+            width: 100%;
+            padding: 12px;
+            text-align: center;
+        }
+
+        @media (max-width: 640px){
+            margin-left: auto;
+            max-width: unset;
+            .filled{
+                padding: 12px 44px;
+                width: fit-content;
+                margin-left: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .filled{
+                width: 100%;
+                padding: 12px;
+                text-align: center;
+            }
+        }
+    }
+
     .filled{
-        margin-bottom: 48px;
+        margin-bottom: clamp(16px, ${32 / 768 * 100}vw, 48px);
         margin-top: 16px;
     }
 

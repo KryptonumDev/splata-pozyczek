@@ -26,7 +26,9 @@ export default function Faq({ data: { title, repeater } }) {
         <Wrapper>
             <Container>
                 <Content>
-                    <Title className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                    {title
+                        ? <Title className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                        : null}
                     <Grid className="small">
                         <div className="grid second">
                             {arrays.first.map((el, index) => (

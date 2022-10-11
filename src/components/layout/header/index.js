@@ -1,5 +1,5 @@
-import { graphql, Link, useStaticQuery } from "gatsby"
-import React from "react"
+import { graphql, useStaticQuery } from "gatsby"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { FilledButton } from "../../atoms/buttons"
 import { Container } from "../../atoms/container"
@@ -8,49 +8,80 @@ import MegaMenu from "./mega-menu"
 
 export default function Header({ data }) {
 
-
-    const { wpPage: { header: { navigacja } } } = useStaticQuery(graphql`
+  const { wpPage: { header: { navigacja } } } = useStaticQuery(graphql`
     query {
         wpPage(id: {eq: "cG9zdDo0MzQ="}) {
-            header {
-              navigacja {
+          header {
+            navigacja {
+              url {
                 url
-                text
-                megaMeni {
+                title
+                target
+              }
+              megaMeni {
+                url {
                   url
-                  text
-                  megaMeni {
+                  title
+                  target
+                }
+                megaMeni {
+                  url {
+                    title
+                    target
                     url
-                    text
                   }
                 }
               }
             }
+          }
         }
     }
   `)
 
-    return (
-        <Wrapper>
-            <Container>
-                <Content>
-                    <Logo />
-                    <Navigation>
-                        {navigacja.map(el => {
-                            if (el.url) {
-                                return <Link className="body2" to={el.url}>{el.text}</Link>
-                            }
-                            return <MegaMenu data={el} level='first'/>
-                        })}
-                    </Navigation>
-                    <FilledButton>
-                        Wniosek online
-                    </FilledButton>
-                </Content>
-            </Container>
-        </Wrapper>
-    )
+  const [isMobileMenuOpened, setMobileMenuOpened] = useState(false)
+
+  return (
+    <Wrapper>
+      <Container>
+        <Content>
+          <Logo />
+          <Navigation className="desctop">
+            <ul className="nav">
+              {navigacja.map(el =>
+                <MegaMenu data={el} level='first' />
+              )}
+            </ul>
+          </Navigation>
+          <FilledButton className="button">
+            Wniosek online
+          </FilledButton>
+          <MobileButton onClick={() => { setMobileMenuOpened(!isMobileMenuOpened) }}>
+            <span />
+          </MobileButton>
+        </Content>
+      </Container>
+    </Wrapper>
+  )
 }
+
+const MobileButton = styled.button`
+  display: none;
+  cursor: pointer;
+  width: 32px;
+  height: 3px;
+  border-radius: 4px;
+  background: #6F6F71;
+  border: unset;
+  margin-left: 110px;
+
+
+  @media (max-width: 1024px) {
+    display: block;
+  }
+  @media (max-width: 640px){
+    margin-left: 0;
+  }
+`
 
 const Wrapper = styled.header`
     position: fixed;
@@ -58,6 +89,49 @@ const Wrapper = styled.header`
     left: 0;
     right: 0;
     top: 0;
+
+    @media (max-width: 1240px) {
+      .button{
+        padding: 12px;
+        min-width: 160px;
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .button{
+        min-width: unset;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .desctop{
+        display: none;
+      }
+
+      .button{
+        padding: 12px 44px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      svg{
+        width: 32px;
+        transform: scale(2) translateX(8px) translateY(2px);
+      }
+      .leters{
+        display: none;
+      }
+      .button{
+        width: fit-content;
+        padding: 12px 44px;
+      }
+    }
+
+    @media (max-width: 340px) {
+      .button{
+        padding: 12px 22px;
+      }
+    }
 `
 
 const Content = styled.div`
@@ -70,17 +144,39 @@ const Content = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 32px;
 `
 
 const Navigation = styled.div`
-    display: flex;
-    justify-content: space-between;
-    gap: 24px;
+
+    .active{
+      span{
+        font-weight: 600;
+        letter-spacing: -0.2px;
+        color: var(--color-medium) !important;
+      }
+    }
 
     ul{
+      &.nav{
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        height: 44px;
+
+        @media (max-width: 1140px) {
+          gap: 16px;
+        }
+      }
         li{
+          *{
+            color: #6F6F71;
+          }
             list-style: none;
+            height: 100%;
+
+            a{
+              height: 100%;
+            }
         }
     }
 

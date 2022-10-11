@@ -37,11 +37,11 @@ module.exports = {
         preconnect: ["https://fonts.gstatic.com", "https://fonts.googleapis.com"],
         web: [{
             name: "Arsenal",
-            file: "https://fonts.googleapis.com/css2?family=Arsenal:wght@400;700&display=swap&text=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.-",
+            file: `https://fonts.googleapis.com/css2?family=Arsenal:wght@400;700&display=swap`,
           },
           {
             name: "Source Sans Pro",
-            file: "https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap&text=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.-",
+            file: `https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap`,
           }
         ],
       },

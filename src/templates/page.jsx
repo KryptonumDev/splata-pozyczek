@@ -43,6 +43,9 @@ import parse from 'html-react-parser'
 import ListWithImgOnLeft from "../components/sections/list-with-img-on-left"
 import ContactForm from "../components/sections/standart-contact-form.js"
 import BlogArchive from "../components/sections/blog-archive"
+import HeroImg from "../components/sections/hero-img.js"
+import ThreeColumnsFiles from "../components/sections/three-columns-files"
+import StepsToComplaints from "../components/sections/steps-to-complaints"
 
 export function Head({ data: { wpPage: { seo } } }) {
   const fullHead = parse(seo.fullHead, {
@@ -148,6 +151,12 @@ export default function Page({ data: { wpPage: { title, blocks: { pageBuilder } 
             return <ContactForm data={el.contactForm} />
           case 'blogArchive':
             return <BlogArchive data={el.blogArchive} title={title} />
+          case 'heroImg':
+            return <HeroImg data={el.heroImg} title={title} />
+          case 'threeColumnsFiles':
+            return <ThreeColumnsFiles data={el.threeColumnsFiles} />
+          case 'stepsToComplaints':
+            return <StepsToComplaints data={el.stepsToComplaints} />
           default:
             return null
         }
@@ -170,6 +179,9 @@ export const query = graphql`
             blocks {
               pageBuilder {
                 switch
+                ...stepsToComplaints
+                ...threeColumnsFiles
+                ...heroImg
                 ...faq
                 ...cta
                 ...hero
