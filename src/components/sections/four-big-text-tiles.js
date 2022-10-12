@@ -4,11 +4,14 @@ import { graphql } from "gatsby"
 import { Container } from "../atoms/container"
 import { textParser } from "../../helpers/wysiwyg-modification"
 
-export default function FourBigTextTiles({ data: { title, highlighted, tiles } }) {
+export default function FourBigTextTiles({ data: { title, text, highlighted, tiles } }) {
     return (
         <Wrapper>
             <Container>
                 <h2 className="h4" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                {text
+                    ? <p className="body1 subtext" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
+                    : null}
                 <Grid>
                     {tiles.map((el, index) => {
                         if (!index) {
@@ -43,6 +46,7 @@ export const query = graphql`
   fragment fourBigTextTiles on WpPage_Blocks_pageBuilder {
     fourBigTextTiles {
       title
+      text
       highlighted
       tiles {
         title
@@ -55,14 +59,22 @@ export const query = graphql`
 const Wrapper = styled.section`
     margin-top: var(--section);
 
+    .subtext{
+        max-width: 540px;
+        text-align: center;
+        margin: 0 auto;
+        margin-top: 16px;
+        color: #6E6E70;
+    }
+
     .h4{
         text-align: center;
-        margin-bottom: clamp(24px, ${28 / 768 * 100}vw, 32px);
         font-size: clamp(28px, 4.296875vw, 38px);
     }
 `
 
 const Grid = styled.div`
+    margin-top: clamp(24px, ${28 / 768 * 100}vw, 32px);
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 32px;

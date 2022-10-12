@@ -3,8 +3,9 @@ import styled from "styled-components"
 import { graphql } from "gatsby"
 import { Container } from "../../atoms/container"
 import { FilledButton } from "../../atoms/buttons"
+import { textParser } from "../../../helpers/wysiwyg-modification"
 
-export default function Calculator({ data }) {
+export default function Calculator({ data: { title, text } }) {
 
     const [money, setMoney] = useState(10)
     const [time, setTime] = useState(1)
@@ -30,34 +31,49 @@ export default function Calculator({ data }) {
     useEffect(() => {
         setMonthRate((calculatedSum / time).toFixed(2))
         setCreditPrice((calculatedSum - (money * 100)).toFixed(2))
-    }, [calculatedSum])
-
+    }, [calculatedSum, time, money])
 
     return (
         <Wrapper>
             <Container className="small">
-                <h2 className="h4">Skorzystaj z naszego kalkulatora.</h2>
+                <h2 className="h4" dangerouslySetInnerHTML={{ __html: textParser(title) }}></h2>
                 <Content>
                     <Options>
                         <div>
-                            <p className="h6">Ile pieniędzy potrzebujesz?</p>
+                            <p className="h6 arsenal">Ile pieniędzy potrzebujesz?</p>
                             <input className="input" placeholder="val" value={money * 100 + ' zł'} />
                             <input className="range" onChange={(e) => { setMoney(e.currentTarget.value) }} min='10' value={money} max='2550' type="range" />
+                            <div className="flex">
+                                <span className="min body3">1 000 zł</span>
+                                <span className="max body3">255 000 zł</span>
+                            </div>
                         </div>
                         <div>
-                            <p className="h6">W jakim czasie chcesz spłacić kredyt?</p>
+                            <p className="h6 arsenal">W jakim czasie chcesz spłacić kredyt?</p>
                             <input className="input" placeholder="val" value={time + ' miesiąc'} />
                             <input className="range" onChange={(e) => { setTime(e.currentTarget.value) }} min='1' value={time} max='144' type="range" />
+                            <div className="flex">
+                                <span className="min body3">1 miesiąc</span>
+                                <span className="max body3">144 miesięcy</span>
+                            </div>
                         </div>
                         <div>
-                            <p className="h6">Oprocentowanie nominalne w skali roku: 5,99–20.0%</p>
+                            <p className="h6 arsenal">Oprocentowanie nominalne w skali roku</p>
                             <input className="input" placeholder="val" value={percent / 100 + ' %'} />
                             <input className="range" onChange={(e) => { setPercent(e.currentTarget.value) }} min='599' value={percent} max='2000' type="range" />
+                            <div className="flex">
+                                <span className="min body3">5.99%</span>
+                                <span className="max body3">20%</span>
+                            </div>
                         </div>
                         <div>
-                            <p className="h6">Prowizja: 3–11%</p>
+                            <p className="h6 arsenal">Prowizja</p>
                             <input className="input" placeholder="val" value={provision + ' %'} />
                             <input className="range" onChange={(e) => { setProvision(e.currentTarget.value) }} min='3' value={provision} max='11' type="range" />
+                            <div className="flex">
+                                <span className="min body3">3%</span>
+                                <span className="max body3">11%</span>
+                            </div>
                         </div>
                     </Options>
                     <Review>
@@ -76,9 +92,7 @@ export default function Calculator({ data }) {
                             </div>
                             <FilledButton className="filled">Skontaktuj się z nami</FilledButton>
                         </div>
-                        <p className="anotation body3">Powyższe wyliczenia oraz parametry mogą się różnić od ostatecznej decyzji banku,
-                            tym samym nie stanowią oferty w rozumieniu ustawy z dnia 23 kwietnia 1964 r. –
-                            Kodeks cywilny (Dz. U. z 1964 r., Nr 16, poz. 93, z późniejszymi zmianami).</p>
+                        <p className="anotation body3" dangerouslySetInnerHTML={{ __html: textParser(text) }}></p>
                     </Review>
                 </Content>
             </Container>
@@ -89,7 +103,8 @@ export default function Calculator({ data }) {
 export const query = graphql`
   fragment calculator on WpPage_Blocks_pageBuilder {
     calculator {
-        fieldGroupName
+        title
+        text
     }
   }
 `
@@ -106,11 +121,22 @@ const Wrapper = styled.section`
     .small{
         max-width: 1000px;
     }
+    
+    .flex{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+        span{
+            color: #6F6F71;
+            font-weight: 600;
+            font-size: 11px;
+        }
+    }
 
     input[type=range] {
     height: 26px;
     -webkit-appearance: none;
-    margin: 10px 0;
     width: 100%;
     background: transparent;
     }

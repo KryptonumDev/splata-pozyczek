@@ -27,7 +27,9 @@ export default function ListWithImgOnRight({ data: { title, list, buttons, img, 
                     </div>
                     <div>
                         <GatsbyImage className="img" image={img.localFile.childImageSharp.gatsbyImageData} alt={img.altText} />
-                        <span className="sub1" dangerouslySetInnerHTML={{ __html: textParser(textUnderImg) }}></span>
+                        {textUnderImg
+                            ? <span className="sub1" dangerouslySetInnerHTML={{ __html: textParser(textUnderImg) }}></span>
+                            : null}
                     </div>
                 </Content>
             </Container>

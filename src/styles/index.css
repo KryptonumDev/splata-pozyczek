@@ -78,7 +78,7 @@
  .h4 {
     font-weight: 700;
     /* 33/768*100 */
-    font-size: clamp(33px, 4.296875vw, 38px);
+    font-size: clamp(28px, 4.296875vw, 38px);
     line-height: 118%;
     letter-spacing: -0.01em;
  }
@@ -150,14 +150,14 @@
 
  .body3 {
     font-weight: 400;
-    font-size: 12px;
+    font-size: 11px;
     line-height: 127%;
     font-feature-settings: 'pnum' on, 'onum' on;
  }
 
  .body3 p {
     font-weight: 400;
-    font-size: 12px;
+    font-size: 11px;
     line-height: 127%;
     font-feature-settings: 'pnum' on, 'onum' on;
  }

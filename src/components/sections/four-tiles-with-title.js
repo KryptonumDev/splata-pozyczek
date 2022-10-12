@@ -15,9 +15,9 @@ export default function FourTilesWithTitle({ data: { title, tekstWyrozniony, pla
                         : null}
                     <Grid>
                         {plaszki.map(el => (
-                            <Item>
+                            <Item>  
                                 <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
-                                <p className="text body1">{el.text}</p>
+                                <p className="text body1" dangerouslySetInnerHTML={{ __html: textParser(el.text) }}></p>
                             </Item>
                         ))}
                     </Grid>
@@ -50,7 +50,7 @@ const Wrapper = styled.section`
 
     .h4{
         text-align: center;
-        margin-bottom: clamp(12px, ${16/768*100}vw, 16px);
+        margin-bottom: clamp(12px, ${16 / 768 * 100}vw, 16px);
         font-size: clamp(25px, 4.296875vw, 38px);
     }
 
@@ -62,7 +62,7 @@ const Wrapper = styled.section`
         box-shadow: var(--shadow);
         border-radius: 4px;
         font-weight: 600;
-        margin-bottom: clamp(24px, ${32/768*100}vw, 32px);
+        margin-bottom: clamp(24px, ${32 / 768 * 100}vw, 32px);
     }
 `
 

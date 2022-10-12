@@ -8,12 +8,19 @@ export default function StepsToCredit({ data: { title, text, kroki } }) {
     return (
         <Wrapper>
             <Container>
-                <TopBox>
-                    <BoxContent>
-                        <h2 className="h4" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
-                        <p className="body1" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
-                    </BoxContent>
-                </TopBox>
+                {text
+                    ? (
+                        <TopBox>
+                            <BoxContent>
+                                <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                                <p className="body1" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
+                            </BoxContent>
+                        </TopBox>
+                    ) : (
+                        <Title>
+                            <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                        </Title>
+                    )}
                 <Grid>
                     {kroki.map((el, index) => (
                         <Item>
@@ -37,6 +44,11 @@ export const query = graphql`
       }
     }
   }
+`
+
+const Title = styled.div`
+    max-width: 600px;
+    margin-bottom: clamp(16px, ${24 / 768 * 100}vw, 32px);
 `
 
 const Wrapper = styled.section`

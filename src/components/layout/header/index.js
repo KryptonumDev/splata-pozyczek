@@ -1,4 +1,4 @@
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 import React, { useState } from "react"
 import styled from "styled-components"
 import { FilledButton } from "../../atoms/buttons"
@@ -45,7 +45,9 @@ export default function Header({ data }) {
     <Wrapper>
       <Container>
         <Content>
-          <Logo />
+          <Link to='/'>
+            <Logo />
+          </Link>
           <Navigation className="desctop">
             <ul className="nav">
               {navigacja.map(el =>
@@ -60,7 +62,7 @@ export default function Header({ data }) {
             <span />
           </MobileButton>
         </Content>
-        <Menu data={navigacja} isOpened={isMobileMenuOpened} setMobileMenuOpened={setMobileMenuOpened}/>
+        <Menu data={navigacja} isOpened={isMobileMenuOpened} setMobileMenuOpened={setMobileMenuOpened} />
       </Container>
     </Wrapper>
   )

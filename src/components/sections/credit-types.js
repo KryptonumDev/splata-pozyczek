@@ -9,8 +9,9 @@ import { motion, useMotionValue } from "framer-motion"
 
 export default function CreditTypes({ data: { title, tekst, slider } }) {
 
-    const [active, setActive] = useState(0)
     const x = useMotionValue(0)
+
+    const [active, setActive] = useState(0)
     const [maxButtonsTransform, setMaxButtonsTransform] = useState(0)
 
     useEffect(() => {
@@ -53,7 +54,7 @@ export default function CreditTypes({ data: { title, tekst, slider } }) {
                         <ControlWrap id='control-wrap'>
                             <Control style={{ x }} drag='x' dragConstraints={{ left: -maxButtonsTransform, right: 0 }} maxButtonsTransform={maxButtonsTransform} id='control'>
                                 {slider.map((el, index) => (
-                                    <button className={index === active ? 'active' : ''} onClick={() => { setActive(index) }}><span>{el.tabName}</span></button>
+                                    <button tabIndex='-1' className={index === active ? 'active' : ''} onClick={() => { setActive(index) }}><span>{el.tabName}</span></button>
                                 ))}
                             </Control>
                         </ControlWrap>
@@ -190,6 +191,7 @@ const Control = styled(motion.div)`
             position: relative;
             color: #6F6F71;
             font-weight: 400;
+            transition: color .3s cubic-bezier(0.39, 0.575, 0.565, 1);
 
             @media (max-width: 480px) {
                 padding: 0 8px 4px 8px;
@@ -205,8 +207,39 @@ const Control = styled(motion.div)`
                 bottom: 0;
                 right: 0;
                 background-color: #B2B2B8;
+                transition: background-color .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+            }
+
+            &::before{
+                content: "";
+                position: absolute;
+                left: -6px;
+                right: -6px;
+                top: -6px;
+                bottom: -6px;
+                background: linear-gradient(315deg, #FCCF4F 0%, #E7DCBF 99.99%);
+                border-radius: 4px;
+                opacity: 0;
+                transition: all .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+                z-index: -1;
             }
         }
+
+        &:hover{
+            span{
+                color: #050505;
+
+                &::after{
+                    background-color: #050505;
+                }
+            }
+        }
+
+        /* &:focus{
+            span::before{
+                opacity: 1;
+            }
+        } */
 
         &.active{
             span{
@@ -312,6 +345,11 @@ const Item = styled.div`
 
     @media (max-width: 820px) {
         grid-template-columns: 1fr;   
+
+        .image{
+            width: fit-content;
+            margin: 0 auto;
+        }
 
         .body2{
             column-gap: 16px;

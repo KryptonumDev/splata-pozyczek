@@ -46,6 +46,8 @@ import BlogArchive from "../components/sections/blog-archive"
 import HeroImg from "../components/sections/hero-img.js"
 import ThreeColumnsFiles from "../components/sections/three-columns-files"
 import StepsToComplaints from "../components/sections/steps-to-complaints"
+import TwoColumnTextWithBoldText from "../components/sections/two-columnt-text-alt"
+import BigTextTiles from "../components/sections/big-text-tiles"
 
 export function Head({ data: { wpPage: { seo } } }) {
   const fullHead = parse(seo.fullHead, {
@@ -62,7 +64,7 @@ export function Head({ data: { wpPage: { seo } } }) {
   </>
 }
 
-export default function Page({ data: { wpPage: { title, blocks: { pageBuilder } } } }) {
+export default function Page({ data: { allWpPost, wpPage: { title, blocks: { pageBuilder } } } }) {
   return (
     <main>
       {pageBuilder?.map(el => {
@@ -110,7 +112,7 @@ export default function Page({ data: { wpPage: { title, blocks: { pageBuilder } 
           case 'twoColumnText':
             return <TwoColumnText data={el.twoColumnText} />
           case 'blogSlider':
-            return <BlogSlider />
+            return <BlogSlider data={el.blogSlider} posts={allWpPost.nodes} />
           case 'twoColumnFlex':
             return <TwoColumnRepeater data={el.twoColumnFlex} />
           case 'threeStepsWithLongPanel':
@@ -157,13 +159,17 @@ export default function Page({ data: { wpPage: { title, blocks: { pageBuilder } 
             return <ThreeColumnsFiles data={el.threeColumnsFiles} />
           case 'stepsToComplaints':
             return <StepsToComplaints data={el.stepsToComplaints} />
+          case 'twoColumnTextWithBoldText':
+            return <TwoColumnTextWithBoldText data={el.twoColumnTextWithBoldText} />
+          case 'bigTextTiles':
+            return <BigTextTiles data={el.bigTextTiles} />
           default:
             return null
         }
       })}
     </main>
   )
-}
+} // twoColumnTextWithBoldText 
 
 export const query = graphql`
     query page($id: String!) {
@@ -179,6 +185,9 @@ export const query = graphql`
             blocks {
               pageBuilder {
                 switch
+                ...bigTextTiles
+                ...twoColumnTextWithBoldText
+                ...blogSlider
                 ...stepsToComplaints
                 ...threeColumnsFiles
                 ...heroImg
@@ -225,6 +234,39 @@ export const query = graphql`
                 ...blogArchive
               }
             }
+        }
+        allWpPost(limit: 3) {
+          nodes {
+            id
+            title
+            slug
+            author {
+              node {
+                name
+              }
+            }
+            date(formatString: "DD.MM.YYYY")
+            categories {
+              nodes {
+                name
+                slug
+                category {
+                  color
+                }
+              }
+            }
+            blogPost {
+              previewText
+              thumbnail {
+                altText
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+            }
+          }
         }
     }
 `

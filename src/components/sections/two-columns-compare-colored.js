@@ -31,11 +31,6 @@ export const query = graphql`
 
 const Wrapper = styled.section`
     margin-top: var(--section);
-
-    a{
-        display: block;
-        margin: 32px auto 0 auto;
-    }
 `
 
 const Grid = styled.div`

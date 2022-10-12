@@ -79,8 +79,8 @@ export const FilledButton = styled(Link)`
 }
 `
 
-export const Button = ({ url, text, className }) => (
-    <Style className={'button ' + className} href={url}>
+export const Button = ({ url, text, className, button }) => (
+    <Style as={button ? 'div' : undefined} className={'button ' + className} href={url}>
         {text}
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="24" height="24" rx="12" fill="#3B5BA9" />
@@ -102,4 +102,15 @@ const Style = styled.a`
     grid-gap: 4px;
     align-items: center;
     width: fit-content;
+
+    
+    svg{
+        transition: transform .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+    }
+
+    &:hover{
+        svg{
+            transform: rotateZ(-45deg);
+        }
+    }
 `

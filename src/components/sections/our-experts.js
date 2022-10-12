@@ -128,14 +128,5 @@ const GridItem = styled.div`
 
     a{
 
-        svg{
-            transition: transform .3s cubic-bezier(0.39, 0.575, 0.565, 1);
-        }
-
-        &:hover{
-            svg{
-                transform: rotateZ(-45deg);
-            }
-        }
     }
 `

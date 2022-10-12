@@ -17,13 +17,13 @@ export default function TwoColumnsCompare({ data: { columns, link } }) {
                 <Grid lightGray={LightGray} darkGray={DarkGray} light={Light} medium={Medium} dark={Dark}>
                     {columns.map((el, index) => (
                         <>
-                            <p className={'h6 item item' + index} dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
+                            <p className={'h6 arsenal item item' + index} dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
                             <div className={"body2 item item" + index} dangerouslySetInnerHTML={{ __html: el.lista }} />
                         </>
                     ))}
                     <Item />
                 </Grid>
-                <FilledButton target={link.target} to={link.url}>{link.title}</FilledButton>
+                <FilledButton className="link" target={link.target} to={link.url}>{link.title}</FilledButton>
             </Container>
         </Wrapper>
     )
@@ -48,13 +48,13 @@ export const query = graphql`
 const Wrapper = styled.section`
     margin-top: var(--section);
 
-    a{
+    .link{
         display: block;
         margin: 32px auto 0 auto;
     }
 
     @media (max-width: 480px) {
-        a{
+        .link{
             width: 100%;
             padding: 10px;
             text-align: center;
@@ -171,6 +171,10 @@ const Grid = styled.div`
         }
 
         &.item1{
+            a{
+                color: #fccf4f;
+            }
+
             &.h6{
                 color: #F2F4FF;
                 grid-area: b;
