@@ -3,8 +3,7 @@ import styled from "styled-components"
 import { graphql } from "gatsby"
 import { Container } from "../atoms/container"
 import { textParser } from './../../helpers/wysiwyg-modification'
-import { GatsbyImage } from "gatsby-plugin-image"
-import { Button } from "../atoms/buttons"
+import ExpertCard from "../atoms/expert-card"
 
 export default function OurExperts({ data: { tytulSekcji, experts } }) {
     return (
@@ -13,17 +12,7 @@ export default function OurExperts({ data: { tytulSekcji, experts } }) {
                 <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(tytulSekcji) }} />
                 <Grid>
                     {experts.map(el => (
-                        <GridItem>
-                            <GatsbyImage className="image" image={el.expert.ekspert.image.localFile.childImageSharp.gatsbyImageData} alt={el.expert.ekspert.image.altText} />
-                            <div className="text">
-                                <p className="body1">{el.expert.title}</p>
-                                <p className="body3">
-                                    {el.expert.ekspert.role}
-                                </p>
-                                <Button url={'tel:' + el.expert.ekspert.numerTelefonu} text={el.expert.ekspert.numerTelefonu} className='phone' />
-                                <Button url={'mailto:' + el.expert.ekspert.emailAdres} text={el.expert.ekspert.emailAdres} className='mail' />
-                            </div>
-                        </GridItem>
+                        <ExpertCard el={el.expert}/>
                     ))}
                 </Grid>
             </Container>
@@ -83,50 +72,5 @@ const Grid = styled.div`
 
     @media (max-width: 536px) {
         grid-template-columns: 1fr;
-    }
-`
-
-const GridItem = styled.div`
-    border-radius: 4px;
-    box-shadow: var(--shadow);
-    max-width: 344px;
-    width: 100%;
-
-    .text{
-        padding: 12px;
-    }
-
-    .image{
-        border-top-left-radius: 4px;
-        border-top-right-radius: 4px;
-    }
-
-    .body1{
-        color: #050505;
-    }
-
-    .body3{
-        margin-bottom: 16px;
-        margin-top: 2px;
-    }
-
-    .phone{
-        margin-bottom: 8px;
-        color: #3B5BA9;
-        text-decoration: none;
-    }
-
-    .mail{
-        color: #75757A;
-        text-decoration: none;
-        svg{
-            rect{
-                fill: #75757A;
-            }
-        }
-    }
-
-    a{
-
     }
 `

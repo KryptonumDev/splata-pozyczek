@@ -48,6 +48,10 @@ import ThreeColumnsFiles from "../components/sections/three-columns-files"
 import StepsToComplaints from "../components/sections/steps-to-complaints"
 import TwoColumnTextWithBoldText from "../components/sections/two-columnt-text-alt"
 import BigTextTiles from "../components/sections/big-text-tiles"
+import HeroImgExtended from "../components/sections/hero-img-extended"
+import TwoCards from "../components/sections/two-cards"
+import TwoColumnsWithExtendedLinks from "../components/sections/two-columns-with-extended-links"
+import AllExperts from "../components/sections/All-experts"
 
 export function Head({ data: { wpPage: { seo } } }) {
   const fullHead = parse(seo.fullHead, {
@@ -64,7 +68,7 @@ export function Head({ data: { wpPage: { seo } } }) {
   </>
 }
 
-export default function Page({ data: { allWpPost, wpPage: { title, blocks: { pageBuilder } } } }) {
+export default function Page({ data: { allWpEkspert, slider, wpPage: { title, blocks: { pageBuilder } } } }) {
   return (
     <main>
       {pageBuilder?.map(el => {
@@ -112,7 +116,7 @@ export default function Page({ data: { allWpPost, wpPage: { title, blocks: { pag
           case 'twoColumnText':
             return <TwoColumnText data={el.twoColumnText} />
           case 'blogSlider':
-            return <BlogSlider data={el.blogSlider} posts={allWpPost.nodes} />
+            return <BlogSlider data={el.blogSlider} posts={slider.nodes} />
           case 'twoColumnFlex':
             return <TwoColumnRepeater data={el.twoColumnFlex} />
           case 'threeStepsWithLongPanel':
@@ -155,6 +159,8 @@ export default function Page({ data: { allWpPost, wpPage: { title, blocks: { pag
             return <BlogArchive data={el.blogArchive} title={title} />
           case 'heroImg':
             return <HeroImg data={el.heroImg} title={title} />
+          case 'heroImgExtended':
+            return <HeroImgExtended data={el.heroImgExtended} title={title} />
           case 'threeColumnsFiles':
             return <ThreeColumnsFiles data={el.threeColumnsFiles} />
           case 'stepsToComplaints':
@@ -163,13 +169,19 @@ export default function Page({ data: { allWpPost, wpPage: { title, blocks: { pag
             return <TwoColumnTextWithBoldText data={el.twoColumnTextWithBoldText} />
           case 'bigTextTiles':
             return <BigTextTiles data={el.bigTextTiles} />
+          case 'twoCards':
+            return <TwoCards data={el.twoCards} />
+          case 'twoColumnsWithExtendedLinks':
+            return <TwoColumnsWithExtendedLinks data={el.twoColumnsWithExtendedLinks} />
+          case 'allExperts':
+            return <AllExperts experts={allWpEkspert.nodes}/>
           default:
             return null
         }
       })}
     </main>
   )
-} // twoColumnTextWithBoldText 
+} // two_columns_with_extended_links 
 
 export const query = graphql`
     query page($id: String!) {
@@ -185,6 +197,9 @@ export const query = graphql`
             blocks {
               pageBuilder {
                 switch
+                ...twoColumnsWithExtendedLinks
+                ...twoCards
+                ...heroImgExtended
                 ...bigTextTiles
                 ...twoColumnTextWithBoldText
                 ...blogSlider
@@ -235,7 +250,7 @@ export const query = graphql`
               }
             }
         }
-        allWpPost(limit: 3) {
+        slider : allWpPost(limit: 3) {
           nodes {
             id
             title
@@ -258,6 +273,25 @@ export const query = graphql`
             blogPost {
               previewText
               thumbnail {
+                altText
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+            }
+          }
+        }
+        allWpEkspert {
+          nodes {
+            id
+            title
+            ekspert {
+              role
+              numerTelefonu
+              emailAdres
+              image {
                 altText
                 localFile {
                   childImageSharp {

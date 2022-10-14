@@ -5,6 +5,8 @@ import styled from "styled-components"
 import { FilledButton } from '../../atoms/buttons'
 import axios from "axios"
 import { graphql, useStaticQuery } from "gatsby"
+import LabelInput from "../label-input"
+import LabelCheckbox from "../label-checkbox"
 
 export default function Form({ setIsSended }) {
 
@@ -54,10 +56,12 @@ export default function Form({ setIsSended }) {
 
     const inputAll = (val) => {
         if (val.currentTarget.checked) {
+            document.getElementById('all').classList.remove('half')
             setValue('privacyThree', true)
             setValue('privacyTwo', true)
             setValue('privacyOne', true)
         } else {
+            document.getElementById('all').classList.remove('half')
             setValue('privacyThree', false)
             setValue('privacyTwo', false)
             setValue('privacyOne', false)
@@ -78,8 +82,13 @@ export default function Form({ setIsSended }) {
         }
 
         if (one && two && three) {
+            document.getElementById('all').classList.remove('half')
             setValue('checkAll', true)
+        } else if (one || two || three) {
+            document.getElementById('all').classList.add('half')
+            setValue('checkAll', false)
         } else {
+            document.getElementById('all').classList.remove('half')
             setValue('checkAll', false)
         }
     }
@@ -88,55 +97,85 @@ export default function Form({ setIsSended }) {
 
     return (
         <Wrapper onSubmit={handleSubmit(onSubmit)}>
-            <label className="input">
-                <span className="label body2">Imię i nazwisko*</span>
-                <input placeholder="" {...register("name", { required: true })} />
-                {errors.name && <span className="error">Wymagane jest wypełnienie tego pola.</span>}
-            </label>
-            <label className="input">
-                <span className="label body2">Adres e-mail*</span>
-                <input placeholder="" {...register("email", { required: true })} />
-                {errors.email && <span className="error">Wymagane jest wypełnienie tego pola.</span>}
-            </label>
-            <label className="input">
-                <span className="label body2">Numer telefonu*</span>
-                <input placeholder="___-___-___" {...register("phone", { required: true })} />
-                {errors.phone && <span className="error">Wymagane jest wypełnienie tego pola.</span>}
-            </label>
-            <label className="input">
-                <span className="label body2">Wybierz temat*</span>
-                <select {...register("theme")} >
-                    {meesageThemes.map(el => (
-                        <option key={el.theme} value={el.theme}>{el.theme}</option>
-                    ))}
-                </select>
-            </label>
-            <label className="input">
-                <span className="label body2">Wiadomość*</span>
-                <textarea rows='4' placeholder="Twoja wiadomość…" {...register("message", { required: true })} />
-                {errors.message && <span className="error">Wymagane jest wypełnienie tego pola.</span>}
-            </label>
-
+            <LabelInput
+                name='name'
+                label='Imię i nazwisko*'
+                params={{ required: true }}
+                register={register}
+                errors={errors}
+            />
+            <LabelInput
+                name='email'
+                label='Adres e-mail*'
+                params={{ required: true }}
+                register={register}
+                errors={errors}
+            />
+            <LabelInput
+                name='phone'
+                label='Numer telefonu*'
+                params={{ required: true }}
+                register={register}
+                errors={errors}
+            />
+            <LabelInput
+                name='theme'
+                label='Wybierz temat*'
+                type='select'
+                register={register}
+                errors={errors}
+                meesageThemes={meesageThemes}
+            />
+            <LabelInput
+                name='theme'
+                label='Wiadomość*'
+                params={{ required: true }}
+                register={register}
+                errors={errors}
+                type='textarea'
+                rows='4'
+            />
             <div>
-                <label className="checkbox">
-                    <input {...register("checkAll")} onChange={(val) => { inputAll(val) }} type='checkbox' />
-                    <span className="label body2">Akceptuję wszystkie zgody</span>
-                </label>
-                <label className="checkbox sub">
-                    <input {...register("privacyOne", { required: true })} id='one' onChange={(e) => { testCkeckboxes(e) }} type='checkbox' />
-                    <span className="label body3">Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to={linkPrivacyPolicy.url}>Polityce prywatności</Link><b>*</b></span>
-                    {errors.privacyOne && <span className="error">Musisz wyrazić zgodę na powyższe zapisy.</span>}
-                </label>
-                <label className="checkbox sub">
-                    <input {...register("privacyTwo", { required: true })} id='two' onChange={(e) => { testCkeckboxes(e) }} type='checkbox' />
-                    <span className="label body3">Wyrażam zgodę, aby moje dane osobowe były przetwarzane <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b></span>
-                    {errors.privacyTwo && <span className="error">Musisz wyrazić zgodę na powyższe zapisy.</span>}
-                </label>
-                <label className="checkbox sub">
-                    <input  {...register("privacyThree", { required: true })} id='three' onChange={(e) => { testCkeckboxes(e) }} type='checkbox' />
-                    <span className="label body3">Wyrażam zgodę na otrzymywanie od Habza Group Sp. z o.o. <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b></span>
-                    {errors.privacyThree && <span className="error">Musisz wyrazić zgodę na powyższe zapisy.</span>}
-                </label>
+                <LabelCheckbox
+                    name='checkAll'
+                    onChange={(val) => { inputAll(val) }}
+                    params={{}}
+                    className='body2'
+                    register={register}
+                    id='all'
+                    errors={errors}>
+                    Akceptuję wszystkie zgody
+                </LabelCheckbox>
+                <LabelCheckbox
+                    wrapClass='sub'
+                    name='privacyOne'
+                    onChange={(e) => { testCkeckboxes(e) }}
+                    params={{ required: true }}
+                    register={register}
+                    id='one'
+                    errors={errors}>
+                    Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to={linkPrivacyPolicy.url}>Polityce prywatności</Link><b>*</b>
+                </LabelCheckbox>
+                <LabelCheckbox
+                    wrapClass='sub'
+                    name='privacyTwo'
+                    onChange={(e) => { testCkeckboxes(e) }}
+                    params={{ required: true }}
+                    register={register}
+                    id='two'
+                    errors={errors}>
+                    Wyrażam zgodę, aby moje dane osobowe były przetwarzane <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b>
+                </LabelCheckbox>
+                <LabelCheckbox
+                    wrapClass='sub'
+                    name='privacyThree'
+                    onChange={(e) => { testCkeckboxes(e) }}
+                    params={{ required: true }}
+                    register={register}
+                    id='three'
+                    errors={errors}>
+                    Wyrażam zgodę na otrzymywanie od Habza Group Sp. z o.o. <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b>
+                </LabelCheckbox>
                 <span className="required body3"><b>*</b>  – Pola obowiązkowe</span>
             </div>
 
@@ -166,102 +205,7 @@ const Wrapper = styled.form`
         border: none;
     }
 
-    .error{
-        position: absolute;
-        font-size: 10px;
-        color: red;
-        bottom: 0;
-        left: 0;
-        transform: translateY(100%);
-    }
-
     label{
         position: relative;
-    }
-
-    .input{
-        display: block;
-
-        .label{
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        input, select, textarea{
-            padding: 8px 10px;
-            background: #FEF5F5;
-            border: 2px solid #75757A;
-            border-radius: 4px;
-            width: 100%;
-
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 129%;
-            font-feature-settings: 'pnum' on, 'onum' on;
-            color: #050505;
-
-            &::placeholder{
-                color: #B2B2B8;
-                font-weight: 400;
-                font-size: 14px;
-                line-height: 129%;
-                font-feature-settings: 'pnum' on, 'onum' on;
-            }
-        }
-    }
-
-    .checkbox{
-        display: grid;
-        grid-template-columns: auto auto;
-        grid-gap: 4px;
-        width: fit-content;
-        line-height: 18px;
-
-        &.sub{
-            margin: 20px 12px 0;
-
-            .label{
-                line-height: 14px;
-            }
-        }
-
-        a{
-            color: #3B5BA9;
-            font-weight: 600;
-        }
-
-        .label{
-            color: #75757A;
-        }
-
-        input{
-            appearance: none;
-            width: 18px;
-            height: 18px;
-            background: #FEF5F5;
-            border: 2px solid #75757A;
-            border-radius: 4px;
-            position: relative;
-
-            &::after {
-                content: '✓';
-                font-size: 14px;
-                font-weight: 300;
-                transition: 120ms transform ease-in-out;
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                transform: translateX(-50%) translateY(-50%) scale(0);
-                border-radius: 3px;
-                font-weight: 900;
-                z-index: 3;
-            }
-
-            &:checked {
-                &::after {
-                    transform: translateX(-50%) translateY(-50%) scale(0.8);
-                }
-            }
-        }
     }
 `
