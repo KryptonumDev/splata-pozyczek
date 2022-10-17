@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
-import { Container } from "../../atoms/container"
-import { FilledButton } from '../../atoms/buttons'
-import { textParser } from '../../../helpers/wysiwyg-modification'
+import { Container } from "../atoms/container"
+import { FilledButton } from '../atoms/buttons'
+import { textParser } from '../../helpers/wysiwyg-modification'
 import { graphql } from "gatsby"
 
 const background = {

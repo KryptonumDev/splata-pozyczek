@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
-import { Container } from "../../atoms/container"
-import Form from "../../moleculas/forms/full"
-import Success from "../../moleculas/success-send"
+import { Container } from "../atoms/container"
+import Form from "../moleculas/forms/full"
+import Success from "../moleculas/success-send"
 
 export default function ContactForm({ data }) {
     const [isSended, setIsSended] = useState(false)

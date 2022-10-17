@@ -1,10 +1,10 @@
 import React from "react"
 import styled from "styled-components"
-import { Container } from "../../atoms/container"
+import { Container } from "../atoms/container"
 import { graphql } from "gatsby"
-import Breadcrumbs from "../../moleculas/breadcrumbs"
-import { textParser } from "../../../helpers/wysiwyg-modification"
-import { FilledButton } from "../../atoms/buttons"
+import Breadcrumbs from "../moleculas/breadcrumbs"
+import { textParser } from "../../helpers/wysiwyg-modification"
+import { FilledButton } from "../atoms/buttons"
 import { GatsbyImage } from "gatsby-plugin-image"
 
 export default function HeroImg({ data: { pageTitle, text, link, list, imgOnRight }, title }) {

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
-import { Container } from "../../atoms/container"
-import { FilledButton } from "../../atoms/buttons"
-import { textParser } from "../../../helpers/wysiwyg-modification"
+import { Container } from "../atoms/container"
+import { FilledButton } from "../atoms/buttons"
+import { textParser } from "../../helpers/wysiwyg-modification"
 
 export default function Calculator({ data: { title, text } }) {
 

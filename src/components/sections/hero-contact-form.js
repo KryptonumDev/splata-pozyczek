@@ -1,12 +1,12 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import { Container } from "../../atoms/container"
+import { Container } from "../atoms/container"
 import { graphql } from "gatsby"
-import Breadcrumbs from "../../moleculas/breadcrumbs"
-import { textParser } from "../../../helpers/wysiwyg-modification"
-import { FilledButton } from "../../atoms/buttons"
-import Form from "../../moleculas/forms/hero"
-import Success from "../../moleculas/success-send"
+import Breadcrumbs from "../moleculas/breadcrumbs"
+import { textParser } from "../../helpers/wysiwyg-modification"
+import { FilledButton } from "../atoms/buttons"
+import Form from "../moleculas/forms/hero"
+import Success from "../moleculas/success-send"
 
 export default function HeroForm({ data: { pageTitle, text, link, list, formTitle }, title }) {
   const [isSended, setIsSended] = useState(false)
