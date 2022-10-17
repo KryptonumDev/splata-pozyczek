@@ -39,36 +39,51 @@ export default function Footer() {
                 pierwszaGornaKolumna {
                   tytul
                   linki {
-                    url
-                    text
+                    link{
+                        url
+                        title
+                        target
+                    }
                   }
                 }
                 trzeciaKolumna {
                   tytul
                   linki {
-                    url
-                    text
+                    link{
+                        url
+                        title
+                        target
+                    }
                   }
                 }
                 pierwszaDolnaKolumna {
                   tytul
                   linki {
-                    url
-                    text
+                    link{
+                        url
+                        title
+                        target
+                    }
                   }
                 }
                 drugaGornaKolumna {
                   tytul
                   linki {
-                    text
-                    url
+                    link{
+                        url
+                        title
+                        target
+                    }
                   }
                 }
                 drugaDolnaKolumna {
                   tytul
                   linki {
-                    url
-                    text
+                    link{
+                        url
+                        title
+                        target
+                    }
                   }
                 }
               }

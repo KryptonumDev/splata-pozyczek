@@ -16,7 +16,7 @@ export const OutlinedButton = styled(Link)`
     border-radius: 4px;
     padding: 12px 44px;
     text-decoration: unset;
-        text-align: center;
+    text-align: center;
 
     transition: background-color .3s cubic-bezier(0.39, 0.575, 0.565, 1), color .3s cubic-bezier(0.39, 0.575, 0.565, 1);
 
@@ -56,9 +56,9 @@ export const FilledButton = styled(Link)`
     border-radius: 4px;
     padding: 12px 44px;
     text-decoration: unset;
-        text-align: center;
+    text-align: center;
 
-    transition: background-color .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+    transition: background-color .3s cubic-bezier(0.39, 0.575, 0.565, 1);   
 
     &:hover{
         background: linear-gradient(315deg, #EDBD35 0%, #E6D9AC 99.99%);
@@ -73,10 +73,10 @@ export const FilledButton = styled(Link)`
         background: #E1E1EB;
     }
 
-@media (max-width: 480px) {
-    width: 100%;
-    padding: 12px;
-}
+    @media (max-width: 480px) {
+        width: 100%;
+        padding: 12px;
+    }
 `
 
 export const Button = ({ url, text, className, button }) => (

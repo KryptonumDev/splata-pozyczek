@@ -34,7 +34,7 @@ export default function HeroImg({ data: { pageTitle, text, link, list, imgOnRigh
                             : null}
                     </TextPart>
                     <div className="box">
-                        <GatsbyImage image={imgOnRight.localFile.childImageSharp.gatsbyImageData} alt={imgOnRight.altText} />
+                        <GatsbyImage className="image" image={imgOnRight.localFile.childImageSharp.gatsbyImageData} alt={imgOnRight.altText} />
                     </div>
                 </Content>
             </Container>
@@ -91,6 +91,16 @@ const Content = styled.div`
 
   .box{
     position: relative;
+
+    .image{
+      max-width: 209px;
+
+      @media (max-width: 840px) {
+        max-width: 380px;
+        margin: 0 auto;
+        display: block;
+      }
+    }
   }
 
   .h4{

@@ -68,7 +68,7 @@ export function Head({ data: { wpPage: { seo } } }) {
   </>
 }
 
-export default function Page({ data: { allWpEkspert, slider, wpPage: { title, blocks: { pageBuilder } } } }) {
+export default function Page({ data: { blogArchive, allWpEkspert, slider, wpPage: { title, blocks: { pageBuilder } } } }) {
   return (
     <main>
       {pageBuilder?.map(el => {
@@ -156,7 +156,7 @@ export default function Page({ data: { allWpEkspert, slider, wpPage: { title, bl
           case 'contactForm':
             return <ContactForm data={el.contactForm} />
           case 'blogArchive':
-            return <BlogArchive data={el.blogArchive} title={title} />
+            return <BlogArchive data={el.blogArchive} title={title} allPosts={blogArchive.nodes} />
           case 'heroImg':
             return <HeroImg data={el.heroImg} title={title} />
           case 'heroImgExtended':
@@ -249,6 +249,39 @@ export const query = graphql`
                 ...blogArchive
               }
             }
+        }
+        blogArchive : allWpPost {
+          nodes {
+            id
+            title
+            slug
+            author {
+              node {
+                name
+              }
+            }
+            date(formatString: "DD.MM.YYYY")
+            categories {
+              nodes {
+                name
+                slug
+                category {
+                  color
+                }
+              }
+            }
+            blogPost {
+              previewText
+              thumbnail {
+                altText
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+            }
+          }
         }
         slider : allWpPost(limit: 3) {
           nodes {

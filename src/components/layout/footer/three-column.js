@@ -13,7 +13,7 @@ export default function Three({ columns, contact, copyright, informPart }) {
                     <div className="body2" dangerouslySetInnerHTML={{ __html: textParser(informPart.text) }} />
                     <div className="socials">
                         {informPart.socialMedia.map(el => (
-                            <a><img src={el.icon.localFile.publicURL} alt={el.icon.altText} /></a>
+                            <a href={el.link}><img src={el.icon.localFile.publicURL} alt={el.icon.altText} /></a>
                         ))}
                     </div>
                 </div>
@@ -33,19 +33,19 @@ export default function Three({ columns, contact, copyright, informPart }) {
                 <div className="sub">
                     <span className="title body2">{columns.pierwszaGornaKolumna.tytul}</span>
                     {columns.pierwszaGornaKolumna.linki.map(el => (
-                        <Link to={el.url} className="body3">{el.text}</Link>
+                        <Link to={el.link.url} className="body3">{el.link.title}</Link>
                     ))}
                 </div>
                 <div className="sub second">
                     <span className="title body2">{columns.drugaGornaKolumna.tytul}</span>
                     {columns.drugaGornaKolumna.linki.map(el => (
-                        <Link to={el.url} className="body3">{el.text}</Link>
+                        <Link to={el.link.url} className="body3">{el.link.title}</Link>
                     ))}
                 </div>
                 <div className="sub second">
                     <span className="title body2">{columns.drugaDolnaKolumna.tytul}</span>
                     {columns.drugaDolnaKolumna.linki.map(el => (
-                        <Link to={el.url} className="body3">{el.text}</Link>
+                        <Link to={el.link.url} className="body3">{el.link.title}</Link>
                     ))}
                 </div>
             </div>
@@ -53,13 +53,13 @@ export default function Three({ columns, contact, copyright, informPart }) {
                 <div className="sub">
                     <span className="title body2">{columns.trzeciaKolumna.tytul}</span>
                     {columns.trzeciaKolumna.linki.map(el => (
-                        <Link to={el.url} className="body3">{el.text}</Link>
+                        <Link to={el.link.url} className="body3">{el.link.title}</Link>
                     ))}
                 </div>
                 <div className="sub second">
                     <span className="title body2">{columns.pierwszaDolnaKolumna.tytul}</span>
                     {columns.pierwszaDolnaKolumna.linki.map(el => (
-                        <Link to={el.url} className="body3">{el.text}</Link>
+                        <Link to={el.link.url} className="body3">{el.link.title}</Link>
                     ))}
                 </div>
             </div>

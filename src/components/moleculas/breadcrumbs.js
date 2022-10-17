@@ -5,33 +5,38 @@ import styled from "styled-components"
 export default function Breadcrumbs({ title }) {
     return (
         <Wrapper>
-            <li><Link className="body1" to='/'>Strona główna</Link></li>
-            <span>/</span>
-            <li className="body1">{title}</li>
+            <Link className="body1" to='/'>Strona główna</Link>
+            <span className="body1 divider">/</span>
+            <span className="body1">{title}</span>
         </Wrapper>
     )
 }
 
-const Wrapper = styled.ul`
+const Wrapper = styled.div`
     display: flex;
     justify-content: flex-start;
 
-    span{
+    .divider{
         display: block;
         margin: 0 4px;
         color: #A1A1A4;
     }
-    li{
-        list-style: none;
-        a{
-            color: #A1A1A4;
-            text-decoration: none;
-        }
+    a{
+        color: #A1A1A4;
+        text-decoration: none;
+    }
 
-        &:last-child{
-            color: #505052;
+
+    @media (max-width: 480px) {
+        .body1{
+            font-size: 14px;
         }
     }
 
+    @media (max-width: 350px) {
+        .body1{
+            font-size: 12px;
+        }
+    }
     
 `

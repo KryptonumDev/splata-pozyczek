@@ -5,9 +5,9 @@ import styled from "styled-components"
 import { Button } from "./buttons"
 import { textParser } from "../../helpers/wysiwyg-modification"
 
-export default function Card({el, allowLink}) {
+export default function Card({el, allowLink, alternate}) {
     return (
-        <Item onClick={(e) => { if (!allowLink) { e.preventDefault() } }} to={'/blog/' + el.slug}>
+        <Item alternate={alternate} onClick={(e) => { if (!allowLink) { e.preventDefault() } }} to={'/blog/' + el.slug}>
             <div className="wrap">
                 <GatsbyImage className="img" image={el.blogPost.thumbnail.localFile.childImageSharp.gatsbyImageData} alt={el.blogPost.thumbnail.altText} />
                 <div className="text">
@@ -46,6 +46,48 @@ const Item = styled(Link)`
     -webkit-user-drag: none;
     
 
+    ${props => props.alternate ? `
+    .wrap{
+        grid-gap: 0 !important;
+    }
+    .text{
+        background-color: var(--color-medium);
+        color: #fff;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+
+        *{
+            color: #fff;
+        }
+
+        .categories button{
+            color: #000 !important;
+        }
+
+        .body3{
+            color: #DAE2FF;
+        }
+
+        .link {
+            color: #fff!important;
+        }
+
+        svg rect{
+            fill: #fff;
+        }
+
+        svg path{
+            fill: #000;
+        }
+    }
+        
+    ` : null}
+
+    .img{
+        border-bottom-left-radius: 4px;
+        border-top-left-radius: 4px;
+    }
+
     &:hover{
         svg{
             transform: rotateZ(-45deg);
@@ -53,6 +95,8 @@ const Item = styled(Link)`
     }
 
     .wrap{
+        border-bottom-left-radius: 4px;
+        border-top-left-radius: 4px;
         display: grid;
         grid-template-columns: auto auto;
         grid-gap: 8px;

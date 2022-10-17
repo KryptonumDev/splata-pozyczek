@@ -13,23 +13,23 @@ export default function FourTilesWithTitle({ data }) {
     )
 }
 
-export const query = graphql`
-  fragment data on WpPage_Blocks_pageBuilder {
-    fourTilesWithTitle {
-      title
-      tekstWyrozniony
-      plaszki {
-        text
-        icon {
-          altText
-          localFile {
-            publicURL
-          }
-        }
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   fragment data on WpPage_Blocks_pageBuilder {
+//     fourTilesWithTitle {
+//       title
+//       tekstWyrozniony
+//       plaszki {
+//         text
+//         icon {
+//           altTexta
+//           localFile {
+//             publicURL
+//           }
+//         }
+//       }
+//     }
+//   }
+// `
 
 const Wrapper = styled.section`
 `

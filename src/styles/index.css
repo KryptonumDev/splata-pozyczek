@@ -54,6 +54,10 @@
     font-family: 'Arsenal', 'Source Sans Pro';
  }
 
+ .blue{
+   color: #3B5BA9;
+ }
+
  .h1 {
     font-weight: 700;
     font-size: 72px;

@@ -53,6 +53,21 @@ const Item = styled.details`
         }
     }
 
+    em{
+        font-style: normal;
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 131%;
+        font-feature-settings: 'pnum' on, 'onum' on;
+        color: #050505;
+
+        *{
+            font-weight: 400;
+        }
+    }
+
     .body1{
         color: #050505;
         font-weight: 600;
@@ -86,6 +101,10 @@ const Item = styled.details`
                 font-weight: 400;
                 font-size: 16px;
                 line-height: 21px;
+
+                ul{
+                    margin: 12px 0 0 0;
+                }
 
                 span{
                     font-weight: 600;
