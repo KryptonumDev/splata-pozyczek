@@ -7,7 +7,7 @@ import { textParser } from "../../helpers/wysiwyg-modification"
 
 export default function Card({el, allowLink, alternate}) {
     return (
-        <Item alternate={alternate} onClick={(e) => { if (!allowLink) { e.preventDefault() } }} to={'/blog/' + el.slug}>
+        <Item allowLink={allowLink} alternate={alternate} onClick={(e) => { if (!allowLink) { e.preventDefault() } }} to={'/blog/' + el.slug}>
             <div className="wrap">
                 <GatsbyImage className="img" image={el.blogPost.thumbnail.localFile.childImageSharp.gatsbyImageData} alt={el.blogPost.thumbnail.altText} />
                 <div className="text">
@@ -44,6 +44,8 @@ const Item = styled(Link)`
     text-decoration: none;
     user-select: none;
     -webkit-user-drag: none;
+
+    cursor: ${props => props.allowLink ? 'pointer' : 'grabbing'};
     
 
     ${props => props.alternate ? `

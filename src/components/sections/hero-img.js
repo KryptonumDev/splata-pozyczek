@@ -110,7 +110,7 @@ const Content = styled.div`
   }
 
   .h6{
-    color: #75757A;
+    color: #6F6F71;
     font-family: 'Arsenal';
   }
 

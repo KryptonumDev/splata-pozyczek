@@ -224,7 +224,7 @@ const Wrapper = styled.form`
         input, select, textarea{
             padding: 8px 10px;
             background: #FEF5F5;
-            border: 2px solid #75757A;
+            border: 2px solid #6F6F71;
             border-radius: 4px;
             width: 100%;
 
@@ -265,7 +265,7 @@ const Wrapper = styled.form`
         }
 
         .label{
-            color: #75757A;
+            color: #6F6F71;
         }
 
         input{
@@ -273,7 +273,7 @@ const Wrapper = styled.form`
             width: 18px;
             height: 18px;
             background: #FEF5F5;
-            border: 2px solid #75757A;
+            border: 2px solid #6F6F71;
             border-radius: 4px;
             position: relative;
 

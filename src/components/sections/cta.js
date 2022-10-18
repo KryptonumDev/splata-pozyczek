@@ -25,7 +25,7 @@ export default function CallToAction({ data: { colorSchem, text, plainText, link
             <Container>
                 <Content color={colors[colorSchem]} background={background[colorSchem]}>
                     <TextPart>
-                        <div>
+                        <div className="text">
                             <p className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
                             {plainText ?
                                 <p className="body1 arsenal" dangerouslySetInnerHTML={{ __html: textParser(plainText) }} />
@@ -74,7 +74,7 @@ const Content = styled.section`
 `
 
 const TextPart = styled.div`
-    max-width: 678px;
+    max-width: clamp(484px, ${484 / 768 * 100}vw, 678px);
     padding: clamp(16px, ${20 / 768 * 100}vw, 20px);
     display: grid;
     grid-gap: clamp(16px, ${16 / 768 * 100}vw, 24px);

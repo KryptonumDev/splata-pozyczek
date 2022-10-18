@@ -56,6 +56,15 @@ export const query = graphql`
 `
 
 const Wrapper = styled.section`
+
+    @media (max-width: 900px) {
+        margin-bottom: -100px;
+    }
+
+    @media (max-width: 480px) {
+        margin-bottom: 0;
+    }
+
     .background{
         position: absolute;
         right: 0;
@@ -89,6 +98,21 @@ const Content = styled.div`
 
     @media (max-width: 900px){
         padding-bottom: 0;
+
+        
+        .h4{
+            font-weight: 700;
+            font-size: clamp(33px, ${54 / 900 * 100}vw, 54px);
+            line-height: 111%;
+            letter-spacing: -0.02em;
+            max-width: 74%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .h4{
+            max-width: 350px;
+        }
     }
 `
 
@@ -100,7 +124,7 @@ const TextPart = styled.div`
     }
 
     .h6{
-        color: #75757A;
+        color: #6F6F71;
         margin-top: clamp(8px, ${10 / 768 * 100}vw, 12px);
     }
 `

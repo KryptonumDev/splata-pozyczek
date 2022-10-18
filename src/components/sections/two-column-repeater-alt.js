@@ -153,7 +153,7 @@ const Item = styled.div`
             grid-gap: clamp(12px, ${12 / 768 * 100}vw, 16px);
 
             p{
-                color: #75757A;
+                color: #6F6F71;
 
                 strong{
                     color: #050505;

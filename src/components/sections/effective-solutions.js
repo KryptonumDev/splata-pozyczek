@@ -81,7 +81,7 @@ const TextContent = styled.div`
 
     .body1{
         margin-top: clamp(12px, ${12 / 768 * 100}vw, 24px);
-        color: #75757A;
+        color: #6F6F71;
     }
 `
 

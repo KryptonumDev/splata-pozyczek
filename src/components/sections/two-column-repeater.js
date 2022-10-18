@@ -154,7 +154,7 @@ const Item = styled.div`
             grid-gap: 16px;
 
             p{
-                color: #75757A;
+                color: #6F6F71;
 
                 strong{
                     color: #050505;

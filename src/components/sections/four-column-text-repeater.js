@@ -60,7 +60,7 @@ const Grid = styled.div`
     grid-gap: clamp(12px, ${16 / 768 * 100}vw, 32px) 32px;
     
     p{
-        color: #75757A;
+        color: #6F6F71;
     }
 
     @media (max-width: 876px) {

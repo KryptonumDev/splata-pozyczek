@@ -50,7 +50,7 @@ fragment ourExperts on WpPage_Blocks_pageBuilder {
 `
 
 const Wrapper = styled.section`
-    margin-top: 80px;
+    margin-top: var(--section);
 
     .h4{
         font-family: 'Arsenal';
@@ -64,7 +64,7 @@ const Grid = styled.div`
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 32px;
 
-    @media (max-width: 1140px) {
+    @media (max-width: 1180px) {
         grid-template-columns: 1fr 1fr;
         width: fit-content;
         margin: 0 auto;
@@ -72,5 +72,6 @@ const Grid = styled.div`
 
     @media (max-width: 536px) {
         grid-template-columns: 1fr;
+        grid-gap: 16px;
     }
 `

@@ -8,12 +8,14 @@ import { textParser } from './../../helpers/wysiwyg-modification'
 export default function WhatIsCredit({ data: { list, listTitle, text, title } }) {
     return (
         <Wrapper>
+            <Container className="container"> 
+                <Plate>
+                    <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                    <p className="body1" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
+                </Plate>
+            </Container>
             <Container>
                 <Content>
-                    <Plate>
-                        <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
-                        <p className="body1" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
-                    </Plate>
                     <h3 className="arsenal h6" dangerouslySetInnerHTML={{ __html: textParser(listTitle) }} />
                     <Grid>
                         {list.map(el => (
@@ -55,6 +57,12 @@ const Wrapper = styled.section`
         font-family: 'Arsenal';
         font-size: clamp(30px, 4.296875vw, 38px);
     }
+
+    @media (max-width: 480px) {
+        .container{
+            padding: 0;
+        }
+    }
 `
 
 const Content = styled.div`
@@ -63,6 +71,8 @@ const Content = styled.div`
 `
 
 const Plate = styled.div`
+    max-width: 1000px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 32px;
@@ -81,6 +91,7 @@ const Plate = styled.div`
 
 const Grid = styled.div`
     columns: 2;
+    column-gap: 32px;
     margin-top: clamp(12px, ${24 / 768 * 100}vw, 24px);
 
     @media (max-width: 580px) {
@@ -106,13 +117,13 @@ const Item = styled.div`
     }
 
     p{
-        color: #75757A;
+        color: #6F6F71;
     }
     
 
     @media (max-width: 580px){
         p{
-            margin-top: 4px;
+            margin-top: 0px;
         }
     }
 `

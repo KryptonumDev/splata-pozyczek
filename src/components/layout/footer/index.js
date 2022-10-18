@@ -165,7 +165,7 @@ const Wrapper = styled.footer`
         }
 
         a{
-            color: #75757A;
+            color: #6F6F71;
             font-weight: 600;
             text-decoration: none;
         }
@@ -244,7 +244,7 @@ const Wrapper = styled.footer`
             font-weight: 400;
             line-height: 127%;
             font-feature-settings: 'pnum' on, 'onum' on;
-            color: #75757A;
+            color: #6F6F71;
         }
     }
 

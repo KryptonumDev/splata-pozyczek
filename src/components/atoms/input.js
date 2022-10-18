@@ -11,7 +11,7 @@ export const Label = styled.label`
     .error{
         position: absolute;
         font-size: 10px;
-        color: red;
+        color: #D2261F;
         bottom: 0;
         left: 0;
         transform: translateY(100%);
@@ -21,9 +21,13 @@ export const Label = styled.label`
 export const Input = styled.input`
     padding: 8px 10px;
     background: #FEF5F5;
-    border: 2px solid #75757A;
+    border: 2px solid #6F6F71;
     border-radius: 4px;
     width: 100%;
+
+    @media (max-width: 480px) {
+        padding: 13px 10px;
+    }
 
     font-weight: 400;
     font-size: 14px;

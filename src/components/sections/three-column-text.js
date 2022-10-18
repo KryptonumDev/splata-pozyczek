@@ -39,7 +39,7 @@ const Grid = styled.div`
     grid-gap: 32px;
     
     p{
-        color: #75757A;
+        color: #6F6F71;
     }
 
     @media (max-width: 768px) {

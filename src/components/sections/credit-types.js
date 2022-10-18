@@ -287,7 +287,7 @@ const Content = styled.div`
         max-width: 540px;
         margin: 0 auto;
         text-align: center;
-        color: #75757A;
+        color: #6F6F71;
         margin-top: clamp(12px, ${16 / 768 * 100}vw, 24px);
         margin-bottom: clamp(24px, ${32 / 768 * 100}vw, 48px);
 

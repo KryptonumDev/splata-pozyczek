@@ -52,7 +52,7 @@ const Wrapper = styled.section`
     }
 
     .text{
-        color: #75757A;
+        color: #6F6F71;
         margin: clamp(16px, ${16 / 768 * 100}vw, 24px) auto clamp(24px, ${24 / 768 * 100}vw, 32px) auto;
         max-width: 540px;
         text-align: center;

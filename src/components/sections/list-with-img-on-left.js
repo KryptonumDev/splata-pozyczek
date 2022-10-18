@@ -144,7 +144,7 @@ const Content = styled.div`
             min-height: 32px;
             position: relative;
             list-style: none;
-            color: #75757A;
+            color: #6F6F71;
 
             @media (max-width: 640px){
                 padding-left: 32px;

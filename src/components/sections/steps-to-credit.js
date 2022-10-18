@@ -55,7 +55,7 @@ const Wrapper = styled.section`
     margin-top: var(--section);
 
     .body1{
-        color: #75757A;
+        color: #6F6F71;
 
         strong{
             color: #050505;

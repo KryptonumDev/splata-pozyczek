@@ -55,16 +55,16 @@ const Content = styled.div`
     }
 
     .h6{
-        color: #75757A;
+        color: #6F6F71;
     }
 
     .body2{
         margin-bottom: 16px;
-        color: #75757A;
+        color: #6F6F71;
     }
 
     .body3{
-        color: #75757A;
+        color: #6F6F71;
     }
 
     @media (max-width: 796px) {

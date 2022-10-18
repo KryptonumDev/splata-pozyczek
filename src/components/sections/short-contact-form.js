@@ -11,7 +11,7 @@ export default function ShortContactForm({ data }) {
 
     return (
         <Wrapper>
-            <Container>
+            <Container className="container">
                 <Box>
                     <Content>
                         <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(data.title) }} />
@@ -50,6 +50,12 @@ const Wrapper = styled.section`
             text-align: left;
         }
     }
+
+    @media (max-width: 768px) {
+        .container{
+            padding: 0;
+        }
+    }
 `
 
 const Box = styled.div`
@@ -59,6 +65,10 @@ const Box = styled.div`
     padding: 48px 0;
     overflow: hidden;
     position: relative;
+
+    @media (max-width: 768px){
+        border-radius: 0;
+    }
 
     @media (max-width: 680px){
         padding: clamp(24px,3.125vw,48px) clamp(16px,2.725vw,32px);

@@ -115,7 +115,7 @@ const Content = styled.div`
     .sub{
         display: grid;
         grid-gap: 8px;
-        color: #75757A;
+        color: #6F6F71;
 
         ${props => props.template === 'longDoubled' ? `
         display: block;
@@ -127,7 +127,7 @@ const Content = styled.div`
     ` : null}
 
         p{
-        color: #75757A;
+        color: #6F6F71;
 
         }
 

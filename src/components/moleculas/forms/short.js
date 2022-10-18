@@ -7,10 +7,12 @@ import axios from "axios"
 import { graphql, useStaticQuery } from "gatsby"
 import LabelInput from "../label-input"
 import LabelCheckbox from "../label-checkbox"
+import { checkboxController } from "../../../helpers/checkbox-controller"
+import { checkboxAll } from "../../../helpers/checkbox-all"
 
 export default function Form({ setIsSended }) {
 
-    const { wpPage: { formyKontaktowe: { linkPrivacyPolicy, additionalInform, meesageThemes } } } = useStaticQuery(graphql`
+    const { wpPage: { formyKontaktowe: { linkPrivacyPolicy, meesageThemes } } } = useStaticQuery(graphql`
     query {
         wpPage(id: {eq: "cG9zdDo2MzQ="}) {
             formyKontaktowe {
@@ -26,7 +28,7 @@ export default function Form({ setIsSended }) {
     }
   `)
 
-    const { reset, register, setValue, handleSubmit, getValues, watch, formState: { errors } } = useForm()
+    const { reset, register, setValue, handleSubmit, getValues, formState: { errors } } = useForm()
     const [sendedCount, changeSendedCount] = useState(0)
 
     const onSubmit = data => {
@@ -54,46 +56,7 @@ export default function Form({ setIsSended }) {
         }
     }
 
-    const inputAll = (val) => {
-        if (val.currentTarget.checked) {
-            document.getElementById('all').classList.remove('half')
-            setValue('privacyThree', true)
-            setValue('privacyTwo', true)
-            setValue('privacyOne', true)
-        } else {
-            document.getElementById('all').classList.remove('half')
-            setValue('privacyThree', false)
-            setValue('privacyTwo', false)
-            setValue('privacyOne', false)
-        }
-    }
 
-    const testCkeckboxes = (e) => {
-        let one = getValues("privacyOne")
-        let two = getValues("privacyTwo")
-        let three = getValues("privacyThree")
-
-        if (e.currentTarget.id === 'one') {
-            one = e.currentTarget.checked
-        } else if (e.currentTarget.id === 'two') {
-            two = e.currentTarget.checked
-        } else if (e.currentTarget.id === 'three') {
-            three = e.currentTarget.checked
-        }
-
-        if (one && two && three) {
-            document.getElementById('all').classList.remove('half')
-            setValue('checkAll', true)
-        } else if (one || two || three) {
-            document.getElementById('all').classList.add('half')
-            setValue('checkAll', false)
-        } else {
-            document.getElementById('all').classList.remove('half')
-            setValue('checkAll', false)
-        }
-    }
-
-    // console.log(watch("example"))  watch input value by passing the name of it
 
     return (
         <Wrapper onSubmit={handleSubmit(onSubmit)}>
@@ -127,7 +90,7 @@ export default function Form({ setIsSended }) {
                 meesageThemes={meesageThemes}
             />
             <LabelInput
-                name='theme'
+                name='message'
                 label='Wiadomość*'
                 params={{ required: true }}
                 register={register}
@@ -138,7 +101,7 @@ export default function Form({ setIsSended }) {
             <div>
                 <LabelCheckbox
                     name='checkAll'
-                    onChange={(val) => { inputAll(val) }}
+                    onChange={(val) => { checkboxAll(val, setValue) }}
                     params={{}}
                     className='body2'
                     register={register}
@@ -149,7 +112,7 @@ export default function Form({ setIsSended }) {
                 <LabelCheckbox
                     wrapClass='sub'
                     name='privacyOne'
-                    onChange={(e) => { testCkeckboxes(e) }}
+                    onChange={(e) => { checkboxController(e, getValues, setValue) }}
                     params={{ required: true }}
                     register={register}
                     id='one'
@@ -159,7 +122,7 @@ export default function Form({ setIsSended }) {
                 <LabelCheckbox
                     wrapClass='sub'
                     name='privacyTwo'
-                    onChange={(e) => { testCkeckboxes(e) }}
+                    onChange={(e) => { checkboxController(e, getValues, setValue) }}
                     params={{ required: true }}
                     register={register}
                     id='two'
@@ -169,7 +132,7 @@ export default function Form({ setIsSended }) {
                 <LabelCheckbox
                     wrapClass='sub'
                     name='privacyThree'
-                    onChange={(e) => { testCkeckboxes(e) }}
+                    onChange={(e) => { checkboxController(e, getValues, setValue) }}
                     params={{ required: true }}
                     register={register}
                     id='three'
@@ -199,6 +162,11 @@ const Wrapper = styled.form`
     .required{
         display: block;
         margin-top: 12px;
+        color: #6F6F71;
+
+        b{
+            color: #6F6F71;
+        }
     }
 
     button{

@@ -7,6 +7,15 @@ export const Label = styled.label`
     width: fit-content;
     line-height: 18px;
 
+    .error{
+        position: absolute;
+        font-size: 10px;
+        color: #D2261F;
+        bottom: 0;
+        left: 0;
+        transform: translateY(100%);
+    }
+
     &.sub{
         margin: 20px 12px 0;
 
@@ -21,13 +30,22 @@ export const Label = styled.label`
     }
 
     .label{
-        color: #75757A;
+        color: #6F6F71;
+
+        b{
+            color: #6F6F71;
+        }
     }
 
     .input-wrap{
         width: 18px;
         height: 18px;
         position: relative;
+
+        @media (max-width: 480px) {
+            width: 24px;
+            height: 24px;
+        }
 
         &::before {
             content: '';
@@ -55,6 +73,15 @@ export const Label = styled.label`
             }
         }
     }
+
+    .body2{
+        font-size: 14px !important;
+        line-height: 129% !important;
+        @media (max-width: 480px){
+            height: fit-content;
+            line-height: 24px !important;
+        }
+    }
 `
 
 export const Input = styled.input`
@@ -62,10 +89,15 @@ export const Input = styled.input`
     width: 18px;
     height: 18px;
     background: #FEF5F5;
-    border: 2px solid #75757A;
+    border: 2px solid #6F6F71;
     border-radius: 4px;
     position: relative;
     z-index: 1;
+
+    @media (max-width: 480px) {
+        width: 24px;
+        height: 24px;
+    }
 
     &:focus{
         outline: none;

@@ -43,6 +43,12 @@ export default function Two({ columns, contact, copyright, informPart }) {
                     ))}
                 </div>
                 <div className="sub second">
+                    <span className="title body2">{columns.pierwszaDolnaKolumna.tytul}</span>
+                    {columns.pierwszaDolnaKolumna.linki.map(el => (
+                        <Link to={el.link.url} className="body3">{el.link.title}</Link>
+                    ))}
+                </div>
+                <div className="sub second">
                     <span className="title body2">{columns.drugaGornaKolumna.tytul}</span>
                     {columns.drugaGornaKolumna.linki.map(el => (
                         <Link to={el.link.url} className="body3">{el.link.title}</Link>
@@ -51,12 +57,6 @@ export default function Two({ columns, contact, copyright, informPart }) {
                 <div className="sub second">
                     <span className="title body2">{columns.trzeciaKolumna.tytul}</span>
                     {columns.trzeciaKolumna.linki.map(el => (
-                        <Link to={el.link.url} className="body3">{el.link.title}</Link>
-                    ))}
-                </div>
-                <div className="sub second">
-                    <span className="title body2">{columns.pierwszaDolnaKolumna.tytul}</span>
-                    {columns.pierwszaDolnaKolumna.linki.map(el => (
                         <Link to={el.link.url} className="body3">{el.link.title}</Link>
                     ))}
                 </div>

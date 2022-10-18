@@ -51,11 +51,11 @@ const Item = styled.div`
     }
 
     .mail{
-        color: #75757A;
+        color: #6F6F71;
         text-decoration: none;
         svg{
             rect{
-                fill: #75757A;
+                fill: #6F6F71;
             }
         }
     }

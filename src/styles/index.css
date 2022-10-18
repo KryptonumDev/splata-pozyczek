@@ -17,6 +17,7 @@
     padding: 0;
     text-decoration: none;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
  }
 
  a,
@@ -39,12 +40,16 @@
  }
 
  main {
-    margin-top: clamp(110px, 23.4375vw, 200px);
+    margin-top: clamp(110px, 21.4375vw, 180px);
  }
 
  a,span{
-   font-weight: bolder;
+   font-weight: 600;
  }
+
+ b, strong {
+   font-weight: 600;
+}
 
  .arsenal {
     font-family: 'Arsenal', 'Source Sans Pro';

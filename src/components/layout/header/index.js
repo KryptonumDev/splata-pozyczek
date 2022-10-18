@@ -45,7 +45,7 @@ export default function Header({ data }) {
     <Wrapper>
       <Container>
         <Content>
-          <Link to='/'>
+          <Link aria-label='link do strony głównej' to='/'>
             <Logo />
           </Link>
           <Navigation className="desctop">
@@ -55,10 +55,10 @@ export default function Header({ data }) {
               )}
             </ul>
           </Navigation>
-          <FilledButton className="button">
+          <FilledButton to='/wniosek-on-line/' className="button">
             Wniosek online
           </FilledButton>
-          <MobileButton onClick={() => { setMobileMenuOpened(!isMobileMenuOpened) }}>
+          <MobileButton aria-label='open mobile menu' onClick={() => { setMobileMenuOpened(!isMobileMenuOpened) }}>
             <span />
           </MobileButton>
         </Content>
@@ -216,7 +216,7 @@ const Navigation = styled.nav`
     }
 
     a, button{
-        color: #75757A;
+        color: #6F6F71;
         text-decoration: none;
         background: transparent;
         border: none;

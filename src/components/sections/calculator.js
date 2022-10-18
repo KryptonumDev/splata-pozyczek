@@ -320,7 +320,7 @@ const Review = styled.div`
 
     .body1{
         font-weight: 600;
-        color: #75757A;
+        color: #6F6F71;
     }
 
     span{

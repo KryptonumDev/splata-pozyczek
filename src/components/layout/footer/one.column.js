@@ -15,7 +15,7 @@ export default function One({ columns, contact, copyright, informPart }) {
                     <div className="body2" dangerouslySetInnerHTML={{ __html: textParser(informPart.text) }} />
                     <div className="socials">
                         {informPart.socialMedia.map(el => (
-                            <a href={el.link}><img src={el.icon.localFile.publicURL} alt={el.icon.altText} /></a>
+                            <a aria-label={el.icon.altText} href={el.link}><img src={el.icon.localFile.publicURL} alt={el.icon.altText} /></a>
                         ))}
                     </div>
                 </div>

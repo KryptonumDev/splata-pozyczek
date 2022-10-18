@@ -72,7 +72,7 @@ const Content = styled.div`
     .body1{
         max-width: 540px;
         margin: clamp(16px, ${16 / 768 * 100}vw, 24px) auto 0 auto;
-        color: #75757A;
+        color: #6F6F71;
         font-weight: 400;
         
         a,span,strong{
@@ -81,7 +81,7 @@ const Content = styled.div`
     }
 
     .h4{
-        font-size: clamp(30px, 4.296875vw, 38px);
+        font-size: clamp(28px, ${38 / 768 * 100}vw, 38px);
     }
 
     .h4, .h6{
@@ -122,12 +122,12 @@ const Item = styled.div`
     }
 
     .text{
-        padding: 24px;
+        padding: clamp(12px, ${12 / 768 * 100}vw, 24px);
         text-align: left;
 
         .body2{
             margin-top: clamp(4px, ${8 / 768 * 100}vw, 8px);
-            color: #75757A;
+            color: #6F6F71;
         }
 
         a{

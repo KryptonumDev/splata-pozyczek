@@ -48,6 +48,10 @@ const Wrapper = styled.section`
     padding: 40px 0;
     max-width: 1366px;
     margin: 0 auto;
+
+    @media (max-width: 900px) {
+        border-radius: 0px;
+    }
 `
 
 const Content = styled.div`
@@ -82,5 +86,17 @@ const Item = styled.div`
         font-family: 'Arsenal';
         width: min-content;
         font-size: 20px !important;
+    }
+
+    @media (max-width: 900px) {
+        width: 20%;
+    }
+
+    @media (max-width: 540px) {
+        width: 25%;
+    }
+
+    @media (max-width: 420px) {
+        width: auto;
     }
 `

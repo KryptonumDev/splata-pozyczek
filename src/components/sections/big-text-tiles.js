@@ -168,7 +168,7 @@ const Item = styled.div`
     }
 
     .body2{
-        color: #75757A;
+        color: #6F6F71;
         margin-right: 32px;
 
         @media (max-width: 1024px){
