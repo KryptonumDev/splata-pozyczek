@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { Container } from "./../atoms/container"
 import { textParser } from './../../helpers/wysiwyg-modification'
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 
 export default function WhatAreWeDoing({ data: { title, punkty } }) {
     return (
@@ -12,9 +12,9 @@ export default function WhatAreWeDoing({ data: { title, punkty } }) {
                     <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                     <Grid items={punkty.length}>
                         {punkty.map(el => (
-                            <Item key={el.text}>
+                            <Item to={el.link.url} key={el.text}>
                                 <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
-                                <p className="h6 arsenal">{el.text}</p>
+                                <p className="h6 arsenal">{el.link.title}</p>
                             </Item>
                         ))}
                     </Grid>
@@ -29,7 +29,10 @@ fragment whatAreWeDoing on WpPage_Blocks_pageBuilder {
     whatAreWeDoing {
       title
       punkty {
-        text
+        link{
+            url
+            title
+        }
         icon {
           altText
           localFile{
@@ -69,10 +72,16 @@ const Grid = styled.div`
     gap: 32px;
 `
 
-const Item = styled.div`
+const Item = styled(Link)`
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-decoration: none;
+    transition: transform .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+
+    &:hover{
+        transform: translateY(-6px);
+    }
 
     img{
         margin-bottom: 12px;

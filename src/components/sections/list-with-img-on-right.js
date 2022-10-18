@@ -75,11 +75,16 @@ const Content = styled.div`
     max-width: 1000px;
     margin: 0 auto;
     display: grid;
+    align-items: center;
     grid-template-columns: auto clamp(280px, ${340 / 768 * 100}vw, 380px);
     grid-gap: 32px;
 
     .img{
         width: 100%;
+    }
+
+    @media (max-width: 768px) {
+        align-items: unset;
     }
 
     @media (max-width: 640px) {

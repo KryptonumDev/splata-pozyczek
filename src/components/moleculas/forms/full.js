@@ -5,8 +5,12 @@ import styled from "styled-components"
 import { FilledButton } from '../../atoms/buttons'
 import axios from "axios"
 import { graphql, useStaticQuery } from "gatsby"
+import LabelInput from "../label-input"
+import LabelCheckbox from "../label-checkbox"
+import { checkboxController } from "../../../helpers/checkbox-controller"
+import { checkboxAll } from "../../../helpers/checkbox-all"
 
-export default function Form({ setIsSended }) {
+export default function Form({ type, setIsSended }) {
 
     const { wpPage: { formyKontaktowe: { linkPrivacyPolicy, additionalInform, meesageThemes } } } = useStaticQuery(graphql`
     query {
@@ -30,7 +34,6 @@ export default function Form({ setIsSended }) {
     const onSubmit = data => {
         setIsSended(true)
 
-
         if (sendedCount < 3) {
             let url = 'https://testy.kryptonum.co.uk/wp-json/contact-form-7/v1/contact-forms/669/feedback'
             let body = new FormData()
@@ -38,7 +41,9 @@ export default function Form({ setIsSended }) {
             body.append("your-subject", data.message)
             body.append('your-name', data.name)
             body.append('your-phone', data.phone)
-            body.append('your-theme', data.theme)
+            if (type !== 'noTheme') {
+                body.append('your-theme', data.theme)
+            }
             axios.post(url, body)
                 .then((res) => {
                     if (res.status === 200) {
@@ -52,126 +57,130 @@ export default function Form({ setIsSended }) {
         }
     }
 
-    const inputAll = (val) => {
-        if (val.currentTarget.checked) {
-            setValue('privacyThree', true)
-            setValue('privacyTwo', true)
-            setValue('privacyOne', true)
-        } else {
-            setValue('privacyThree', false)
-            setValue('privacyTwo', false)
-            setValue('privacyOne', false)
-        }
-    }
-
-    const testCkeckboxes = (e) => {
-        let one = getValues("privacyOne")
-        let two = getValues("privacyTwo")
-        let three = getValues("privacyThree")
-
-        if (e.currentTarget.id === 'one') {
-            one = e.currentTarget.checked
-        } else if (e.currentTarget.id === 'two') {
-            two = e.currentTarget.checked
-        } else if (e.currentTarget.id === 'three') {
-            three = e.currentTarget.checked
-        }
-
-        if (one && two && three) {
-            setValue('checkAll', true)
-        } else {
-            setValue('checkAll', false)
-        }
-    }
-
-    // console.log(watch("example"))  watch input value by passing the name of it
-
     return (
         <Wrapper onSubmit={handleSubmit(onSubmit)}>
             <div className="content">
                 <div className="flex">
-                    <label className="input">
-                        <span className="label body2">Imię i nazwisko*</span>
-                        <input placeholder="" {...register("name", { required: true })} />
-                        {errors.name && <span className="error">Wymagane jest wypełnienie tego pola.</span>}
-                    </label>
-                    <label className="input">
-                        <span className="label body2">Wybierz temat*</span>
-                        <select {...register("theme")} >
-                            {meesageThemes.map(el => (
-                                <option key={el.theme} value={el.theme}>{el.theme}</option>
-                            ))}
-                        </select>
-                    </label>
+                    <LabelInput
+                        name='name'
+                        label='Imię i nazwisko*'
+                        params={{ required: true }}
+                        register={register}
+                        errors={errors}
+                    />
+                    {type !== 'noTheme'
+                        ? <LabelInput
+                            name='theme'
+                            label='Wybierz temat*'
+                            type='select'
+                            register={register}
+                            errors={errors}
+                            meesageThemes={meesageThemes}
+                        />
+                        : null
+                    }
                 </div>
                 <div className="flex">
-                    <label className="input">
-                        <span className="label body2">Adres e-mail*</span>
-                        <input placeholder="" {...register("email", { required: true })} />
-                        {errors.email && <span className="error">Wymagane jest wypełnienie tego pola.</span>}
-                    </label>
-                    <label className="input">
-                        <span className="label body2">Numer telefonu*</span>
-                        <input placeholder="___-___-___" {...register("phone", { required: true })} />
-                        {errors.phone && <span className="error">Wymagane jest wypełnienie tego pola.</span>}
-                    </label>
+                    <LabelInput
+                        name='email'
+                        label='Adres e-mail*'
+                        params={{ required: true }}
+                        register={register}
+                        errors={errors}
+                    />
+                    <LabelInput
+                        name='phone'
+                        label='Numer telefonu*'
+                        params={{ required: true }}
+                        register={register}
+                        errors={errors}
+                    />
                 </div>
-                <label className="input">
-                    <span className="label body2">Wiadomość*</span>
-                    <textarea rows='4' placeholder="Twoja wiadomość…" {...register("message", { required: true })} />
-                    {errors.message && <span className="error">Wymagane jest wypełnienie tego pola.</span>}
-                </label>
+                <LabelInput
+                    name='message'
+                    label='Wiadomość*'
+                    params={{ required: true }}
+                    register={register}
+                    errors={errors}
+                    type='textarea'
+                    rows='4'
+                />
                 <div className="flex">
                     <div>
-                        <label className="checkbox">
-                            <input {...register("checkAll")} onChange={(val) => { inputAll(val) }} type='checkbox' />
-                            <span className="label body2">Akceptuję wszystkie zgody</span>
-                        </label>
-                        <label className="checkbox sub">
-                            <input {...register("privacyOne", { required: true })} id='one' onChange={(e) => { testCkeckboxes(e) }} type='checkbox' />
-                            <span className="label body3">Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to={linkPrivacyPolicy.url}>Polityce prywatności</Link><b>*</b></span>
-                            {errors.privacyOne && <span className="error">Musisz wyrazić zgodę na powyższe zapisy.</span>}
-                        </label>
-                        <label className="checkbox sub">
-                            <input {...register("privacyTwo", { required: true })} id='two' onChange={(e) => { testCkeckboxes(e) }} type='checkbox' />
-                            <span className="label body3">Wyrażam zgodę, aby moje dane osobowe były przetwarzane <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b></span>
-                            {errors.privacyTwo && <span className="error">Musisz wyrazić zgodę na powyższe zapisy.</span>}
-                        </label>
-                        <label className="checkbox sub">
-                            <input  {...register("privacyThree", { required: true })} id='three' onChange={(e) => { testCkeckboxes(e) }} type='checkbox' />
-                            <span className="label body3">Wyrażam zgodę na otrzymywanie od Habza Group Sp. z o.o. <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b></span>
-                            {errors.privacyThree && <span className="error">Musisz wyrazić zgodę na powyższe zapisy.</span>}
-                        </label>
+                        <LabelCheckbox
+                            name='checkAll'
+                            onChange={(val) => { checkboxAll(val, setValue) }}
+                            params={{}}
+                            className='body2'
+                            register={register}
+                            id='all'
+                            errors={errors}>
+                            Akceptuję wszystkie zgody
+                        </LabelCheckbox>
+                        <LabelCheckbox
+                            wrapClass='sub'
+                            name='privacyOne'
+                            onChange={(e) => { checkboxController(e, getValues, setValue) }}
+                            params={{ required: true }}
+                            register={register}
+                            id='one'
+                            errors={errors}>
+                            Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to={linkPrivacyPolicy.url}>Polityce prywatności</Link><b>*</b>
+                        </LabelCheckbox>
+                        <LabelCheckbox
+                            wrapClass='sub'
+                            name='privacyTwo'
+                            onChange={(e) => { checkboxController(e, getValues, setValue) }}
+                            params={{ required: true }}
+                            register={register}
+                            id='two'
+                            errors={errors}>
+                            Wyrażam zgodę, aby moje dane osobowe były przetwarzane <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b>
+                        </LabelCheckbox>
+                        <LabelCheckbox
+                            wrapClass='sub'
+                            name='privacyThree'
+                            onChange={(e) => { checkboxController(e, getValues, setValue) }}
+                            params={{ required: true }}
+                            register={register}
+                            id='three'
+                            errors={errors}>
+                            Wyrażam zgodę na otrzymywanie od Habza Group Sp. z o.o. <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b>
+                        </LabelCheckbox>
+                        <FilledButton className="submit" as='button' type="submit">Wyślij</FilledButton>
                     </div>
                     <div>
                         <span className="required body3"><b>*</b>  – Pola obowiązkowe</span>
                         <div className="body3 text" dangerouslySetInnerHTML={{ __html: additionalInform }} />
                     </div>
                 </div>
-                <FilledButton as='button' type="submit">Wyślij</FilledButton>
             </div>
         </Wrapper>
     )
 }
 
 const Wrapper = styled.form`
-    padding: clamp(24px, ${24 / 768 * 100}vw, 48px) clamp(16px, ${24 / 768 * 100}vw, 48px);
-    max-width: 720px;
-    margin: 0 auto;
+    width: 100%;
     display: flex;
     justify-content: center;
+
+    .submit{
+        margin-top: 12px;
+    }
 
     .content {
         display: grid;
         grid-gap: 20px;
+        width: 100%;
     }
 
     .flex{
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-gap: 20px;
+        grid-gap: 32px;
 
         @media (max-width: 580px) {
+            grid-gap: 20px;
             grid-template-columns: 1fr;
         }
     }
@@ -193,7 +202,6 @@ const Wrapper = styled.form`
 
     .required{
         display: block;
-        margin-top: 12px;
     }
 
     button{

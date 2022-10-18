@@ -1,20 +1,18 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import { graphql } from "gatsby"
-import { Container } from "../atoms/container"
-import { textParser } from '../../helpers/wysiwyg-modification'
-import Form from "../moleculas/forms/short"
-import Success from "../moleculas/success-send"
+import { Container } from "../../atoms/container"
+import Form from "../../moleculas/forms/short"
+import { textParser } from "../../../helpers/wysiwyg-modification"
+import Success from "../../moleculas/success-send"
 
-export default function ShortContactForm({ data }) {
+export default function ShortContactForm({ title }) {
     const [isSended, setIsSended] = useState(false)
-
     return (
         <Wrapper>
             <Container className="container">
                 <Box>
                     <Content>
-                        <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(data.title) }} />
+                        <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                         <Form setIsSended={setIsSended} />
                     </Content>
                     <Success isSended={isSended} setIsSended={setIsSended} />
@@ -23,14 +21,6 @@ export default function ShortContactForm({ data }) {
         </Wrapper >
     )
 }
-
-export const query = graphql`
-fragment shortContactForm on WpPage_Blocks_pageBuilder {
-    shortContactForm {
-      title
-    }
-}
-`
 
 const Wrapper = styled.section`
     margin-top: var(--section);

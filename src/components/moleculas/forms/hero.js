@@ -104,17 +104,22 @@ export default function Form({ setIsSended, formTitle }) {
 }
 
 const Wrapper = styled.form`
-    padding: 24px;
+    padding: clamp(16px, ${16/768*100}vw, 24px) clamp(10px, ${10/768*100}vw, 24px);
     background-color: var(--color-light);
     border-radius: 4px;
     box-shadow: var(--shadow);
     display: flex;
     justify-content: center;
 
+    @media (max-width: 480px){
+        padding: 16px;
+    }
+
     .content{
         max-width: 350px;
         min-width: 300px;
         display: grid;
+        width: 100%;
         grid-gap: 20px;
     }
 

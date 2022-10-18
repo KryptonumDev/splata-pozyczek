@@ -201,6 +201,7 @@ const Wrapper = styled.footer`
         }
 
         .body2{
+            margin-top: 0;
             margin-bottom: 16px;
             display: block;
         }

@@ -82,6 +82,8 @@ const Content = styled.div`
 
     .h4{
         font-size: clamp(28px, ${38 / 768 * 100}vw, 38px);
+        max-width: 700px;
+        margin: 0 auto;
     }
 
     .h4, .h6{

@@ -10,7 +10,6 @@ import Faq from "../components/sections/faq"
 import OurExperts from "../components/sections/our-experts"
 import ThreeColumnText from "../components/sections/three-column-text"
 import RepeaterFourColumnText from "../components/sections/four-column-text-repeater"
-import ShortContactForm from "../components/sections/short-contact-form"
 import HeroForm from "../components/sections/hero-contact-form"
 import FourTilesWithTitle from "../components/sections/four-tiles-with-title"
 import FourBigTextTiles from "../components/sections/four-big-text-tiles"
@@ -41,7 +40,6 @@ import FourTilesExtended from "../components/sections/four-tiles-extended"
 import ThreePointsWithImgOnLeft from "../components/sections/three-points-with-img-on-left"
 import parse from 'html-react-parser'
 import ListWithImgOnLeft from "../components/sections/list-with-img-on-left"
-import ContactForm from "../components/sections/standart-contact-form"
 import BlogArchive from "../components/sections/blog-archive"
 import HeroImg from "../components/sections/hero-img"
 import ThreeColumnsFiles from "../components/sections/three-columns-files"
@@ -52,6 +50,7 @@ import HeroImgExtended from "../components/sections/hero-img-extended"
 import TwoCards from "../components/sections/two-cards"
 import TwoColumnsWithExtendedLinks from "../components/sections/two-columns-with-extended-links"
 import AllExperts from "../components/sections/All-experts"
+import ContactForm from "../components/sections/contact-form"
 
 export function Head({ data: { wpPage: { seo } } }) {
   const fullHead = parse(seo.fullHead, {
@@ -93,8 +92,6 @@ export default function Page({ data: { blogArchive, allWpEkspert, slider, wpPage
             return <ThreeColumnText data={el.threeColumnText} />
           case 'repeaterFourColumnText':
             return <RepeaterFourColumnText data={el.repeaterFourColumnText} />
-          case 'shortContactForm':
-            return <ShortContactForm data={el.shortContactForm} />
           case 'heroForm':
             return <HeroForm data={el.heroForm} title={title} />
           case 'fourTilesWithTitle':
@@ -181,7 +178,7 @@ export default function Page({ data: { blogArchive, allWpEkspert, slider, wpPage
       })}
     </main>
   )
-} // two_columns_with_extended_links 
+}
 
 export const query = graphql`
     query page($id: String!) {
@@ -216,7 +213,6 @@ export const query = graphql`
                 ...ourExperts
                 ...threeColumnText
                 ...repeaterFourColumnText
-                ...shortContactForm
                 ...heroForm
                 ...fourTilesWithTitle
                 ...fourBigTextTiles

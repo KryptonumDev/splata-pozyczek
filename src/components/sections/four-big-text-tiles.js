@@ -10,7 +10,7 @@ export default function FourBigTextTiles({ data: { title, text, highlighted, til
             <Container>
                 <h2 className="h4" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                 {text
-                    ? <p className="body1 subtext" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
+                    ? <p className="h6 subtext" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
                     : null}
                 <Grid>
                     {tiles.map((el, index) => {
@@ -60,7 +60,7 @@ const Wrapper = styled.section`
     margin-top: var(--section);
 
     .subtext{
-        max-width: 540px;
+        max-width: 840px;
         text-align: center;
         margin: 0 auto;
         margin-top: 16px;

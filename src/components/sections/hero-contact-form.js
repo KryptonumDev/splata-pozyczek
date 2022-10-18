@@ -13,8 +13,8 @@ export default function HeroForm({ data: { pageTitle, text, link, list, formTitl
 
   return (
     <Wrapper>
-      <Container>
-        <Content>
+      <Content>
+        <Container className="wrap">
           <TextPart>
             <Breadcrumbs title={title} />
             <h1 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(pageTitle) }} />
@@ -35,12 +35,14 @@ export default function HeroForm({ data: { pageTitle, text, link, list, formTitl
               ? <FilledButton className="link" target={link.target} to={link.url}>{link.title}</FilledButton>
               : null}
           </TextPart>
+        </Container>
+        <Container className="wrap container">
           <div className="box">
             <Form formTitle={formTitle} setIsSended={setIsSended} />
             <Success isSended={isSended} setIsSended={setIsSended} />
           </div>
-        </Content>
-      </Container>
+        </Container>
+      </Content>
     </Wrapper>
   )
 }
@@ -71,6 +73,28 @@ export const query = graphql`
 `
 
 const Wrapper = styled.section`
+  padding: 0 clamp(16px,3.125vw,80px);
+
+  .wrap{
+    padding: 0;
+  }
+
+  @media (max-width: 840px) {
+    
+    padding: 0;
+
+    .wrap{
+      padding: 0 clamp(16px,3.125vw,80px);
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .container{
+      padding: 0;
+    }
+  }
 `
 
 const Content = styled.div`

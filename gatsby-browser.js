@@ -7,7 +7,3 @@ export const wrapPageElement = ({ element, props }) => (
         {element}
     </Layout>
 )
-
-export const onRenderBody = ({ setHtmlAttributes }) => {
-    setHtmlAttributes({ lang: "pl" })
-}

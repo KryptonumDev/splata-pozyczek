@@ -152,6 +152,7 @@ const Grid = styled.div`
             }
 
             li{
+                color: #6F6F71;
                 &:first-child{
                     &::before{
                         content: url(${props => props.medium});

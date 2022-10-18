@@ -6,6 +6,7 @@ export const Label = styled.label`
     grid-gap: 4px;
     width: fit-content;
     line-height: 18px;
+    max-width: 300px;
 
     .error{
         position: absolute;
