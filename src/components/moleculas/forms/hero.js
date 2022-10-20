@@ -6,6 +6,9 @@ import { FilledButton } from '../../atoms/buttons'
 import axios from "axios"
 import { graphql, useStaticQuery } from "gatsby"
 import { textParser } from "../../../helpers/wysiwyg-modification"
+import LabelInput from "../label-input"
+import LabelCheckbox from "../label-checkbox"
+import LabelSelect from "../label-select"
 
 export default function Form({ setIsSended, formTitle }) {
 
@@ -25,7 +28,7 @@ export default function Form({ setIsSended, formTitle }) {
     }
   `)
 
-    const { reset, register, handleSubmit, formState: { errors } } = useForm()
+    const { reset, register, control, handleSubmit, formState: { errors } } = useForm()
     const [sendedCount, changeSendedCount] = useState(0)
 
     const onSubmit = data => {
@@ -58,43 +61,53 @@ export default function Form({ setIsSended, formTitle }) {
                     ? <h2 className="h5 arsenal" dangerouslySetInnerHTML={{ __html: textParser(formTitle) }} />
                     : null}
                 <div className="flex">
-                    <label className="input">
-                        <span className="label body2">Wybierz temat*</span>
-                        <select {...register("theme")} >
-                            {meesageThemes.map(el => (
-                                <option key={el.theme} value={el.theme}>{el.theme}</option>
-                            ))}
-                        </select>
-                    </label>
-                    <label className="input">
-                        <span className="label body2">Imię i nazwisko*</span>
-                        <input placeholder="" {...register("name", { required: true })} />
-                        {errors.name && <span className="error">Wymagane jest wypełnienie tego pola.</span>}
-                    </label>
+                    <LabelSelect
+                        control={control}
+                        themes={meesageThemes}
+                        name='theme'
+                        label='Wybierz temat*'
+                    />
+                    <LabelInput
+                        name='name'
+                        label='Imię i nazwisko*'
+                        params={{ required: true }}
+                        register={register}
+                        errors={errors}
+                    />
                 </div>
                 <div className="flex">
-                    <label className="input">
-                        <span className="label body2">Adres e-mail*</span>
-                        <input placeholder="" {...register("email", { required: true })} />
-                        {errors.email && <span className="error">Wymagane jest wypełnienie tego pola.</span>}
-                    </label>
-                    <label className="input">
-                        <span className="label body2">Numer telefonu*</span>
-                        <input placeholder="___-___-___" {...register("phone", { required: true })} />
-                        {errors.phone && <span className="error">Wymagane jest wypełnienie tego pola.</span>}
-                    </label>
+                    <LabelInput
+                        name='email'
+                        label='Adres e-mail*'
+                        params={{ required: true }}
+                        register={register}
+                        errors={errors}
+                    />
+                    <LabelInput
+                        name='phone'
+                        label='Numer telefonu*'
+                        params={{ required: true }}
+                        register={register}
+                        errors={errors}
+                    />
                 </div>
                 <div className="checkboxes">
-                    <label className="checkbox sub">
-                        <input {...register("privacyOne", { required: true })} type='checkbox' />
-                        <span className="label body3">Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to={linkPrivacyPolicy.url}>Polityce prywatności</Link><b>*</b></span>
-                        {errors.privacyOne && <span className="error">Musisz wyrazić zgodę na powyższe zapisy.</span>}
-                    </label>
-                    <label className="checkbox sub">
-                        <input  {...register("privacyThree", { required: true })} type='checkbox' />
-                        <span className="label body3">Wyrażam zgodę na otrzymywanie od Habza Group Sp. z o.o. <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b></span>
-                        {errors.privacyThree && <span className="error">Musisz wyrazić zgodę na powyższe zapisy.</span>}
-                    </label>
+                    <LabelCheckbox
+                        name='privacyTwo'
+                        params={{ required: true }}
+                        register={register}
+                        id='two'
+                        errors={errors}>
+                        Wyrażam zgodę, aby moje dane osobowe były przetwarzane <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b>
+                    </LabelCheckbox>
+                    <LabelCheckbox
+                        name='privacyThree'
+                        params={{ required: true }}
+                        register={register}
+                        id='three'
+                        errors={errors}>
+                        Wyrażam zgodę na otrzymywanie od Habza Group Sp. z o.o. <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b>
+                    </LabelCheckbox>
                 </div>
 
                 <FilledButton as='button' type="submit">Wyślij</FilledButton>
@@ -104,7 +117,7 @@ export default function Form({ setIsSended, formTitle }) {
 }
 
 const Wrapper = styled.form`
-    padding: clamp(16px, ${16/768*100}vw, 24px) clamp(10px, ${10/768*100}vw, 24px);
+    padding: clamp(16px, ${16 / 768 * 100}vw, 24px) clamp(10px, ${10 / 768 * 100}vw, 24px);
     background-color: var(--color-light);
     border-radius: 4px;
     box-shadow: var(--shadow);
@@ -113,6 +126,11 @@ const Wrapper = styled.form`
 
     @media (max-width: 480px){
         padding: 16px;
+    }
+
+    .checkboxes{
+        display: grid;
+        grid-gap: 20px;
     }
 
     .content{

@@ -39,7 +39,7 @@ export default function ExtendedListWithImgOnRight({ data: { title, listTitle, l
 }
 
 export const query = graphql`
-  fragment extendedListWithImgOnRight on WpPage_Blocks_pageBuilder {
+  fragment extendedListWithImgOnRight on WpPage_PageBuilder_Sections_ExtendedListWithImgOnRight {
     extendedListWithImgOnRight {
       title
       listTitle

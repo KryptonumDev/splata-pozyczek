@@ -28,7 +28,7 @@ export default function TextWithImgOnLeft({ data: { title, subTitle, tekst, imgD
 }
 
 export const query = graphql`
-  fragment textWithImgOnLeft on WpPage_Blocks_pageBuilder {
+  fragment textWithImgOnLeft on WpPage_PageBuilder_Sections_TextWithImgOnLeft {
     textWithImgOnLeft {
       title
       subTitle

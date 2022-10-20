@@ -32,8 +32,8 @@ export default function ListWithImgOnLeftRepeater({ data: { title, text, repeate
 }
 
 export const query = graphql`
-  fragment listWithImgOnLeftRepeater on WpPage_Blocks_pageBuilder {
-    listWithImgOnLeftRepeater : listWithImgOnRightRepeater {
+  fragment listWithImgOnLeftRepeater on WpPage_PageBuilder_Sections_ListWithImgOnLeftRepeater {
+    listWithImgOnLeftRepeater {
       title
       text
       repeater {

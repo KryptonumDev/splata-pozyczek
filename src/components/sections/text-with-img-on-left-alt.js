@@ -22,7 +22,7 @@ export default function TextWithImgOnLeftAlt({ data: { title, text, img } }) {
 }
 
 export const query = graphql`
-  fragment textWithImgOnLeftAlt on WpPage_Blocks_pageBuilder {
+  fragment textWithImgOnLeftAlt on WpPage_PageBuilder_Sections_TextWithImgOnLeftAlt {
     textWithImgOnLeftAlt {
       title
       text

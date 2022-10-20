@@ -21,7 +21,7 @@ export default function StepsToComplaints({ data: { steps } }) {
 }
 
 export const query = graphql`
-  fragment stepsToComplaints on WpPage_Blocks_pageBuilder {
+  fragment stepsToComplaints on WpPage_PageBuilder_Sections_StepsToComplaints {
     stepsToComplaints {
       steps {
         text

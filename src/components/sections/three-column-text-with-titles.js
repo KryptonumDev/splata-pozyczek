@@ -2,7 +2,6 @@ import { graphql } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 import { Container } from "../atoms/container"
-import { textParser } from './../../helpers/wysiwyg-modification'
 
 export default function ThreeColumnTextWithTitles({ data: { left, leftTitle, right, rightTitle, center, centerTitle } }) {
     return (
@@ -28,7 +27,7 @@ export default function ThreeColumnTextWithTitles({ data: { left, leftTitle, rig
 }
 
 export const query = graphql`
-fragment threeColumnTextWithTitles on WpPage_Blocks_pageBuilder {
+fragment threeColumnTextWithTitles on WpPage_PageBuilder_Sections_ThreeColumnTextWithTitles {
     threeColumnTextWithTitles {
         center
         centerTitle

@@ -49,7 +49,7 @@ export default function HeroForm({ data: { pageTitle, text, link, list, formTitl
 
 
 export const query = graphql`
-  fragment heroForm on WpPage_Blocks_pageBuilder {
+  fragment heroForm on WpPage_PageBuilder_Sections_HeroForm {
     heroForm {
       pageTitle
       text

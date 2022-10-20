@@ -32,7 +32,7 @@ export default function WhatIsCredit({ data: { list, listTitle, text, title } })
 }
 
 export const query = graphql`
-fragment whatIsCredit on WpPage_Blocks_pageBuilder {
+fragment whatIsCredit on WpPage_PageBuilder_Sections_WhatIsCredit {
     whatIsCredit {
         title
         text

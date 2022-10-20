@@ -101,7 +101,7 @@ export default function Calculator({ data: { title, text } }) {
 }
 
 export const query = graphql`
-  fragment calculator on WpPage_Blocks_pageBuilder {
+  fragment calculator on WpPage_PageBuilder_Sections_Calculator {
     calculator {
         title
         text

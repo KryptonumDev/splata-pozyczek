@@ -24,7 +24,7 @@ export default function FourTiles({ data: { title, text, tiles } }) {
 }
 
 export const query = graphql`
-  fragment fourTiles on WpPage_Blocks_pageBuilder {
+  fragment fourTiles on WpPage_PageBuilder_Sections_FourTiles {
     fourTiles {
       title
       text

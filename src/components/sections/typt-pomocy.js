@@ -32,9 +32,9 @@ export default function HelpTypes({ data: { title, text, types } }) {
         </Wrapper>
     )
 }
-
+// 
 export const query = graphql`
-fragment types on WpPage_Blocks_pageBuilder {
+fragment types on WpPage_PageBuilder_Sections_Types { 
     types {
       title
       text

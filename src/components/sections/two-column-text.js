@@ -24,7 +24,7 @@ export default function TwoColumnText({ data: { rightBottom, rightTop, leftTitle
 }
 
 export const query = graphql`
-  fragment twoColumnText on WpPage_Blocks_pageBuilder {
+  fragment twoColumnText on WpPage_PageBuilder_Sections_TwoColumnText {
     twoColumnText {
         rightTop
         rightBottom

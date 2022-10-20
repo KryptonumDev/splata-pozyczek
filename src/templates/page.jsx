@@ -63,117 +63,118 @@ export function Head({ data: { wpPage: { seo } } }) {
   return <>
     <title>{seo.title}</title>
     <meta name='description' content={seo.metaDesc} />
+    <meta name="robots" content="noindex" />
     {fullHead}
   </>
 }
 
-export default function Page({ data: { blogArchive, allWpEkspert, slider, wpPage: { title, blocks: { pageBuilder } } } }) {
+export default function Page({ data: { blogArchive, allWpEkspert, slider, wpPage: { title, page_builder: { sections } } } }) {
   return (
     <main>
-      {pageBuilder?.map(el => {
-        switch (el.switch) {
-          case 'heroHomepage':
+      {sections?.map(el => {
+        switch (el.__typename) {
+          case 'WpPage_PageBuilder_Sections_Hero':
             return <Hero data={el.hero} />
-          case 'whatAreWeDoing':
+          case 'WpPage_PageBuilder_Sections_WhatAreWeDoing':
             return <WhatAreWeDoing data={el.whatAreWeDoing} />
-          case 'effectiveSolutions':
+          case 'WpPage_PageBuilder_Sections_EffectiveSolutions':
             return <EffectiveSolutions data={el.effectiveSolutions} />
-          case 'types':
+          case 'WpPage_PageBuilder_Sections_Types':
             return <HelpTypes data={el.types} />
-          case 'whatIsCredit':
+          case 'WpPage_PageBuilder_Sections_WhatIsCredit':
             return <WhatIsCredit data={el.whatIsCredit} />
-          case 'cta':
+          case 'WpPage_PageBuilder_Sections_Cta':
             return <CallToAction data={el.cta} />
-          case 'faq':
+          case 'WpPage_PageBuilder_Sections_Faq':
             return <Faq data={el.faq} />
-          case 'ourExperts':
+          case 'WpPage_PageBuilder_Sections_OurExperts':
             return <OurExperts data={el.ourExperts} />
-          case 'threeColumnText':
+          case 'WpPage_PageBuilder_Sections_ThreeColumnText':
             return <ThreeColumnText data={el.threeColumnText} />
-          case 'repeaterFourColumnText':
+          case 'WpPage_PageBuilder_Sections__RepeaterFourColumnText':
             return <RepeaterFourColumnText data={el.repeaterFourColumnText} />
-          case 'heroForm':
+          case 'WpPage_PageBuilder_Sections_HeroForm':
             return <HeroForm data={el.heroForm} title={title} />
-          case 'fourTilesWithTitle':
+          case 'WpPage_PageBuilder_Sections_FourTilesWithTitle':
             return <FourTilesWithTitle data={el.fourTilesWithTitle} />
-          case 'fourBigTextTiles':
+          case 'WpPage_PageBuilder_Sections_FourBigTextTiles':
             return <FourBigTextTiles data={el.fourBigTextTiles} />
-          case 'twoColumnsCompare':
+          case 'WpPage_PageBuilder_Sections_TwoColumnsCompare':
             return <TwoColumnsCompare data={el.twoColumnsCompare} />
-          case 'listWithImgOnRight':
+          case 'WpPage_PageBuilder_Sections_ListWithImgOnRight':
             return <ListWithImgOnRight data={el.listWithImgOnRight} />
-          case 'stepsToCredit':
+          case 'WpPage_PageBuilder_Sections_StepsToCredit':
             return <StepsToCredit data={el.stepsToCredit} />
-          case 'twoColumnCompareColored':
+          case 'WpPage_PageBuilder_Sections_TwoColumnCompareColored':
             return <TwoColumnCompareColored data={el.twoColumnCompareColored} />
-          case 'longPanelWithIcon':
+          case 'WpPage_PageBuilder_Sections_LongPanelWithIcon':
             return <LongPanelWithIcon data={el.longPanelWithIcon} />
-          case 'threeColumnTextWithTitles':
+          case 'WpPage_PageBuilder_Sections_ThreeColumnTextWithTitles':
             return <ThreeColumnTextWithTitles data={el.threeColumnTextWithTitles} />
-          case 'twoColumnText':
+          case 'WpPage_PageBuilder_Sections_TwoColumnText':
             return <TwoColumnText data={el.twoColumnText} />
-          case 'blogSlider':
+          case 'WpPage_PageBuilder_Sections_BlogSlider':
             return <BlogSlider data={el.blogSlider} posts={slider.nodes} />
-          case 'twoColumnFlex':
+          case 'WpPage_PageBuilder_Sections_TwoColumnFlex':
             return <TwoColumnRepeater data={el.twoColumnFlex} />
-          case 'threeStepsWithLongPanel':
+          case 'WpPage_PageBuilder_Sections_ThreeStepsWithLongPanel':
             return <ThreeStepsWithLongPanel data={el.threeStepsWithLongPanel} />
-          case 'textWithImgOnLeft':
+          case 'WpPage_PageBuilder_Sections_TextWithImgOnLeft':
             return <TextWithImgOnLeft data={el.textWithImgOnLeft} />
-          case 'calculator':
+          case 'WpPage_PageBuilder_Sections_Calculator':
             return <Calculator data={el.calculator} />
-          case 'creditTypes':
+          case 'WpPage_PageBuilder_Sections_CreditTypes':
             return <CreditTypes data={el.creditTypes} />
-          case 'fourTiles':
+          case 'WpPage_PageBuilder_Sections_FourTiles':
             return <FourTiles data={el.fourTiles} />
-          case "threeCommentsWithTitle":
+          case "WpPage_PageBuilder_Sections_ThreeCommentsWithTitle":
             return <ThreeCommentsWithTitle data={el.threeCommentsWithTitle} />
-          case 'textWithImgOnRight':
+          case 'WpPage_PageBuilder_Sections_TextWithImgOnRight':
             return <TextWithImgOnRight data={el.textWithImgOnRight} />
-          case 'fourColumnText':
+          case 'WpPage_PageBuilder_Sections_FourColumnText':
             return <FourColumnText data={el.fourColumnText} />
-          case 'extendedListWithImgOnRight':
+          case 'WpPage_PageBuilder_Sections_ExtendedListWithImgOnRight':
             return <ExtendedListWithImgOnRight data={el.extendedListWithImgOnRight} />
-          case 'twoColumnFlexAlt':
+          case 'WpPage_PageBuilder_Sections_TwoColumnFlexAlt':
             return <TwoColumnRepeaterAlt data={el.twoColumnFlexAlt} />
-          case 'twoColumnVideo':
+          case 'WpPage_PageBuilder_Sections_TwoColumnVideo':
             return <TwoColumnVideo data={el.twoColumnVideo} />
-          case 'listWithImgOnLeftRepeater':
+          case 'WpPage_PageBuilder_Sections_ListWithImgOnLeftRepeater':
             return <ListWithImgOnLeftRepeater data={el.listWithImgOnLeftRepeater} />
-          case 'textWithImgOnLeftAlt':
+          case 'WpPage_PageBuilder_Sections_TextWithImgOnLeftAlt':
             return <TextWithImgOnLeftAlt data={el.textWithImgOnLeftAlt} />
-          case 'threeColumnsHighlighted':
+          case 'WpPage_PageBuilder_Sections_ThreeColumnsHighlighted':
             return <ThreeColumnsHighlighted data={el.threeColumnsHighlighted} />
-          case 'fourTilesExtended':
+          case 'WpPage_PageBuilder_Sections_FourTilesExtended':
             return <FourTilesExtended data={el.fourTilesExtended} />
-          case "threePointsWithImgOnLeft":
+          case "WpPage_PageBuilder_Sections_ThreePointsWithImgOnLeft":
             return <ThreePointsWithImgOnLeft data={el.threePointsWithImgOnLeft} />
-          case 'listWithImgOnLeft':
+          case 'WpPage_PageBuilder_Sections_ListWithImgOnLeft':
             return <ListWithImgOnLeft data={el.listWithImgOnLeft} />
-          case 'contactForm':
+          case 'WpPage_PageBuilder_Sections_ContactForm':
             return <ContactForm data={el.contactForm} />
-          case 'blogArchive':
+          case 'WpPage_PageBuilder_Sections_BlogArchive':
             return <BlogArchive data={el.blogArchive} title={title} allPosts={blogArchive.nodes} />
-          case 'heroImg':
+          case 'WpPage_PageBuilder_Sections_HeroImg':
             return <HeroImg data={el.heroImg} title={title} />
-          case 'heroImgExtended':
+          case 'WpPage_PageBuilder_Sections_HeroImgExtended':
             return <HeroImgExtended data={el.heroImgExtended} title={title} />
-          case 'threeColumnsFiles':
+          case 'WpPage_PageBuilder_Sections_ThreeColumnsFiles':
             return <ThreeColumnsFiles data={el.threeColumnsFiles} />
-          case 'stepsToComplaints':
+          case 'WpPage_PageBuilder_Sections_StepsToComplaints':
             return <StepsToComplaints data={el.stepsToComplaints} />
-          case 'twoColumnTextWithBoldText':
+          case 'WpPage_PageBuilder_Sections_TwoColumnTextWithBoldText':
             return <TwoColumnTextWithBoldText data={el.twoColumnTextWithBoldText} />
-          case 'bigTextTiles':
+          case 'WpPage_PageBuilder_Sections_BigTextTiles':
             return <BigTextTiles data={el.bigTextTiles} />
-          case 'twoCards':
+          case 'WpPage_PageBuilder_Sections_TwoCards':
             return <TwoCards data={el.twoCards} />
-          case 'twoColumnsWithExtendedLinks':
+          case 'WpPage_PageBuilder_Sections_TwoColumnsWithExtendedLinks':
             return <TwoColumnsWithExtendedLinks data={el.twoColumnsWithExtendedLinks} />
-          case 'allExperts':
-            return <AllExperts experts={allWpEkspert.nodes}/>
+          case 'WpPage_PageBuilder_Sections_AllExperts':
+            return <AllExperts experts={allWpEkspert.nodes} />
           default:
-            return null
+            return <p className="h2">{el.__typename}</p>
         }
       })}
     </main>
@@ -191,9 +192,9 @@ export const query = graphql`
               title
               metaDesc
             }
-            blocks {
-              pageBuilder {
-                switch
+            page_builder {
+              sections {
+                __typename
                 ...twoColumnsWithExtendedLinks
                 ...twoCards
                 ...heroImgExtended

@@ -57,7 +57,7 @@ export default function Faq({ data: { title, repeater } }) {
 }
 
 export const query = graphql`
-  fragment faq on WpPage_Blocks_pageBuilder {
+  fragment faq on WpPage_PageBuilder_Sections_Faq {
     faq {
       title
       repeater {

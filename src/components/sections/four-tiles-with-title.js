@@ -28,7 +28,7 @@ export default function FourTilesWithTitle({ data: { title, tekstWyrozniony, pla
 }
 
 export const query = graphql`
-  fragment fourTilesWithTitle on WpPage_Blocks_pageBuilder {
+  fragment fourTilesWithTitle on WpPage_PageBuilder_Sections_FourTilesWithTitle {
     fourTilesWithTitle {
       title
       tekstWyrozniony

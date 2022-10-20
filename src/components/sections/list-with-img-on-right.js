@@ -38,7 +38,7 @@ export default function ListWithImgOnRight({ data: { title, list, buttons, img, 
 }
 
 export const query = graphql`
-  fragment listWithImgOnRight on WpPage_Blocks_pageBuilder {
+  fragment listWithImgOnRight on WpPage_PageBuilder_Sections_ListWithImgOnRight {
     listWithImgOnRight {
       title
       list

@@ -30,7 +30,7 @@ export default function TwoColumnsCompare({ data: { columns, link } }) {
 }
 
 export const query = graphql`
-  fragment twoColumnsCompare on WpPage_Blocks_pageBuilder {
+  fragment twoColumnsCompare on WpPage_PageBuilder_Sections_TwoColumnsCompare {
     twoColumnsCompare {
       columns {
         title

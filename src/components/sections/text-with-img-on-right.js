@@ -25,7 +25,7 @@ export default function TextWithImgOnRight({ data: { title, text, boldText, link
 }
 
 export const query = graphql`
-  fragment textWithImgOnRight on WpPage_Blocks_pageBuilder {
+  fragment textWithImgOnRight on WpPage_PageBuilder_Sections_TextWithImgOnRight {
     textWithImgOnRight {
       title
       text

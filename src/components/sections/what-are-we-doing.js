@@ -25,7 +25,7 @@ export default function WhatAreWeDoing({ data: { title, punkty } }) {
 }
 
 export const query = graphql`
-fragment whatAreWeDoing on WpPage_Blocks_pageBuilder {
+fragment whatAreWeDoing on WpPage_PageBuilder_Sections_WhatAreWeDoing {
     whatAreWeDoing {
       title
       punkty {

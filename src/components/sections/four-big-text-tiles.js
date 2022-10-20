@@ -43,7 +43,7 @@ export default function FourBigTextTiles({ data: { title, text, highlighted, til
 }
 
 export const query = graphql`
-  fragment fourBigTextTiles on WpPage_Blocks_pageBuilder {
+  fragment fourBigTextTiles on WpPage_PageBuilder_Sections_FourBigTextTiles {
     fourBigTextTiles {
       title
       text

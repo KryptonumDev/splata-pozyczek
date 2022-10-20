@@ -36,7 +36,7 @@ export default function ThreePointsWithImgOnLeft({ data: { title, text, link, im
 }
 
 export const query = graphql`
-  fragment threePointsWithImgOnLeft on WpPage_Blocks_pageBuilder {
+  fragment threePointsWithImgOnLeft on WpPage_PageBuilder_Sections_ThreePointsWithImgOnLeft {
     threePointsWithImgOnLeft {
       title
       text

@@ -35,7 +35,7 @@ export default function TwoColumnRepeaterAlt({ data: { repeater } }) {
 }
 
 export const query = graphql`
-  fragment twoColumnRepeaterAlt on WpPage_Blocks_pageBuilder {
+  fragment twoColumnRepeaterAlt on WpPage_PageBuilder_Sections_TwoColumnFlexAlt {
     twoColumnFlexAlt {
       repeater {
         title

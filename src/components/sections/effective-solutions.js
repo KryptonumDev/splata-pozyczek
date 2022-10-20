@@ -32,7 +32,7 @@ export default function EffectiveSolutions({ data: { title, boldText, text, situ
 }
 
 export const query = graphql`
-fragment effectiveSolutions on WpPage_Blocks_pageBuilder {
+fragment effectiveSolutions on WpPage_PageBuilder_Sections_EffectiveSolutions {
     effectiveSolutions {
       title
       boldText

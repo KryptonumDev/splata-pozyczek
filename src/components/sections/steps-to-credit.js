@@ -35,7 +35,7 @@ export default function StepsToCredit({ data: { title, text, kroki } }) {
 }
 
 export const query = graphql`
-  fragment stepsToCredit on WpPage_Blocks_pageBuilder {
+  fragment stepsToCredit on WpPage_PageBuilder_Sections_StepsToCredit {
     stepsToCredit {
       title
       text

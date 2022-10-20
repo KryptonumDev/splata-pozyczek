@@ -19,7 +19,7 @@ export default function ThreeColumnText({ data: { left, right, center } }) {
 }
 
 export const query = graphql`
-fragment threeColumnText on WpPage_Blocks_pageBuilder {
+fragment threeColumnText on WpPage_PageBuilder_Sections_ThreeColumnText {
     threeColumnText {
         left
         right

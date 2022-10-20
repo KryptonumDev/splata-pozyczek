@@ -55,7 +55,7 @@ export default function HeroImgExtended({ data: { pageTitle, text, links, list, 
 
 
 export const query = graphql`
-  fragment heroImgExtended on WpPage_Blocks_pageBuilder {
+  fragment heroImgExtended on WpPage_PageBuilder_Sections_HeroImgExtended {
     heroImgExtended {
       pageTitle
       text

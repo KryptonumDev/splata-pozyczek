@@ -34,7 +34,7 @@ export default function ThreeColumnsFiles({ data: { item } }) {
 }
 
 export const query = graphql`
-  fragment threeColumnsFiles on WpPage_Blocks_pageBuilder {
+  fragment threeColumnsFiles on WpPage_PageBuilder_Sections_ThreeColumnsFiles {
     threeColumnsFiles {
       item {
         title

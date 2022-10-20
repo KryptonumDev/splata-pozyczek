@@ -32,7 +32,7 @@ export default function TwoColumnsWithExtendedLinks({ data: { title, text, links
 }
 
 export const query = graphql`
-  fragment twoColumnsWithExtendedLinks on WpPage_Blocks_pageBuilder {
+  fragment twoColumnsWithExtendedLinks on WpPage_PageBuilder_Sections_TwoColumnsWithExtendedLinks {
     twoColumnsWithExtendedLinks {
       title
       text

@@ -32,7 +32,7 @@ export default function FourTilesExtended({ data: { title, text, tiles } }) {
 }
 
 export const query = graphql`
-  fragment fourTilesExtended on WpPage_Blocks_pageBuilder {
+  fragment fourTilesExtended on WpPage_PageBuilder_Sections_FourTilesExtended {
     fourTilesExtended {
       title
       text

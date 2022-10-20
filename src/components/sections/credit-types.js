@@ -92,7 +92,7 @@ export default function CreditTypes({ data: { title, tekst, slider } }) {
 }
 
 export const query = graphql`
-  fragment creditTypes on WpPage_Blocks_pageBuilder {
+  fragment creditTypes on WpPage_PageBuilder_Sections_CreditTypes {
     creditTypes {
       title
       tekst

@@ -21,7 +21,7 @@ export default function TwoColumnCompareColored({ data: { redColumn, greenColumn
 }
 
 export const query = graphql`
-  fragment twoColumnCompareColored on WpPage_Blocks_pageBuilder {
+  fragment twoColumnCompareColored on WpPage_PageBuilder_Sections_TwoColumnCompareColored {
     twoColumnCompareColored {
       redColumn
       greenColumn

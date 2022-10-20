@@ -34,7 +34,7 @@ export default function RepeaterFourColumnText({ data }) {
 }
 
 export const query = graphql`
-fragment repeaterFourColumnText on WpPage_Blocks_pageBuilder {
+fragment repeaterFourColumnText on WpPage_PageBuilder_Sections_RepeaterFourColumnText {
     repeaterFourColumnText {
       firstTitle
       first

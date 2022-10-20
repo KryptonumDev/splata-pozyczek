@@ -40,7 +40,7 @@ export default function ThreeStepsWithLongPanel({ data: { title, text, steps, lo
 }
 
 export const query = graphql`
-  fragment threeStepsWithLongPanel on WpPage_Blocks_pageBuilder {
+  fragment threeStepsWithLongPanel on WpPage_PageBuilder_Sections_ThreeStepsWithLongPanel {
     threeStepsWithLongPanel {
       title
       text

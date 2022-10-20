@@ -45,7 +45,7 @@ export default function BlogArchive({ data: { pageTitle, text, list, link, relat
 }
 
 export const query = graphql`
-  fragment blogArchive on WpPage_Blocks_pageBuilder {
+  fragment blogArchive on WpPage_PageBuilder_Sections_BlogArchive {
     blogArchive {
       pageTitle
       text

@@ -107,7 +107,7 @@ export default function BlogSlider({ data, posts }) {
 }
 
 export const query = graphql`
-  fragment blogSlider on WpPage_Blocks_pageBuilder {
+  fragment blogSlider on WpPage_PageBuilder_Sections_BlogSlider {
     blogSlider {
       title
       relatedPosts {

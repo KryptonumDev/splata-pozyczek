@@ -21,7 +21,7 @@ export default function TwoColumnVideo({ data: { title, text, video } }) {
 }
 
 export const query = graphql`
-  fragment twoColumnVideo on WpPage_Blocks_pageBuilder {
+  fragment twoColumnVideo on WpPage_PageBuilder_Sections_TwoColumnVideo {
     twoColumnVideo {
       title
       text

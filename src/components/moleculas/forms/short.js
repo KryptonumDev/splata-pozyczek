@@ -9,6 +9,7 @@ import LabelInput from "../label-input"
 import LabelCheckbox from "../label-checkbox"
 import { checkboxController } from "../../../helpers/checkbox-controller"
 import { checkboxAll } from "../../../helpers/checkbox-all"
+import LabelSelect from "../label-select"
 
 export default function Form({ setIsSended }) {
 
@@ -28,7 +29,7 @@ export default function Form({ setIsSended }) {
     }
   `)
 
-    const { reset, register, setValue, handleSubmit, getValues, formState: { errors } } = useForm()
+    const { reset, register, setValue, handleSubmit, getValues, control, formState: { errors } } = useForm()
     const [sendedCount, changeSendedCount] = useState(0)
 
     const onSubmit = data => {
@@ -81,13 +82,11 @@ export default function Form({ setIsSended }) {
                 register={register}
                 errors={errors}
             />
-            <LabelInput
+            <LabelSelect
+                control={control}
+                themes={meesageThemes}
                 name='theme'
                 label='Wybierz temat*'
-                type='select'
-                register={register}
-                errors={errors}
-                meesageThemes={meesageThemes}
             />
             <LabelInput
                 name='message'

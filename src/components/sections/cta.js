@@ -40,7 +40,7 @@ export default function CallToAction({ data: { colorSchem, text, plainText, link
 }
 
 export const query = graphql`
-fragment cta on WpPage_Blocks_pageBuilder {
+fragment cta on WpPage_PageBuilder_Sections_Cta {
     cta {
       text
       plainText

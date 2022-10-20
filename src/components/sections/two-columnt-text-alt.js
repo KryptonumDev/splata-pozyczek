@@ -23,7 +23,7 @@ export default function TwoColumnTextWithBoldText({ data: { right, leftTitle, le
 }
 
 export const query = graphql`
-  fragment twoColumnTextWithBoldText on WpPage_Blocks_pageBuilder {
+  fragment twoColumnTextWithBoldText on WpPage_PageBuilder_Sections_TwoColumnTextWithBoldText {
     twoColumnTextWithBoldText {
         right
         leftTitle

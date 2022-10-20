@@ -34,7 +34,7 @@ export default function LongPanelWithIcon({ data: { template, longPanel } }) {
 }
 
 export const query = graphql`
-  fragment longPanelWithIcon on WpPage_Blocks_pageBuilder {
+  fragment longPanelWithIcon on WpPage_PageBuilder_Sections_LongPanelWithIcon  {
     longPanelWithIcon {
       template
       longPanel {

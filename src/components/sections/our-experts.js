@@ -21,7 +21,7 @@ export default function OurExperts({ data: { tytulSekcji, experts } }) {
 }
 
 export const query = graphql`
-fragment ourExperts on WpPage_Blocks_pageBuilder {
+fragment ourExperts on WpPage_PageBuilder_Sections_OurExperts {
     ourExperts {
       tytulSekcji
       experts {

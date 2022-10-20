@@ -38,7 +38,7 @@ export default function BigTextTiles({ data: { title, text, tiles } }) {
 }
 
 export const query = graphql`
-  fragment bigTextTiles on WpPage_Blocks_pageBuilder {
+  fragment bigTextTiles on WpPage_PageBuilder_Sections_BigTextTiles {
     bigTextTiles {
       title
       text

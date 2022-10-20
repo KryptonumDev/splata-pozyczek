@@ -6,7 +6,7 @@ import { textParser } from './../../helpers/wysiwyg-modification'
 import { FilledButton } from "../atoms/buttons"
 import Light from './../../images/check-light.svg'
 
-export default function ThreeColumnsHighlighted({ data: { title, points, link } }) {
+export default function ThreeColumnsHighlightedAlt({ data: { title, points } }) {
     return (
         <Wrapper>
             <Container className="container">
@@ -17,7 +17,6 @@ export default function ThreeColumnsHighlighted({ data: { title, points, link } 
                             <Item light={Light} dangerouslySetInnerHTML={{ __html: el.text }} />
                         ))}
                     </Grid>
-                    <FilledButton className="link" target={link.target} to={link.url}>{link.title}</FilledButton>
                 </Content>
             </Container>
         </Wrapper>
@@ -25,16 +24,11 @@ export default function ThreeColumnsHighlighted({ data: { title, points, link } 
 }
 
 export const query = graphql`
-  fragment threeColumnsHighlighted on WpPage_PageBuilder_Sections_ThreeColumnsHighlighted {
-    threeColumnsHighlighted {
+  fragment threeColumnsHighlightedAlt on WpPage_PageBuilder_Sections_ThreeColumnsHighlightedAlt {
+    threeColumnsHighlightedAlt {
       title
       points {
         text
-      }
-      link {
-        target
-        title
-        url
       }
     }
   }
@@ -65,9 +59,6 @@ const Wrapper = styled.section`
 `
 
 const Content = styled.div`
-    box-shadow: var(--shadow);
-    border-radius: 4px;
-    background-color: var(--color-light);
     padding: 24px clamp(16px, ${48 / 1920 * 100}vw, 48px);
     margin-top: 24px;
 
@@ -89,6 +80,9 @@ const Item = styled.div`
     padding-left: 44px;
     position: relative;
     min-height: 32px;
+    box-shadow: var(--shadow);
+    border-radius: 4px;
+    background-color: var(--color-light);
 
     &::before{
         content: url(${props => props.light});

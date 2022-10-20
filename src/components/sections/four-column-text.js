@@ -20,7 +20,7 @@ export default function FourColumnText({ data: { first, second, third, fourth } 
 }
 
 export const query = graphql`
-fragment fourColumnText on WpPage_Blocks_pageBuilder {
+fragment fourColumnText on WpPage_PageBuilder_Sections_FourColumnText {
     fourColumnText {
         first
         second

@@ -17,7 +17,7 @@ export default function ContactForm({ data: { title, type } }) {
 }
 
 export const query = graphql`
-fragment contactForm on WpPage_Blocks_pageBuilder {
+fragment contactForm on WpPage_PageBuilder_Sections_ContactForm {
     contactForm {
       title
       type

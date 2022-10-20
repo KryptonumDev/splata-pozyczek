@@ -34,7 +34,7 @@ export default function ThreeCommentsWithTitle({ data: { title, text, comments }
 }
 
 export const query = graphql`
-  fragment threeCommentsWithTitle  on WpPage_Blocks_pageBuilder {
+  fragment threeCommentsWithTitle  on WpPage_PageBuilder_Sections_ThreeCommentsWithTitle {
     threeCommentsWithTitle {
       title
       text

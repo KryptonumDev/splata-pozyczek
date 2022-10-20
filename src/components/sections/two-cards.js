@@ -35,7 +35,7 @@ export default function TwoCards({ data: { cards } }) {
 }
 
 export const query = graphql`
-  fragment twoCards on WpPage_Blocks_pageBuilder {
+  fragment twoCards on WpPage_PageBuilder_Sections_TwoCards {
     twoCards {
       cards{
         image{

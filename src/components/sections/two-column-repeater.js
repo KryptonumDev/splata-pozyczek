@@ -42,7 +42,7 @@ export default function TwoColumnRepeater({ data: { title, text, repeater } }) {
 }
 
 export const query = graphql`
-  fragment twoColumnRepeater on WpPage_Blocks_pageBuilder {
+  fragment twoColumnRepeater on WpPage_PageBuilder_Sections_TwoColumnFlex {
     twoColumnFlex {
       title
       text

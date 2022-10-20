@@ -32,8 +32,8 @@ export default function Hero({ data: { text, pageTitle, przyciski, background } 
 
 
 export const query = graphql`
-  fragment hero on WpPage_Blocks_pageBuilder {
-    hero {
+  fragment hero on WpPage_PageBuilder_Sections_Hero {
+    hero : sekcjaPowitalnaNaStronieGlownej {
       pageTitle
       text
       przyciski {

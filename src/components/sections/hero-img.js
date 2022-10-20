@@ -44,7 +44,7 @@ export default function HeroImg({ data: { pageTitle, text, link, list, imgOnRigh
 
 
 export const query = graphql`
-  fragment heroImg on WpPage_Blocks_pageBuilder {
+  fragment heroImg on WpPage_PageBuilder_Sections_HeroImg {
     heroImg {
       pageTitle
       text
