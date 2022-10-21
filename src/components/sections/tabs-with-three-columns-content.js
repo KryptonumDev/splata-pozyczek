@@ -8,7 +8,7 @@ import { FilledButton, OutlinedButton } from "../atoms/buttons"
 import { motion, useMotionValue } from "framer-motion"
 import { transform } from "../../helpers/slider"
 
-export default function CreditTypes({ data: { title, tekst, slider } }) {
+export default function TabsWithThreeColumnsContent({ data: { repeater } }) {
 
     const x = useMotionValue(0)
 
@@ -27,8 +27,6 @@ export default function CreditTypes({ data: { title, tekst, slider } }) {
         <Wrapper >
             <Container>
                 <Content>
-                    <h2 className="h4" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
-                    <p className="h6 text" dangerouslySetInnerHTML={{ __html: textParser(tekst) }} />
                     <ControlButtonsWrap>
                         {maxButtonsTransform > 0
                             ? (
@@ -41,7 +39,7 @@ export default function CreditTypes({ data: { title, tekst, slider } }) {
                             : null}
                         <ControlWrap className={maxButtonsTransform > 0 ? 'button' : 'no-button'} id='control-wrap'>
                             <Control style={{ x }} drag='x' dragConstraints={{ left: maxButtonsTransform > 0 ? -maxButtonsTransform : 0, right: 0 }} maxButtonsTransform={maxButtonsTransform} id='control'>
-                                {slider.map((el, index) => (
+                                {repeater.map((el, index) => (
                                     <button tabIndex='-1' className={index === active ? 'active' : ''} onClick={() => { setActive(index) }}><span>{el.tabName}</span></button>
                                 ))}
                             </Control>
@@ -57,20 +55,26 @@ export default function CreditTypes({ data: { title, tekst, slider } }) {
                             : null}
                     </ControlButtonsWrap>
                     <InnerContent>
-                        <Grid count={slider.length}>
-                            {slider.map((el, index) => (
+                        <Grid count={repeater.length}>
+                            {repeater.map((el, index) => (
                                 <Item className={index === active ? 'active' : ''}>
-                                    <GatsbyImage className="image" image={el.obrazekPoLewej.localFile.childImageSharp.gatsbyImageData} alt={el.obrazekPoLewej.altText} />
-                                    <div>
-                                        <h3 className="h6" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
-                                        <div className="body2" dangerouslySetInnerHTML={{ __html: el.text }} />
-                                        <div className="buttons">
-                                            {el.przyciski.map((el, index) => {
-                                                if (index) {
-                                                    return <OutlinedButton target={el.link.target} to={el.link.url}>{el.link.title}</OutlinedButton>
-                                                }
-                                                return <FilledButton target={el.link.target} to={el.link.url}>{el.link.title}</FilledButton>
-                                            })}
+                                    <GatsbyImage className="image" image={el.image.localFile.childImageSharp.gatsbyImageData} alt={el.image.altText} />
+                                    <div className="grid">
+                                        <div>
+                                            <h3 className="h6" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
+                                            <div className="body1 highlihted" dangerouslySetInnerHTML={{ __html: el.subTitle }} />
+                                            <div className="body1" dangerouslySetInnerHTML={{ __html: el.textFirst }} />
+                                        </div>
+                                        <div>
+                                            <div className="body1" dangerouslySetInnerHTML={{ __html: el.textSecond }} />
+                                            <div className="buttons">
+                                                {el.przyciski.map((el, index) => {
+                                                    if (index) {
+                                                        return <OutlinedButton target={el.link.target} to={el.link.url}>{el.link.title}</OutlinedButton>
+                                                    }
+                                                    return <FilledButton target={el.link.target} to={el.link.url}>{el.link.title}</FilledButton>
+                                                })}
+                                            </div>
                                         </div>
                                     </div>
                                 </Item>
@@ -84,14 +88,14 @@ export default function CreditTypes({ data: { title, tekst, slider } }) {
 }
 
 export const query = graphql`
-  fragment creditTypes on WpPage_PageBuilder_Sections_CreditTypes {
-    creditTypes {
-      title
-      tekst
-      slider {
+  fragment tabsWithThreeColumnsContent on WpPage_PageBuilder_Sections_TabsWithThreeColumnsContent {
+    tabsWithThreeColumnsContent {
+      repeater : zakladkaOProdukcie {
         tabName
         title
-        text
+        subTitle
+        textFirst
+        textSecond
         przyciski {
           link {
             url
@@ -99,7 +103,7 @@ export const query = graphql`
             target
           }
         }
-        obrazekPoLewej {
+        image {
           altText
           localFile {
             childImageSharp {
@@ -155,13 +159,13 @@ const ControlWrap = styled.div`
     margin: 0 auto;
     overflow: hidden;
 
+    @media (max-width: 1208px) {
+        margin: 0 68px;
+    }
+
     &.no-button {
         margin: 0;
         overflow: unset;
-    }
-
-    @media (max-width: 1208px) {
-        margin: 0 68px;
     }
 
     @media (max-width: 820px ) {
@@ -295,7 +299,6 @@ const Content = styled.div`
 `
 
 const InnerContent = styled.div`
-    max-width: 1000px;
     margin: 0 auto;
     overflow: hidden;
 `
@@ -307,16 +310,49 @@ const Grid = styled.div`
 
 const Item = styled.div`
     display: grid;
-    grid-template-columns: 1fr clamp(300px, ${300 / 768 * 100}vw, 380px);
+    grid-template-columns: clamp(300px, ${340 / 768 * 100}vw, 380px) 1fr;
     grid-gap: clamp(12px, ${24 / 768 * 100}vw, 32px);
     position: absolute;
     opacity: 0;
     pointer-events: none;
+
+    .grid{
+        display: grid;
+        grid-gap: clamp(12px, ${24 / 768 * 100}vw, 32px);
+        grid-template-columns: 1fr 1fr;
+        height: fit-content;
+    }
+
+    @media (max-width: 1024px) {
+        .grid{
+            grid-template-columns: 1fr ;
+        }
+    }
+
  
     &.active{
         pointer-events: all;
         opacity: 1;
         position: relative;
+    }
+
+    .body1{
+        display: grid;
+        grid-gap: 16px;
+        p{
+            color: #6F6F71;
+        }
+    }
+
+    .highlihted{
+        padding: 16px 12px;
+        border-radius: 4px;
+        box-shadow: var(--shadow);
+        background-color: var(--color-light);
+        margin: 16px 0;
+        p{
+            color: #050505;
+        }
     }
 
     .image{
@@ -338,9 +374,23 @@ const Item = styled.div`
         margin-top: 16px;
         display: grid;
         grid-gap: 8px;
+
+        @media (max-width: 1120px) {
+            a{
+                padding: 12px;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            a{
+                padding: 12px 44px;
+                width: fit-content;
+            }
+        }
     }
 
-    @media (max-width: 820px) {
+    @media (max-width: 660px) {
         grid-template-columns: 1fr;   
 
         .image{
@@ -348,14 +398,6 @@ const Item = styled.div`
             margin: 0 auto;
         }
 
-        .body2{
-            column-gap: 16px;
-            columns: 2;
-            display: block;
-            p{
-                break-inside: avoid;
-            }
-        }
 
         .buttons{
             margin-top: 24px;
@@ -365,14 +407,7 @@ const Item = styled.div`
         }
     }
 
-    @media (max-width: 640px) {
-        .body2{
-            display: grid;
-            grid-gap: 12px;
-        }
-    }
-
-    @media (max-width: 540px) {
+    @media (max-width: 600px) {
         .buttons{
             justify-content: unset;
             margin-top: 8px;

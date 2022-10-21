@@ -51,6 +51,19 @@ import TwoCards from "../components/sections/two-cards"
 import TwoColumnsWithExtendedLinks from "../components/sections/two-columns-with-extended-links"
 import AllExperts from "../components/sections/All-experts"
 import ContactForm from "../components/sections/contact-form"
+import ThreeColumnsHighlightedAlt from "../components/sections/three-columns-highlighted-alt"
+import InformAndVideo from "../components/sections/inform-and-video"
+import Map from "../components/sections/map"
+import TwoColumnTextHighlighted from "../components/sections/two-column-text-highlighted"
+import ThreeTiles from "../components/sections/three-tiles"
+import ThreeColumnTextMiddleHighlighted from "../components/sections/three-column-text-middle-highlighted"
+import MultiplyTilesWithTextBlock from "../components/sections/multiply-tiles-with-text-block"
+import TwoColumnsTextAndIconsList from "../components/sections/two-columns-text-and-icons-list"
+import TwoColumnTextRepeaterSepareted from "../components/sections/two-column-text-repeater-separeted"
+import PrivacyPolicy from "../components/sections/privacy-policy"
+import TwoColumnTextRepeater from "../components/sections/two-column-text-repeater"
+import TwoColumnsTextAndIconsListAlt from "../components/sections/two-columns-text-and-icons-list-alt"
+import TabsWithThreeColumnsContent from "../components/sections/tabs-with-three-columns-content"
 
 export function Head({ data: { wpPage: { seo } } }) {
   const fullHead = parse(seo.fullHead, {
@@ -173,12 +186,38 @@ export default function Page({ data: { blogArchive, allWpEkspert, slider, wpPage
             return <TwoColumnsWithExtendedLinks data={el.twoColumnsWithExtendedLinks} />
           case 'WpPage_PageBuilder_Sections_AllExperts':
             return <AllExperts experts={allWpEkspert.nodes} />
+          case 'WpPage_PageBuilder_Sections_ThreeColumnsHighlightedAlt':
+            return <ThreeColumnsHighlightedAlt data={el.threeColumnsHighlightedAlt} />
+          case 'WpPage_PageBuilder_Sections_InformAndVideo':
+            return <InformAndVideo data={el.informAndVideo} />
+          case 'WpPage_PageBuilder_Sections_Map':
+            return <Map data={el.map} />
+          case 'WpPage_PageBuilder_Sections_TwoColumnTextHighlighted':
+            return <TwoColumnTextHighlighted data={el.twoColumnTextHighlighted} />
+          case 'WpPage_PageBuilder_Sections_ThreeTiles':
+            return <ThreeTiles data={el.threeTiles} />
+          case 'WpPage_PageBuilder_Sections_ThreeColumnTextMiddleHighlighted':
+            return <ThreeColumnTextMiddleHighlighted data={el.threeColumnTextMiddleHighlighted} />
+          case 'WpPage_PageBuilder_Sections_MultiplyTilesWithTextBlock':
+            return <MultiplyTilesWithTextBlock data={el.multiplyTilesWithTextBlock} />
+          case 'WpPage_PageBuilder_Sections_TwoColumnsTextAndIconsList':
+            return <TwoColumnsTextAndIconsList data={el.twoColumnsTextAndIconsList} />
+          case 'WpPage_PageBuilder_Sections_TwoColumnTextRepeaterSepareted':
+            return <TwoColumnTextRepeaterSepareted data={el.twoColumnTextRepeaterSepareted} />
+          case 'WpPage_PageBuilder_Sections_PrivacyPolicy':
+            return <PrivacyPolicy data={el.privacyPolicy} />
+          case 'WpPage_PageBuilder_Sections_TwoColumnTextRepeater':
+            return <TwoColumnTextRepeater data={el.twoColumnTextRepeater} />
+          case 'WpPage_PageBuilder_Sections_TwoColumnsTextAndIconsListAlt':
+            return <TwoColumnsTextAndIconsListAlt data={el.twoColumnsTextAndIconsListAlt} />
+          case 'WpPage_PageBuilder_Sections_TabsWithThreeColumnsContent':
+            return <TabsWithThreeColumnsContent data={el.tabsWithThreeColumnsContent}/>
           default:
             return <p className="h2">{el.__typename}</p>
         }
       })}
     </main>
-  )
+  ) // tabs_with_three_columns_content
 }
 
 export const query = graphql`
@@ -195,6 +234,19 @@ export const query = graphql`
             page_builder {
               sections {
                 __typename
+                ...tabsWithThreeColumnsContent
+                ...twoColumnsTextAndIconsListAlt
+                ...twoColumnTextRepeater
+                ...privacyPolicy
+                ...twoColumnTextRepeaterSepareted
+                ...twoColumnsTextAndIconsList
+                ...multiplyTilesWithTextBlock
+                ...threeColumnTextMiddleHighlighted
+                ...threeTiles
+                ...twoColumnTextHighlighted
+                ...map
+                ...informAndVideo
+                ...threeColumnsHighlightedAlt
                 ...twoColumnsWithExtendedLinks
                 ...twoCards
                 ...heroImgExtended

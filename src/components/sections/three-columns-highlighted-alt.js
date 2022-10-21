@@ -10,11 +10,11 @@ export default function ThreeColumnsHighlightedAlt({ data: { title, points } }) 
     return (
         <Wrapper>
             <Container className="container">
-                <h2 className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                 <Content>
                     <Grid>
                         {points.map(el => (
-                            <Item light={Light} dangerouslySetInnerHTML={{ __html: el.text }} />
+                            <Item className="body1" light={Light} dangerouslySetInnerHTML={{ __html: el.text }} />
                         ))}
                     </Grid>
                 </Content>
@@ -37,12 +37,11 @@ export const query = graphql`
 const Wrapper = styled.section`
     margin-top: var(--section);
 
-    .container{
-        max-width: 1000px;
-    }
 
-    .h6{
-        max-width: 380px;
+    .h4{
+        max-width: 700px;
+        text-align: center;
+        margin: 0 auto;
     }
 
     .link{
@@ -59,44 +58,48 @@ const Wrapper = styled.section`
 `
 
 const Content = styled.div`
-    padding: 24px clamp(16px, ${48 / 1920 * 100}vw, 48px);
-    margin-top: 24px;
-
-    @media (max-width: 640px) {
-        width: calc(100% + clamp(32px,6.25vw,160px));
-        transform: translateX(calc(clamp(16px,3.125vw,80px) * -1));
-    }
+    margin-top: clamp(24px, ${32 / 768 * 100}vw, 32px);
 `
 
 const Grid = styled.div`
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: clamp(16px, ${24 / 768 * 100}vw, 32px);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: clamp(16px, ${32 / 768 * 100}vw, 32px);
+
+    @media (max-width: 820px) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 550px) {
+        grid-template-columns: 1fr;
+    }
 `
 
 const Item = styled.div`
-    width: calc(100% / 3 - 32px);
-    padding-left: 44px;
+    padding: 16px 16px 16px 60px;
     position: relative;
     min-height: 32px;
     box-shadow: var(--shadow);
     border-radius: 4px;
     background-color: var(--color-light);
+    font-weight: 600;
+        min-height: 32px;
+        box-sizing: content-box;
 
     &::before{
         content: url(${props => props.light});
         position: absolute;
-        left: 0;
-        top: 0;
+        left: 16px;
+        top: 16px;
     }
 
-    @media (max-width: 864px) {
-        width: calc(100% / 2 - 20px);
+    @media (max-width: 550px) {
+        padding: 12px 12px 12px 48px;
+
+        &::before{
+            left: 8px;
+            top: 12px;
+        }
     }
 
-    @media (max-width: 480px) {
-        width: 100%;
-        padding-top: 4px;
-    }
 `

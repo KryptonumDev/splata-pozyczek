@@ -132,10 +132,16 @@ const List = styled.ul`
   display: grid;
   grid-gap: 8px;
   margin-top: 24px;
-  
+
+  img{
+    width: 32px;
+    height: 32px;
+  }
+
   li{
     display: grid;
     grid-template-columns: 32px auto;
+    grid-gap: 8px;
 
     .content{
       padding: 10px;
