@@ -6,7 +6,7 @@ import Filter from "./filter"
 import Pagination from "./pagination"
 import Hero from "./hero"
 
-export default function BlogArchive({ data: { pageTitle, text, list, link, relatedPost }, title, allPosts, location, categories, slug }) {
+export default function BlogArchive({ data: { pageTitle, text, list, link, relatedPost }, title, allPosts, location, categories, slug, url }) {
 
   const [currentPage, setCurrentPage] = useState(() => {
     if (location.search === '') {
@@ -16,7 +16,7 @@ export default function BlogArchive({ data: { pageTitle, text, list, link, relat
 
     return parseInt(urlParams.get('page'))
   })
-  const [currentFilter, setCurrentFilter] = useState(slug)
+  const [currentFilter] = useState(slug)
 
   const filtredPosts = useMemo(() => {
     let posts = allPosts
@@ -45,38 +45,47 @@ export default function BlogArchive({ data: { pageTitle, text, list, link, relat
     })
   }, [location])
 
-  useEffect(() => {
-    if (typeof window !== `undefined` && location.search !== '') {
-      let url = '/blog/'
+  // useEffect(() => {
+    // if (typeof window !== `undefined`) {
+    //   let pageUrl 
+    //   debugger
+    //   if (location.search !== '') {
+    //     if (currentPage !== 1) {
+    //       pageUrl = url + '?page=' + currentPage
+    //     }
+    //     if (location.search !== '?page=' + currentPage) {
+    //       window.history.pushState({}, '', pageUrl);
+    //     }
+    //   } else if (location.search === '' && currentPage !== 1) {
+    //     pageUrl = url + '?page=' + currentPage
+    //     window.history.pushState({}, '', pageUrl);
+    //   }
+    // }
+  // }, [currentPage])
 
-      if (currentPage !== 1) {
-        url = url + '?page=' + currentPage
-      }
-      if (location.search !== '?page=' + currentPage) {
-        window.history.pushState({}, '', url);
-      }
-    }
-  }, [currentPage])
+  // if (location.search !== '') {
+  //   const urlParams = new URLSearchParams(location.search)
+  //   const page = urlParams.get('page')
 
-  if (location.search !== '') {
-    const urlParams = new URLSearchParams(location.search)
-    const page = urlParams.get('page')
-
-    if (page > Math.ceil(filtredPosts.length / 12)) {
-      navigate(location.pathname)
-    }
-  }
+  //   if (page > Math.ceil(filtredPosts.length / 12)) {
+  //     navigate(location.pathname)
+  //   }
+  // }
 
   return (
     <Wrapper>
-      <Hero
-        list={list}
-        text={text}
-        title={title}
-        link={link}
-        pageTitle={pageTitle} />
+      {currentFilter
+        ? null
+        : <Hero
+          list={list}
+          text={text}
+          title={title}
+          link={link}
+          relatedPost={relatedPost}
+          pageTitle={pageTitle} />}
+
       <Filter
-        setCurrentFilter={setCurrentFilter}
+        currentFilter={currentFilter}
         categories={categories} />
       <PostGrid
         page={currentPage}
@@ -85,6 +94,7 @@ export default function BlogArchive({ data: { pageTitle, text, list, link, relat
         page={currentPage}
         setCurrentPage={setCurrentPage}
         posts={filtredPosts}
+        url={url}
       />
     </Wrapper>
   )

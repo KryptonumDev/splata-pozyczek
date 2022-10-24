@@ -8,9 +8,9 @@ export default function PostGrid({ allPosts, page }) {
             <p className="h6 arsenal title">Najnowsze <span className="blue">artykuły</span></p>
             <Grid>
                 {allPosts.map((el, index) => {
-                    if (el.blogPost.previewText) { // dont show bugged post
+                    if (true    ) { // dont show bugged post el.blogPost.previewText
                         if ((index >= (11 * (page - 1) + (page - 1))) && index <= (11 * page) + (page - 1)) {
-                            return <Card el={el} allowLink={true} />
+                            return  <div>{el.slug}</div>//<Card el={el} allowLink={true} />
                         }
                     }
                     return null
@@ -23,7 +23,7 @@ export default function PostGrid({ allPosts, page }) {
 const Wrapper = styled.section`
     max-width: 1000px;
     margin: 0 auto;
-    margin-top: var(--section);
+    margin-top: clamp(24px, ${32 / 768 * 100}vw, 48px);
 
     .title{
         margin-bottom: 32px;

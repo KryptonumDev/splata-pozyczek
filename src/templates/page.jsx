@@ -167,7 +167,7 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
           case 'WpPage_PageBuilder_Sections_ContactForm':
             return <ContactForm data={el.contactForm} />
           case 'WpPage_PageBuilder_Sections_BlogArchive':
-            return <BlogArchive slug={pageContext.slug} categories={allWpCategory.nodes} location={location} data={el.blogArchive} title={title} allPosts={blogArchive.nodes} />
+            return <BlogArchive url={pageContext.url} slug={pageContext.slug} categories={allWpCategory.nodes} location={location} data={el.blogArchive} title={title} allPosts={blogArchive.nodes} />
           case 'WpPage_PageBuilder_Sections_HeroImg':
             return <HeroImg data={el.heroImg} title={title} />
           case 'WpPage_PageBuilder_Sections_HeroImgExtended':

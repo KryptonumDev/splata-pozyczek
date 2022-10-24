@@ -23,7 +23,8 @@ exports.createPages = async ({
         component: resolve('src/templates/page.jsx'),
         context: {
           id,
-          slug: null
+          slug: null,
+          url: uri
         },
       });
     }
@@ -45,7 +46,8 @@ exports.createPages = async ({
       component: resolve('src/templates/page.jsx'),
       context: {
         id: 'cG9zdDoxMDEz',
-        slug
+        slug,
+        url: '/blog/tag/' + slug + '/'
       },
     });
   });

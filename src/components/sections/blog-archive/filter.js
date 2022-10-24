@@ -1,10 +1,11 @@
 import { motion, useMotionValue } from "framer-motion"
+import { Link } from "gatsby"
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import { transform } from "../../../helpers/slider"
 import { Container } from "../../atoms/container"
 
-export default function Filter({ categories, setCurrentFilter }) {
+export default function Filter({ categories, currentFilter }) {
 
     const x = useMotionValue(0)
     const [maxButtonsTransform, setMaxButtonsTransform] = useState(0)
@@ -18,7 +19,7 @@ export default function Filter({ categories, setCurrentFilter }) {
     }, [])
 
     return (
-        <Wrapper>
+        <Wrapper currentFilter={currentFilter}>
             <Container>
                 <ControlButtonsWrap>
                     {maxButtonsTransform > 0
@@ -34,7 +35,7 @@ export default function Filter({ categories, setCurrentFilter }) {
                         <Control style={{ x }} drag='x' dragConstraints={{ left: maxButtonsTransform > 0 ? -maxButtonsTransform : 0, right: 0 }} maxButtonsTransform={maxButtonsTransform} id='control'>
                             {categories.map(el => {
                                 if (el.count) {
-                                    return <Button onClick={() => { setCurrentFilter(el.slug) }} background={el.category.color}>{el.name} ({el.count})</Button>
+                                    return <Button to={'/blog/tag/' + el.slug + '/'} background={el.category.color}>{el.name} ({el.count})</Button>
                                 }
                                 return null
                             })}
@@ -56,7 +57,9 @@ export default function Filter({ categories, setCurrentFilter }) {
 }
 
 const Wrapper = styled.div`
-
+    ${props => props.currentFilter ? null : `
+        margin-top: var(--section);
+    `}
 `
 
 const ControlButtonsWrap = styled.div`
@@ -195,24 +198,12 @@ const Control = styled(motion.div)`
         }
     }
 
-    @media (max-width: 820px ){
-        gap: 0;
-        box-shadow: var(--shadow);
-        padding: 4px 12px;
-
-        button{
-            padding: 6px 0;
-        }
-    }
-
-    @media (max-width: 480px){
-        gap: 4px;
-    }
-
 `
 
-const Button = styled.button`
+const Button = styled(Link)`
     background-color: ${props => props.background} !important;
     padding: 2px 20px;
     border-radius: 44px;
+    text-decoration: none;
+    color: #050505;
 `

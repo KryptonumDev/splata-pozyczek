@@ -1,11 +1,12 @@
 import React from "react"
 import styled from "styled-components"
 import { textParser } from "../../../helpers/wysiwyg-modification"
+import Card from "../../atoms/blog-card"
 import { FilledButton } from "../../atoms/buttons"
 import { Container } from "../../atoms/container"
 import Breadcrumbs from "../../moleculas/breadcrumbs"
 
-export default function Hero({list, text, title, link, pageTitle}) {
+export default function Hero({list, text, title, link, pageTitle, relatedPost}) {
     return (
         <Wrapper>
             <Container>
@@ -33,7 +34,7 @@ export default function Hero({list, text, title, link, pageTitle}) {
                     </TextPart>
                     <div>
                         <p className="arsenal h6 title">Artykuł na <span className="blue">dziś</span></p>
-                        {/* <Card el={relatedPost} allowLink={true} alternate={true} /> */}
+                        <Card el={relatedPost} allowLink={true} alternate={true} />
                     </div>
                 </Content>
             </Container>
