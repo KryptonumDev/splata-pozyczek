@@ -2,14 +2,19 @@ import React from "react"
 import styled from "styled-components"
 import Card from "../../atoms/blog-card"
 
-export default function PostGrid({ allPosts }) {
+export default function PostGrid({ allPosts, page }) {
     return (
         <Wrapper>
             <p className="h6 arsenal title">Najnowsze <span className="blue">artykuły</span></p>
             <Grid>
-                {allPosts.map(el => (
-                    <Card el={el} allowLink={true} />
-                ))}
+                {allPosts.map((el, index) => {
+                    if (el.blogPost.previewText) { // dont show bugged post
+                        if ((index >= (11 * (page - 1) + (page - 1))) && index <= (11 * page) + (page - 1)) {
+                            return <Card el={el} allowLink={true} />
+                        }
+                    }
+                    return null
+                })}
             </Grid>
         </Wrapper>
     )

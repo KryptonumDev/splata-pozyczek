@@ -8,6 +8,7 @@ export default function Map({ data: { url } }) {
         <Wrapper>
             <Container>
                 <iframe
+                    title="video"
                     src={url}
                     allowfullscreen=""
                     loading="lazy"

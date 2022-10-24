@@ -1,45 +1,91 @@
-import React from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import styled from "styled-components"
-import { graphql } from "gatsby"
-import { Container } from "../../atoms/container"
-import Breadcrumbs from "../../moleculas/breadcrumbs"
-import { textParser } from "./../../../helpers/wysiwyg-modification"
-import { FilledButton } from "../../atoms/buttons"
+import { graphql, navigate } from "gatsby"
 import PostGrid from "./post-grid"
-import Card from "../../atoms/blog-card"
+import Filter from "./filter"
+import Pagination from "./pagination"
+import Hero from "./hero"
 
-export default function BlogArchive({ data: { pageTitle, text, list, link, relatedPost }, title, allPosts }) {
+export default function BlogArchive({ data: { pageTitle, text, list, link, relatedPost }, title, allPosts, location, categories, slug }) {
+
+  const [currentPage, setCurrentPage] = useState(() => {
+    if (location.search === '') {
+      return 1
+    }
+    const urlParams = new URLSearchParams(location.search)
+
+    return parseInt(urlParams.get('page'))
+  })
+  const [currentFilter, setCurrentFilter] = useState(slug)
+
+  const filtredPosts = useMemo(() => {
+    let posts = allPosts
+    if (currentFilter) {
+      posts = posts.filter(el => {
+        let isFiltred = false
+        el.categories.nodes?.forEach(inEl => {
+          if (inEl.slug === currentFilter) {
+            isFiltred = true
+          }
+        })
+        return isFiltred
+      })
+    }
+    return posts
+  }, [currentFilter, allPosts])
+
+  useEffect(() => {
+    setCurrentPage(() => {
+      if (location.search === '') {
+        return 1
+      }
+      const urlParams = new URLSearchParams(location.search)
+
+      return parseInt(urlParams.get('page'))
+    })
+  }, [location])
+
+  useEffect(() => {
+    if (typeof window !== `undefined` && location.search !== '') {
+      let url = '/blog/'
+
+      if (currentPage !== 1) {
+        url = url + '?page=' + currentPage
+      }
+      if (location.search !== '?page=' + currentPage) {
+        window.history.pushState({}, '', url);
+      }
+    }
+  }, [currentPage])
+
+  if (location.search !== '') {
+    const urlParams = new URLSearchParams(location.search)
+    const page = urlParams.get('page')
+
+    if (page > Math.ceil(filtredPosts.length / 12)) {
+      navigate(location.pathname)
+    }
+  }
+
   return (
     <Wrapper>
-      <Container>
-        <Content>
-          <TextPart>
-            <Breadcrumbs title={title} />
-            <h1 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(pageTitle) }} />
-            {text
-              ? <p className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
-              : null}
-            {list
-              ? <List>
-                {list.map(el => (
-                  <li>
-                    <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
-                    <div className="content" dangerouslySetInnerHTML={{ __html: textParser(el.tekstObokIkony) }} />
-                  </li>
-                ))}
-              </List>
-              : null}
-            {link?.url
-              ? <FilledButton className="link" target={link.target} to={link.url}>{link.title}</FilledButton>
-              : null}
-          </TextPart>
-          <div>
-            <p className="arsenal h6 title">Artykuł na <span className="blue">dziś</span></p>
-            <Card el={relatedPost} allowLink={true} alternate={true} />
-          </div>
-        </Content>
-      </Container>
-      <PostGrid allPosts={allPosts} />
+      <Hero
+        list={list}
+        text={text}
+        title={title}
+        link={link}
+        pageTitle={pageTitle} />
+      <Filter
+        setCurrentFilter={setCurrentFilter}
+        categories={categories} />
+      <PostGrid
+        page={currentPage}
+        allPosts={filtredPosts} />
+      <Pagination
+        page={currentPage}
+        setCurrentPage={setCurrentPage}
+        posts={filtredPosts}
+      />
     </Wrapper>
   )
 }
@@ -105,56 +151,5 @@ const Wrapper = styled.section`
     color: #050505 !important;
     margin-bottom: 16px;
   }
-
-`
-
-const List = styled.ul`
-  display: grid;
-  grid-gap: 8px;
-  margin-top: 24px;
-  
-  li{
-    display: grid;
-    grid-template-columns: 32px auto;
-
-    .content{
-      padding: 10px;
-    }
-  }
-  
-`
-
-const Content = styled.div`
-  display: grid;
-  grid-gap: 32px;
-  grid-template-columns: 1fr 1fr;
-  max-width: 1000px;
-  margin: 0 auto;
-
-  @media (max-width: 840px) {
-    grid-template-columns: 1fr;
-  }
-
-  .box{
-    position: relative;
-  }
-
-  .h4{
-    margin-top: 8px;
-    margin-bottom: 12px;
-    font-size: clamp(28px, 4.296875vw, 38px);
-  }
-
-  .h6{
-    color: #6F6F71;
-    font-family: 'Arsenal';
-  }
-
-  .link{
-    margin-top: 24px;
-  }
-`
-
-const TextPart = styled.div`
 
 `

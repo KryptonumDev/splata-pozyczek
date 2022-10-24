@@ -3,7 +3,6 @@ import styled from "styled-components"
 import { graphql } from "gatsby"
 import { Container } from "../atoms/container"
 import { textParser } from './../../helpers/wysiwyg-modification'
-import { FilledButton } from "../atoms/buttons"
 import Light from './../../images/check-light.svg'
 
 export default function ThreeColumnsHighlightedAlt({ data: { title, points } }) {

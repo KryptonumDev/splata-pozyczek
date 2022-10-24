@@ -22,9 +22,31 @@ exports.createPages = async ({
         path: uri,
         component: resolve('src/templates/page.jsx'),
         context: {
-          id
+          id,
+          slug: null
         },
       });
     }
+  });
+
+  const { data: { allWpCategory: { nodes: categoryNodes } } } = await graphql(`
+  query{
+    allWpCategory {
+      nodes {
+        slug
+      }
+    }
+  }
+  `)
+
+  categoryNodes.forEach(({ slug }) => {
+    createPage({
+      path: '/blog/tag/' + slug + '/',
+      component: resolve('src/templates/page.jsx'),
+      context: {
+        id: 'cG9zdDoxMDEz',
+        slug
+      },
+    });
   });
 }

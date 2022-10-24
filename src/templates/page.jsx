@@ -81,7 +81,7 @@ export function Head({ data: { wpPage: { seo } } }) {
   </>
 }
 
-export default function Page({ data: { blogArchive, allWpEkspert, slider, wpPage: { title, page_builder: { sections } } } }) {
+export default function Page({ pageContext, location, data: { blogArchive, allWpCategory, allWpEkspert, slider, wpPage: { title, page_builder: { sections } } } }) {
   return (
     <main>
       {sections?.map(el => {
@@ -167,7 +167,7 @@ export default function Page({ data: { blogArchive, allWpEkspert, slider, wpPage
           case 'WpPage_PageBuilder_Sections_ContactForm':
             return <ContactForm data={el.contactForm} />
           case 'WpPage_PageBuilder_Sections_BlogArchive':
-            return <BlogArchive data={el.blogArchive} title={title} allPosts={blogArchive.nodes} />
+            return <BlogArchive slug={pageContext.slug} categories={allWpCategory.nodes} location={location} data={el.blogArchive} title={title} allPosts={blogArchive.nodes} />
           case 'WpPage_PageBuilder_Sections_HeroImg':
             return <HeroImg data={el.heroImg} title={title} />
           case 'WpPage_PageBuilder_Sections_HeroImgExtended':
@@ -211,7 +211,7 @@ export default function Page({ data: { blogArchive, allWpEkspert, slider, wpPage
           case 'WpPage_PageBuilder_Sections_TwoColumnsTextAndIconsListAlt':
             return <TwoColumnsTextAndIconsListAlt data={el.twoColumnsTextAndIconsListAlt} />
           case 'WpPage_PageBuilder_Sections_TabsWithThreeColumnsContent':
-            return <TabsWithThreeColumnsContent data={el.tabsWithThreeColumnsContent}/>
+            return <TabsWithThreeColumnsContent data={el.tabsWithThreeColumnsContent} />
           default:
             return <p className="h2">{el.__typename}</p>
         }
@@ -363,6 +363,16 @@ export const query = graphql`
                 }
               }
             }
+          }
+        }
+        allWpCategory {
+          nodes {
+            category {
+              color
+            }
+            count
+            name
+            slug
           }
         }
         allWpEkspert {
