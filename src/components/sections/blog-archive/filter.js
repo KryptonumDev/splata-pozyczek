@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { transform } from "../../../helpers/slider"
 import { Container } from "../../atoms/container"
 
-export default function Filter({ categories, currentFilter }) {
+export default function Filter({ categories, isAltLayout }) {
 
     const x = useMotionValue(0)
     const [maxButtonsTransform, setMaxButtonsTransform] = useState(0)
@@ -19,7 +19,7 @@ export default function Filter({ categories, currentFilter }) {
     }, [])
 
     return (
-        <Wrapper currentFilter={currentFilter}>
+        <Wrapper isAltLayout={isAltLayout}>
             <Container>
                 <ControlButtonsWrap>
                     {maxButtonsTransform > 0
@@ -57,7 +57,7 @@ export default function Filter({ categories, currentFilter }) {
 }
 
 const Wrapper = styled.div`
-    ${props => props.currentFilter ? null : `
+    ${props => props.isAltLayout ? null : `
         margin-top: var(--section);
     `}
 `

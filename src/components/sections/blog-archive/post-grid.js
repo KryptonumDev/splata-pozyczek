@@ -10,7 +10,7 @@ export default function PostGrid({ allPosts, page }) {
                 {allPosts.map((el, index) => {
                     if (true    ) { // dont show bugged post el.blogPost.previewText
                         if ((index >= (11 * (page - 1) + (page - 1))) && index <= (11 * page) + (page - 1)) {
-                            return  <div>{el.slug}</div>//<Card el={el} allowLink={true} />
+                            return  <div>{el.slug}</div> // <Card el={el} allowLink={true} />
                         }
                     }
                     return null

@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react"
 import styled from "styled-components"
-import { graphql, navigate } from "gatsby"
+import { graphql } from "gatsby"
 import PostGrid from "./post-grid"
 import Filter from "./filter"
 import Pagination from "./pagination"
@@ -45,36 +45,9 @@ export default function BlogArchive({ data: { pageTitle, text, list, link, relat
     })
   }, [location])
 
-  // useEffect(() => {
-    // if (typeof window !== `undefined`) {
-    //   let pageUrl 
-    //   debugger
-    //   if (location.search !== '') {
-    //     if (currentPage !== 1) {
-    //       pageUrl = url + '?page=' + currentPage
-    //     }
-    //     if (location.search !== '?page=' + currentPage) {
-    //       window.history.pushState({}, '', pageUrl);
-    //     }
-    //   } else if (location.search === '' && currentPage !== 1) {
-    //     pageUrl = url + '?page=' + currentPage
-    //     window.history.pushState({}, '', pageUrl);
-    //   }
-    // }
-  // }, [currentPage])
-
-  // if (location.search !== '') {
-  //   const urlParams = new URLSearchParams(location.search)
-  //   const page = urlParams.get('page')
-
-  //   if (page > Math.ceil(filtredPosts.length / 12)) {
-  //     navigate(location.pathname)
-  //   }
-  // }
-
   return (
     <Wrapper>
-      {currentFilter
+      {currentFilter || currentPage !== 1
         ? null
         : <Hero
           list={list}
@@ -83,9 +56,8 @@ export default function BlogArchive({ data: { pageTitle, text, list, link, relat
           link={link}
           relatedPost={relatedPost}
           pageTitle={pageTitle} />}
-
       <Filter
-        currentFilter={currentFilter}
+        isAltLayout={currentFilter || currentPage !== 1}
         categories={categories} />
       <PostGrid
         page={currentPage}
@@ -94,8 +66,7 @@ export default function BlogArchive({ data: { pageTitle, text, list, link, relat
         page={currentPage}
         setCurrentPage={setCurrentPage}
         posts={filtredPosts}
-        url={url}
-      />
+        url={url} />
     </Wrapper>
   )
 }
@@ -161,5 +132,4 @@ const Wrapper = styled.section`
     color: #050505 !important;
     margin-bottom: 16px;
   }
-
 `
