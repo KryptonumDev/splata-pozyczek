@@ -41,7 +41,7 @@ export default function TwoColumnsTextAndIconsListAlt({ data: { title, text, rep
 
                                 <div className="text">
                                     <h3 className="body1" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
-                                    <p className="body2" dangerouslySetInnerHTML={{ __html: textParser(el.text) }} />
+                                    <div className="body2" dangerouslySetInnerHTML={{ __html: el.text }} />
                                 </div>
                             </Item>
                         ))}
@@ -132,6 +132,9 @@ const Item = styled.div`
     .body2{
         display: grid;
         grid-gap: 8px;
+        p{
+            color: #6F6F71;
+        }
     }
 
     &:first-child{

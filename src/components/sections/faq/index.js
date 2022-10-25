@@ -4,12 +4,15 @@ import styled from "styled-components"
 import { Container } from "../../atoms/container"
 import { textParser } from '../../../helpers/wysiwyg-modification'
 import FaqItem from "./item"
+import { Helmet } from "react-helmet"
 
 export default function Faq({ data: { title, repeater } }) {
 
+
     const arrays = useMemo(() => {
-        let first = []
-        let second = []
+        const first = []
+        const second = []
+        const arr = []
 
         repeater.forEach((el, index) => {
             if (index === 0 || !(index % 2)) {
@@ -17,13 +20,33 @@ export default function Faq({ data: { title, repeater } }) {
             } else {
                 second.push(el)
             }
+
+            arr.push({
+                "@type": "Question",
+                "name": el.question,
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": el.answer
+                }
+            })
         })
 
-        return { first, second }
+        return { first, second, arr }
     }, [repeater])
+
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": arrays.arr
+    };
 
     return (
         <Wrapper>
+            <Helmet>
+                <script type="application/ld+json">
+                    {JSON.stringify(schema)}
+                </script>
+            </Helmet>
             <Container>
                 <Content>
                     {title

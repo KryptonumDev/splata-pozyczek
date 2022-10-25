@@ -6,17 +6,15 @@ import Header from "./header"
 
 export default function Layout({ children }) {
 
-    // const data = JSON.stringify({
-    //     post: 1094,
-    //     author_name: 'Bodzio',
+    // axios.post('https://testy.kryptonum.co.uk/wp-json/wp/v2/comments', {
+    //     post: 2767,
+    //     author_name: 'Bodziasdo',
     //     author_email: "shevabogdan16@gmail.com",
-    //     content: 'test',
-    // });
-
-    // axios.post('https://testy.kryptonum.co.uk/wp-json/wp/v2/comments', data)
-    // .then(res => {
-    //     debugger
+    //     content: 'tesasdt',
     // })
+    //     .then(res => {
+    //         debugger
+    //     })
 
     return (
         <Wrapper>

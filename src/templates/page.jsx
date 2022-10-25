@@ -24,7 +24,6 @@ import BlogSlider from "../components/sections/blog-slider"
 import TwoColumnRepeater from "../components/sections/two-column-repeater"
 import ThreeStepsWithLongPanel from "../components/sections/three-steps-with-long-panel"
 import TextWithImgOnLeft from "../components/sections/text-with-img-on-left"
-import Calculator from "../components/sections/calculator"
 import CreditTypes from "../components/sections/credit-types"
 import FourTiles from "../components/sections/four-tiles"
 import ThreeCommentsWithTitle from "../components/sections/three-comments-with-title"
@@ -38,7 +37,6 @@ import TextWithImgOnLeftAlt from "../components/sections/text-with-img-on-left-a
 import ThreeColumnsHighlighted from "../components/sections/three-columns-highlighted"
 import FourTilesExtended from "../components/sections/four-tiles-extended"
 import ThreePointsWithImgOnLeft from "../components/sections/three-points-with-img-on-left"
-import parse from 'html-react-parser'
 import ListWithImgOnLeft from "../components/sections/list-with-img-on-left"
 import BlogArchive from "../components/sections/blog-archive"
 import HeroImg from "../components/sections/hero-img"
@@ -64,20 +62,56 @@ import PrivacyPolicy from "../components/sections/privacy-policy"
 import TwoColumnTextRepeater from "../components/sections/two-column-text-repeater"
 import TwoColumnsTextAndIconsListAlt from "../components/sections/two-columns-text-and-icons-list-alt"
 import TabsWithThreeColumnsContent from "../components/sections/tabs-with-three-columns-content"
+import HeroText from "../components/sections/hero-text"
+import Calculator from "../components/sections/calculator"
 
 export function Head({ data: { wpPage: { seo } } }) {
-  const fullHead = parse(seo.fullHead, {
-    replace: el => {
-      if (el.data === "\n") {
-        return <br />
-      }
-    }
-  })
+
+  const canonical = 'https://splatapozyczek.pl' + seo.canonical
+
   return <>
-    <title>{seo.title}</title>
-    <meta name='description' content={seo.metaDesc} />
+    <meta charSet="utf-8" />
     <meta name="robots" content="noindex" />
-    {fullHead}
+    <meta property="og:site_name" content={seo.opengraphSiteName} />
+
+    {canonical
+      ? (
+        <>
+          <link rel="canonical" href={canonical} />
+          <meta property="og:url" content={canonical} />
+        </>
+      )
+      : null}
+
+    {seo?.title
+      ? (
+        <>
+          <title>{seo.title}</title>
+          <meta property="twitter:title" content={seo.title} />
+          <meta property="og:title" content={seo.title} />
+        </>
+      )
+      : null}
+
+    {seo?.metaDesc
+      ? (
+        <>
+          <meta name="description" content={seo.metaDesc} />
+          <meta property="twitter:description" content={seo.metaDesc} />
+          <meta property="og:description" content={seo.metaDesc} />
+        </>
+      )
+      : null}
+
+    {seo.opengraphImage?.localFile?.publicURL
+      ? (
+        <>  
+          <meta property="og:image" content={'https://splatapozyczek.pl' + seo.opengraphImage.localFile.publicURL} />
+          <meta property="twitter:image" content={'https://splatapozyczek.pl' + seo.opengraphImage.localFile.publicURL} />
+        </>
+      )
+      : null}
+
   </>
 }
 
@@ -107,7 +141,7 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
           case 'WpPage_PageBuilder_Sections__RepeaterFourColumnText':
             return <RepeaterFourColumnText data={el.repeaterFourColumnText} />
           case 'WpPage_PageBuilder_Sections_HeroForm':
-            return <HeroForm data={el.heroForm} title={title} />
+            return <HeroForm data={el.heroForm} uri={pageContext.url} title={title} />
           case 'WpPage_PageBuilder_Sections_FourTilesWithTitle':
             return <FourTilesWithTitle data={el.fourTilesWithTitle} />
           case 'WpPage_PageBuilder_Sections_FourBigTextTiles':
@@ -169,9 +203,9 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
           case 'WpPage_PageBuilder_Sections_BlogArchive':
             return <BlogArchive url={pageContext.url} slug={pageContext.slug} categories={allWpCategory.nodes} location={location} data={el.blogArchive} title={title} allPosts={blogArchive.nodes} />
           case 'WpPage_PageBuilder_Sections_HeroImg':
-            return <HeroImg data={el.heroImg} title={title} />
+            return <HeroImg data={el.heroImg} uri={pageContext.url} title={title} />
           case 'WpPage_PageBuilder_Sections_HeroImgExtended':
-            return <HeroImgExtended data={el.heroImgExtended} title={title} />
+            return <HeroImgExtended data={el.heroImgExtended} uri={pageContext.url} title={title} />
           case 'WpPage_PageBuilder_Sections_ThreeColumnsFiles':
             return <ThreeColumnsFiles data={el.threeColumnsFiles} />
           case 'WpPage_PageBuilder_Sections_StepsToComplaints':
@@ -212,6 +246,8 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
             return <TwoColumnsTextAndIconsListAlt data={el.twoColumnsTextAndIconsListAlt} />
           case 'WpPage_PageBuilder_Sections_TabsWithThreeColumnsContent':
             return <TabsWithThreeColumnsContent data={el.tabsWithThreeColumnsContent} />
+          case 'WpPage_PageBuilder_Sections_HeroText':
+            return <HeroText data={el.heroText} uri={pageContext.url} title={title} />
           default:
             return <p className="h2">{el.__typename}</p>
         }
@@ -227,13 +263,20 @@ export const query = graphql`
             title
             id
             seo {
-              fullHead
-              title
+              canonical
               metaDesc
+              opengraphSiteName
+              title
+              opengraphImage {
+                localFile {
+                  publicURL
+                }
+              }
             }
             page_builder {
               sections {
                 __typename
+                ...heroText
                 ...tabsWithThreeColumnsContent
                 ...twoColumnsTextAndIconsListAlt
                 ...twoColumnTextRepeater

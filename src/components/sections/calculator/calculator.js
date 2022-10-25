@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
-import { graphql } from "gatsby"
-import { Container } from "../atoms/container"
-import { FilledButton } from "../atoms/buttons"
-import { textParser } from "../../helpers/wysiwyg-modification"
+import { FilledButton } from "../../atoms/buttons"
+import { textParser } from "../../../helpers/wysiwyg-modification"
 
-export default function Calculator({ data: { title, text } }) {
+export default function Item({ calculatorData, title, text }) {
 
     const [money, setMoney] = useState(10)
     const [time, setTime] = useState(1)
-    const [percent, setPercent] = useState(599)
-    const [provision, setProvision] = useState(3)
+    const [percent, setPercent] = useState(calculatorData.minProcent)
+    const [provision, setProvision] = useState(calculatorData.minProvision ? calculatorData.minProvision : 0)
 
     const [calculatedSum, setCalculatedSum] = useState(0)
     const [creditPrice, setCreditPrice] = useState(0)
@@ -35,91 +33,76 @@ export default function Calculator({ data: { title, text } }) {
 
     return (
         <Wrapper>
-            <Container className="small">
-                <h2 className="h4" dangerouslySetInnerHTML={{ __html: textParser(title) }}></h2>
-                <Content>
-                    <Options>
+            <h2 className="h4" dangerouslySetInnerHTML={{ __html: textParser(title) }}></h2>
+            <Content>
+                <Options>
+                    <div>
+                        <p className="h6 arsenal">Ile pieniędzy potrzebujesz?</p>
+                        <input className="input" placeholder="val" value={money * 100 + ' zł'} />
+                        <input className="range" onChange={(e) => { setMoney(e.currentTarget.value) }} min='10' value={money} max='2550' type="range" />
+                        <div className="flex">
+                            <span className="min body3">1 000 zł</span>
+                            <span className="max body3">{calculatorData.maxMoney} zł</span>
+                        </div>
+                    </div>
+                    <div>
+                        <p className="h6 arsenal">W jakim czasie chcesz spłacić kredyt?</p>
+                        <input className="input" placeholder="val" value={time + ' miesiąc'} />
+                        <input className="range" onChange={(e) => { setTime(e.currentTarget.value) }} min='1' value={time} max='144' type="range" />
+                        <div className="flex">
+                            <span className="min body3">1 miesiąc</span>
+                            <span className="max body3">{calculatorData.maxMonth} miesięcy</span>
+                        </div>
+                    </div>
+                    <div>
+                        <p className="h6 arsenal">Oprocentowanie nominalne w skali roku</p>
+                        <input className="input" placeholder="val" value={percent / 100 + ' %'} />
+                        <input className="range" onChange={(e) => { setPercent(e.currentTarget.value) }} min={calculatorData.minProcent} value={percent} max={calculatorData.maxProcent} type="range" />
+                        <div className="flex">
+                            <span className="min body3">{calculatorData.minProcent / 100}%</span>
+                            <span className="max body3">{calculatorData.maxProcent / 100}%</span>
+                        </div>
+                    </div>
+                    <div>
+                        <p className="h6 arsenal">Prowizja</p>
+                        <input className="input" placeholder="val" value={provision + ' %'} />
+                        <input className="range" onChange={(e) => { setProvision(e.currentTarget.value) }} min={calculatorData.minProvision ? calculatorData.minProvision : 0} value={provision} max={calculatorData.maxProvision} type="range" />
+                        <div className="flex">
+                            <span className="min body3">{calculatorData.minProvision ? calculatorData.minProvision : 0}%</span>
+                            <span className="max body3">{calculatorData.maxProvision}%</span>
+                        </div>
+                    </div>
+                </Options>
+                <Review>
+                    <div className="text">
                         <div>
-                            <p className="h6 arsenal">Ile pieniędzy potrzebujesz?</p>
-                            <input className="input" placeholder="val" value={money * 100 + ' zł'} />
-                            <input className="range" onChange={(e) => { setMoney(e.currentTarget.value) }} min='10' value={money} max='2550' type="range" />
-                            <div className="flex">
-                                <span className="min body3">1 000 zł</span>
-                                <span className="max body3">255 000 zł</span>
-                            </div>
+                            <p className="body1">Całkowita kwota do zapłaty</p>
+                            <span className="h5">{(calculatedSum * 1).toFixed(2)} zł</span>
                         </div>
                         <div>
-                            <p className="h6 arsenal">W jakim czasie chcesz spłacić kredyt?</p>
-                            <input className="input" placeholder="val" value={time + ' miesiąc'} />
-                            <input className="range" onChange={(e) => { setTime(e.currentTarget.value) }} min='1' value={time} max='144' type="range" />
-                            <div className="flex">
-                                <span className="min body3">1 miesiąc</span>
-                                <span className="max body3">144 miesięcy</span>
-                            </div>
+                            <p className="body1">Całkowity koszt kredytu</p>
+                            <span className="h5">{creditPrice} zł</span>
                         </div>
                         <div>
-                            <p className="h6 arsenal">Oprocentowanie nominalne w skali roku</p>
-                            <input className="input" placeholder="val" value={percent / 100 + ' %'} />
-                            <input className="range" onChange={(e) => { setPercent(e.currentTarget.value) }} min='599' value={percent} max='2000' type="range" />
-                            <div className="flex">
-                                <span className="min body3">5.99%</span>
-                                <span className="max body3">20%</span>
-                            </div>
+                            <p className="body1">Rata miesięczna</p>
+                            <span className="h5">{monthRate} zł</span>
                         </div>
-                        <div>
-                            <p className="h6 arsenal">Prowizja</p>
-                            <input className="input" placeholder="val" value={provision + ' %'} />
-                            <input className="range" onChange={(e) => { setProvision(e.currentTarget.value) }} min='3' value={provision} max='11' type="range" />
-                            <div className="flex">
-                                <span className="min body3">3%</span>
-                                <span className="max body3">11%</span>
-                            </div>
-                        </div>
-                    </Options>
-                    <Review>
-                        <div className="text">
-                            <div>
-                                <p className="body1">Całkowita kwota do zapłaty</p>
-                                <span className="h5">{(calculatedSum * 1).toFixed(2)} zł</span>
-                            </div>
-                            <div>
-                                <p className="body1">Całkowity koszt kredytu</p>
-                                <span className="h5">{creditPrice} zł</span>
-                            </div>
-                            <div>
-                                <p className="body1">Rata miesięczna</p>
-                                <span className="h5">{monthRate} zł</span>
-                            </div>
-                            <FilledButton className="filled">Skontaktuj się z nami</FilledButton>
-                        </div>
-                        <p className="anotation body3" dangerouslySetInnerHTML={{ __html: textParser(text) }}></p>
-                    </Review>
-                </Content>
-            </Container>
+                        <FilledButton className="filled" to='/kontakt/'>Skontaktuj się z nami</FilledButton>
+                    </div>
+                    <p className="anotation body3" dangerouslySetInnerHTML={{ __html: textParser(text) }}></p>
+                </Review>
+            </Content>
         </Wrapper>
     )
 }
 
-export const query = graphql`
-  fragment calculator on WpPage_PageBuilder_Sections_Calculator {
-    calculator {
-        title
-        text
-    }
-  }
-`
-
 const Wrapper = styled.section`
-    margin-top: var(--section);
+    margin-top: clamp(16px, ${24 / 768 * 100}vw, 24px);
 
     .h4{
         text-align: center;
         margin-bottom: 32px;
         font-size: clamp(28px, 4.296875vw, 38px);
-    }
-
-    .small{
-        max-width: 1000px;
     }
     
     .flex{

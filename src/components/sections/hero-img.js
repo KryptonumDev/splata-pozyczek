@@ -7,14 +7,14 @@ import { textParser } from "../../helpers/wysiwyg-modification"
 import { FilledButton } from "../atoms/buttons"
 import { GatsbyImage } from "gatsby-plugin-image"
 
-export default function HeroImg({ data: { pageTitle, text, link, list, imgOnRight }, title }) {
+export default function HeroImg({ data: { pageTitle, text, link, list, imgOnRight }, title, uri }) {
 
     return (
         <Wrapper>
             <Container>
                 <Content>
                     <TextPart>
-                        <Breadcrumbs title={title} />
+                        <Breadcrumbs uri={uri} title={title} />
                         <h1 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(pageTitle) }} />
                         {text
                             ? <p className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(text) }} />

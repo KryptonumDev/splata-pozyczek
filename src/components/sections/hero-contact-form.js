@@ -8,7 +8,7 @@ import { FilledButton } from "../atoms/buttons"
 import Form from "../moleculas/forms/hero"
 import Success from "../moleculas/success-send"
 
-export default function HeroForm({ data: { pageTitle, text, link, list, formTitle }, title }) {
+export default function HeroForm({ data: { pageTitle, text, link, list, formTitle }, title, uri }) {
   const [isSended, setIsSended] = useState(false)
 
   return (
@@ -16,7 +16,7 @@ export default function HeroForm({ data: { pageTitle, text, link, list, formTitl
       <Content>
         <Container className="wrap">
           <TextPart>
-            <Breadcrumbs title={title} />
+            <Breadcrumbs uri={uri} title={title} />
             <h1 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(pageTitle) }} />
             {text
               ? <p className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
