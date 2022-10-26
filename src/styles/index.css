@@ -20,6 +20,10 @@
     -webkit-tap-highlight-color: transparent;
  }
 
+ .react-select__control {
+    border: 2px solid #6F6F71 !important;
+ }
+
  a,
  strong {
     color: inherit;
@@ -43,13 +47,15 @@
     margin-top: clamp(110px, 21.4375vw, 180px);
  }
 
- a,span{
-   font-weight: 600;
+ a,
+ span {
+    font-weight: 600;
  }
 
- b, strong {
-   font-weight: 600;
-}
+ b,
+ strong {
+    font-weight: 600;
+ }
 
  .arsenal {
     font-family: 'Arsenal', 'Source Sans Pro';
@@ -59,8 +65,8 @@
     font-family: 'Arsenal', 'Source Sans Pro';
  }
 
- .blue{
-   color: #3B5BA9;
+ .blue {
+    color: #3B5BA9;
  }
 
  .h1 {
@@ -94,7 +100,7 @@
 
  .h5 {
     font-weight: 700;
-    font-size: clamp(25px,3.515625vw,29px);
+    font-size: clamp(25px, 3.515625vw, 29px);
     line-height: 128%;
     letter-spacing: -0.005em;
  }
@@ -131,12 +137,12 @@
  }
 
  .body1 p {
-   font-family: 'Source Sans Pro';
-   font-style: normal;
-   font-weight: 400;
-   font-size: 16px;
-   line-height: 131%;
-   font-feature-settings: 'pnum' on, 'onum' on;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 131%;
+    font-feature-settings: 'pnum' on, 'onum' on;
  }
 
  .body2 {
@@ -148,7 +154,7 @@
     font-feature-settings: 'pnum' on, 'onum' on;
  }
 
- .body2 p{
+ .body2 p {
     font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 400;

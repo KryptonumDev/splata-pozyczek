@@ -29,6 +29,10 @@ export const query = graphql`
 const Wrapper = styled.section`
     margin-top: var(--section);
 
+    .body1{
+        color: #6F6F71;
+    }
+
     @media (max-width: 768px) {
         .container{
             padding: 0;

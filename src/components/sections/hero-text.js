@@ -5,7 +5,7 @@ import { graphql } from "gatsby"
 import Breadcrumbs from "../moleculas/breadcrumbs"
 import { textParser } from "../../helpers/wysiwyg-modification"
 
-export default function HeroText({ data: { title, text, subTitle, list }, title: breadcrumb, uri }) {
+export default function HeroText({ data: { title, plainText, text, subTitle, list }, title: breadcrumb, uri }) {
     return (
         <Wrapper>
             <Container>
@@ -13,7 +13,8 @@ export default function HeroText({ data: { title, text, subTitle, list }, title:
                     <TextPart>
                         <Breadcrumbs uri={uri} title={breadcrumb} />
                         <h1 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
-                        <p className="h6 text arsenal" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
+                        <div className="h6 text arsenal" dangerouslySetInnerHTML={{ __html: text }} />
+                        <div className="body1 text" dangerouslySetInnerHTML={{ __html: plainText }} />
                     </TextPart>
                     <ListPart>
                         <p className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(subTitle) }} />
@@ -38,6 +39,7 @@ export const query = graphql`
     heroText {
       title
       text
+      plainText
       subTitle
       list {
         text
@@ -112,8 +114,14 @@ const Content = styled.div`
   }
 
   .text{
-    color: #6F6F71;
-    font-family: 'Arsenal';
+    p{
+      color: #6F6F71;
+    }
+  }
+
+  .body1{
+    display: grid;
+    grid-gap: 8px;
   }
 
   .link{
@@ -122,5 +130,5 @@ const Content = styled.div`
 `
 
 const TextPart = styled.div`
-
+  
 `

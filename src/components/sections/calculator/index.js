@@ -47,6 +47,18 @@ export default function Calculator({ data: { title, text, type } }) {
         }
     }, [type])
 
+    const changeTab = (index) => {
+        document.getElementById('wrap').classList.add('active')
+
+        setTimeout(() => {
+            setActive(index)
+
+            setTimeout(() => {
+                document.getElementById('wrap').classList.remove('active')
+            }, 1)
+        }, 300)
+    }
+
     return (
         <Wrapper>
             {type === 'advanced'
@@ -66,7 +78,7 @@ export default function Calculator({ data: { title, text, type } }) {
                                 <ControlWrap className={maxButtonsTransform > 0 ? 'button' : 'no-button'} id='control-wrap'>
                                     <Control style={{ x }} drag='x' dragConstraints={{ left: maxButtonsTransform > 0 ? -maxButtonsTransform : 0, right: 0 }} maxButtonsTransform={maxButtonsTransform} id='control'>
                                         {params.map((el, index) => (
-                                            <button tabIndex='-1' className={index === active ? 'active' : ''} onClick={() => { setActive(index) }}>
+                                            <button tabIndex='-1' className={index === active ? 'active' : ''} onClick={() => { changeTab(index) }}>
                                                 <div>
                                                     <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
                                                     <span>{el.name}</span>
@@ -86,7 +98,7 @@ export default function Calculator({ data: { title, text, type } }) {
                                     : null}
                             </ControlButtonsWrap>
                         </Container>
-                        <Container className="container">
+                        <Container id='wrap' className="container">
                             {params.map((el, index) => (
                                 <CalculatorWrapper className={index === active ? 'active' : ''}>
                                     <Item title={title} text={text} calculatorData={el} />
@@ -128,6 +140,12 @@ const Wrapper = styled.div`
 
     .container{
         max-width: 1000px;
+        opacity: 1;
+        transition: opacity .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+
+        &#wrap.active{
+            opacity: 0;
+        }
     }
 `
 

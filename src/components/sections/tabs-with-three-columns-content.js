@@ -23,6 +23,18 @@ export default function TabsWithThreeColumnsContent({ data: { repeater } }) {
         setMaxButtonsTransform(maxTransform)
     }, [])
 
+    const changeTab = (index) => {
+        document.getElementById('wrap').classList.add('active')
+
+        setTimeout(() => {
+            setActive(index)
+
+            setTimeout(() => {
+                document.getElementById('wrap').classList.remove('active')
+            }, 1)
+        }, 300)
+    }
+
     return (
         <Wrapper >
             <Container>
@@ -40,7 +52,7 @@ export default function TabsWithThreeColumnsContent({ data: { repeater } }) {
                         <ControlWrap className={maxButtonsTransform > 0 ? 'button' : 'no-button'} id='control-wrap'>
                             <Control style={{ x }} drag='x' dragConstraints={{ left: maxButtonsTransform > 0 ? -maxButtonsTransform : 0, right: 0 }} maxButtonsTransform={maxButtonsTransform} id='control'>
                                 {repeater.map((el, index) => (
-                                    <button tabIndex='-1' className={index === active ? 'active' : ''} onClick={() => { setActive(index) }}><span>{el.tabName}</span></button>
+                                    <button tabIndex='-1' className={index === active ? 'active' : ''} onClick={() => { changeTab(index) }}><span>{el.tabName}</span></button>
                                 ))}
                             </Control>
                         </ControlWrap>
@@ -55,7 +67,7 @@ export default function TabsWithThreeColumnsContent({ data: { repeater } }) {
                             : null}
                     </ControlButtonsWrap>
                     <InnerContent>
-                        <Grid count={repeater.length}>
+                        <Grid id='wrap' count={repeater.length}>
                             {repeater.map((el, index) => (
                                 <Item className={index === active ? 'active' : ''}>
                                     <GatsbyImage className="image" image={el.image.localFile.childImageSharp.gatsbyImageData} alt={el.image.altText} />
@@ -306,6 +318,13 @@ const InnerContent = styled.div`
 const Grid = styled.div`
     display: grid;
     padding-top: clamp(24px, ${24 / 768 * 100}vw, 32px);
+
+    opacity: 1;
+    transition: opacity .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+
+    &#wrap.active{
+        opacity: 0;
+    }
 `
 
 const Item = styled.div`

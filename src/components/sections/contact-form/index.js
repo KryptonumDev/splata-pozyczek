@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import ShortContactForm from "./short-contact-form"
 import StandartContactForm from "./standart-contact-form"
+import ExtendedContactForm from "./extended-contact-form"
 
 export default function ContactForm({ data: { title, type } }) {
     switch (type) {
@@ -14,6 +15,8 @@ export default function ContactForm({ data: { title, type } }) {
         case 'addComment':
             return null
         case 'extendedWithTabs':
+            return <ExtendedContactForm title={title}/>
+        case 'provisionBack':
             return null
         default:
             return null

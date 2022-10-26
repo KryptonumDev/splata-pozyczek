@@ -77,6 +77,7 @@ const Wrapper = styled.section`
 
   .wrap{
     padding: 0;
+    width: 100%;
   }
 
   @media (max-width: 840px) {

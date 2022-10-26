@@ -23,6 +23,18 @@ export default function CreditTypes({ data: { title, tekst, slider } }) {
         setMaxButtonsTransform(maxTransform)
     }, [])
 
+    const changeTab = (index) => {
+        document.getElementById('wrap').classList.add('active')
+
+        setTimeout(() => {
+            setActive(index)
+
+            setTimeout(() => {
+                document.getElementById('wrap').classList.remove('active')
+            }, 1)
+        }, 300)
+    }
+
     return (
         <Wrapper >
             <Container>
@@ -42,7 +54,7 @@ export default function CreditTypes({ data: { title, tekst, slider } }) {
                         <ControlWrap className={maxButtonsTransform > 0 ? 'button' : 'no-button'} id='control-wrap'>
                             <Control style={{ x }} drag='x' dragConstraints={{ left: maxButtonsTransform > 0 ? -maxButtonsTransform : 0, right: 0 }} maxButtonsTransform={maxButtonsTransform} id='control'>
                                 {slider.map((el, index) => (
-                                    <button tabIndex='-1' className={index === active ? 'active' : ''} onClick={() => { setActive(index) }}><span>{el.tabName}</span></button>
+                                    <button tabIndex='-1' className={index === active ? 'active' : ''} onClick={() => { changeTab(index) }}><span>{el.tabName}</span></button>
                                 ))}
                             </Control>
                         </ControlWrap>
@@ -57,7 +69,7 @@ export default function CreditTypes({ data: { title, tekst, slider } }) {
                             : null}
                     </ControlButtonsWrap>
                     <InnerContent>
-                        <Grid count={slider.length}>
+                        <Grid id="wrap" count={slider.length}>
                             {slider.map((el, index) => (
                                 <Item className={index === active ? 'active' : ''}>
                                     <GatsbyImage className="image" image={el.obrazekPoLewej.localFile.childImageSharp.gatsbyImageData} alt={el.obrazekPoLewej.altText} />
@@ -303,6 +315,13 @@ const InnerContent = styled.div`
 const Grid = styled.div`
     display: grid;
     padding-top: clamp(24px, ${24 / 768 * 100}vw, 32px);
+
+    opacity: 1;
+    transition: opacity .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+
+    &#wrap.active{
+        opacity: 0;
+    }
 `
 
 const Item = styled.div`
