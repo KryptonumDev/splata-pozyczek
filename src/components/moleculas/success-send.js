@@ -19,6 +19,7 @@ const Wrapper = styled.div`
     right: 0;
     top: 0;
     bottom: 0;
+    z-index: 10;
     background: #3F8643;
     border-radius: 8px;
     transition: .6s cubic-bezier(0.39, 0.575, 0.565, 1);

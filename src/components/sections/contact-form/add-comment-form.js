@@ -5,7 +5,7 @@ import Form from "../../moleculas/forms/comment"
 import Success from "../../moleculas/success-send"
 import { textParser } from "../../../helpers/wysiwyg-modification"
 
-export default function StandartContactForm({ title, type }) {
+export default function CommentContactForm({ title, type }) {
     const [isSended, setIsSended] = useState(false)
 
     return (

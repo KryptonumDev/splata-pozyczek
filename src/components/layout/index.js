@@ -6,15 +6,6 @@ import Header from "./header"
 
 export default function Layout({ children }) {
 
-    // axios.post('https://testy.kryptonum.co.uk/wp-json/wp/v2/comments', {
-    //     post: 285,
-    //     author_name: 'Bodziasdo',
-    //     author_email: "shevabogdan16@gmail.com",
-    //     content: 'tesasdt',
-    // })
-    //     .then(res => {
-    //     })
-
     return (
         <Wrapper>
             <Header />

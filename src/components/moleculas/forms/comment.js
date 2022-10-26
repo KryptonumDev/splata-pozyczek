@@ -31,8 +31,7 @@ export default function Form({ type, setIsSended }) {
     }
   `)
 
-    const [themes] = useState(allWpEkspert.nodes.map(el => arr.push({ vale: el.guid.replace('/?post_type=eksperty&#038;p=', ''), theme: el, title })))
-    debugger
+    const [themes] = useState(allWpEkspert.nodes.map(el => { return { value: el.guid.replace('/?post_type=eksperty&#038;p=', ''), theme: el.title } }))
 
     const { reset, register, setValue, handleSubmit, getValues, control, formState: { errors } } = useForm()
     const [sendedCount, changeSendedCount] = useState(0)
@@ -41,23 +40,19 @@ export default function Form({ type, setIsSended }) {
         setIsSended(true)
 
         if (sendedCount < 3) {
-            let url = 'https://testy.kryptonum.co.uk/wp-json/contact-form-7/v1/contact-forms/669/feedback'
-            let body = new FormData()
-            body.append('your-email', data.email)
-            body.append("your-subject", data.message)
-            body.append('your-name', data.name)
-            body.append('your-phone', data.phone)
-            if (type !== 'noTheme') {
-                body.append('your-theme', data.theme)
-            }
-            axios.post(url, body)
+            axios.post('https://testy.kryptonum.co.uk/wp-json/wp/v2/comments', {
+                post: data.theme,
+                author_name: data.name,
+                author_email: data.email,
+                content: data.message,
+            })
                 .then((res) => {
                     if (res.status === 200) {
                         changeSendedCount(sendedCount + 1)
                         setIsSended(true)
                         reset()
                     } else {
-                        alert('wystąpił problem, sprobuj póżniej')
+                        
                     }
                 })
         }
@@ -74,14 +69,6 @@ export default function Form({ type, setIsSended }) {
                         register={register}
                         errors={errors}
                     />
-                    <LabelSelect
-                        control={control}
-                        themes={meesageThemes}
-                        name='theme'
-                        label='Wybierz temat*'
-                    />
-                </div>
-                <div className="flex">
                     <LabelInput
                         name='email'
                         label='Adres e-mail*'
@@ -89,17 +76,18 @@ export default function Form({ type, setIsSended }) {
                         register={register}
                         errors={errors}
                     />
-                    <LabelInput
-                        name='phone'
-                        label='Numer telefonu*'
-                        params={{ required: true }}
-                        register={register}
-                        errors={errors}
+                </div>
+                <div className="flex">
+                    <LabelSelect
+                        control={control}
+                        themes={themes}
+                        name='theme'
+                        label='Wybierz doradce'
                     />
                 </div>
                 <LabelInput
                     name='message'
-                    label='Wiadomość*'
+                    label='Opinia*'
                     params={{ required: true }}
                     register={register}
                     errors={errors}
