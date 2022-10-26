@@ -75,6 +75,7 @@ export function Head({ data: { wpPage: { seo } } }) {
     <meta charSet="utf-8" />
     <meta name="robots" content="noindex" />
     <meta property="og:site_name" content={seo.opengraphSiteName} />
+    <meta name="google-site-verification" content="M2kghTKPmXOB2ezGLw7ShbO3sdW6rMn_uhsSVbHCt7I" />
 
     {canonical
       ? (

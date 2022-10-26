@@ -7,7 +7,7 @@ export default function LabelSelect({ control, themes, label, name, }) {
     let options = []
 
     themes.forEach(el => {
-        options.push({ value: el.theme, label: el.theme })
+        options.push({ value: el.value ? el.value : el.theme, label: el.theme })
     });
 
     return (
