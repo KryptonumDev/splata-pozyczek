@@ -35,20 +35,23 @@ exports.createPages = async ({
     allWpCategory {
       nodes {
         slug
+        count
       }
     }
   }
   `)
 
-  categoryNodes.forEach(({ slug }) => {
-    createPage({
-      path: '/blog/tag/' + slug + '/',
-      component: resolve('src/templates/page.jsx'),
-      context: {
-        id: 'cG9zdDoxMDEz',
-        slug,
-        url: '/blog/tag/' + slug + '/'
-      },
-    });
+  categoryNodes.forEach(({ slug, count }) => {
+    if (count) {
+      createPage({
+        path: '/blog/tag/' + slug + '/',
+        component: resolve('src/templates/page.jsx'),
+        context: {
+          id: 'cG9zdDoxMDEz',
+          slug,
+          url: '/blog/tag/' + slug + '/'
+        },
+      });
+    }
   });
 }

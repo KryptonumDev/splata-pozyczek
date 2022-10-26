@@ -87,9 +87,9 @@ const Item = styled.details`
         }
 
 
-        ul{
-        display: grid;
-        grid-gap: 12px;
+        ul, ol{
+            display: grid;
+            grid-gap: 12px;
 
             li{
                 margin-top: 0;

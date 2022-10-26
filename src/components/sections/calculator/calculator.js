@@ -33,7 +33,7 @@ export default function Item({ calculatorData, title, text }) {
 
     return (
         <Wrapper>
-            <h2 className="h4" dangerouslySetInnerHTML={{ __html: textParser(title) }}></h2>
+            <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }}></h2>
             <Content>
                 <Options>
                     <div>

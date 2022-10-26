@@ -9,37 +9,39 @@ import { GatsbyImage } from "gatsby-plugin-image"
 
 export default function HeroImg({ data: { pageTitle, text, link, list, imgOnRight }, title, uri }) {
 
-    return (
-        <Wrapper>
-            <Container>
-                <Content>
-                    <TextPart>
-                        <Breadcrumbs uri={uri} title={title} />
-                        <h1 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(pageTitle) }} />
-                        {text
-                            ? <p className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
-                            : null}
-                        {list
-                            ? <List>
-                                {list.map(el => (
-                                    <li>
-                                        <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
-                                        <div className="content" dangerouslySetInnerHTML={{ __html: textParser(el.tekstObokIkony) }} />
-                                    </li>
-                                ))}
-                            </List>
-                            : null}
-                        {link?.url
-                            ? <FilledButton className="link" target={link.target} to={link.url}>{link.title}</FilledButton>
-                            : null}
-                    </TextPart>
-                    <div className="box">
-                        <GatsbyImage className="image" image={imgOnRight.localFile.childImageSharp.gatsbyImageData} alt={imgOnRight.altText} />
-                    </div>
-                </Content>
-            </Container>
-        </Wrapper>
-    )
+  return (
+    <Wrapper>
+      <Container>
+        <Content>
+          <TextPart>
+            <Breadcrumbs uri={uri} title={title} />
+            <h1 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(pageTitle) }} />
+            {text
+              ? <p className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
+              : null}
+            {list
+              ? <List>
+                {list.map(el => (
+                  <li>
+                    <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
+                    <div className="content" dangerouslySetInnerHTML={{ __html: textParser(el.tekstObokIkony) }} />
+                  </li>
+                ))}
+              </List>
+              : null}
+            {link?.url
+              ? <FilledButton className="link" target={link.target} to={link.url}>{link.title}</FilledButton>
+              : null}
+          </TextPart>
+          <div className="box">
+            {imgOnRight?.localFile?.childImageSharp?.gatsbyImageData
+              ? <GatsbyImage className="image" image={imgOnRight.localFile.childImageSharp.gatsbyImageData} alt={imgOnRight.altText} />
+              : null}
+          </div>
+        </Content>
+      </Container>
+    </Wrapper>
+  )
 }
 
 

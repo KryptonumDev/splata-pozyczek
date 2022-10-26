@@ -44,10 +44,10 @@ const Wrapper = styled.div`
     .divider{
         display: block;
         margin: 0 4px;
-        color: #A1A1A4;
+        color: #6F6F71;
     }
     a{
-        color: #A1A1A4;
+        color: #6F6F71;
         text-decoration: none;
     }
 

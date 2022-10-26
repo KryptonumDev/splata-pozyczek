@@ -1,5 +1,5 @@
 import { graphql, Link, useStaticQuery } from "gatsby"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import { FilledButton } from "../../atoms/buttons"
 import { Container } from "../../atoms/container"
@@ -40,12 +40,34 @@ export default function Header({ data }) {
   `)
 
   const [isMobileMenuOpened, setMobileMenuOpened] = useState(false)
+  const [offset, setOffset] = useState(() => {
+    if (typeof window !== `undefined`) {
+      return window.pageYOffset
+    }
+    return 0
+  })
+
+  useEffect(() => {
+    if (typeof document !== `undefined`) {
+      document.addEventListener('keydown', (e) => {
+        if (e.code === 'Escape') {
+          setMobileMenuOpened(false)
+        }
+      })
+    }
+    if (typeof window !== `undefined`) {
+      window.onscroll = () => {
+        setOffset(window.pageYOffset)
+      }
+    }
+  }, [])
 
   return (
     <Wrapper>
+    <a className="no-focus" href="#main" aria-label='skip link to main content' />
       <Container>
-        <Content>
-          <Link aria-label='link do strony głównej' to='/'>
+        <Content  active={offset > 0 ? 'true' : null }>
+          <Link className="logo" aria-label='link do strony głównej' to='/'>
             <Logo />
           </Link>
           <Navigation className="desctop">
@@ -125,6 +147,21 @@ const Wrapper = styled.header`
     right: 0;
     top: 0;
 
+    .no-focus {
+      position: absolute;
+      opacity: 0;
+      left: 0;
+      top: 0;
+    }
+
+    .no-focus:focus-visible {
+      outline: none;
+    }
+
+    .logo{
+      height: 18px;
+    }
+
     @media (max-width: 1240px) {
       .button{
         padding: 12px;
@@ -136,7 +173,7 @@ const Wrapper = styled.header`
       .button{
         min-width: unset;
       }
-    }
+    } 
 
     @media (max-width: 1024px) {
       .desctop{
@@ -149,9 +186,12 @@ const Wrapper = styled.header`
     }
 
     @media (max-width: 480px) {
-      svg{
-        width: 32px;
+      .logo{
+        height: auto;
         transform: scale(2) translateX(8px) translateY(2px);
+      }
+      svg{
+        width: 16px;
       }
       .leters{
         display: none;
@@ -171,14 +211,43 @@ const Wrapper = styled.header`
 
 const Content = styled.div`
     margin: 25px 0 0 0;
-    background: #FEF5F5;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px 3px rgba(97, 152, 193, 0.15);
-    filter: drop-shadow(0px 1px 3px rgba(97, 152, 193, 0.25));
     padding: 10px 13px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
+    transition: margin .3s cubic-bezier(0.68, -0.12, 0.265, 1.55);
+    position: relative;
+
+    &::before{
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: #FEF5F5;
+      border-radius: 8px;
+      box-shadow: 0px 4px 8px 3px rgba(97, 152, 193, 0.15);
+      filter: drop-shadow(0px 1px 3px rgba(97, 152, 193, 0.25));
+      z-index: -1;
+
+      transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1) .2s;
+    }
+    
+
+    ${props => props.active === 'true' ? `
+      margin-top: 5px;
+
+      &::before{
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        top: -5px;
+        bottom: -5px;
+        left: calc(-1 * clamp(16px,3.125vw,80px));
+        right: calc(-1 * clamp(16px,3.125vw,80px));
+      }
+    `: null}
 `
 
 const Navigation = styled.nav`
@@ -211,6 +280,16 @@ const Navigation = styled.nav`
 
             a{
               height: 100%;
+
+              span{
+                transition: color .2s cubic-bezier(0.39, 0.575, 0.565, 1);
+              }
+
+              &:hover{
+                span{
+                  color: #1F428F;
+                }
+              }
             }
         }
     }

@@ -4,8 +4,9 @@ import React from "react"
 import styled from "styled-components"
 import { Button } from "./buttons"
 import { textParser } from "../../helpers/wysiwyg-modification"
+import { CATEGORY_COLORS } from "../../constants/category-colors"
 
-export default function Card({el, allowLink, alternate}) {
+export default function Card({ el, allowLink, alternate }) {
     return (
         <Item allowLink={allowLink} alternate={alternate} onClick={(e) => { if (!allowLink) { e.preventDefault() } }} to={'/blog/' + el.slug}>
             <div className="wrap">
@@ -17,7 +18,7 @@ export default function Card({el, allowLink, alternate}) {
                     </div>
                     <div className="categories">
                         {el.categories.nodes.map(el => (
-                            <Category className="body3" color={el.category.color}>{el.name}</Category>
+                            <Category activeClassName="active" to={'/blog/tag/' + el.slug + '/'} className="body3" active={CATEGORY_COLORS[el.category.color].active} hover={CATEGORY_COLORS[el.category.color].hover} background={CATEGORY_COLORS[el.category.color].default}>{el.name}</Category>
                         ))}
                     </div>
                     <h3 className="sub2 arsenal">{el.title}</h3>
@@ -30,11 +31,24 @@ export default function Card({el, allowLink, alternate}) {
     )
 }
 
-const Category = styled.button`
-    background-color: ${props => props.color};
+const Category = styled(Link)`
     border-radius: 43px;
     padding: 2px 20px;
     border: unset;
+    background-color: ${props => props.background} !important;
+    transition: background-color .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+    text-decoration: none;
+    color: #050505 !important;
+
+    &:hover{
+        background-color: ${props => props.hover} !important;
+    }
+
+    &.active{
+        background-color: ${props => props.active} !important;
+        cursor: unset;
+        pointer-events: none;
+    }
 `
 
 const Item = styled(Link)`

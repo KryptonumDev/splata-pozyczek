@@ -1,11 +1,12 @@
 import { motion, useMotionValue } from "framer-motion"
 import { Link } from "gatsby"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import styled from "styled-components"
+import { CATEGORY_COLORS } from "../../../constants/category-colors"
 import { transform } from "../../../helpers/slider"
 import { Container } from "../../atoms/container"
 
-export default function Filter({ categories, isAltLayout }) {
+export default function Filter({ categories, isAltLayout,allCount }) {
 
     const x = useMotionValue(0)
     const [maxButtonsTransform, setMaxButtonsTransform] = useState(0)
@@ -17,6 +18,38 @@ export default function Filter({ categories, isAltLayout }) {
 
         setMaxButtonsTransform(maxTransform)
     }, [])
+
+    const filtredCategories = useMemo(() => {
+        const red = []
+        const yellow = []
+        const blue = []
+        const green = []
+
+        categories.forEach(el => {
+            switch (el.category.color) {
+                case 'red': {
+                    red.push(el)
+                    break
+                }
+                case 'yellow': {
+                    yellow.push(el)
+                    break
+                }
+                case 'blue': {
+                    blue.push(el)
+                    break
+                }
+                case 'green': {
+                    green.push(el)
+                    break
+                }
+                default:
+                    return null
+            }
+        })
+
+        return [...blue, ...green, ...red, ...yellow,]
+    }, [categories])
 
     return (
         <Wrapper isAltLayout={isAltLayout}>
@@ -33,9 +66,10 @@ export default function Filter({ categories, isAltLayout }) {
                         : null}
                     <ControlWrap className={maxButtonsTransform > 0 ? 'button' : 'no-button'} id='control-wrap'>
                         <Control style={{ x }} drag='x' dragConstraints={{ left: maxButtonsTransform > 0 ? -maxButtonsTransform : 0, right: 0 }} maxButtonsTransform={maxButtonsTransform} id='control'>
-                            {categories.map(el => {
+                            <Button activeClassName="active" to={'/blog/'} active={CATEGORY_COLORS['gray'].active} hover={CATEGORY_COLORS['gray'].hover} background={CATEGORY_COLORS['gray'].default}>Wszystkie ({allCount})</Button>
+                            {filtredCategories.map(el => {
                                 if (el.count) {
-                                    return <Button to={'/blog/tag/' + el.slug + '/'} background={el.category.color}>{el.name} ({el.count})</Button>
+                                    return <Button activeClassName="active" to={'/blog/tag/' + el.slug + '/'} active={CATEGORY_COLORS[el.category.color].active} hover={CATEGORY_COLORS[el.category.color].hover} background={CATEGORY_COLORS[el.category.color].default}>{el.name} ({el.count})</Button>
                                 }
                                 return null
                             })}
@@ -79,12 +113,12 @@ const ControlButtonsWrap = styled.div`
 
         &.left{
             left: 0;
-            top: calc(50% - 24px);
+            transform: translateY(-50%);
         }
 
         &.right{
             right: 0;
-            top: 12px;
+            transform: translateY(-50%);
         }
     }
 
@@ -206,4 +240,30 @@ const Button = styled(Link)`
     border-radius: 44px;
     text-decoration: none;
     color: #050505;
+    transition: background-color .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+    font-weight: 400;
+
+    &:hover{
+        background-color: ${props => props.hover} !important;
+    }
+
+    &.active{
+        background-color: ${props => props.active} !important;
+        cursor: unset;
+        pointer-events: none;
+        position: relative;
+        padding-left: 24px;
+        font-weight: 600;
+
+        &::after{
+            position: absolute;
+            left: 18px;
+            top: calc(50% - 1px);
+            content: "";
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background-color: #050505;
+        }
+    }
 `

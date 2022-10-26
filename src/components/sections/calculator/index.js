@@ -49,10 +49,10 @@ export default function Calculator({ data: { title, text, type } }) {
 
     return (
         <Wrapper>
-            <Container>
-                {type === 'advanced'
-                    ? (
-                        <>
+            {type === 'advanced'
+                ? (
+                    <>
+                        <Container>
                             <ControlButtonsWrap>
                                 {maxButtonsTransform > 0
                                     ? (
@@ -85,18 +85,22 @@ export default function Calculator({ data: { title, text, type } }) {
                                     )
                                     : null}
                             </ControlButtonsWrap>
+                        </Container>
+                        <Container className="container">
                             {params.map((el, index) => (
                                 <CalculatorWrapper className={index === active ? 'active' : ''}>
                                     <Item title={title} text={text} calculatorData={el} />
                                 </CalculatorWrapper>
                             ))}
-                        </>
-                    ) : null}
-                {type === 'default'
-                    ? (
+                        </Container>
+                    </>
+                ) : null}
+            {type === 'default'
+                ? (
+                    <Container className="container">
                         <Item title={title} text={text} calculatorData={params[0]} />
-                    ) : null}
-            </Container>
+                    </Container>
+                ) : null}
         </Wrapper>
     )
 }
@@ -119,9 +123,12 @@ const CalculatorWrapper = styled.div`
 `
 
 const Wrapper = styled.div`
-    max-width: 1000px;
     margin: 0 auto;
     margin-top: var(--section);
+
+    .container{
+        max-width: 1000px;
+    }
 `
 
 const ControlButtonsWrap = styled.div`
@@ -149,7 +156,7 @@ const ControlButtonsWrap = styled.div`
         }
     }
 
-    @media (max-width: 820px ) {
+    @media (max-width: 1024px ) {
 
         .control{
             display: none;
@@ -164,7 +171,8 @@ const ControlWrap = styled.div`
     overflow: hidden;
 
     &.no-button {
-        margin: 0;
+        max-width: 1000px;
+        margin: 0 auto;
         overflow: unset;
     }
 
@@ -172,7 +180,7 @@ const ControlWrap = styled.div`
         margin: 0 68px;
     }
 
-    @media (max-width: 820px ) {
+    @media (max-width: 1024px ) {
         margin: 0;
         overflow: unset;
     }
@@ -277,7 +285,7 @@ const Control = styled(motion.div)`
         }
     }
 
-    @media (max-width: 820px ){
+    @media (max-width: 1024px ){
         gap: 0;
         box-shadow: var(--shadow);
         padding: 4px 12px;

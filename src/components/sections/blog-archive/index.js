@@ -58,7 +58,8 @@ export default function BlogArchive({ data: { pageTitle, text, list, link, relat
           pageTitle={pageTitle} />}
       <Filter
         isAltLayout={currentFilter || currentPage !== 1}
-        categories={categories} />
+        categories={categories}
+        allCount={allPosts.length} />
       <PostGrid
         page={currentPage}
         allPosts={filtredPosts} />

@@ -11,6 +11,10 @@ export default function ContactForm({ data: { title, type } }) {
             return <StandartContactForm title={title} type={type}/>
         case 'noTheme':
             return <StandartContactForm title={title} type={type}/>
+        case 'addComment':
+            return null
+        case 'extendedWithTabs':
+            return null
         default:
             return null
     }
