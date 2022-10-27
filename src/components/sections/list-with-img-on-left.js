@@ -16,14 +16,18 @@ export default function ListWithImgOnLeft({ data: { title, text, list, link, img
                 <Content light={Light} medium={Medium} >
                     <div>
                         <GatsbyImage className="img" image={img.localFile.childImageSharp.gatsbyImageData} alt={img.altText} />
-                        <p className="body1" dangerouslySetInnerHTML={{__html: textParser(textUnderImg)}}/>
+                        {textUnderImg
+                            ? <p className={link?.url ? 'alt body1' : 'sub1'} dangerouslySetInnerHTML={{ __html: textParser(textUnderImg) }} />
+                            : null}
                     </div>
                     <div>
                         <div className="body2" dangerouslySetInnerHTML={{ __html: list }} />
                         {text
-                            ? <span className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
+                            ? <span className="h6 arsenal" dangerouslySetInnerHTML={{ __html: text }} />
                             : null}
-                        <FilledButton className="link" target={link.target} to={link.url}>{link.title}</FilledButton>
+                        {link?.url
+                            ? <FilledButton className="link" target={link.target} to={link.url}>{link.title}</FilledButton>
+                            : null}
                     </div>
                 </Content>
             </Container>
@@ -75,7 +79,7 @@ const Content = styled.div`
     grid-gap: clamp(16px, ${16 / 768 * 100}vw, 32px);
     margin: 0 auto;
 
-    .body1{
+    .body1.alt{
         padding: 10px;
         box-shadow: var(--shadow);
         border-radius: 4px;
@@ -145,6 +149,15 @@ const Content = styled.div`
             position: relative;
             list-style: none;
             color: #6F6F71;
+
+            em strong, strong em, strong em span, em strong span{
+                font-family: 'Source Sans Pro';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 131%;
+                font-feature-settings: 'pnum' on, 'onum' on;
+            }
 
             @media (max-width: 640px){
                 padding-left: 32px;

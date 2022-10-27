@@ -4,21 +4,22 @@ import ShortContactForm from "./short-contact-form"
 import StandartContactForm from "./standart-contact-form"
 import ExtendedContactForm from "./extended-contact-form"
 import CommentContactForm from "./add-comment-form"
+import ProvisionContactForm from "./provision-contact-form"
 
 export default function ContactForm({ data: { title, type } }) {
     switch (type) {
         case 'short':
-            return <ShortContactForm title={title}/>
+            return <ShortContactForm title={title} />
         case 'standart':
-            return <StandartContactForm title={title} type={type}/>
+            return <StandartContactForm title={title} type={type} />
         case 'noTheme':
-            return <StandartContactForm title={title} type={type}/>
+            return <StandartContactForm title={title} type={type} />
         case 'addComment':
-            return <CommentContactForm title={title}/>
+            return <CommentContactForm title={title} />
         case 'extendedWithTabs':
-            return <ExtendedContactForm title={title}/>
+            return <ExtendedContactForm title={title} />
         case 'provisionBack':
-            return null
+            return <ProvisionContactForm title={title} />
         default:
             return null
     }

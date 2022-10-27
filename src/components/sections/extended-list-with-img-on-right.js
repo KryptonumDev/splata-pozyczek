@@ -15,7 +15,9 @@ export default function ExtendedListWithImgOnRight({ data: { title, listTitle, l
                     : null}
                 <Content>
                     <div>
-                        <span className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(listTitle) }} />
+                        {listTitle
+                            ? <span className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(listTitle) }} />
+                            : null}
                         <div className="list body1" dangerouslySetInnerHTML={{ __html: list }} />
                         <span className="body1 bold" dangerouslySetInnerHTML={{ __html: textParser(textTitle) }}></span>
                         <p className="body2" dangerouslySetInnerHTML={{ __html: textParser(text) }} />

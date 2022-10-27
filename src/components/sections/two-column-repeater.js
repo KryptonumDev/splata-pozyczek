@@ -17,7 +17,7 @@ export default function TwoColumnRepeater({ data: { title, text, repeater } }) {
                         <Item>
                             {el.videoLink
                                 ? <iframe src={el.videoLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                : <GatsbyImage className="img" image={el.img.localFile.childImageSharp.gatsbyImageData} />}
+                                : <GatsbyImage className="img" image={el.img?.localFile?.childImageSharp?.gatsbyImageData} />}
                             <div className="text-part">
                                 <h3 className="h6" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
                                 <div className="body2" dangerouslySetInnerHTML={{ __html: el.text }} />
