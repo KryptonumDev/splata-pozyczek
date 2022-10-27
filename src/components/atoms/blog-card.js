@@ -8,58 +8,70 @@ import { CATEGORY_COLORS } from "../../constants/category-colors"
 
 export default function Card({ el, allowLink, alternate }) {
     return (
-        <Item allowLink={allowLink} className={alternate ? 'alt' : ''} onClick={(e) => { if (!allowLink) { e.preventDefault() } }} to={'/blog/' + el.slug}>
-            <div className="wrap">
-                <GatsbyImage className="img" image={el.blogPost.thumbnail.localFile.childImageSharp.gatsbyImageData} alt={el.blogPost.thumbnail.altText} />
-                <div className="text">
-                    <div className="add-inform">
-                        <span className="body3">{el.author.node.name}</span>
-                        <span className="body3">{el.date}</span>
+        <Item allowLink={allowLink} className={alternate ? 'alt' : ''} onClick={(e) => { if (!allowLink) { e.preventDefault() } }} >
+            <Link className="wrap-link" to={'/blog/' + el.slug}>
+                <div className="wrap">
+                    <GatsbyImage className="img" image={el.blogPost.thumbnail.localFile.childImageSharp.gatsbyImageData} alt={el.blogPost.thumbnail.altText} />
+                    <div className="text">
+                        <div className="add-inform">
+                            <span className="body3">{el.author.node.name}</span>
+                            <span className="body3">{el.date}</span>
+                        </div>
+                        <div className="categories">
+                            {el.categories.nodes.map(el => (
+                                <Category active={CATEGORY_COLORS[el.category.color].active} hover={CATEGORY_COLORS[el.category.color].hover} background={CATEGORY_COLORS[el.category.color].default}>
+                                    <Link activeClassName="active" to={'/blog/tag/' + el.slug + '/'} className="body3" >
+                                        {el.name}
+                                    </Link>
+                                </Category>
+                            ))}
+                        </div>
+                        <h3 className="sub2 arsenal">{el.title}</h3>
+                        <p className="body3 description" dangerouslySetInnerHTML={{ __html: textParser(el.blogPost.previewText) }} />
+                        <Button button={true} url={''} text={'Przeczytaj artykuł'} className='link desctop' />
                     </div>
-                    <div className="categories">
-                        {el.categories.nodes.map(el => (
-                            <Category activeClassName="active" to={'/blog/tag/' + el.slug + '/'} className="body3" active={CATEGORY_COLORS[el.category.color].active} hover={CATEGORY_COLORS[el.category.color].hover} background={CATEGORY_COLORS[el.category.color].default}>{el.name}</Category>
-                        ))}
-                    </div>
-                    <h3 className="sub2 arsenal">{el.title}</h3>
-                    <p className="body3 description" dangerouslySetInnerHTML={{ __html: textParser(el.blogPost.previewText) }} />
-                    <Button button={true} url={''} text={'Przeczytaj artykuł'} className='link desctop' />
                 </div>
-            </div>
-            <Button button={true} url={'/blog/' + el.slug + '/'} text={'Przeczytaj artykuł'} className='link mobile' />
+                <Button button={true} url={'/blog/' + el.slug + '/'} text={'Przeczytaj artykuł'} className='link mobile' />
+            </Link>
         </Item>
     )
 }
 
-const Category = styled(Link)`
-    border-radius: 43px;
-    padding: 2px 20px;
-    border: unset;
-    background-color: ${props => props.background} !important;
-    transition: background-color .3s cubic-bezier(0.39, 0.575, 0.565, 1);
-    text-decoration: none;
-    color: #050505 !important;
+const Category = styled.div`
+    a{
+        border-radius: 43px;
+        padding: 2px 20px;
+        border: unset;
+        background-color: ${props => props.background} !important;
+        transition: background-color .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+        text-decoration: none;
+        color: #050505 !important;
 
-    &:hover{
-        background-color: ${props => props.hover} !important;
-    }
+        .active{
+            background-color: ${props => props.active} !important;
+            cursor: unset;
+            pointer-events: none;
 
-    &.active{
-        background-color: ${props => props.active} !important;
-        cursor: unset;
-        pointer-events: none;
+                
+            &:hover{
+                background-color: ${props => props.hover} !important;
+            }
+        }
     }
 `
 
-const Item = styled(Link)`
+const Item = styled.div`
     width: 485px;
     border-radius: 4px;
     box-shadow: 0px 4px 8px 3px rgba(97, 152, 193, 0.15);
-    text-decoration: none;
-    user-select: none;
-    -webkit-user-drag: none;
 
-    cursor: ${props => props.allowLink ? 'pointer' : 'grabbing'};
+
+    .wrap-link{
+        cursor: ${props => props.allowLink ? 'pointer' : 'grabbing'};
+        user-select: none;
+        -webkit-user-drag: none;
+        text-decoration: none;
+    }
     
     &.alt{
         .wrap{

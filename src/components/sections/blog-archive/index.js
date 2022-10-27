@@ -53,7 +53,7 @@ export default function BlogArchive({ data: { pageTitle, text, list, link, relat
 
   return (
     <Wrapper>
-      {currentFilter || currentPage !== 1
+      {currentFilter
         ? null
         : <Hero
           list={list}
@@ -63,7 +63,7 @@ export default function BlogArchive({ data: { pageTitle, text, list, link, relat
           relatedPost={relatedPost}
           pageTitle={pageTitle} />}
       <Filter
-        isAltLayout={currentFilter || currentPage !== 1}
+        isAltLayout={currentFilter}
         categories={categories}
         allCount={allPosts.length} />
       <PostGrid
