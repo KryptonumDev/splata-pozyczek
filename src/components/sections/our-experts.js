@@ -28,6 +28,7 @@ fragment ourExperts on WpPage_PageBuilder_Sections_OurExperts {
         expert {
           ... on WpEkspert {
             id
+            slug
             title
             ekspert {
               role
