@@ -11,7 +11,7 @@ export default function Pagination({ url: pageUrl, page, posts, setCurrentPage }
         return Math.ceil(posts.length / 12)
     }, [posts])
 
-    const [buttons] = useState(() => {
+    const buttons = useMemo(() => {
         let arr = []
 
         for (let i = 0; i < pagesCount; i++) {
@@ -19,7 +19,7 @@ export default function Pagination({ url: pageUrl, page, posts, setCurrentPage }
         }
 
         return arr
-    })
+    }, [pagesCount])
 
     const changeNumber = (val) => {
         if (val.currentTarget.value < 1) {
@@ -42,14 +42,14 @@ export default function Pagination({ url: pageUrl, page, posts, setCurrentPage }
                     strona
                     {buttons.map((el, index) => {
                         let url = index === 0 ? pageUrl : pageUrl + '?page=' + (el + 1)
-                        if (page === 1 && (index === page - 1 || index === page || index === page + 1 || index === page + 2 || index === page + 3 || index === page + 4)) {
+                        if (page === 1 && (index === page - 1 || index === page || index === page + 1 || index === page + 2 || index === page + 3 || index === page + 4 || index === pagesCount - 1)) {
                             return (
                                 <Button to={url} onClick={e => { setCurrentPage(el + 1) }} active={page === el + 1}>
                                     <span>{el + 1}</span>
                                 </Button>
                             )
                         }
-                        if (page === pagesCount && (index === 0 || index === page - 6 || index === page - 5 || index === page - 4 || index === page - 3 || index === page - 2 || index === page - 1 || index === page || index === page + 1)) {
+                        if (page === pagesCount && (index === 0 || index === page - 6 || index === page - 5 || index === page - 4 || index === page - 3 || index === page - 2 || index === page - 1 || index === page || index === page + 1 || index === pagesCount - 1)) {
                             return (
                                 <Button to={url} onClick={e => { setCurrentPage(el + 1) }} active={page === el + 1}>
                                     <span>{el + 1}</span>

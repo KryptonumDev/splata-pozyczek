@@ -56,17 +56,17 @@ module.exports = {
       }
     },
     // 'gatsby-plugin-offline',
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: {
-        icon: 'src/images/logo.png',
-        name: `Splata pożyczek`,
-        short_name: `Splata pożyczek`,
-        start_url: `/`,
-        background_color: `#3B5BA9`,
-        theme_color: `#3B5BA9`,
-        display: `standalone`
-      }
-    },
+    // {
+    //   resolve: 'gatsby-plugin-manifest',
+    //   options: {
+    //     icon: 'src/images/logo.png',
+    //     name: `Splata pożyczek`,
+    //     short_name: `Splata pożyczek`,
+    //     start_url: `/`,
+    //     background_color: `#3B5BA9`,
+    //     theme_color: `#3B5BA9`,
+    //     display: `standalone`
+    //   }
+    // },
   ]
 };

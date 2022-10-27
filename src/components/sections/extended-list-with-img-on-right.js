@@ -165,6 +165,9 @@ const Content = styled.div`
                 counter-increment: int;
                 padding-left: 64px;
                 position: relative;
+                padding-top: 5px;
+                min-height: 32px;
+                color: #6F6F71;
 
                 &::before{
                     content: counter(int);

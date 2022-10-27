@@ -11,7 +11,7 @@ export default function FourTilesWithTitle({ data: { title, tekstWyrozniony, pla
                 <Content>
                     <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                     {tekstWyrozniony
-                        ? <p className="title body1" dangerouslySetInnerHTML={{ __html: textParser(tekstWyrozniony) }} />
+                        ? <div className="title body1" dangerouslySetInnerHTML={{ __html: tekstWyrozniony }} />
                         : null}
                     <Grid>
                         {plaszki.map(el => (
@@ -56,7 +56,8 @@ const Wrapper = styled.section`
 
     .title{
         text-align: center;
-        display: block;
+        display: grid;
+        grid-gap: 8px;
         padding: 10px;
         background: var(--color-light);
         box-shadow: var(--shadow);

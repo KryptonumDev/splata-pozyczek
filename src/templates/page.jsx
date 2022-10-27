@@ -388,7 +388,7 @@ export const query = graphql`
             }
           }
         }
-        slider : allWpPost(limit: 3) {
+        slider : allWpPost {
           nodes {
             id
             title

@@ -8,7 +8,7 @@ import { CATEGORY_COLORS } from "../../constants/category-colors"
 
 export default function Card({ el, allowLink, alternate }) {
     return (
-        <Item allowLink={allowLink} alternate={alternate} onClick={(e) => { if (!allowLink) { e.preventDefault() } }} to={'/blog/' + el.slug}>
+        <Item allowLink={allowLink} className={alternate ? 'alt' : ''} onClick={(e) => { if (!allowLink) { e.preventDefault() } }} to={'/blog/' + el.slug}>
             <div className="wrap">
                 <GatsbyImage className="img" image={el.blogPost.thumbnail.localFile.childImageSharp.gatsbyImageData} alt={el.blogPost.thumbnail.altText} />
                 <div className="text">
@@ -26,7 +26,7 @@ export default function Card({ el, allowLink, alternate }) {
                     <Button button={true} url={''} text={'Przeczytaj artykuł'} className='link desctop' />
                 </div>
             </div>
-            <Button button={true} url={''} text={'Przeczytaj artykuł'} className='link mobile' />
+            <Button button={true} url={'/blog/' + el.slug + '/'} text={'Przeczytaj artykuł'} className='link mobile' />
         </Item>
     )
 }
@@ -61,53 +61,51 @@ const Item = styled(Link)`
 
     cursor: ${props => props.allowLink ? 'pointer' : 'grabbing'};
     
-
-    ${props => props.alternate ? `
-    .wrap{
+    &.alt{
+        .wrap{
         grid-gap: 0 !important;
-    }
-    .text{
-        background-color: var(--color-medium);
-        color: #fff;
-        border-top-right-radius: 4px;
-        border-bottom-right-radius: 4px;
-
-        *{
+        }
+        .text{
+            background-color: var(--color-medium);
             color: #fff;
-        }
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
 
-        .categories button{
-            color: #000 !important;
-        }
+            *{
+                color: #fff;
+            }
 
-        .body3{
-            color: #DAE2FF;
-        }
+            .categories button{
+                color: #000 !important;
+            }
 
-        .link {
-            color: #fff!important;
-        }
+            .body3{
+                color: #DAE2FF;
+            }
 
-        svg rect{
-            fill: #fff;
-        }
+            .link {
+                color: #fff!important;
+            }
 
-        svg path{
-            fill: #000;
-        }
-    }
-        
-    ` : null}
+            svg rect{
+                fill: #fff;
+            }
 
-    .img{
-        border-bottom-left-radius: 4px;
-        border-top-left-radius: 4px;
+            svg path{
+                fill: #000;
+            }
+        }
     }
 
     &:hover{
         svg{
             transform: rotateZ(-45deg);
         }
+    }
+
+    .img{
+        border-bottom-left-radius: 4px;
+        border-top-left-radius: 4px;
     }
 
     .wrap{
@@ -120,16 +118,6 @@ const Item = styled(Link)`
 
     .mobile{
         display: none;
-    }
-
-    @media (max-width: 560px) {
-        .mobile{
-            display: grid;
-            margin: 0 auto;
-        }
-        .desctop{
-            display: none;
-        }
     }
 
     .categories{
@@ -172,6 +160,14 @@ const Item = styled(Link)`
     }
 
     @media (max-width: 560px) {
+        .mobile{
+            display: grid;
+            margin: 0 auto;
+        }
+        .desctop{
+            display: none;
+        }
+
         width: 320px;
         padding: 16px 8px;  
         .img{

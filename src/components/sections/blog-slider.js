@@ -42,7 +42,7 @@ export default function BlogSlider({ data, posts }) {
                         }
                     }
 
-                    if (!isUsed && related.length < 3) {
+                    if (!isUsed && related.length < 3 && el.blogPost?.previewText) {
                         related.push(el)
                     }
                 })

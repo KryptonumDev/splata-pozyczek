@@ -50,7 +50,7 @@ const Wrapper = styled.section`
     border-radius: 8px;
     padding: 40px 0;
     max-width: 1366px;
-    margin: 0 auto;
+    margin: var(--section) auto 0 auto;
 
     @media (max-width: 900px) {
         border-radius: 0px;
@@ -73,6 +73,7 @@ const Grid = styled.div`
 `
 
 const Item = styled(Link)`
+    width: 12%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -93,7 +94,6 @@ const Item = styled(Link)`
         text-align: center;
         color: var(--color-white);
         font-family: 'Arsenal';
-        width: min-content;
         font-size: 20px !important;
     }
 
@@ -106,6 +106,6 @@ const Item = styled(Link)`
     }
 
     @media (max-width: 420px) {
-        width: auto;
+        width: 45%;
     }
 `

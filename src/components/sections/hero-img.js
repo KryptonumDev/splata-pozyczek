@@ -4,10 +4,10 @@ import { Container } from "../atoms/container"
 import { graphql } from "gatsby"
 import Breadcrumbs from "../moleculas/breadcrumbs"
 import { textParser } from "../../helpers/wysiwyg-modification"
-import { FilledButton } from "../atoms/buttons"
+import { FilledButton, OutlinedButton } from "../atoms/buttons"
 import { GatsbyImage } from "gatsby-plugin-image"
 
-export default function HeroImg({ data: { pageTitle, text, link, list, imgOnRight }, title, uri }) {
+export default function HeroImg({ data: { pageTitle, text, buttons, list, imgOnRight }, title, uri }) {
 
   return (
     <Wrapper>
@@ -29,9 +29,12 @@ export default function HeroImg({ data: { pageTitle, text, link, list, imgOnRigh
                 ))}
               </List>
               : null}
-            {link?.url
-              ? <FilledButton className="link" target={link.target} to={link.url}>{link.title}</FilledButton>
-              : null}
+            {buttons?.map((el, index) => {
+              if (index) {
+                return <OutlinedButton className="link" target={el.link.target} to={el.link.url}> {el.link.title}</OutlinedButton>
+              }
+              return <FilledButton className="link" target={el.link.target} to={el.link.url}>{el.link.title}</FilledButton>
+            })}
           </TextPart>
           <div className="box">
             {imgOnRight?.localFile?.childImageSharp?.gatsbyImageData
@@ -67,10 +70,12 @@ export const query = graphql`
           }
         }
       }
-      link{
-        title
-        target
-        url
+      buttons{
+        link{
+          title
+          target
+          url
+        }
       }
     }
   }
