@@ -1,11 +1,11 @@
-import React, { useState } from "react"
+import React, { useMemo, useState } from "react"
 import styled from "styled-components"
 import { graphql, useStaticQuery } from "gatsby"
 import { Container } from "../atoms/container"
 import { textParser } from "../../helpers/wysiwyg-modification"
 import { OutlinedButton } from "../atoms/buttons"
 
-export default function Reviews({ data: { title, text } }) {
+export default function Reviews({ data: { title, text}, expert, comments }) {
 
     const { allWpComment } = useStaticQuery(graphql`
     query {
@@ -22,15 +22,28 @@ export default function Reviews({ data: { title, text } }) {
     }
   `)
 
+    const chosenComments = useMemo(() => {
+
+        if(expert){
+            return comments
+        }
+        return allWpComment.nodes
+
+    }, [allWpComment, comments, expert])
+
+
     const [showCount, changeShowCount] = useState(6)
 
     return (
         <Wrapper>
             <Container>
                 <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
-                <p className="body1 text" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
-                {/* <Grid>
-                    {allWpComment?.nodes?.map((el, index) => {
+                {text
+                    ? <p className="body1 text" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
+                    : null}
+
+                <Grid>
+                    {chosenComments?.map((el, index) => {
                         if (index > showCount - 1) {
                             return null
                         }
@@ -48,16 +61,13 @@ export default function Reviews({ data: { title, text } }) {
                             </Item>
                         )
                     })}
-                </Grid> */}
-                {allWpComment.nodes.length < 6
+                </Grid>
+                {chosenComments.length < 6
                     ? null
-                    : showCount > allWpComment.nodes.length
+                    : showCount > chosenComments.length
                         ? <OutlinedButton onClick={() => { changeShowCount(6) }} className="button">Ukryj</OutlinedButton>
                         : <OutlinedButton onClick={() => { changeShowCount(showCount + 6) }} className="button">Wczytaj więcej</OutlinedButton>
                 }
-
-
-
             </Container>
         </Wrapper>
     )
@@ -81,7 +91,7 @@ const Wrapper = styled.section`
         background-color: var(--color-light);
         box-shadow: var(--shadow);
         padding: 10px 24px;
-        margin:  16px auto 0 auto;
+        margin:  16px auto 48px auto;
     }
 
     .button{
@@ -93,7 +103,7 @@ const Grid = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 32px;
-    margin-top: 48px;
+    margin-top: 32px;
 `
 
 const Item = styled.div`
@@ -102,6 +112,14 @@ const Item = styled.div`
     box-shadow: var(--shadow);
     text-align: left;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 32px auto;
     grid-gap: 10px;
+
+    .body3{
+        margin: 4px 0;
+    }
+
+    .body2{
+        font-weight: 600;
+    }
 `

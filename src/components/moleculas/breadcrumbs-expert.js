@@ -3,7 +3,7 @@ import React from "react"
 import { Helmet } from "react-helmet";
 import styled from "styled-components"
 
-export default function Breadcrumbs({ title, uri }) {
+export default function BreadcrumbsExpert({ title, uri }) {
 
     const items = [{
         "@type": "ListItem",
@@ -13,6 +13,11 @@ export default function Breadcrumbs({ title, uri }) {
     }, {
         "@type": "ListItem",
         "position": 2,
+        "name": "Zespół",
+        "item": 'https://splatapozyczek.pl/zespol/'
+    }, {
+        "@type": "ListItem",
+        "position": 3,
         "name": title,
         "item": 'https://splatapozyczek.pl' + uri
     }]
@@ -31,6 +36,8 @@ export default function Breadcrumbs({ title, uri }) {
                 </script>
             </Helmet>
             <Link className="body1" to='/'>Strona główna</Link>
+            <span className="body1 divider">/</span>
+            <Link className="body1" to='/zespol/'>Zespół</Link>
             <span className="body1 divider">/</span>
             <span className="body1">{title}</span>
         </Wrapper>

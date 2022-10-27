@@ -1,3 +1,4 @@
+import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
 import styled from "styled-components"
@@ -6,15 +7,17 @@ import { Button } from "./buttons"
 export default function ExpertCard({ el }) {
     return (
         <Item>
-            <GatsbyImage className="image" image={el.ekspert.image.localFile.childImageSharp.gatsbyImageData} alt={el.ekspert.image.altText} />
-            <div className="text">
-                <p className="body1">{el.title}</p>
-                <p className="body3">
-                    {el.ekspert.role}
-                </p>
-                <Button url={'tel:' + el.ekspert.numerTelefonu} text={el.ekspert.numerTelefonu} className='phone' />
-                <Button url={'mailto:' + el.ekspert.emailAdres} text={el.ekspert.emailAdres} className='mail' />
-            </div>
+            <Link to={'/zespol/' + el.slug + '/'}>
+                <GatsbyImage className="image" image={el.ekspert.image.localFile.childImageSharp.gatsbyImageData} alt={el.ekspert.image.altText} />
+                <div className="text">
+                    <p className="body1">{el.title}</p>
+                    <p className="body3">
+                        {el.ekspert.role}
+                    </p>
+                    <Button url={'tel:' + el.ekspert.numerTelefonu} text={el.ekspert.numerTelefonu} className='phone' />
+                    <Button url={'mailto:' + el.ekspert.emailAdres} text={el.ekspert.emailAdres} className='mail' />
+                </div>
+            </Link>
         </Item>
 
     )
@@ -25,6 +28,10 @@ const Item = styled.div`
     box-shadow: var(--shadow);
     max-width: 344px;
     width: 100%;
+    
+    a{
+        text-decoration: none;
+    }
 
     .text{
         padding: 12px;

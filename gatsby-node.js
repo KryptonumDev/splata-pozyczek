@@ -54,4 +54,27 @@ exports.createPages = async ({
       });
     }
   });
+
+  const { data: { allWpEkspert: { nodes: expertsNodes } } } = await graphql(`
+  query{
+    allWpEkspert {
+      nodes {
+        id
+        slug
+      }
+    }
+  }
+  `)
+
+  expertsNodes.forEach(({ slug, id }) => {
+    createPage({
+      path: '/zespol/' + slug + '/',
+      component: resolve('src/templates/expert.jsx'),
+      context: {
+        id: id,
+        slug,
+        url: '/zespol/' + slug + '/'
+      },
+    });
+  });
 }

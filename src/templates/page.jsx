@@ -434,6 +434,7 @@ export const query = graphql`
         allWpEkspert {
           nodes {
             id
+            slug
             title
             ekspert {
               role

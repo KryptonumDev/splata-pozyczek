@@ -11,7 +11,7 @@ import { checkboxController } from "../../../helpers/checkbox-controller"
 import { checkboxAll } from "../../../helpers/checkbox-all"
 import LabelSelect from "../label-select"
 
-export default function Form({ type, setIsSended }) {
+export default function Form({ title, type, setIsSended }) {
 
     const { wpPage: { formyKontaktowe: { linkPrivacyPolicy, additionalInform, meesageThemes } } } = useStaticQuery(graphql`
     query {
@@ -39,11 +39,13 @@ export default function Form({ type, setIsSended }) {
             let url = 'https://testy.kryptonum.co.uk/wp-json/contact-form-7/v1/contact-forms/669/feedback'
             let body = new FormData()
             body.append('your-email', data.email)
-            body.append("your-subject", data.message)
+            body.append("your-message", data.message)
             body.append('your-name', data.name)
             body.append('your-phone', data.phone)
             if (type !== 'noTheme') {
-                body.append('your-theme', data.theme)
+                body.append('your-subject', data.theme)
+            } else {
+                body.append('your-subject', title)
             }
             axios.post(url, body)
                 .then((res) => {

@@ -39,13 +39,12 @@ export default function Form({ setIsSended }) {
         setIsSended(true)
 
         if (sendedCount < 3) {
-            let url = 'https://testy.kryptonum.co.uk/wp-json/contact-form-7/v1/contact-forms/669/feedback'
+            let url = 'https://testy.kryptonum.co.uk/wp-json/contact-form-7/v1/contact-forms/3704/feedback'
             let body = new FormData()
             body.append('your-email', data.email)
-            body.append("your-subject", data.message)
             body.append('your-name', data.name)
             body.append('your-phone', data.phone)
-            body.append('your-theme', data.theme)
+            body.append('your-provision', data.theme)
             axios.post(url, body)
                 .then((res) => {
                     if (res.status === 200) {
@@ -93,15 +92,6 @@ export default function Form({ setIsSended }) {
                         errors={errors}
                     />
                 </div>
-                <LabelInput
-                    name='message'
-                    label='Wiadomość*'
-                    params={{ required: true }}
-                    register={register}
-                    errors={errors}
-                    type='textarea'
-                    rows='4'
-                />
                 <div className="flex">
                     <div>
                         <LabelCheckbox

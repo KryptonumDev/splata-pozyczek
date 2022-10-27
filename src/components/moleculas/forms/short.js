@@ -40,10 +40,10 @@ export default function Form({ setIsSended }) {
             let url = 'https://testy.kryptonum.co.uk/wp-json/contact-form-7/v1/contact-forms/669/feedback'
             let body = new FormData()
             body.append('your-email', data.email)
-            body.append("your-subject", data.message)
+            body.append("your-message", data.message)
             body.append('your-name', data.name)
             body.append('your-phone', data.phone)
-            body.append('your-theme', data.theme)
+            body.append('your-subject', data.theme)
             axios.post(url, body)
                 .then((res) => {
                     if (res.status === 200) {

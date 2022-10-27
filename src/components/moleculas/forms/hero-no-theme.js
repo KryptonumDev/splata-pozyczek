@@ -40,7 +40,7 @@ export default function Form({ setIsSended, formTitle }) {
             body.append('your-email', data.email)
             body.append('your-name', data.name)
             body.append('your-phone', data.phone)
-            body.append('your-subject', data.theme)
+            body.append("your-message", data.message)
             axios.post(url, body)
                 .then((res) => {
                     if (res.status === 200) {
@@ -61,12 +61,6 @@ export default function Form({ setIsSended, formTitle }) {
                     ? <h2 className="h5 arsenal" dangerouslySetInnerHTML={{ __html: textParser(formTitle) }} />
                     : null}
                 <div className="flex">
-                    <LabelSelect
-                        control={control}
-                        themes={meesageThemes}
-                        name='theme'
-                        label='Wybierz temat*'
-                    />
                     <LabelInput
                         name='name'
                         label='Imię i nazwisko*'
@@ -91,6 +85,15 @@ export default function Form({ setIsSended, formTitle }) {
                         errors={errors}
                     />
                 </div>
+                <LabelInput
+                    name='message'
+                    label='Wiadomość*'
+                    params={{ required: true }}
+                    register={register}
+                    errors={errors}
+                    type='textarea'
+                    rows='4'
+                />
                 <div className="checkboxes">
                     <LabelCheckbox
                         name='privacyTwo'

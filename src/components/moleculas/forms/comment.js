@@ -52,7 +52,7 @@ export default function Form({ setIsSended }) {
                         setIsSended(true)
                         reset()
                     } else {
-                        
+                        reset()
                     }
                 })
         }

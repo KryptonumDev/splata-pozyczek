@@ -47,7 +47,7 @@ export default function Form({ setIsSended }) {
             body.append('your-name', data.name)
             body.append('your-phone', data.phone)
             body.append('your-subject', data.theme)
-            
+
             body.append('your-place', data.place)
             body.append('your-money-count', data.moneyCount)
             body.append('your-income-count', data.incomeCount)
@@ -84,7 +84,7 @@ export default function Form({ setIsSended }) {
         let one = getValues("privacyOne")
         let two = getValues("privacyTwo")
         let three = getValues("privacyThree")
-    
+
         if (e.currentTarget.id === 'one-alt') {
             one = e.currentTarget.checked
         } else if (e.currentTarget.id === 'two-alt') {
@@ -92,7 +92,7 @@ export default function Form({ setIsSended }) {
         } else if (e.currentTarget.id === 'three-alt') {
             three = e.currentTarget.checked
         }
-    
+
         if (one && two && three) {
             document.getElementById('all-alt').classList.remove('half')
             setValue('checkAll', true)
