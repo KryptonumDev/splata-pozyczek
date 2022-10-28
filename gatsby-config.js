@@ -55,7 +55,7 @@ module.exports = {
         policy: [{ userAgent: '*', allow: '/' }]
       }
     },
-    'gatsby-plugin-offline',
+    // 'gatsby-plugin-offline',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
