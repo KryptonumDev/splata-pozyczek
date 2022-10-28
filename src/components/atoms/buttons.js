@@ -1,6 +1,6 @@
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 import styled from "styled-components"
-import React from "react"
+import React, { useRef } from "react"
 
 export const OutlinedButton = styled(Link)`
     display: block;
@@ -41,36 +41,108 @@ export const OutlinedButton = styled(Link)`
     }
 `
 
-export const FilledButton = styled(Link)`
+export const FilledButton = ({ to, className, children }) => {
+
+    const rippleEl = useRef(null)
+
+    const rippleStart = (e) => {
+        e.preventDefault()
+        var rect = e.target.getBoundingClientRect()
+
+        let x = e.clientX - rect.left
+        let y = e.clientY - rect.top
+
+        rippleEl.current.style.left = x + 'px'
+        rippleEl.current.style.top = y + 'px'
+
+        rippleEl.current.classList.add('active')
+
+        setTimeout(() => {
+            navigate(to)
+        }, 200)
+
+        setTimeout(() => {
+            rippleEl?.current?.classList?.remove('active')
+        }, 1000)
+
+    }
+
+    return (
+        <StyledFilledButton to={to} className={className} onClick={e => { rippleStart(e) }}>
+            <span>{children}</span>
+            <Ripple ref={rippleEl} />
+        </StyledFilledButton>
+    )
+}
+
+const Ripple = styled.div`
+    position: absolute;
+    z-index: 3;
+    width: 0%;
+    height: 0%;
+    opacity: .7;
+    background-color: #fff;
+    border-radius: 50%;
+    transform-origin: 50% 50%;
+
+    &.active{
+        transition: width .5s cubic-bezier(0.39, 0.575, 0.565, 1), height .5s cubic-bezier(0.39, 0.575, 0.565, 1), opacity 1s cubic-bezier(0.39, 0.575, 0.565, 1);
+        width: 400px;
+        height: 400px;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+    }
+`
+
+const StyledFilledButton = styled(Link)`
     display: block;
+    overflow: hidden;
     width: fit-content;
     font-family: 'Source Sans Pro';
+    position: relative;
     border: none;
     font-weight: 600;
     font-size: 16px;
     line-height: 125%;
     letter-spacing: 0.003em;
-    color: #050505 !important;
-    background: linear-gradient(315deg, #FCCF4F 0%, #E7DCBF 99.99%);
     box-shadow: 0px 1px 3px 1px rgba(97, 152, 193, 0.15), 0px 1px 2px rgba(97, 152, 193, 0.25);
     border-radius: 4px;
     padding: 12px 44px;
     text-decoration: unset;
     text-align: center;
-
     transition: background-color .3s cubic-bezier(0.39, 0.575, 0.565, 1);   
 
-    &:hover{
-        background: linear-gradient(315deg, #EDBD35 0%, #E6D9AC 99.99%);
+    &::before{
+        content: "";
+        position: absolute;
+        left: 0;
+        right: -130px;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+        transition: transform .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+        background: linear-gradient(315deg, #FCCF4F 0%, #E7DCBF 99.99%);
     }
 
-    &:focus{
-        background: linear-gradient(315deg, #B98901 0%, #E6BC7E 99.99%);
+    &:hover{
+        &::before{
+            transform: translateX(-130px);
+        }
+    }
+
+    span{
+        position: relative;
+        z-index: 2;
+        color: #050505 !important;
     }
 
     &:disabled{
-        color: #B2B2B8 !important;
-        background: #E1E1EB;
+        span{
+            color: #B2B2B8 !important;
+        }
+        &::before{
+            background: #E1E1EB;
+        }
     }
 
     @media (max-width: 480px) {
