@@ -121,6 +121,23 @@ const Wrapper = styled.footer`
     background: #F2F4FF;
     padding: 48px 0;
 
+    @media (max-width: 876px) {
+        .body3{
+            font-size: 14px;
+            *{
+                font-size: 14px;
+            }
+        }
+
+        .sub{
+            grid-gap: 12px !important;
+        }
+
+        .inform{
+            height: fit-content;
+        }
+    }
+
     .inform{
         display: flex;
         flex-direction: column;

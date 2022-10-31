@@ -258,6 +258,12 @@ const Navigation = styled.nav`
         letter-spacing: -0.2px;
         color: var(--color-medium) !important;
       }
+
+      svg{
+        path{
+          fill: var(--color-medium);
+        }
+      }
     }
 
     ul{
