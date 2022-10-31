@@ -32,6 +32,7 @@ export const query = graphql`
             }
             ekspert {
               facebook
+              workWithProducts
               twitter
               pinterest
               role

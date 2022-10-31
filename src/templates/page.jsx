@@ -66,6 +66,9 @@ import HeroText from "../components/sections/hero-text"
 import Calculator from "../components/sections/calculator"
 import { Helmet } from "react-helmet"
 import Reviews from "../components/sections/reviews"
+import HeighlihtedAdres from "../components/sections/heighlihted-adres"
+import ExpertWithContactInform from "../components/sections/expert-with-contact-inform"
+import Citate from "../components/sections/citate"
 
 export function Head({ data: { wpPage: { seo } } }) {
 
@@ -260,12 +263,18 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
             return <HeroText data={el.heroText} uri={pageContext.url} title={title} />
           case 'WpPage_PageBuilder_Sections_Reviews':
             return <Reviews data={el.reviews}/>
+          case 'WpPage_PageBuilder_Sections_HeighlihtedAdres':
+            return <HeighlihtedAdres data={el.heighlihtedAdres}/>
+          case 'WpPage_PageBuilder_Sections_ExpertWithContactInform':
+            return <ExpertWithContactInform data={el.expertWithContactInform}/>
+          case 'WpPage_PageBuilder_Sections_Citate':
+            return <Citate data={el.citate}/>
           default:
             return <p className="h2">{el.__typename}</p>
         }
       })}
     </main>
-  ) // tabs_with_three_columns_content
+  )
 }
 
 export const query = graphql`
@@ -288,6 +297,9 @@ export const query = graphql`
             page_builder {
               sections {
                 __typename
+                ...citate
+                ...expertWithContactInform
+                ...heighlihtedAdres
                 ...reviews
                 ...heroText
                 ...tabsWithThreeColumnsContent

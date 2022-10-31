@@ -9,7 +9,7 @@ import Form from "../moleculas/forms/hero-no-theme"
 
 export default function HeroExpert({ pageContext, data: { wpEkspert:
     { title, ekspert: { facebook, twitter, pinterest, role,
-        numerTelefonu, emailAdres, addInform, image, imageSmall } } } }) {
+        numerTelefonu, emailAdres, addInform, workWithProducts, imageSmall } } } }) {
 
     const [isSended, setIsSended] = useState(false)
     const formTitle = 'Wypełnij wniosek <span style="color: #3b5ba9;">online</span>'
@@ -69,8 +69,12 @@ export default function HeroExpert({ pageContext, data: { wpEkspert:
                             ) : null}
                         </Flex>
                         <TextPart>
-                            <p className="body1 title">{addInform.title}</p>
-                            <div className="body1 text" dangerouslySetInnerHTML={{ __html: addInform.text }} />
+                            {addInform.title
+                                ? <p className="body1 title">{addInform.title}</p>
+                                : null}
+                            {addInform.text
+                                ? <div className="body1 text" dangerouslySetInnerHTML={{ __html: addInform.text }} />
+                                : null}
                             {addInform.subTitle
                                 ? <p className="h6 subtitle">{addInform.subTitle}</p>
                                 : null}
