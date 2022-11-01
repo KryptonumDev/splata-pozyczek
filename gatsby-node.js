@@ -77,4 +77,29 @@ exports.createPages = async ({
       },
     });
   });
+
+
+  const { data: { allWpPost: { nodes: postNodes } } } = await graphql(`
+  query{
+    allWpPost {
+      nodes {
+        id
+        slug
+      }
+    }
+  }
+  `)
+  
+  postNodes.forEach(({ slug, id }) => {
+    createPage({
+      path: '/blog/' + slug + '/',
+      component: resolve('src/templates/post.jsx'),
+      context: {
+        id: id,
+        slug,
+        url: '/blog/' + slug + '/'
+      },
+    });
+  });
+  
 }

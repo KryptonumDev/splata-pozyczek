@@ -8,9 +8,9 @@ export default function PostGrid({ allPosts, page }) {
             <p className="h6 arsenal title">Najnowsze <span className="blue">artykuły</span></p>
             <Grid>
                 {allPosts.map((el, index) => {
-                    if (true) {  //   el.blogPost.previewText
+                    if (el.blogPost.previewText) {  //   true
                         if ((index >= (11 * (page - 1) + (page - 1))) && index <= (11 * page) + (page - 1)) {
-                            return <div>{index} - {el.slug}</div> //  <Card el={el} allowLink={true} />
+                            return <Card el={el} allowLink={true} /> //  <div>{index} - {el.slug}</div>
                         }
                     }
                     return null
