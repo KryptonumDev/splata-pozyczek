@@ -134,7 +134,7 @@ const Wrapper = styled.footer`
         }
 
         .inform{
-            height: fit-content;
+            height: fit-content !important;
         }
     }
 

@@ -22,7 +22,9 @@ export default function HeroExpert({ pageContext, data: { wpEkspert:
                         <BreadcrumbsExpert uri={pageContext.uri} title={title} />
                         <Flex>
                             <PersonData>
-                                <GatsbyImage className="avatar" image={imageSmall.localFile.childImageSharp.gatsbyImageData} alt={imageSmall.altText} />
+                                {imageSmall
+                                    ? <GatsbyImage className="avatar" image={imageSmall.localFile.childImageSharp.gatsbyImageData} alt={imageSmall.altText} />
+                                    : null}
                                 <div>
                                     <h1>
                                         <span className="body1">{title}</span>

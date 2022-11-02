@@ -8,7 +8,9 @@ export default function ExpertCard({ el }) {
     return (
         <Item>
             <Link to={'/zespol/' + el.slug + '/'}>
-                <GatsbyImage className="image" image={el.ekspert.image.localFile.childImageSharp.gatsbyImageData} alt={el.ekspert.image.altText} />
+                {el.ekspert.image
+                    ? <GatsbyImage className="image" image={el.ekspert.image.localFile.childImageSharp.gatsbyImageData} alt={el.ekspert.image.altText} />
+                    : null}
                 <div className="text">
                     <p className="body1">{el.title}</p>
                     <p className="body3">
