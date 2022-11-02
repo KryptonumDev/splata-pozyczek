@@ -3,6 +3,7 @@ import React from "react"
 import { useMemo } from "react"
 import styled from "styled-components"
 import { Container } from "../components/atoms/container"
+import Blockqoute from "../components/sections/blog-post/blockqoute"
 import Hero from "../components/sections/blog-post/hero"
 import ImageSection from "../components/sections/blog-post/image"
 import QuickLinks from "../components/sections/blog-post/quick-links"
@@ -137,6 +138,8 @@ export default function Post({ pageContext, data: { wpPost } }) {
                   return <TextSection data={el.textSection} />
                 case 'WpPost_Blogpost_Sections_ImageSection':
                   return <ImageSection data={el.imageSection} />
+                case 'WpPost_Blogpost_Sections_Blockqoute':
+                  return <Blockqoute data={el.blockqoute}/>
                 default:
                   return <p className="h2">{el.__typename}</p>
               }
@@ -198,6 +201,7 @@ export const query = graphql`
             }
             sections{
             __typename
+            ...blockqoute
             ...imageSection
             ...textSection
                 }

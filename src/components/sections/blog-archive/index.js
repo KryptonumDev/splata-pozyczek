@@ -9,7 +9,6 @@ import Hero from "./hero"
 export default function BlogArchive({ data: { pageTitle, text, list, link, relatedPost }, title, allPosts, location, categories, slug, url }) {
 
   const [currentPage, setCurrentPage] = useState(() => {
-    console.log(location)
     if (!location.search) {
       return 1
     }

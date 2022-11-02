@@ -3,8 +3,11 @@ const { resolve } = require('path')
 
 exports.createPages = async ({
   graphql,
-  actions: { createPage },
+  actions: { createPage, createRedirect },
 }) => {
+
+  // Create pages
+
   const { data: { allWpPage: { nodes } } } = await graphql(`
     query {
       allWpPage{
@@ -89,7 +92,7 @@ exports.createPages = async ({
     }
   }
   `)
-  
+
   postNodes.forEach(({ slug, id }) => {
     createPage({
       path: '/blog/' + slug + '/',
@@ -101,5 +104,28 @@ exports.createPages = async ({
       },
     });
   });
-  
+
+  // Create redirects
+
+
+  const { data: { wpPage: { global: { redirects } } } } = await graphql(`
+  query{
+    wpPage(id: {eq: "cG9zdDo2MzQ="}) {
+      global {
+        redirects {
+          from
+          to
+        }
+      }
+    }
+  }
+  `)
+
+  redirects?.forEach(el => {
+    createRedirect({
+      fromPath: el.from,
+      toPath: el.to,
+    });
+  })
+
 }

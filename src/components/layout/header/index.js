@@ -187,6 +187,7 @@ const Wrapper = styled.header`
 
     @media (max-width: 480px) {
       .logo{
+        width: 32px;
         height: auto;
         transform: scale(2) translateX(8px) translateY(2px);
       }
@@ -212,6 +213,11 @@ const Wrapper = styled.header`
 const Content = styled.div`
     margin: 25px 0 0 0;
     padding: 10px 13px;
+
+    @media (max-width: 480px) {
+      padding: 10px 0;
+    }
+    
     display: flex;
     justify-content: space-between;
     align-items: center;

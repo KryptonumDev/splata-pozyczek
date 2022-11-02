@@ -25,8 +25,8 @@ export const query = graphql`
 `
 
 const Wrapper = styled.section`
-    padding-top: calc(var(--section-post) * 4);
-    margin-top: calc(var(--section-post) * -3);
+    padding-top: calc(var(--section-post) * 2);
+    margin-top: calc(var(--section-post) * -1);
     .body1{
         margin-top: 16px;
         display: grid;
