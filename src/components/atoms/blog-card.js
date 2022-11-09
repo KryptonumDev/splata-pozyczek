@@ -133,6 +133,8 @@ const Item = styled.div`
     }
 
     .categories{
+        max-height: 35px;
+        overflow: hidden;
         display: flex;
         gap: 8px 16px;
         flex-wrap: wrap;
@@ -158,7 +160,7 @@ const Item = styled.div`
 
     .img{
         width: 184px;
-        height: 100%;
+        height: fit-content;
             pointer-events: none;
     }
 

@@ -39,6 +39,7 @@
     "react-hook-form": "^7.35.0",
     "react-scroll": "^1.8.8",
     "react-select": "^5.5.2",
+    "react-svg-donut-chart": "^1.1.0",
     "styled-components": "^5.3.5"
   }
 }

@@ -50,9 +50,9 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://splatapozyczekmaster.gatsbyjs.io',
+        host: null,
         sitemap: 'https://splatapozyczekmaster.gatsbyjs.io/sitemap/sitemap-0.xml',
-        policy: [{ userAgent: '*', allow: '/' }]
+        policy:  [{ userAgent: '*', allow: '/' }]
       }
     },
     // 'gatsby-plugin-offline',

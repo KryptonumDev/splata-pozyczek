@@ -4,11 +4,19 @@ import { useMemo } from "react"
 import styled from "styled-components"
 import { Container } from "../components/atoms/container"
 import Blockqoute from "../components/sections/blog-post/blockqoute"
+import CircularChart from "../components/sections/blog-post/circular-chart"
+import CallToAction from "../components/sections/blog-post/cta"
 import Hero from "../components/sections/blog-post/hero"
 import ImageSection from "../components/sections/blog-post/image"
+import InformPanels from "../components/sections/blog-post/inform-panels"
+import ListSection from "../components/sections/blog-post/list"
 import QuickLinks from "../components/sections/blog-post/quick-links"
+import Table from "../components/sections/blog-post/table"
 import TextSection from "../components/sections/blog-post/text"
+import PercentCompare from '../components/sections/blog-post/percent-compare'
 import { textParser } from "../helpers/wysiwyg-modification"
+import CircularPercentCompare from "../components/sections/blog-post/circular-percent-compare"
+import Faq from "../components/sections/blog-post/faq"
 
 export function Head({ data: { wpPost: { seo, author, title, slug, blogPost } } }) {
 
@@ -108,11 +116,53 @@ export default function Post({ pageContext, data: { wpPost } }) {
     wpPost.blogPost.sections?.forEach(el => {
       switch (el.__typename) {
         case 'WpPost_Blogpost_Sections_TextSection':
-          links.push(textParser(el.textSection.title))
+          if (el.textSection.title) {
+            links.push(textParser(el.textSection.title))
+          }
           break
         case 'WpPost_Blogpost_Sections_ImageSection':
           if (el.imageSection.title) {
             links.push(textParser(el.imageSection.title))
+          }
+          break
+        case 'WpPost_Blogpost_Sections_Cta':
+          if (el.cta.title) {
+            links.push(textParser(el.cta.text))
+          }
+          break
+        case 'WpPost_Blogpost_Sections_List':
+          if (el.list.title) {
+            links.push(textParser(el.list.title))
+          }
+          break
+        case 'WpPost_Blogpost_Sections_InformPanels':
+          if (el.informPanels.title) {
+            links.push(textParser(el.informPanels.title))
+          }
+          break
+        case 'WpPost_Blogpost_Sections_Table':
+          if (el.table.title) {
+            links.push(textParser(el.table.title))
+          }
+          break
+        case 'WpPost_Blogpost_Sections_CircularChart':
+          if (el.circularChart.title) {
+            links.push(textParser(el.circularChart.title))
+          }
+          break
+        case 'WpPost_Blogpost_Sections_PercentCompare':
+          if (el.percentCompare.title) {
+            links.push(textParser(el.percentCompare.title))
+          }
+          break
+        case 'WpPost_Blogpost_Sections_CircularPercentCompare':
+          if (el.circularPercentCompare.title) {
+            links.push(textParser(el.circularPercentCompare.title))
+          }
+          break
+        case 'WpPost_Blogpost_Sections_Faq':
+          if (el.faq.title) {
+            links.push(textParser(el.faq.title))
           }
           break
         default:
@@ -139,7 +189,23 @@ export default function Post({ pageContext, data: { wpPost } }) {
                 case 'WpPost_Blogpost_Sections_ImageSection':
                   return <ImageSection data={el.imageSection} />
                 case 'WpPost_Blogpost_Sections_Blockqoute':
-                  return <Blockqoute data={el.blockqoute}/>
+                  return <Blockqoute data={el.blockqoute} />
+                case 'WpPost_Blogpost_Sections_Cta':
+                  return <CallToAction data={el.cta} />
+                case 'WpPost_Blogpost_Sections_List':
+                  return <ListSection data={el.list} />
+                case 'WpPost_Blogpost_Sections_InformPanels':
+                  return <InformPanels data={el.informPanels} />
+                case 'WpPost_Blogpost_Sections_Table':
+                  return <Table data={el.table} />
+                case 'WpPost_Blogpost_Sections_CircularChart':
+                  return <CircularChart data={el.circularChart} />
+                case 'WpPost_Blogpost_Sections_PercentCompare':
+                  return <PercentCompare data={el.percentCompare} />
+                case 'WpPost_Blogpost_Sections_CircularPercentCompare':
+                  return <CircularPercentCompare data={el.circularPercentCompare} />
+                case 'WpPost_Blogpost_Sections_Faq':
+                  return <Faq data={el.faq} />
                 default:
                   return <p className="h2">{el.__typename}</p>
               }
@@ -192,18 +258,26 @@ export const query = graphql`
                 previewText
                 description
                 thumbnail {
-                altText
-                localFile {
+                  altText
+                  localFile {
                     childImageSharp {
-                        gatsbyImageData
+                      gatsbyImageData
                     }
+                  }
                 }
-            }
-            sections{
-            __typename
-            ...blockqoute
-            ...imageSection
-            ...textSection
+                sections{
+                  __typename
+                  ...faqPost
+                  ...circularPercentCompare
+                  ...percentCompare
+                  ...circularChart
+                  ...table
+                  ...informPanels
+                  ...list
+                  ...blockqoute
+                  ...calltoaaction
+                  ...imageSection
+                  ...textSection
                 }
             }
         }

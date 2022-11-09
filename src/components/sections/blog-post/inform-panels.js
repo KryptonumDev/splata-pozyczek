@@ -3,9 +3,8 @@ import styled from "styled-components"
 import { graphql } from "gatsby"
 import { Container } from "../../atoms/container"
 import { textParser } from "../../../helpers/wysiwyg-modification"
-import { GatsbyImage } from "gatsby-plugin-image"
 
-export default function ImageSection({ data: { title, text, imgSource, subText, image } }) {
+export default function InformPanels({ data: { title, text, subText, panels } }) {
     return (
         <Wrapper name={textParser(title ? title : '')}>
             <Container className="container">
@@ -15,10 +14,17 @@ export default function ImageSection({ data: { title, text, imgSource, subText, 
                 {text
                     ? <div className="body1 text" dangerouslySetInnerHTML={{ __html: text }} />
                     : null}
-                <GatsbyImage className="image" image={image.localFile.childImageSharp.gatsbyImageData} alt={image.altText} />
-                {imgSource
-                    ? <span className="body1 source">Źródło: {imgSource}</span>
-                    : null}
+                <Grid>
+                    {panels?.map(el => (
+                        <Item>
+                            <img src={el.icon.localFile.publicURL} alt='blue mark' />
+                            <div className="content">
+                                <span className="h6 arsenal">{el.percent}%</span>
+                                <div className="body1" dangerouslySetInnerHTML={{ __html: el.text }} />
+                            </div>
+                        </Item>
+                    ))}
+                </Grid>
                 {subText
                     ? <div className="body1 sub" dangerouslySetInnerHTML={{ __html: subText }} />
                     : null}
@@ -28,19 +34,20 @@ export default function ImageSection({ data: { title, text, imgSource, subText, 
 }
 
 export const query = graphql`
-  fragment imageSection on WpPost_Blogpost_Sections_ImageSection {
-    imageSection {
+  fragment informPanels on WpPost_Blogpost_Sections_InformPanels {
+    informPanels {
         title
         text
-        imgSource
         subText
-        image{
-            altText
-            localFile{
-                childImageSharp{
-                    gatsbyImageData
+        panels{
+            icon{
+                altText
+                localFile{
+                    publicURL
                 }
             }
+            percent
+            text
         }
       }
   }
@@ -50,9 +57,6 @@ const Wrapper = styled.section`
     padding-top: var(--section-post);
     /* padding-top: calc(var(--section-post) * 2);
     margin-top: calc(var(--section-post) * -1); */
-
-    .arsenal{
-    }
 
     .text{
         margin-top: 16px;
@@ -69,14 +73,6 @@ const Wrapper = styled.section`
         }
     }
 
-    .source{
-        margin-top: 8px;
-        text-align: right;
-        color: #6F6F71;
-        display: block;
-        font-size: clamp(11px, ${11 / 768 * 100}vw, 16px);
-    }
-
     .sub{
         margin-top: 24px;
         display: grid;
@@ -85,13 +81,34 @@ const Wrapper = styled.section`
             color: #6F6F71;
         }
     }
+`
 
-    .image{
-        margin: 0 auto;
-        margin-top: 32px;
-        border-radius: 4px;
-        box-shadow: var(--shadow);
-        display: block;
-        width: fit-content;
+const Grid = styled.div`
+    display: grid;
+    grid-gap: 24px;
+    margin-top: 24px;
+`
+
+const Item = styled.div`
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-template-columns: clamp(48px, ${48 / 768 * 100}vw, 76px) auto;
+    grid-gap: clamp(4px, ${4 / 768 * 100}vw, 10px);
+
+    img{
+        width: clamp(48px, ${48 / 768 * 100}vw, 76px);
+        height: clamp(48px, ${48 / 768 * 100}vw, 76px);
+    }
+
+    .content{
+        padding: 10px;
+        .body1{
+            margin-top: 4px;
+        }
+        p{
+            color: #6F6F71;
+        }
     }
 `
