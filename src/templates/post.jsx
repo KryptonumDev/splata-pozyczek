@@ -17,6 +17,8 @@ import PercentCompare from '../components/sections/blog-post/percent-compare'
 import { textParser } from "../helpers/wysiwyg-modification"
 import CircularPercentCompare from "../components/sections/blog-post/circular-percent-compare"
 import Faq from "../components/sections/blog-post/faq"
+import HorizontalChart from "../components/sections/blog-post/horizontal-chart"
+import VerticalChart from "../components/sections/blog-post/vertical-chart"
 
 export function Head({ data: { wpPost: { seo, author, title, slug, blogPost } } }) {
 
@@ -165,6 +167,16 @@ export default function Post({ pageContext, data: { wpPost } }) {
             links.push(textParser(el.faq.title))
           }
           break
+        case 'WpPost_Blogpost_Sections_HorizontalChart':
+          if (el.horizontalChart.title) {
+            links.push(textParser(el.horizontalChart.title))
+          }
+          break
+        case 'WpPost_Blogpost_Sections_VerticalChart':
+          if (el.verticalChart.title) {
+            links.push(textParser(el.verticalChart.title))
+          }
+          break
         default:
           return null
       }
@@ -206,6 +218,10 @@ export default function Post({ pageContext, data: { wpPost } }) {
                   return null //<CircularPercentCompare data={el.circularPercentCompare} />
                 case 'WpPost_Blogpost_Sections_Faq':
                   return <Faq data={el.faq} />
+                case 'WpPost_Blogpost_Sections_HorizontalChart':
+                  return <HorizontalChart data={el.horizontalChart} />
+                case 'WpPost_Blogpost_Sections_VerticalChart':
+                  return <VerticalChart data={el.verticalChart}/>
                 default:
                   return <p className="h2">{el.__typename}</p>
               }
@@ -268,6 +284,8 @@ export const query = graphql`
                 sections{
                   __typename
                   ...faqPost
+                  ...verticalChart
+                  ...horizontalChart
                   ...circularPercentCompare
                   ...percentCompare
                   ...circularChart
