@@ -54,7 +54,6 @@ export default function BlogSlider({ data, posts }) {
 
         return related
     })
-    debugger
     return (
         <Wrapper>
             <Container>

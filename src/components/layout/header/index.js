@@ -64,9 +64,9 @@ export default function Header({ data }) {
 
   return (
     <Wrapper>
-    <a className="no-focus" href="#main" aria-label='skip link to main content' />
+      <a className="no-focus" href="#main" aria-label='skip link to main content' />
       <Container>
-        <Content  active={offset > 0 ? 'true' : null }>
+        <Content active={offset > 0 ? 'true' : null}>
           <Link className="logo" aria-label='link do strony głównej' to='/'>
             <Logo />
           </Link>
@@ -215,43 +215,32 @@ const Content = styled.div`
     padding: 10px 13px;
 
     @media (max-width: 480px) {
-      padding: 10px 0;
+      padding: 10px clamp(16px,3.125vw,80px);
     }
     
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
-    transition: margin .3s cubic-bezier(0.68, -0.12, 0.265, 1.55);
+    transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1) .2s, 
+      margin .3s cubic-bezier(0.68, -0.12, 0.265, 1.55);
+
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px 3px rgba(97, 152, 193, 0.15);
+    filter: drop-shadow(0px 1px 3px rgba(97, 152, 193, 0.25));
+    background: #FEF5F5;
     position: relative;
-
-    &::before{
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      background: #FEF5F5;
-      border-radius: 8px;
-      box-shadow: 0px 4px 8px 3px rgba(97, 152, 193, 0.15);
-      filter: drop-shadow(0px 1px 3px rgba(97, 152, 193, 0.25));
-      z-index: -1;
-
-      transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1) .2s;
-    }
+    width: 100%;
     
 
     ${props => props.active === 'true' ? `
-      margin-top: 5px;
-
-      &::before{
+      margin-top: 0px;
+      width: calc(100% + 2 * clamp(16px,3.125vw,80px));
+      transform: translateX(calc(-1 * clamp(16px,3.125vw,80px)));
+      padding: 15px calc(13px + clamp(16px,3.125vw,80px));
         border-top-left-radius: 0;
         border-top-right-radius: 0;
-        top: -5px;
-        bottom: -5px;
-        left: calc(-1 * clamp(16px,3.125vw,80px));
-        right: calc(-1 * clamp(16px,3.125vw,80px));
+
+      &::before{
       }
     `: null}
 `
