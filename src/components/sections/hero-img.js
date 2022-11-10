@@ -7,7 +7,7 @@ import { textParser } from "../../helpers/wysiwyg-modification"
 import { FilledButton, OutlinedButton } from "../atoms/buttons"
 import { GatsbyImage } from "gatsby-plugin-image"
 
-export default function HeroImg({ data: { pageTitle, text, buttons, list, imgOnRight }, title, uri }) {
+export default function HeroImg({ data: { image, pageTitle, text, buttons, list, imgOnRight }, title, uri }) {
 
   return (
     <Wrapper>
@@ -37,6 +37,9 @@ export default function HeroImg({ data: { pageTitle, text, buttons, list, imgOnR
             })}
           </TextPart>
           <div className="box">
+            {image
+              ? <img className="image" src={image} alt='404' />
+              : null}
             {imgOnRight?.localFile?.childImageSharp?.gatsbyImageData
               ? <GatsbyImage className="image" image={imgOnRight.localFile.childImageSharp.gatsbyImageData} alt={imgOnRight.altText} />
               : null}

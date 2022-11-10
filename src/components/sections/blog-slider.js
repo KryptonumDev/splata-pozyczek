@@ -29,7 +29,7 @@ export default function BlogSlider({ data, posts }) {
         if (data.relatedPosts) {
             data.relatedPosts.forEach(el => {
                 if (el.post) {
-                    related.push(el)
+                    related.push(el.post)
                 }
             })
 
@@ -54,7 +54,7 @@ export default function BlogSlider({ data, posts }) {
 
         return related
     })
-
+    debugger
     return (
         <Wrapper>
             <Container>
@@ -69,7 +69,7 @@ export default function BlogSlider({ data, posts }) {
                         <Control whileDrag={{ cursor: 'grabbing' }} onDragStart={() => setAllowLink(false)} onDragEnd={() => { setTimeout(() => { setAllowLink(true) }, 1) }} style={{ x }} drag='x' dragConstraints={{ left: -maxButtonsTransform, right: 0 }} maxButtonsTransform={maxButtonsTransform} id='control'>
                             {choosenPosts.map(el => (
                                 <>
-                                    {el.post.blogPost?.previewText ? <Card el={el.post} allowLink={allowLink} /> : null}
+                                    {el.blogPost?.previewText ? <Card el={el} allowLink={allowLink} /> : null}
                                 </>
                             ))}
                             <Placeholder onClick={(e) => { if (!allowLink) { e.preventDefault() } }} to={'/blog/'}>
