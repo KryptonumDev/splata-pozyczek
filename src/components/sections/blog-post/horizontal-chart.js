@@ -15,7 +15,7 @@ export default function HorizontalChart({ data: { title, text, subText, source, 
         });
         return max
     }, [chart])
-    
+
     return (
         <Wrapper name={textParser(title)}>
             <Container className="container">
@@ -94,7 +94,7 @@ const Item = styled.div`
         background-color: #708EE0;
     }
 
-    ${props => props.fillPercent == 100 ? `
+    ${props => props.fillPercent === 100 ? `
         .chart{
             background-color: #3B5BA9;
         }

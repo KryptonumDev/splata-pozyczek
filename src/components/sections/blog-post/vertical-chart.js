@@ -120,7 +120,7 @@ const Item = styled.div`
         background-color: #5272C4;
     }
 
-    ${props => props.fillPercent == 100 ? `
+    ${props => props.fillPercent === 100 ? `
         .chart{
             background-color: #3B5BA9;
         }
@@ -174,7 +174,8 @@ const Grid = styled.div`
     margin-top: 32px;
 
     @media (max-width: 374px) {
+        padding-bottom: 10px;
         overflow: auto;
-        max-width: 100vw;
+        max-width: calc(100vw - (clamp(16px,3.125vw,80px) * 2));
     }
 `

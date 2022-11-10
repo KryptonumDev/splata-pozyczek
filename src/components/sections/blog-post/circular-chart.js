@@ -75,7 +75,10 @@ const ChartBox = styled.div`
 
     @media (max-width: 764px) {
         grid-template-columns: clamp(250px, ${250 / 480 * 100}vw, 375px) auto;
-        
+    }
+
+    @media (max-width: 480px) {
+        grid-template-columns: 1fr;
     }
 `
 
@@ -106,6 +109,10 @@ const Wrapper = styled.section`
         color: #6F6F71;
         display: block;
         font-size: clamp(11px, ${11 / 768 * 100}vw, 16px);
+
+        @media (max-width: 480px){
+            text-align: left;
+        }
     }
 
     .sub{
@@ -119,6 +126,12 @@ const Wrapper = styled.section`
 const Grid = styled.div`
     display: grid;
     grid-gap: 32px;
+
+    @media (max-width: 480px) {
+        grid-template-columns: 1fr 1fr;
+        width: fit-content;
+        margin: 0 auto;
+    }
 `
 
 const Item = styled.div`
@@ -140,6 +153,15 @@ const Item = styled.div`
     .body2{
         p{
             color: #6F6F71;
+        }
+    }
+
+    @media (max-width: 480px){
+        width: fit-content;
+        grid-template-columns: 40px auto;
+        .color{
+            width: 40px;
+            height: 40px;
         }
     }
 `
