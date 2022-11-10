@@ -41,11 +41,11 @@ export const OutlinedButton = styled(Link)`
     }
 `
 
-export const FilledButton = ({ as, to, className, children }) => {
+export const FilledButton = ({ onClick, as, to, className, children }) => {
 
     const rippleEl = useRef(null)
 
-    const rippleStart = (e) => {
+    const rippleLink = (e) => {
         e.preventDefault()
         var rect = e.target.getBoundingClientRect()
 
@@ -64,14 +64,43 @@ export const FilledButton = ({ as, to, className, children }) => {
         setTimeout(() => {
             rippleEl?.current?.classList?.remove('active')
         }, 1000)
+    }
 
+    const rippleButton = (e, onClick) => {
+        var rect = e.target.getBoundingClientRect()
+
+        let x = e.clientX - rect.left
+        let y = e.clientY - rect.top
+
+        rippleEl.current.style.left = x + 'px'
+        rippleEl.current.style.top = y + 'px'
+
+        rippleEl.current.classList.add('active')
+        
+        if (typeof onClick !== 'undefined') {
+            onClick()
+        }
+
+        setTimeout(() => {
+            rippleEl?.current?.classList?.remove('active')
+        }, 1000)
+    }
+
+
+    if (as === 'button') {
+        return (
+            <StyledFilledButton className={className} onClick={e => { rippleButton(e, onClick) }}>
+                <span>{children}</span>
+                <Ripple ref={rippleEl} />
+            </StyledFilledButton>
+        )
     }
 
     return (
-        <StyledFilledButton as={as} to={to} className={className} onClick={e => { rippleStart(e) }}>
+        <StyledFilledLink as={as} to={to} className={className} onClick={e => { rippleLink(e) }}>
             <span>{children}</span>
             <Ripple ref={rippleEl} />
-        </StyledFilledButton>
+        </StyledFilledLink>
     )
 }
 
@@ -94,7 +123,65 @@ const Ripple = styled.div`
     }
 `
 
-const StyledFilledButton = styled(Link)`
+const StyledFilledButton = styled.button`
+    display: block;
+    overflow: hidden;
+    width: fit-content;
+    font-family: 'Source Sans Pro';
+    position: relative;
+    border: none;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: 0.003em;
+    box-shadow: 0px 1px 3px 1px rgba(97, 152, 193, 0.15), 0px 1px 2px rgba(97, 152, 193, 0.25);
+    border-radius: 4px;
+    padding: 12px 44px;
+    text-decoration: unset;
+    text-align: center;
+    transition: background-color .3s cubic-bezier(0.39, 0.575, 0.565, 1);   
+
+    &::before{
+        content: "";
+        position: absolute;
+        left: 0;
+        right: -130px;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+        transition: transform .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+        background: linear-gradient(315deg, #FCCF4F 0%, #E7DCBF 99.99%);
+    }
+
+    &:hover{
+        &::before{
+            transform: translateX(-130px);
+        }
+    }
+
+    span{
+        position: relative;
+        z-index: 2;
+        color: #050505 !important;
+        margin: 0 !important;
+    }
+
+    &:disabled{
+        span{
+            color: #B2B2B8 !important;
+        }
+        &::before{
+            background: #E1E1EB;
+        }
+    }
+
+    @media (max-width: 480px) {
+        width: 100%;
+        padding: 12px;
+    }
+`
+
+const StyledFilledLink = styled(Link)`
     display: block;
     overflow: hidden;
     width: fit-content;

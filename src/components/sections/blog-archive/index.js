@@ -5,6 +5,7 @@ import PostGrid from "./post-grid"
 import Filter from "./filter"
 import Pagination from "./pagination"
 import Hero from "./hero"
+import { Helmet } from "react-helmet"
 
 export default function BlogArchive({ data: { pageTitle, text, list, link, relatedPost }, title, allPosts, location, categories, slug, url }) {
 
@@ -52,6 +53,9 @@ export default function BlogArchive({ data: { pageTitle, text, list, link, relat
 
   return (
     <Wrapper>
+      <Helmet>
+        <link rel="canonical" href={'https://splatapozyczek.pl' + url + (currentPage !== 1 ? '?page=' + currentPage : '')} />
+      </Helmet>
       {currentFilter
         ? null
         : <Hero

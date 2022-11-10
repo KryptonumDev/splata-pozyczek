@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { graphql } from "gatsby"
 import { Container } from "../../atoms/container"
 import { textParser } from "../../../helpers/wysiwyg-modification"
+import DonutChart from "react-svg-donut-chart"
 
 export default function CircularPercentCompare({ data: { title, text, subText, source, charts } }) {
 
@@ -16,12 +17,18 @@ export default function CircularPercentCompare({ data: { title, text, subText, s
                     ? <div className="body text" dangerouslySetInnerHTML={{ __html: text }} />
                     : null}
                 <Grid count={charts.length}>
-                    {charts.map(el => (
-                        <Item>
-                            <span className="h4 arsenal number">{el.percent}%</span>
-                            <p className="body1">{el.text}</p>
-                        </Item>
-                    ))}
+                    {charts.map(el => {
+                        debugger
+                        let percent = [{ value: el.percent, stroke: '#3B5BA9' }, { value: 100 - el.percent, stroke: '#DAE2FF' }]
+                        return (
+                            <div>
+                                <Item percent={el.percent}>
+                                    <DonutChart data={percent} />
+                                </Item>
+                                <span>{el.text}</span>
+                            </div>
+                        )
+                    })}
                 </Grid>
                 {source
                     ? <span className="body1 source">Źródło: {source}</span>
@@ -47,6 +54,11 @@ export const query = graphql`
         subText : textSub
       }
   }
+`
+
+const Item = styled.div`
+    max-width: 130px;
+    position: relative;
 `
 
 const Wrapper = styled.section`
@@ -102,43 +114,3 @@ const Grid = styled.div`
         
     }
 `
-
-const Item = styled.div`
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .number{
-        padding: 0 clamp(16px, ${16 / 768 * 100}vw, 40px);
-        border-radius: 4px;
-        background-color: var(--color-light);
-        margin-bottom: 12px;
-    }
-
-    &::after{
-        content: '';
-        position: absolute;
-        right: -16px;
-        width: 2px;
-        background: #D9D9D9;
-        top: 0;
-        bottom: 12px;
-    }
-
-    &:last-child{
-        &::after{
-            display: none;
-        }
-
-        .number{
-            background-color: var(--color-medium);
-            color: #f2f2f2;
-        }
-    } 
-    @media (max-width: 450px) {
-        &::after{
-            display: none;
-        }
-    }
-`   

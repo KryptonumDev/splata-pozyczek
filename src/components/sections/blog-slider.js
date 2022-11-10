@@ -55,7 +55,6 @@ export default function BlogSlider({ data, posts }) {
         return related
     })
 
-
     return (
         <Wrapper>
             <Container>
@@ -70,7 +69,7 @@ export default function BlogSlider({ data, posts }) {
                         <Control whileDrag={{ cursor: 'grabbing' }} onDragStart={() => setAllowLink(false)} onDragEnd={() => { setTimeout(() => { setAllowLink(true) }, 1) }} style={{ x }} drag='x' dragConstraints={{ left: -maxButtonsTransform, right: 0 }} maxButtonsTransform={maxButtonsTransform} id='control'>
                             {choosenPosts.map(el => (
                                 <>
-                                    {el.blogPost?.previewText ? <Card el={el} allowLink={allowLink} /> : null}
+                                    {el.post.blogPost?.previewText ? <Card el={el.post} allowLink={allowLink} /> : null}
                                 </>
                             ))}
                             <Placeholder onClick={(e) => { if (!allowLink) { e.preventDefault() } }} to={'/blog/'}>

@@ -69,6 +69,7 @@ import HeighlihtedAdres from "../components/sections/heighlihted-adres"
 import ExpertWithContactInform from "../components/sections/expert-with-contact-inform"
 import Citate from "../components/sections/citate"
 import { useEffect } from "react"
+import { Helmet } from "react-helmet"
 
 export function Head({ data: { wpPage: { seo } } }) {
 
@@ -89,7 +90,6 @@ export function Head({ data: { wpPage: { seo } } }) {
     {canonical
       ? (
         <>
-          <link rel="canonical" href={canonical} />
           <meta property="og:url" content={canonical} />
         </>
       )
@@ -141,6 +141,9 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
 
   return (
     <main id="main">
+      <Helmet>
+        <link rel="canonical" href={'https://splatapozyczek.pl' + pageContext.url} />
+      </Helmet>
       {sections?.map(el => {
         switch (el.__typename) {
           case 'WpPage_PageBuilder_Sections_Hero':

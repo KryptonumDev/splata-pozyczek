@@ -167,7 +167,7 @@ const Wrapper = styled.form`
     justify-content: center;
 
     .submit{
-        margin-top: 12px;
+        margin-top: 24px;
     }
 
     .content {

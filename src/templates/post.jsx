@@ -203,7 +203,7 @@ export default function Post({ pageContext, data: { wpPost } }) {
                 case 'WpPost_Blogpost_Sections_PercentCompare':
                   return <PercentCompare data={el.percentCompare} />
                 case 'WpPost_Blogpost_Sections_CircularPercentCompare':
-                  return <CircularPercentCompare data={el.circularPercentCompare} />
+                  return null //<CircularPercentCompare data={el.circularPercentCompare} />
                 case 'WpPost_Blogpost_Sections_Faq':
                   return <Faq data={el.faq} />
                 default:
