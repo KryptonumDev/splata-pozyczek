@@ -13,23 +13,23 @@ export const textParser = (text) => {
             }
 
             newText = newText.substring(close, newText.length)
-        }
 
-        if (newText[newText.length - 1] === '>' || newText[newText.length - 2] === '>') {
-            let open
+            if (newText[newText.length - 1] === '>' || newText[newText.length - 2] === '>') {
+                let open
 
-            for (let j = newText.length; j > 0; j--) {
-                if (newText[j] === '<') {
-                    open = j
-                    break
+                for (let j = newText.length; j > 0; j--) {
+                    if (newText[j] === '<') {
+                        open = j
+                        break
+                    }
                 }
-            }
 
-            newText = newText.substring(0, open)
+                newText = newText.substring(0, open)
+            }
         }
 
         return newText
     }
-    
+
     return text
 }

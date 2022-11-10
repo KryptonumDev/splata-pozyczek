@@ -5,8 +5,9 @@ import { Container } from "../../atoms/container"
 import { textParser } from '../../../helpers/wysiwyg-modification'
 import FaqItem from "../faq/item"
 import { Helmet } from "react-helmet"
+import { InView } from "react-intersection-observer"
 
-export default function Faq({ data: { title, repeater } }) {
+export default function Faq({ changeInView, data: { title, repeater } }) {
 
     const arrays = useMemo(() => {
         const first = []
@@ -40,7 +41,7 @@ export default function Faq({ data: { title, repeater } }) {
     };
 
     return (
-        <Wrapper>
+        <Wrapper id={textParser(title)}>
             <Helmet>
                 <script type="application/ld+json">
                     {JSON.stringify(schema)}
@@ -49,7 +50,7 @@ export default function Faq({ data: { title, repeater } }) {
             <Container className="container">
                 <Content>
                     {title
-                        ? <Title className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                        ? <InView onChange={(inView) => { changeInView(inView, textParser(title)) }}><Title className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} /></InView>
                         : null}
                     <Grid className="small">
                         <div className="grid second">
@@ -91,7 +92,10 @@ export const query = graphql`
 `
 
 const Wrapper = styled.section`
-    margin-top: var(--section);
+    scroll-margin-top: 50px;
+    padding-top: var(--section-post);
+    /* padding-top: calc(var(--section-post) * 2);
+    margin-top: calc(var(--section-post) * -1); */
 `
 
 const Content = styled.div`

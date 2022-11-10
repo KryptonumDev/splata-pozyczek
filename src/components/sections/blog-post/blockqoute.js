@@ -46,6 +46,7 @@ export const query = graphql`
 `
 
 const Wrapper = styled.section`
+scroll-margin-top: 50px;
     padding-top: var(--section-post);
     /* padding-top: calc(var(--section-post) * 2);
     margin-top: calc(var(--section-post) * -1); */

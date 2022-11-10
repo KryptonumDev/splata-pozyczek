@@ -4,6 +4,7 @@ import { Container } from "../../atoms/container"
 import { FilledButton } from '../../atoms/buttons'
 import { textParser } from '../../../helpers/wysiwyg-modification'
 import { graphql } from "gatsby"
+import { InView } from "react-intersection-observer"
 
 const background = {
     'dark': 'var(--color-dark)',
@@ -17,14 +18,14 @@ const colors = {
     'light': '#050505'
 }
 
-export default function CallToAction({ data: { colorSchem, text, plainText, link } }) {
+export default function CallToAction({ changeInView, data: { colorSchem, text, plainText, link } }) {
     return (
-        <Wrapper name={textParser(text)}>
+        <Wrapper id={textParser(text)}>
             <Container className="container">
                 <Content color={colors[colorSchem]} background={background[colorSchem]}>
                     <TextPart>
                         <div className="text">
-                            <p className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
+                            <InView onChange={(inView) => { changeInView(inView, textParser(text)) }}><p className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(text) }} /></InView>
                             {plainText ?
                                 <p className="body1 arsenal" dangerouslySetInnerHTML={{ __html: textParser(plainText) }} />
                                 : null}
@@ -53,6 +54,7 @@ fragment calltoaaction on WpPost_Blogpost_Sections_Cta {
 `
 
 const Wrapper = styled.section`
+    scroll-margin-top: 50px;
     padding-top: var(--section-post);
     /* padding-top: calc(var(--section-post) * 2);
     margin-top: calc(var(--section-post) * -1); */

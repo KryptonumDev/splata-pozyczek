@@ -4,8 +4,9 @@ import { graphql } from "gatsby"
 import { Container } from "../../atoms/container"
 import { textParser } from "../../../helpers/wysiwyg-modification"
 import DonutChart from "react-svg-donut-chart"
+import { InView } from "react-intersection-observer"
 
-export default function CircularChart({ data: { title, text, subText, source, chart } }) {
+export default function CircularChart({ changeInView, data: { title, text, subText, source, chart } }) {
 
     const dataPie = useMemo(() => {
         let arr = []
@@ -18,10 +19,10 @@ export default function CircularChart({ data: { title, text, subText, source, ch
     }, [chart])
 
     return (
-        <Wrapper name={textParser(title)}>
+        <Wrapper id={textParser(title)}>
             <Container className="container">
                 {title
-                    ? <h2 className="h5 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                    ? <InView onChange={(inView) => { changeInView(inView, textParser(title)) }}><h2 className="h5 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} /></InView>
                     : null}
                 {text
                     ? <div className="body text" dangerouslySetInnerHTML={{ __html: text }} />
@@ -83,6 +84,7 @@ const ChartBox = styled.div`
 `
 
 const Wrapper = styled.section`
+scroll-margin-top: 50px;
     padding-top: var(--section-post);
     /* padding-top: calc(var(--section-post) * 2);
     margin-top: calc(var(--section-post) * -1); */

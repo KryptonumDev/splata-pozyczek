@@ -3,16 +3,20 @@ import styled from "styled-components"
 import { graphql } from "gatsby"
 import { Container } from "../../atoms/container"
 import { textParser } from "../../../helpers/wysiwyg-modification"
+import { InView } from "react-intersection-observer"
 
-export default function Table({ data: { title, textFirst, textSecond, textThird, table, source } }) {
+export default function Table({ changeInView, data: { title, textFirst, textSecond, textThird, table, source } }) {
     return (
-        <Wrapper name={textParser(title)}>
+        <Wrapper id={textParser(title)}>
             <Container className="container">
                 {title
-                    ? <h2 className="h5 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                    ? <InView onChange={(inView) => { changeInView(inView, textParser(title)) }}><h2 className="h5 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} /></InView>
                     : null}
-                {title
+                {textFirst
                     ? <div className="body1 text" dangerouslySetInnerHTML={{ __html: textFirst }} />
+                    : null}
+                {textSecond
+                    ? <div className="body1 text" dangerouslySetInnerHTML={{ __html: textSecond }} />
                     : null}
                 <Grid>
                     {table?.rows?.map(el => (
@@ -61,8 +65,8 @@ export default function Table({ data: { title, textFirst, textSecond, textThird,
                 {source
                     ? <span className="body1 source">Źródło: {source}</span>
                     : null}
-                {textSecond
-                    ? <div className="body1 sub" dangerouslySetInnerHTML={{ __html: textSecond }} />
+                {textThird
+                    ? <div className="body1 sub" dangerouslySetInnerHTML={{ __html: textThird }} />
                     : null}
             </Container>
         </Wrapper>
@@ -146,6 +150,7 @@ const Row = styled.tr`
 `
 
 const Wrapper = styled.section`
+scroll-margin-top: 50px;
     padding-top: var(--section-post);
     /* padding-top: calc(var(--section-post) * 2);
     margin-top: calc(var(--section-post) * -1); */

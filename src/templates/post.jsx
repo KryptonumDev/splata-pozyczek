@@ -19,6 +19,7 @@ import CircularPercentCompare from "../components/sections/blog-post/circular-pe
 import Faq from "../components/sections/blog-post/faq"
 import HorizontalChart from "../components/sections/blog-post/horizontal-chart"
 import VerticalChart from "../components/sections/blog-post/vertical-chart"
+import { useState } from "react"
 
 export function Head({ data: { wpPost: { seo, author, title, slug, blogPost } } }) {
 
@@ -128,7 +129,7 @@ export default function Post({ pageContext, data: { wpPost } }) {
           }
           break
         case 'WpPost_Blogpost_Sections_Cta':
-          if (el.cta.title) {
+          if (el.cta.text) {
             links.push(textParser(el.cta.text))
           }
           break
@@ -185,43 +186,50 @@ export default function Post({ pageContext, data: { wpPost } }) {
     return links
   }, [wpPost.blogPost.sections])
 
+  const [inView, setInView] = useState()
+
+  const changeInView = (isInView, id) => {
+    if(isInView){
+      setInView(id)
+    }
+  }
 
   return (
     <Wrapper id='main'>
       <Hero data={wpPost} pageContext={pageContext} />
       <Container className="container">
         <Grid>
-          <QuickLinks links={quickLinks} />
+          <QuickLinks setInView={setInView} inView={inView} links={quickLinks} />
           <div>
             <Description className="body1" dangerouslySetInnerHTML={{ __html: wpPost.blogPost.description }} />
             {wpPost.blogPost.sections?.map(el => {
               switch (el.__typename) {
                 case 'WpPost_Blogpost_Sections_TextSection':
-                  return <TextSection data={el.textSection} />
+                  return <TextSection changeInView={changeInView} data={el.textSection} />
                 case 'WpPost_Blogpost_Sections_ImageSection':
-                  return <ImageSection data={el.imageSection} />
+                  return <ImageSection changeInView={changeInView} data={el.imageSection} />
                 case 'WpPost_Blogpost_Sections_Blockqoute':
-                  return <Blockqoute data={el.blockqoute} />
+                  return <Blockqoute changeInView={changeInView} data={el.blockqoute} />
                 case 'WpPost_Blogpost_Sections_Cta':
-                  return <CallToAction data={el.cta} />
+                  return <CallToAction changeInView={changeInView} data={el.cta} />
                 case 'WpPost_Blogpost_Sections_List':
-                  return <ListSection data={el.list} />
+                  return <ListSection changeInView={changeInView} data={el.list} />
                 case 'WpPost_Blogpost_Sections_InformPanels':
-                  return <InformPanels data={el.informPanels} />
+                  return <InformPanels changeInView={changeInView} data={el.informPanels} />
                 case 'WpPost_Blogpost_Sections_Table':
-                  return <Table data={el.table} />
+                  return <Table changeInView={changeInView} data={el.table} />
                 case 'WpPost_Blogpost_Sections_CircularChart':
-                  return <CircularChart data={el.circularChart} />
+                  return <CircularChart changeInView={changeInView} data={el.circularChart} />
                 case 'WpPost_Blogpost_Sections_PercentCompare':
-                  return <PercentCompare data={el.percentCompare} />
+                  return <PercentCompare changeInView={changeInView} data={el.percentCompare} />
                 case 'WpPost_Blogpost_Sections_CircularPercentCompare':
                   return null //<CircularPercentCompare data={el.circularPercentCompare} />
                 case 'WpPost_Blogpost_Sections_Faq':
-                  return <Faq data={el.faq} />
+                  return <Faq changeInView={changeInView} data={el.faq} />
                 case 'WpPost_Blogpost_Sections_HorizontalChart':
-                  return <HorizontalChart data={el.horizontalChart} />
+                  return <HorizontalChart changeInView={changeInView} data={el.horizontalChart} />
                 case 'WpPost_Blogpost_Sections_VerticalChart':
-                  return <VerticalChart data={el.verticalChart}/>
+                  return <VerticalChart changeInView={changeInView} data={el.verticalChart} />
                 default:
                   return <p className="h2">{el.__typename}</p>
               }

@@ -5,13 +5,14 @@ import { Container } from "../../atoms/container"
 import { textParser } from "../../../helpers/wysiwyg-modification"
 import Light from './../../../images/check-light.svg'
 import Medium from './../../../images/check-medium.svg'
+import { InView } from "react-intersection-observer"
 
-export default function ListSection({ data: { title, text, subTitle, list } }) {
+export default function ListSection({ changeInView, data: { title, text, subTitle, list } }) {
     return (
-        <Wrapper name={textParser(title)}>
+        <Wrapper id={textParser(title)}>
             <Container className="container">
                 {title
-                    ? <h2 className="h5 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                    ? <InView onChange={(inView) => { changeInView(inView, textParser(title)) }}><h2 className="h5 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} /></InView>
                     : null}
                 {text
                     ? <div className="body1 text" dangerouslySetInnerHTML={{ __html: text }} />
@@ -48,6 +49,7 @@ export const query = graphql`
 `
 
 const Wrapper = styled.section`
+scroll-margin-top: 50px;
     padding-top: var(--section-post);
     /* padding-top: calc(var(--section-post) * 2);
     margin-top: calc(var(--section-post) * -1); */
