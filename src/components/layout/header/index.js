@@ -40,12 +40,7 @@ export default function Header({ data }) {
   `)
 
   const [isMobileMenuOpened, setMobileMenuOpened] = useState(false)
-  const [offset, setOffset] = useState(() => {
-    if (typeof window !== `undefined`) {
-      return window.pageYOffset
-    }
-    return 0
-  })
+  const [offset, setOffset] = useState(0)
 
   useEffect(() => {
     if (typeof document !== `undefined`) {
@@ -56,6 +51,7 @@ export default function Header({ data }) {
       })
     }
     if (typeof window !== `undefined`) {
+      setOffset(window.pageYOffset)
       window.onscroll = () => {
         setOffset(window.pageYOffset)
       }

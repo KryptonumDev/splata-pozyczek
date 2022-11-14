@@ -135,7 +135,17 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
       <Helmet>
         <link rel="canonical" href={'https://splatapozyczek.pl' + pageContext.url} />
       </Helmet>
-      {sections?.map((el, index) => {
+      {sections[0].hero
+        ? (
+          <>
+            <Hero data={sections[0].hero} />
+            <Hero data={sections[0].hero} />
+            <Hero data={sections[0].hero} />
+            <Hero data={sections[0].hero} />
+          </>
+        ) : null}
+
+      {/* {sections?.map((el, index) => {
         switch (el.__typename) {
           case 'WpPage_PageBuilder_Sections_Hero':
             return <React.Fragment key={el.__typename + index}> <Hero data={el.hero} /> </React.Fragment>
@@ -276,7 +286,7 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
           default:
             return <React.Fragment key={el.__typename + index}> <p className="h2">{el.__typename}</p> </React.Fragment>
         }
-      })}
+      })} */}
     </main>
   )
 }
