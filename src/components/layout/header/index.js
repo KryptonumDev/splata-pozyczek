@@ -65,7 +65,7 @@ export default function Header({ data }) {
   return (
     <Wrapper>
       <a className="no-focus" href="#main" aria-label='skip link to main content' > </a>
-      <Container>
+      <Container className="container">
         <Content active={offset > 0 ? 'true' : null}>
           <Link className="logo" aria-label='link do strony głównej' to='/'>
             <Logo />
@@ -183,6 +183,10 @@ const Wrapper = styled.header`
       .button{
         padding: 12px 44px;
       }
+
+      .container{
+        padding: 0;
+      }
     }
 
     @media (max-width: 480px) {
@@ -221,8 +225,8 @@ const Content = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1) .2s, 
-      margin .3s cubic-bezier(0.68, -0.12, 0.265, 1.55); */
+    transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1) .2s, 
+      margin .3s cubic-bezier(0.68, -0.12, 0.265, 1.55);
 
     border-radius: 8px;
     box-shadow: 0px 4px 8px 3px rgba(97, 152, 193, 0.15);
@@ -232,17 +236,14 @@ const Content = styled.div`
     width: 100%;
     
 
-    /* ${props => props.active === 'true' ? `
+    ${props => props.active === 'true' ? `
       margin-top: 0px;
-      width: calc(100% + 2 * clamp(16px,3.125vw,80px));
-      transform: translateX(calc(-1 * clamp(16px,3.125vw,80px)));
-      padding: 15px calc(13px + clamp(16px,3.125vw,80px));
         border-top-left-radius: 0;
         border-top-right-radius: 0;
 
       &::before{
       }
-    `: null} */
+    `: null}
 `
 
 const Navigation = styled.nav`

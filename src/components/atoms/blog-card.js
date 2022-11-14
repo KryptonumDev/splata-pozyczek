@@ -9,7 +9,7 @@ import { CATEGORY_COLORS } from "../../constants/category-colors"
 export default function Card({ key, el, allowLink, alternate }) {
     return (
         <Item key={key} allowLink={allowLink} className={alternate ? 'alt' : ''} onClick={(e) => { if (!allowLink) { e.preventDefault() } }} >
-            <Link className="wrap-link" to={'/blog/' + el.slug} />
+            <Link aria-label={el.title} className="wrap-link" to={'/blog/' + el.slug} />
             <div className="wrap">
                 <GatsbyImage className="img" image={el.blogPost.thumbnail.localFile.childImageSharp.gatsbyImageData} alt={el.blogPost.thumbnail.altText} />
                 <div className="text">

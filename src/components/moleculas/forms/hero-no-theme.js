@@ -8,7 +8,6 @@ import { graphql, useStaticQuery } from "gatsby"
 import { textParser } from "../../../helpers/wysiwyg-modification"
 import LabelInput from "../label-input"
 import LabelCheckbox from "../label-checkbox"
-import LabelSelect from "../label-select"
 
 export default function Form({ setIsSended, formTitle }) {
 
