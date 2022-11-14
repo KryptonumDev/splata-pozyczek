@@ -216,7 +216,7 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
           case 'WpPage_PageBuilder_Sections_ListWithImgOnLeft':
             return <React.Fragment key={el.__typename + index}> <ListWithImgOnLeft data={el.listWithImgOnLeft} /> </React.Fragment>
           case 'WpPage_PageBuilder_Sections_ContactForm':
-            return null//<React.Fragment key={el.__typename + index}> <ContactForm data={el.contactForm} /> </React.Fragment>
+            return <React.Fragment key={el.__typename + index}> <ContactForm data={el.contactForm} /> </React.Fragment>
           case 'WpPage_PageBuilder_Sections_BlogArchive':
             return <React.Fragment key={el.__typename + index}> <BlogArchive url={pageContext.url} slug={pageContext.slug} categories={allWpCategory.nodes} location={location} data={el.blogArchive} title={title} allPosts={blogArchive.nodes} /> </React.Fragment>
           case 'WpPage_PageBuilder_Sections_HeroImg':
