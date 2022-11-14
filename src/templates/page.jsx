@@ -137,9 +137,9 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
       {id === "cG9zdDoxMg=="
         ? (
           <>
-            <Hero data={sections[0].hero} />
+            {/* <Hero data={sections[0].hero} />
             <WhatAreWeDoing data={sections[1].whatAreWeDoing} />
-            <EffectiveSolutions data={sections[2].effectiveSolutions} />
+            <EffectiveSolutions data={sections[2].effectiveSolutions} /> */}
             {/* <CallToAction data={sections[3].cta} />
             <HelpTypes data={sections[4].types} />
             <ContactForm data={sections[5].contactForm} />
