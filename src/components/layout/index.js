@@ -9,9 +9,9 @@ export default function Layout({ children }) {
     return (
         <Wrapper>
             <GlobalStyles />
-            <Header />
+            {/* <Header /> */}
             {children}
-            <Footer />
+            {/* <Footer /> */}
         </Wrapper>
     )
 }

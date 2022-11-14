@@ -137,10 +137,10 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
       {id === "cG9zdDoxMg=="
         ? (
           <>
-            {/* <Hero data={sections[0].hero} />
+            <Hero data={sections[0].hero} />
             <WhatAreWeDoing data={sections[1].whatAreWeDoing} />
-            <EffectiveSolutions data={sections[2].effectiveSolutions} /> */}
-            {/* <CallToAction data={sections[3].cta} />
+            <EffectiveSolutions data={sections[2].effectiveSolutions} />
+            <CallToAction data={sections[3].cta} />
             <HelpTypes data={sections[4].types} />
             <ContactForm data={sections[5].contactForm} />
             <WhatIsCredit data={sections[6].whatIsCredit} />
@@ -149,7 +149,7 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
             <OurExperts data={sections[9].ourExperts} />
             <CallToAction data={sections[10].cta} />
             <BlogSlider data={sections[11].blogSlider} posts={slider.nodes} />
-            <ThreeColumnText data={sections[12].threeColumnText} /> */}
+            <ThreeColumnText data={sections[12].threeColumnText} />
           </>
         )
         : null}
