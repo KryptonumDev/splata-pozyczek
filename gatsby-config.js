@@ -30,22 +30,22 @@ module.exports = {
       },
       __key: 'images'
     },
-    // {
-    //   resolve: "gatsby-omni-font-loader",
-    //   options: {
-    //     mode: "async",
-    //     preconnect: ["https://fonts.gstatic.com", "https://fonts.googleapis.com"],
-    //     web: [{
-    //       name: "Arsenal",
-    //       file: `https://fonts.googleapis.com/css2?family=Arsenal:wght@400;700&display=swap`,
-    //     },
-    //     {
-    //       name: "Source Sans Pro",
-    //       file: `https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap`,
-    //     }
-    //     ],
-    //   },
-    // },
+    {
+      resolve: "gatsby-omni-font-loader",
+      options: {
+        mode: "async",
+        preconnect: ["https://fonts.gstatic.com", "https://fonts.googleapis.com"],
+        web: [{
+          name: "Arsenal",
+          file: `https://fonts.googleapis.com/css2?family=Arsenal:wght@400;700&display=swap`,
+        },
+        {
+          name: "Source Sans Pro",
+          file: `https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap`,
+        }
+        ],
+      },
+    },
     `gatsby-plugin-sitemap`,
     {
       resolve: 'gatsby-plugin-robots-txt',
@@ -55,7 +55,7 @@ module.exports = {
         policy:  [{ userAgent: '*', allow: '/' }]
       }
     },
-    // 'gatsby-plugin-offline',
+    'gatsby-plugin-offline',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {

@@ -197,6 +197,7 @@ const ControlButtonsWrap = styled.div`
         color: #fff;
         border: none;
         cursor: pointer;
+        z-index: 1;
 
         &.left{
             left: 0;
