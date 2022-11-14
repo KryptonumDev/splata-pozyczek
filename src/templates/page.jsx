@@ -3,12 +3,12 @@ import React from "react"
 import EffectiveSolutions from "../components/sections/effective-solutions"
 import Hero from "../components/sections/hero-home"
 import WhatAreWeDoing from "../components/sections/what-are-we-doing"
-import CallToAction from '../components/sections/cta'
-import HelpTypes from "../components/sections/typt-pomocy"
-import WhatIsCredit from "../components/sections/what-is-credit"
-import Faq from "../components/sections/faq"
-import OurExperts from "../components/sections/our-experts"
-import ThreeColumnText from "../components/sections/three-column-text"
+// import CallToAction from '../components/sections/cta'
+// import HelpTypes from "../components/sections/typt-pomocy"
+// import WhatIsCredit from "../components/sections/what-is-credit"
+// import Faq from "../components/sections/faq"
+// import OurExperts from "../components/sections/our-experts"
+// import ThreeColumnText from "../components/sections/three-column-text"
 // import RepeaterFourColumnText from "../components/sections/four-column-text-repeater"
 // import HeroForm from "../components/sections/hero-contact-form"
 // import FourTilesWithTitle from "../components/sections/four-tiles-with-title"
@@ -20,7 +20,7 @@ import ThreeColumnText from "../components/sections/three-column-text"
 // import LongPanelWithIcon from "../components/sections/long-panel-with-icon"
 // import ThreeColumnTextWithTitles from "../components/sections/three-column-text-with-titles"
 // import TwoColumnText from "../components/sections/two-column-text"
-import BlogSlider from "../components/sections/blog-slider"
+// import BlogSlider from "../components/sections/blog-slider"
 // import TwoColumnRepeater from "../components/sections/two-column-repeater"
 // import ThreeStepsWithLongPanel from "../components/sections/three-steps-with-long-panel"
 // import TextWithImgOnLeft from "../components/sections/text-with-img-on-left"
@@ -48,7 +48,7 @@ import BlogSlider from "../components/sections/blog-slider"
 // import TwoCards from "../components/sections/two-cards"
 // import TwoColumnsWithExtendedLinks from "../components/sections/two-columns-with-extended-links"
 // import AllExperts from "../components/sections/All-experts"
-import ContactForm from "../components/sections/contact-form"
+// import ContactForm from "../components/sections/contact-form"
 // import ThreeColumnsHighlightedAlt from "../components/sections/three-columns-highlighted-alt"
 // import InformAndVideo from "../components/sections/inform-and-video"
 // import Map from "../components/sections/map"
@@ -140,7 +140,7 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
             <Hero data={sections[0].hero} />
             <WhatAreWeDoing data={sections[1].whatAreWeDoing} />
             <EffectiveSolutions data={sections[2].effectiveSolutions} />
-            <CallToAction data={sections[3].cta} />
+            {/* <CallToAction data={sections[3].cta} />
             <HelpTypes data={sections[4].types} />
             <ContactForm data={sections[5].contactForm} />
             <WhatIsCredit data={sections[6].whatIsCredit} />
@@ -149,7 +149,7 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
             <OurExperts data={sections[9].ourExperts} />
             <CallToAction data={sections[10].cta} />
             <BlogSlider data={sections[11].blogSlider} posts={slider.nodes} />
-            <ThreeColumnText data={sections[12].threeColumnText} />
+            <ThreeColumnText data={sections[12].threeColumnText} /> */}
           </>
         )
         : null}
@@ -298,6 +298,74 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
     </main>
   )
 }
+
+// ...citate
+// ...expertWithContactInform
+// ...heighlihtedAdres
+// ...reviews
+// ...heroText
+// ...tabsWithThreeColumnsContent
+// ...twoColumnsTextAndIconsListAlt
+// ...twoColumnTextRepeater
+// ...privacyPolicy
+// ...twoColumnTextRepeaterSepareted
+// ...twoColumnsTextAndIconsList
+// ...multiplyTilesWithTextBlock
+// ...threeColumnTextMiddleHighlighted
+// ...threeTiles
+// ...twoColumnTextHighlighted
+// ...map
+// ...informAndVideo
+// ...threeColumnsHighlightedAlt
+// ...twoColumnsWithExtendedLinks
+// ...twoCards
+// ...heroImgExtended
+// ...bigTextTiles
+// ...twoColumnTextWithBoldText
+// ...blogSlider
+// ...stepsToComplaints
+// ...threeColumnsFiles
+// ...heroImg
+// ...faq
+// ...cta
+// ...hero
+// ...whatAreWeDoing
+// ...effectiveSolutions
+// ...types
+// ...whatIsCredit
+// ...ourExperts
+// ...threeColumnText
+// ...repeaterFourColumnText
+// ...heroForm
+// ...fourTilesWithTitle
+// ...fourBigTextTiles
+// ...twoColumnsCompare
+// ...listWithImgOnRight
+// ...stepsToCredit
+// ...twoColumnCompareColored
+// ...longPanelWithIcon
+// ...threeColumnTextWithTitles
+// ...twoColumnText
+// ...twoColumnRepeater
+// ...twoColumnRepeaterAlt
+// ...textWithImgOnLeft
+// ...threeStepsWithLongPanel
+// ...calculator
+// ...creditTypes
+// ...fourTiles
+// ...threeCommentsWithTitle
+// ...textWithImgOnRight
+// ...fourColumnText
+// ...extendedListWithImgOnRight
+// ...twoColumnVideo
+// ...listWithImgOnLeftRepeater
+// ...textWithImgOnLeftAlt
+// ...fourTilesExtended
+// ...threeColumnsHighlighted
+// ...threePointsWithImgOnLeft
+// ...listWithImgOnLeft
+// ...contactForm
+// ...blogArchive
 
 export const query = graphql`
       query page($id: String!) {
