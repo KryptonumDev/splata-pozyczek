@@ -70,6 +70,7 @@ export default function BlogArchive({ data: { pageTitle, text, list, link, relat
         categories={categories}
         allCount={allPosts.length} />
       <PostGrid
+        activeFilter={currentFilter}
         page={currentPage}
         allPosts={filtredPosts} />
       <Pagination

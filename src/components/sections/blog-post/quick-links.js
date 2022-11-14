@@ -8,9 +8,9 @@ export default function QuickLinks({ setInView, inView, links }) {
         <Wrapper>
             <span className="sub1">Spis treści.</span>
             <ul>
-                {links.map(el => {
+                {links.map((el, index) => {
                     return (
-                        <li>
+                        <li key={index}>
                             <Link
                                 className={inView === textParser(el) ? 'active' : 'no'}
                                 dangerouslySetInnerHTML={{ __html: textParser(el) }}
@@ -42,11 +42,13 @@ const Link = styled.a`
         font-feature-settings: 'pnum' on, 'onum' on;
     }
 
-    &.active{
-        color: #050505 !important;
-        padding-left: 34px;
-        *{
+    @media (min-width: 765px) {
+        &.active{
             color: #050505 !important;
+            padding-left: 34px;
+            *{
+                color: #050505 !important;
+            }
         }
     }
 `

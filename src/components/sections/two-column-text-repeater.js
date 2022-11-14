@@ -10,8 +10,8 @@ export default function TwoColumnTextRepeater({ data: { repeater } }) {
         <Wrapper>
             <Container>
                 <Grid className="grid">
-                    {repeater.map(el => (
-                        <Item>
+                    {repeater.map((el, index) => (
+                        <Item key={index} >
                             <div>
                                 <h3 className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(el.titleLeft) }} />
                                 <div className="body1" dangerouslySetInnerHTML={{ __html: el.textLeft }} />

@@ -20,7 +20,7 @@ export default function HeroText({ data: { title, plainText, text, subTitle, lis
                         <p className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(subTitle) }} />
                         <div className="grid">
                             {list.map((el, index) => (
-                                <Item>
+                                <Item key={el.text} >
                                     <span className="body1">{index + 1}</span>
                                     <div className="body1" dangerouslySetInnerHTML={{ __html: el.text }} />
                                 </Item>

@@ -44,14 +44,14 @@ export default function Pagination({ url: pageUrl, page, posts, setCurrentPage }
                         let url = index === 0 ? pageUrl : pageUrl + '?page=' + (el + 1)
                         if (page === 1 && (index === page - 1 || index === page || index === page + 1 || index === page + 2 || index === page + 3 || index === page + 4 || index === pagesCount - 1)) {
                             return (
-                                <Button to={url} onClick={e => { setCurrentPage(el + 1) }} active={page === el + 1}>
+                                <Button key={el} to={url} onClick={e => { setCurrentPage(el + 1) }} active={page === el + 1}>
                                     <span>{el + 1}</span>
                                 </Button>
                             )
                         }
                         if (page === pagesCount && (index === 0 || index === page - 6 || index === page - 5 || index === page - 4 || index === page - 3 || index === page - 2 || index === page - 1 || index === page || index === page + 1 || index === pagesCount - 1)) {
                             return (
-                                <Button to={url} onClick={e => { setCurrentPage(el + 1) }} active={page === el + 1}>
+                                <Button key={el} to={url} onClick={e => { setCurrentPage(el + 1) }} active={page === el + 1}>
                                     <span>{el + 1}</span>
                                 </Button>
                             )
@@ -59,7 +59,7 @@ export default function Pagination({ url: pageUrl, page, posts, setCurrentPage }
                         if (page === 2) {
                             if (index === 0 || index === page - 1 || index === page || index === page + 1 || index === page + 2 || index === page + 3 || index === pagesCount - 1) {
                                 return (
-                                    <Button to={url} onClick={e => { setCurrentPage(el + 1) }} active={page === el + 1}>
+                                    <Button key={el} to={url} onClick={e => { setCurrentPage(el + 1) }} active={page === el + 1}>
                                         <span>{el + 1}</span>
                                     </Button>
                                 )
@@ -69,7 +69,7 @@ export default function Pagination({ url: pageUrl, page, posts, setCurrentPage }
                         if (page === 3) {
                             if (index === 0 || index === page - 2 || index === page - 1 || index === page || index === page + 1 || index === page + 2 || index === pagesCount - 1) {
                                 return (
-                                    <Button to={url} onClick={e => { setCurrentPage(el + 1) }} active={page === el + 1}>
+                                    <Button key={el} to={url} onClick={e => { setCurrentPage(el + 1) }} active={page === el + 1}>
                                         <span>{el + 1}</span>
                                     </Button>
                                 )
@@ -79,7 +79,7 @@ export default function Pagination({ url: pageUrl, page, posts, setCurrentPage }
                         if (page === pagesCount - 2) {
                             if (index === 0 || index === page - 4 || index === page - 3 || index === page - 2 || index === page - 1 || index === page || index === page + 1) {
                                 return (
-                                    <Button to={url} onClick={e => { setCurrentPage(el + 1) }} active={page === el + 1}>
+                                    <Button key={el} to={url} onClick={e => { setCurrentPage(el + 1) }} active={page === el + 1}>
                                         <span>{el + 1}</span>
                                     </Button>
                                 )
@@ -89,7 +89,7 @@ export default function Pagination({ url: pageUrl, page, posts, setCurrentPage }
                         if (page === pagesCount - 1) {
                             if (index === 0 || index === page - 5 || index === page - 4 || index === page - 3 || index === page - 2 || index === page - 1 || index === page || index === page + 1) {
                                 return (
-                                    <Button to={url} onClick={e => { setCurrentPage(el + 1) }} active={page === el + 1}>
+                                    <Button key={el} to={url} onClick={e => { setCurrentPage(el + 1) }} active={page === el + 1}>
                                         <span>{el + 1}</span>
                                     </Button>
                                 )
@@ -98,7 +98,7 @@ export default function Pagination({ url: pageUrl, page, posts, setCurrentPage }
                         }
                         if (page !== 1 && page !== pagesCount && (index === page - 3 || index === page - 2 || index === page - 1 || index === page || index === page + 1 || index === 0 || index === pagesCount - 1)) {
                             return (
-                                <Button to={url} onClick={e => { setCurrentPage(el + 1) }} active={page === el + 1}>
+                                <Button key={el} to={url} onClick={e => { setCurrentPage(el + 1) }} active={page === el + 1}>
                                     <span>{el + 1}</span>
                                 </Button>
                             )

@@ -11,8 +11,8 @@ export default function TwoCards({ data: { cards } }) {
         <Wrapper>
             <Container className="container">
                 <Grid>
-                    {cards.map(el => (
-                        <Item>
+                    {cards.map((el, index) => (
+                        <Item key={index}>
                             <GatsbyImage className="image" image={el.image.localFile.childImageSharp.gatsbyImageData} alt={el.image.altText} />
                             <div className="text">
                                 <h3 className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
@@ -20,9 +20,9 @@ export default function TwoCards({ data: { cards } }) {
                                 <div className="buttons">
                                     {el.buttons.map((el, index) => {
                                         if (index) {
-                                            return <OutlinedButton className="link" target={el.link.target} to={el.link.url}> {el.link.title}</OutlinedButton>
+                                            return <OutlinedButton key={el.link.title} className="link" target={el.link.target} to={el.link.url}> {el.link.title}</OutlinedButton>
                                         }
-                                        return <FilledButton className="link" target={el.link.target} to={el.link.url}>{el.link.title}</FilledButton>
+                                        return <FilledButton key={el.link.title} className="link" target={el.link.target} to={el.link.url}>{el.link.title}</FilledButton>
                                     })}
                                 </div>
                             </div>

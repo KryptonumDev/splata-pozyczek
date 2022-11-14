@@ -9,8 +9,8 @@ export default function TwoColumnTextRepeaterSepareted({ data: { repeater } }) {
     return (
         <Wrapper>
             <Container>
-                {repeater.map(el => (
-                    <Box >
+                {repeater.map((el, index) => (
+                    <Box key={index} >
                         <h3 className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
                         <Grid>
                             <div className="body1" dangerouslySetInnerHTML={{ __html: el.left }}></div>

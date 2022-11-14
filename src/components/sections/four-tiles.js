@@ -11,8 +11,8 @@ export default function FourTiles({ data: { title, text, tiles } }) {
                 <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                 <p className="text body1" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
                 <Grid>
-                    {tiles.map(el => (
-                        <Item>
+                    {tiles.map((el, index) => (
+                        <Item key={index}>
                             <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
                             <div className="body1" dangerouslySetInnerHTML={{ __html: el.text }} />
                         </Item>

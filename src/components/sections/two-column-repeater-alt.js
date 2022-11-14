@@ -12,7 +12,7 @@ export default function TwoColumnRepeaterAlt({ data: { repeater } }) {
             <Container>
                 <Grid>
                     {repeater.map((el, index) => (
-                        <Item>
+                        <Item key={index}>
                             <GatsbyImage className="img" image={el.img.localFile.childImageSharp.gatsbyImageData} />
                             <div className="text-part">
                                 <h3 className="h6" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
@@ -20,9 +20,9 @@ export default function TwoColumnRepeaterAlt({ data: { repeater } }) {
                                 <div className="buttons">
                                     {el.buttons.map((inEl, index) => {
                                         if (index) {
-                                            return <OutlinedButton className="second" target={inEl.link.target} to={inEl.link.url}>{inEl.link.title}</OutlinedButton>
+                                            return <OutlinedButton key={inEl.link.title} className="second" target={inEl.link.target} to={inEl.link.url}>{inEl.link.title}</OutlinedButton>
                                         }
-                                        return <FilledButton className="first" target={inEl.link.target} to={inEl.link.url}>{inEl.link.title}</FilledButton>
+                                        return <FilledButton key={inEl.link.title} className="first" target={inEl.link.target} to={inEl.link.url}>{inEl.link.title}</FilledButton>
                                     })}
                                 </div>
                             </div>

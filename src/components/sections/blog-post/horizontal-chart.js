@@ -28,7 +28,7 @@ export default function HorizontalChart({ changeInView, data: { title, text, sub
                     : null}
                 <Grid>
                     {chart.map(el => (
-                        <Item fillPercent={el.percent / maxPercent * 100}>
+                        <Item key={el.percent} fillPercent={el.percent / maxPercent * 100}>
                             <div className="flex">
                                 <span className="body1 gray">
                                     {el.text}

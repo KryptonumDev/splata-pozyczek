@@ -16,7 +16,7 @@ export default function ThreeCommentsWithTitle({ data: { title, text, comments }
                 </div>
                 <Grid>
                     {comments.map((el, index) => (
-                        <Item light={LightQuotes} medium={MediumQuotes}>
+                        <Item key={index} light={LightQuotes} medium={MediumQuotes}>
                             <div className="content">
                                 <img src={index === 1 ? MediumQuotes : LightQuotes} alt={'decorative quotes'} />
                                 <div>

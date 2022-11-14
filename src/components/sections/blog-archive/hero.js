@@ -6,40 +6,40 @@ import { FilledButton } from "../../atoms/buttons"
 import { Container } from "../../atoms/container"
 import Breadcrumbs from "../../moleculas/breadcrumbs"
 
-export default function Hero({list, text, title, link, pageTitle, relatedPost}) {
-    return (
-        <Wrapper>
-            <Container>
-                <Content>
-                    <TextPart>
-                        <Breadcrumbs title={title} />
-                        <h1 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(pageTitle) }} />
-                        {text
-                            ? <p className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
-                            : null}
-                        {list
-                            ? <List>
-                                {list.map(el => (
-                                    <li>
-                                        {el.slug}
-                                        <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
-                                        <div className="content" dangerouslySetInnerHTML={{ __html: textParser(el.tekstObokIkony) }} />
-                                    </li>
-                                ))}
-                            </List>
-                            : null}
-                        {link?.url
-                            ? <FilledButton className="link" target={link.target} to={link.url}>{link.title}</FilledButton>
-                            : null}
-                    </TextPart>
-                    <div>
-                        <p className="arsenal h6 title">Artykuł na <span className="blue">dziś</span></p>
-                        <Card el={relatedPost} allowLink={true} alternate={true} />
-                    </div>
-                </Content>
-            </Container>
-        </Wrapper>
-    )
+export default function Hero({ list, text, title, link, pageTitle, relatedPost }) {
+  return (
+    <Wrapper>
+      <Container>
+        <Content>
+          <TextPart>
+            <Breadcrumbs title={title} />
+            <h1 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(pageTitle) }} />
+            {text
+              ? <p className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
+              : null}
+            {list
+              ? <List>
+                {list.map(el => (
+                  <li key={el.slug}>
+                    {el.slug}
+                    <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
+                    <div className="content" dangerouslySetInnerHTML={{ __html: textParser(el.tekstObokIkony) }} />
+                  </li>
+                ))}
+              </List>
+              : null}
+            {link?.url
+              ? <FilledButton className="link" target={link.target} to={link.url}>{link.title}</FilledButton>
+              : null}
+          </TextPart>
+          <div>
+            <p className="arsenal h6 title">Artykuł na <span className="blue">dziś</span></p>
+            <Card el={relatedPost} allowLink={true} alternate={true} />
+          </div>
+        </Content>
+      </Container>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.div`

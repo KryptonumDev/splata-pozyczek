@@ -31,7 +31,7 @@ export default function CircularChart({ changeInView, data: { title, text, subTe
                     <DonutChart data={dataPie} />
                     <Grid>
                         {chart.map(el => (
-                            <Item color={el.color}>
+                            <Item key={el.text} color={el.color}>
                                 <div className="color" />
                                 <div>
                                     <span className="body1">{el.percent}%</span>

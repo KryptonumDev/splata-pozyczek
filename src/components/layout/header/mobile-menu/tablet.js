@@ -3,21 +3,21 @@ import { Link } from "gatsby"
 
 export default function Tablet({ data }) {
     return (
-        <div id='tablet'>
-            {data.map(el => (
-                <li className="top-level">
+        <ul id='tablet'>
+            {data.map((el) => (
+                <li key={el.url.url} className="top-level">
                     <Link className="first-item h5 arsenal" to={el.url.url} target={el.url.target}>{el.url.title}</Link>
                     {el.megaMeni
                         ? (
                             <ul className="second-level">
                                 {el.megaMeni.map(el => (
-                                    <li>
+                                    <li key={el.url.url}>
                                         <Link className="second-item h5 arsenal" to={el.url.url} target={el.url.target}>{el.url.title}</Link>
                                         {el.megaMeni
                                             ? (
                                                 <ul className="third-level">
                                                     {el.megaMeni.map(el => (
-                                                        <li>
+                                                        <li key={el.url.url}>
                                                             <Link className="third-item h5 arsenal" to={el.url.url} target={el.url.target}>{el.url.title}</Link>
                                                         </li>
                                                     ))}
@@ -29,6 +29,6 @@ export default function Tablet({ data }) {
                         ) : null}
                 </li>
             ))}
-        </div>
+        </ul>
     )
 }

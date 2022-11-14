@@ -10,7 +10,7 @@ export default function LongPanelWithIcon({ data: { template, longPanel } }) {
             <Container>
                 <Grid template={template}>
                     {longPanel.map(el => (
-                        <>
+                        <React.Fragment key={el.text} >
                             <Content template={template} className="desctop">
                                 <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
                                 <div className="text">
@@ -25,7 +25,7 @@ export default function LongPanelWithIcon({ data: { template, longPanel } }) {
                                 </div>
                                 <div className="body1 sub" dangerouslySetInnerHTML={{ __html: el.text }} />
                             </Content>
-                        </>
+                        </React.Fragment>
                     ))}
                 </Grid>
             </Container>

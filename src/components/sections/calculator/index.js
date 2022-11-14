@@ -78,7 +78,7 @@ export default function Calculator({ data: { title, text, type } }) {
                                 <ControlWrap className={maxButtonsTransform > 0 ? 'button' : 'no-button'} id='control-wrap'>
                                     <Control style={{ x }} drag='x' dragConstraints={{ left: maxButtonsTransform > 0 ? -maxButtonsTransform : 0, right: 0 }} maxButtonsTransform={maxButtonsTransform} id='control'>
                                         {params.map((el, index) => (
-                                            <button tabIndex='-1' className={index === active ? 'active' : ''} onClick={() => { changeTab(index) }}>
+                                            <button key={el.name} tabIndex='-1' className={index === active ? 'active' : ''} onClick={() => { changeTab(index) }}>
                                                 <div>
                                                     <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
                                                     <span>{el.name}</span>
@@ -100,7 +100,7 @@ export default function Calculator({ data: { title, text, type } }) {
                         </Container>
                         <Container id='wrap' className="container">
                             {params.map((el, index) => (
-                                <CalculatorWrapper className={index === active ? 'active' : ''}>
+                                <CalculatorWrapper key={index} className={index === active ? 'active' : ''}>
                                     <Item title={title} text={text} calculatorData={el} />
                                 </CalculatorWrapper>
                             ))}

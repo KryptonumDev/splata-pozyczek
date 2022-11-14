@@ -8,8 +8,8 @@ export default function AllExperts({ experts }) {
         <Wrapper>
             <Container>
                 <Grid>
-                    {experts?.map(el => (
-                        <ExpertCard el={el} />
+                    {experts?.map((el, index) => (
+                        <ExpertCard key={index} el={el} />
                     ))}
                 </Grid>
             </Container>

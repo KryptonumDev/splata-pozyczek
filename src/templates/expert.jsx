@@ -1,5 +1,5 @@
 import { graphql } from "gatsby"
-import React, { useEffect } from "react"
+import React from "react"
 import HeroExpert from "../components/sections/hero-expert"
 import Reviews from "../components/sections/reviews"
 
@@ -61,16 +61,6 @@ export function Head({ data: { wpEkspert: { seo } } }) {
 }
 
 export default function Expert({ data, pageContext }) {
-
-  useEffect(() => {
-    document.documentElement.classList.add('overflow')
-    document.body.classList.add('overflow')
-
-    return () => {
-      document.documentElement.classList.remove('overflow')
-      document.body.classList.remove('overflow')
-    }
-  }, [])
 
   return (
     <main>

@@ -28,7 +28,7 @@ export default function VerticalChart({ changeInView, data: { title, text, subTe
                     : null}
                 <Grid count={chart.length}>
                     {chart.map(el => (
-                        <Item fillPercent={el.number / maxPercent * 100}>
+                        <Item key={el.text} fillPercent={el.number / maxPercent * 100}>
                             <div className="chart" />
                             <div className="flex">
                                 <span className="body1 dark">

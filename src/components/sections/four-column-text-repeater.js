@@ -8,8 +8,8 @@ export default function RepeaterFourColumnText({ data }) {
     return (
         <Wrapper>
             <Container>
-                {data.map(el => (
-                    <Grid>
+                {data.map((el, index) => (
+                    <Grid key={index}>
                         <div>
                             <p className="body3 title">{el.firstTitle}</p>
                             <p className="body3" dangerouslySetInnerHTML={{ __html: textParser(el.first) }} />

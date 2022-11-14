@@ -21,8 +21,8 @@ export default function HeroImgExtended({ data: { pageTitle, text, links, list, 
               : null}
             {list
               ? <List>
-                {list.map(el => (
-                  <li>
+                {list.map((el, index) => (
+                  <li key={index}>
                     <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
                     <div className="content" dangerouslySetInnerHTML={{ __html: textParser(el.tekstObokIkony) }} />
                   </li>
@@ -32,9 +32,9 @@ export default function HeroImgExtended({ data: { pageTitle, text, links, list, 
             <div className="buttons">
               {links?.map((el, index) => {
                 if (index) {
-                  return <OutlinedButton className="link" target={el.link.target} to={el.link.url}> {el.link.title}</OutlinedButton>
+                  return <OutlinedButton className="link" key={el.link.title} target={el.link.target} to={el.link.url}> {el.link.title}</OutlinedButton>
                 }
-                return <FilledButton className="link" target={el.link.target} to={el.link.url}>{el.link.title}</FilledButton>
+                return <FilledButton className="link" key={el.link.title} target={el.link.target} to={el.link.url}>{el.link.title}</FilledButton>
               })}
             </div>
           </TextPart>

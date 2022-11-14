@@ -19,9 +19,9 @@ export default function ListWithImgOnRight({ data: { title, list, buttons, img, 
                         <Buttons>
                             {buttons?.map((el, index) => {
                                 if (index) {
-                                    return <OutlinedButton className="button" to={el.link.url} target={el.link.target}>{el.link.title}</OutlinedButton>
+                                    return <OutlinedButton className="button" key={el.link.title} to={el.link.url} target={el.link.target}>{el.link.title}</OutlinedButton>
                                 }
-                                return <FilledButton className="button" to={el.link.url} target={el.link.target}>{el.link.title}</FilledButton>
+                                return <FilledButton className="button" key={el.link.title} to={el.link.url} target={el.link.target}>{el.link.title}</FilledButton>
                             })}
                         </Buttons>
                     </div>

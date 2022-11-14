@@ -13,8 +13,8 @@ export default function TwoColumnRepeater({ data: { title, text, repeater } }) {
                 <h2 className="h4" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                 <p className="body1 text" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
                 <Grid>
-                    {repeater.map(el => (
-                        <Item>
+                    {repeater.map((el, index) => (
+                        <Item key={index}>
                             {el.videoLink
                                 ? <iframe src={el.videoLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 : <GatsbyImage className="img" image={el.img?.localFile?.childImageSharp?.gatsbyImageData} />}
@@ -27,9 +27,9 @@ export default function TwoColumnRepeater({ data: { title, text, repeater } }) {
                                 <div className="buttons">
                                     {el.buttons.map((inEl, index) => {
                                         if (index) {
-                                            return <OutlinedButton className="second" target={inEl.link.target} to={inEl.link.url}>{inEl.link.title}</OutlinedButton>
+                                            return <OutlinedButton key={inEl.link.title} className="second" target={inEl.link.target} to={inEl.link.url}>{inEl.link.title}</OutlinedButton>
                                         }
-                                        return <FilledButton className="first" target={inEl.link.target} to={inEl.link.url}>{inEl.link.title}</FilledButton>
+                                        return <FilledButton key={inEl.link.title} className="first" target={inEl.link.target} to={inEl.link.url}>{inEl.link.title}</FilledButton>
                                     })}
                                 </div>
                             </div>

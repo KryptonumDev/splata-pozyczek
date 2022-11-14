@@ -6,7 +6,7 @@ import { CATEGORY_COLORS } from "../../../constants/category-colors"
 import { transform } from "../../../helpers/slider"
 import { Container } from "../../atoms/container"
 
-export default function Filter({ categories, isAltLayout,allCount }) {
+export default function Filter({ categories, isAltLayout, allCount }) {
 
     const x = useMotionValue(0)
     const [maxButtonsTransform, setMaxButtonsTransform] = useState(0)
@@ -69,7 +69,7 @@ export default function Filter({ categories, isAltLayout,allCount }) {
                             <Button activeClassName="active" to={'/blog/'} active={CATEGORY_COLORS['gray'].active} hover={CATEGORY_COLORS['gray'].hover} background={CATEGORY_COLORS['gray'].default}>Wszystkie ({allCount})</Button>
                             {filtredCategories.map(el => {
                                 if (el.count) {
-                                    return <Button activeClassName="active" to={'/blog/tag/' + el.slug + '/'} active={CATEGORY_COLORS[el.category.color].active} hover={CATEGORY_COLORS[el.category.color].hover} background={CATEGORY_COLORS[el.category.color].default}>{el.name} ({el.count})</Button>
+                                    return <Button key={el.name} activeClassName="active" to={'/blog/tag/' + el.slug + '/'} active={CATEGORY_COLORS[el.category.color].active} hover={CATEGORY_COLORS[el.category.color].hover} background={CATEGORY_COLORS[el.category.color].default}>{el.name} ({el.count})</Button>
                                 }
                                 return null
                             })}

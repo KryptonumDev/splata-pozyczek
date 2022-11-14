@@ -12,8 +12,8 @@ export default function ThreeColumnsHighlightedAlt({ data: { title, points } }) 
                 <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                 <Content>
                     <Grid>
-                        {points.map(el => (
-                            <Item className="body1" light={Light} dangerouslySetInnerHTML={{ __html: el.text }} />
+                        {points.map((el, index) => (
+                            <Item key={index} className="body1" light={Light} dangerouslySetInnerHTML={{ __html: el.text }} />
                         ))}
                     </Grid>
                 </Content>

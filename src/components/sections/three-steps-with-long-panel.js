@@ -14,7 +14,7 @@ export default function ThreeStepsWithLongPanel({ data: { title, text, steps, lo
                 <h2 className="h6" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
                 <Grid>
                     {steps.map((el, index) => (
-                        <Item arrow={Arrow} arrowLight={ArrowLight}>
+                        <Item key={index} arrow={Arrow} arrowLight={ArrowLight}>
                             <span className="h4">{index + 1}</span>
                             <div className="content" dangerouslySetInnerHTML={{ __html: el.content }} />
                         </Item>

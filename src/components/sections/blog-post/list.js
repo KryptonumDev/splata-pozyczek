@@ -22,7 +22,7 @@ export default function ListSection({ changeInView, data: { title, text, subTitl
                     : null}
                 <Grid>
                     {list?.map((el, index) => (
-                        <Item>
+                        <Item key={index}>
                             {index > 0
                                 ? <img src={Light} alt='mark' />
                                 : <img src={Medium} alt='mark' />}

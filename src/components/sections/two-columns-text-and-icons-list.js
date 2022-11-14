@@ -15,8 +15,8 @@ export default function TwoColumnsTextAndIconsList({ data: { title, subTitle, te
                         <p className="body2 text" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
                     </div>
                     <Grid>
-                        {repeater.map(el => (
-                            <Item>
+                        {repeater.map((el, index) => (
+                            <Item key={index}>
                                 <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
                                 <p className="body2" dangerouslySetInnerHTML={{ __html: textParser(el.text) }} />
                             </Item>

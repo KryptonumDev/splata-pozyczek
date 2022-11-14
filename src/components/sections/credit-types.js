@@ -54,7 +54,7 @@ export default function CreditTypes({ data: { title, tekst, slider } }) {
                         <ControlWrap className={maxButtonsTransform > 0 ? 'button' : 'no-button'} id='control-wrap'>
                             <Control style={{ x }} drag='x' dragConstraints={{ left: maxButtonsTransform > 0 ? -maxButtonsTransform : 0, right: 0 }} maxButtonsTransform={maxButtonsTransform} id='control'>
                                 {slider.map((el, index) => (
-                                    <button tabIndex='-1' className={index === active ? 'active' : ''} onClick={() => { changeTab(index) }}><span>{el.tabName}</span></button>
+                                    <button key={el.tabName} tabIndex='-1' className={index === active ? 'active' : ''} onClick={() => { changeTab(index) }}><span>{el.tabName}</span></button>
                                 ))}
                             </Control>
                         </ControlWrap>
@@ -71,7 +71,7 @@ export default function CreditTypes({ data: { title, tekst, slider } }) {
                     <InnerContent>
                         <Grid id="wrap" count={slider.length}>
                             {slider.map((el, index) => (
-                                <Item className={index === active ? 'active' : ''}>
+                                <Item key={el.text} className={index === active ? 'active' : ''}>
                                     <GatsbyImage className="image" image={el.obrazekPoLewej.localFile.childImageSharp.gatsbyImageData} alt={el.obrazekPoLewej.altText} />
                                     <div>
                                         <h3 className="h6" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
@@ -79,9 +79,9 @@ export default function CreditTypes({ data: { title, tekst, slider } }) {
                                         <div className="buttons">
                                             {el.przyciski.map((el, index) => {
                                                 if (index) {
-                                                    return <OutlinedButton target={el.link.target} to={el.link.url}>{el.link.title}</OutlinedButton>
+                                                    return <OutlinedButton key={el.link.url} target={el.link.target} to={el.link.url}>{el.link.title}</OutlinedButton>
                                                 }
-                                                return <FilledButton target={el.link.target} to={el.link.url}>{el.link.title}</FilledButton>
+                                                return <FilledButton key={el.link.url} target={el.link.target} to={el.link.url}>{el.link.title}</FilledButton>
                                             })}
                                         </div>
                                     </div>

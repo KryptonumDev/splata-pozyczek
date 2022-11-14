@@ -52,7 +52,7 @@ export default function TabsWithThreeColumnsContent({ data: { repeater } }) {
                         <ControlWrap className={maxButtonsTransform > 0 ? 'button' : 'no-button'} id='control-wrap'>
                             <Control style={{ x }} drag='x' dragConstraints={{ left: maxButtonsTransform > 0 ? -maxButtonsTransform : 0, right: 0 }} maxButtonsTransform={maxButtonsTransform} id='control'>
                                 {repeater.map((el, index) => (
-                                    <button tabIndex='-1' className={index === active ? 'active' : ''} onClick={() => { changeTab(index) }}><span>{el.tabName}</span></button>
+                                    <button key={el.tabName} tabIndex='-1' className={index === active ? 'active' : ''} onClick={() => { changeTab(index) }}><span>{el.tabName}</span></button>
                                 ))}
                             </Control>
                         </ControlWrap>
@@ -69,7 +69,7 @@ export default function TabsWithThreeColumnsContent({ data: { repeater } }) {
                     <InnerContent>
                         <Grid id='wrap' count={repeater.length}>
                             {repeater.map((el, index) => (
-                                <Item className={index === active ? 'active' : ''}>
+                                <Item key={index} className={index === active ? 'active' : ''}>
                                     <GatsbyImage className="image" image={el.image.localFile.childImageSharp.gatsbyImageData} alt={el.image.altText} />
                                     <div className="grid">
                                         <div>
@@ -82,9 +82,9 @@ export default function TabsWithThreeColumnsContent({ data: { repeater } }) {
                                             <div className="buttons">
                                                 {el.przyciski.map((el, index) => {
                                                     if (index) {
-                                                        return <OutlinedButton target={el.link.target} to={el.link.url}>{el.link.title}</OutlinedButton>
+                                                        return <OutlinedButton key={el.link.title}  target={el.link.target} to={el.link.url}>{el.link.title}</OutlinedButton>
                                                     }
-                                                    return <FilledButton target={el.link.target} to={el.link.url}>{el.link.title}</FilledButton>
+                                                    return <FilledButton key={el.link.title}  target={el.link.target} to={el.link.url}>{el.link.title}</FilledButton>
                                                 })}
                                             </div>
                                         </div>

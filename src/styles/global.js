@@ -38,8 +38,12 @@ a {
    color: #3B5BA9;
 }
 
+html, body{
+   overflow-x: hidden;
+}
+
 .overflow{
-  overflow-x: hidden;
+  overflow-x: unset;
 }
 
 body {

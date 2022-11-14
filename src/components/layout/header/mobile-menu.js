@@ -63,7 +63,7 @@ const Wrapper = styled.nav`
     }
 `
 
-const Content = styled.ul`
+const Content = styled.div`
     columns: 2;
     column-gap: 32px;
     margin-top: 96px;

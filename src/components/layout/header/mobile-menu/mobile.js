@@ -3,9 +3,9 @@ import { Link } from "gatsby"
 
 export default function Mobile({ data }) {
     return (
-        <div id='mobile'>
-            {data.map(el => (
-                <li className="top-level">
+        <ul id='mobile'>
+            {data.map((el) => (
+                <li key={el.url.url} className="top-level">
                     {el.megaMeni
                         ? (
                             <details className="first">
@@ -19,8 +19,8 @@ export default function Mobile({ data }) {
                                     <li>
                                         <Link className="second-item h5 arsenal" to={el.url.url} target={el.url.target}>{el.url.title}</Link>
                                     </li>
-                                    {el.megaMeni.map(el => (
-                                        <li>
+                                    {el.megaMeni.map((el) => (
+                                        <li  key={el.url.url}>
                                             {el.megaMeni
                                                 ? (
                                                     <details className="second">
@@ -35,7 +35,7 @@ export default function Mobile({ data }) {
                                                                 <Link className="third-item h5 arsenal" to={el.url.url} target={el.url.target}>{el.url.title}</Link>
                                                             </li>
                                                             {el.megaMeni.map(el => (
-                                                                <li>
+                                                                <li key={el.url.url}>
                                                                     <Link className="third-item h5 arsenal" to={el.url.url} target={el.url.target}>{el.url.title}</Link>
                                                                 </li>
                                                             ))}
@@ -53,6 +53,6 @@ export default function Mobile({ data }) {
                         )}
                 </li>
             ))}
-        </div>
+        </ul>
     )
 }

@@ -17,7 +17,7 @@ export default function InformPanels({ changeInView, data: { title, text, subTex
                     : null}
                 <Grid>
                     {panels?.map(el => (
-                        <Item>
+                        <Item  key={el.percent}>
                             <img src={el.icon.localFile.publicURL} alt='blue mark' />
                             <div className="content">
                                 <span className="h6 arsenal">{el.percent}%</span>

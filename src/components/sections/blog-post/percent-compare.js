@@ -18,7 +18,7 @@ export default function PercentCompare({ changeInView, data: { title, text, subT
                     : null}
                 <Grid count={tiles.length}>
                     {tiles.map(el => (
-                        <Item>
+                        <Item key={el.percent}>
                             <span className="h4 arsenal number">{el.percent}%</span>
                             <p className="body1">{el.text}</p>
                         </Item>

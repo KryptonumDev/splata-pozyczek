@@ -9,7 +9,7 @@ export default function HeighlihtedAdres({ data: { list } }) {
             <Container>
                 <Box>
                     {list.map(el => (
-                        <Flex>
+                        <Flex key={el.text}>
                             <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
                             <div className="body1" dangerouslySetInnerHTML={{ __html: el.text }} />
                         </Flex>

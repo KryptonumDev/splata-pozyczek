@@ -13,8 +13,8 @@ export default function ThreeColumnsHighlighted({ data: { title, points, link } 
                 <h2 className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                 <Content>
                     <Grid>
-                        {points.map(el => (
-                            <Item light={Light} dangerouslySetInnerHTML={{ __html: el.text }} />
+                        {points.map((el, index) => (
+                            <Item key={index} light={Light} dangerouslySetInnerHTML={{ __html: el.text }} />
                         ))}
                     </Grid>
                     <FilledButton className="link" target={link.target} to={link.url}>{link.title}</FilledButton>

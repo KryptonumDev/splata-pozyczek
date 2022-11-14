@@ -10,8 +10,8 @@ export default function ThreeTiles({ data: { title, repeater } }) {
             <Container className="container">
                 <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                 <Grid>
-                    {repeater.map(el => (
-                        <Item>
+                    {repeater.map((el, index) => (
+                        <Item key={index}>
                             <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
                             <p className="h6" dangerouslySetInnerHTML={{ __html: textParser(el.text) }} />
                         </Item>

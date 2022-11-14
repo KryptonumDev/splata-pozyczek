@@ -6,33 +6,32 @@ import { Button } from "./buttons"
 import { textParser } from "../../helpers/wysiwyg-modification"
 import { CATEGORY_COLORS } from "../../constants/category-colors"
 
-export default function Card({ el, allowLink, alternate }) {
+export default function Card({ key, el, allowLink, alternate }) {
     return (
-        <Item allowLink={allowLink} className={alternate ? 'alt' : ''} onClick={(e) => { if (!allowLink) { e.preventDefault() } }} >
-            <Link className="wrap-link" to={'/blog/' + el.slug}>
-                <div className="wrap">
-                    <GatsbyImage className="img" image={el.blogPost.thumbnail.localFile.childImageSharp.gatsbyImageData} alt={el.blogPost.thumbnail.altText} />
-                    <div className="text">
-                        <div className="add-inform">
-                            <span className="body3">{el.author.node.name}</span>
-                            <span className="body3">{el.date}</span>
-                        </div>
-                        <div className="categories">
-                            {el.categories.nodes.map(el => (
-                                <Category active={CATEGORY_COLORS[el.category.color].active} hover={CATEGORY_COLORS[el.category.color].hover} background={CATEGORY_COLORS[el.category.color].default}>
-                                    <Link activeClassName="active" to={'/blog/tag/' + el.slug + '/'} className="body3" >
-                                        {el.name}
-                                    </Link>
-                                </Category>
-                            ))}
-                        </div>
-                        <h3 className="sub2 arsenal">{el.title}</h3>
-                        <p className="body3 description" dangerouslySetInnerHTML={{ __html: textParser(el.blogPost.previewText) }} />
-                        <Button button={true} url={''} text={'Przeczytaj artykuł'} className='link desctop' />
+        <Item key={key} allowLink={allowLink} className={alternate ? 'alt' : ''} onClick={(e) => { if (!allowLink) { e.preventDefault() } }} >
+            <Link className="wrap-link" to={'/blog/' + el.slug} />
+            <div className="wrap">
+                <GatsbyImage className="img" image={el.blogPost.thumbnail.localFile.childImageSharp.gatsbyImageData} alt={el.blogPost.thumbnail.altText} />
+                <div className="text">
+                    <div className="add-inform">
+                        <span className="body3">{el.author.node.name}</span>
+                        <span className="body3">{el.date}</span>
                     </div>
+                    <div className="categories">
+                        {el.categories.nodes.map(el => (
+                            <Category key={el.name} active={CATEGORY_COLORS[el.category.color].active} hover={CATEGORY_COLORS[el.category.color].hover} background={CATEGORY_COLORS[el.category.color].default}>
+                                <Link activeClassName="active" to={'/blog/tag/' + el.slug + '/'} className="body3 link" >
+                                    {el.name}
+                                </Link>
+                            </Category>
+                        ))}
+                    </div>
+                    <h3 className="sub2 arsenal">{el.title}</h3>
+                    <p className="body3 description" dangerouslySetInnerHTML={{ __html: textParser(el.blogPost.previewText) }} />
+                    <Button button={true} url={''} text={'Przeczytaj artykuł'} className='link desctop' />
                 </div>
-                <Button button={true} url={'/blog/' + el.slug + '/'} text={'Przeczytaj artykuł'} className='link mobile' />
-            </Link>
+            </div>
+            <Button button={true} url={'/blog/' + el.slug + '/'} text={'Przeczytaj artykuł'} className='link mobile' />
         </Item>
     )
 }
@@ -64,13 +63,24 @@ const Item = styled.div`
     width: 485px;
     border-radius: 4px;
     box-shadow: 0px 4px 8px 3px rgba(97, 152, 193, 0.15);
-
+    position: relative;
 
     .wrap-link{
         cursor: ${props => props.allowLink ? 'pointer' : 'grabbing'};
         user-select: none;
         -webkit-user-drag: none;
         text-decoration: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        z-index: 0;
+    }
+
+    .link{
+        position: relative;
+        z-index: 1;
     }
     
     &.alt{

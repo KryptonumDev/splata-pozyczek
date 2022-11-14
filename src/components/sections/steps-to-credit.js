@@ -23,7 +23,7 @@ export default function StepsToCredit({ data: { title, text, kroki } }) {
                     )}
                 <Grid>
                     {kroki.map((el, index) => (
-                        <Item>
+                        <Item key={el.text} >
                             <span className="h4">{index + 1}</span>
                             <p>{el.text}</p>
                         </Item>

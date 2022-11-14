@@ -2,15 +2,17 @@ import React from "react"
 import styled from "styled-components"
 import Card from "../../atoms/blog-card"
 
-export default function PostGrid({ allPosts, page }) {
+export default function PostGrid({ activeFilter, allPosts, page }) {
     return (
         <Wrapper>
-            <p className="h6 arsenal title">Najnowsze <span className="blue">artykuły</span></p>
+            {activeFilter
+                ? <p className="h6 arsenal title">Wybrana kategoria: <span className="blue">{activeFilter}</span></p>
+                : <p className="h6 arsenal title">Najnowsze <span className="blue">artykuły</span></p>}
             <Grid>
                 {allPosts.map((el, index) => {
                     if (el.blogPost.previewText) {  //   true
                         if ((index >= (11 * (page - 1) + (page - 1))) && index <= (11 * page) + (page - 1)) {
-                            return <Card el={el} allowLink={true} /> //  <div>{index} - {el.slug}</div>
+                            return <Card key={index} el={el} allowLink={true} /> //  <div>{index} - {el.slug}</div>
                         }
                     }
                     return null

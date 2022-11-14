@@ -14,8 +14,8 @@ export default function FourTilesWithTitle({ data: { title, tekstWyrozniony, pla
                         ? <div className="title body1" dangerouslySetInnerHTML={{ __html: tekstWyrozniony }} />
                         : null}
                     <Grid>
-                        {plaszki.map(el => (
-                            <Item>
+                        {plaszki.map((el, index) => (
+                            <Item  key={index}>
                                 <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
                                 <p className="text body1" dangerouslySetInnerHTML={{ __html: textParser(el.text) }}></p>
                             </Item>

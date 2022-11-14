@@ -9,7 +9,7 @@ export default function StepsToComplaints({ data: { steps } }) {
             <Container>
                 <Grid>
                     {steps.map((el, index) => (
-                        <Item>
+                        <Item key={index} >
                             <span className="h4 arsenal">{index + 1}</span>
                             <div className="body1" dangerouslySetInnerHTML={{ __html: el.text }} />
                         </Item>
@@ -71,7 +71,7 @@ const Item = styled.div`
     }
 
     ul,ol{
-        margin-left: clamp(12px, ${12/768*100}vw, 24px);
+        margin-left: clamp(12px, ${12 / 768 * 100}vw, 24px);
         display: grid;
         grid-gap: 8px;
 

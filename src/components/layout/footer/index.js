@@ -210,7 +210,7 @@ const Wrapper = styled.footer`
         min-width: 250px;
 
         a{
-            color: #FCCF4F;
+            color: #ffd662;
         }
 
         p, span{

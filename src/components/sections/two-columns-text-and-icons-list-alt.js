@@ -14,8 +14,8 @@ export default function TwoColumnsTextAndIconsListAlt({ data: { title, text, rep
                         <p className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
                     </div>
                     <Grid>
-                        {repeater.map(el => (
-                            <Item>
+                        {repeater.map((el, index) => (
+                            <Item key={index} >
                                 <svg className="light" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect width="32" height="32" rx="16" fill="#DAE2FF" />
                                     <g clip-path="url(#clip0_1054_141553)">

@@ -17,8 +17,8 @@ export default function ThreePointsWithImgOnLeft({ data: { title, text, link, im
                     <div className="content">
                         <h2 className="arsenal h4" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                         <Grid>
-                            {points.map(el => (
-                                <Item light={Light} dark={Dark}>
+                            {points.map((el, index) => (
+                                <Item key={index} light={Light} dark={Dark}>
                                     <div className="text">
                                         <h3 className="body1" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
                                         <p className="body2" dangerouslySetInnerHTML={{ __html: textParser(el.text) }} />

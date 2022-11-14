@@ -15,8 +15,8 @@ export default function TwoColumnsWithExtendedLinks({ data: { title, text, links
                         <p className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
                     </div>
                     <div>
-                        {links.map(el => (
-                            <Item to={el.link.url} target={el.link.target}>
+                        {links.map((el, index) => (
+                            <Item key={index} to={el.link.url} target={el.link.target}>
                                 <GatsbyImage className="image" image={el.img.localFile.childImageSharp.gatsbyImageData} alt={el.img.altText} />
                                 <div>
                                     <p className="h6">{el.link.title}</p>

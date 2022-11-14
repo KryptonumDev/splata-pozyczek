@@ -65,12 +65,13 @@ export default function BlogSlider({ data, posts }) {
                         </svg>
                     </button>
                     <ControlWrap id='control-wrap'>
-                        <Control whileDrag={{ cursor: 'grabbing' }} onDragStart={() => setAllowLink(false)} onDragEnd={() => { setTimeout(() => { setAllowLink(true) }, 1) }} style={{ x }} drag='x' dragConstraints={{ left: -maxButtonsTransform, right: 0 }} maxButtonsTransform={maxButtonsTransform} id='control'>
-                            {choosenPosts.map(el => (
-                                <>
-                                    {el.blogPost?.previewText ? <Card el={el} allowLink={allowLink} /> : null}
-                                </>
-                            ))}
+                        <Control whileDrag={{ cursor: 'grabbing' }} onDragStart={() => setAllowLink(false)} onDragEnd={() => { setTimeout(() => { setAllowLink(true) }, 1) }} style={{ x }} drag='x' dragConstraints={{ left: -maxButtonsTransform, right: 0 }} id='control'>
+                            {choosenPosts.map((el, index) => {
+                                if (el.blogPost?.previewText) {
+                                    return <Card key={index} el={el} allowLink={allowLink} />
+                                }
+                                return null
+                            })}
                             <Placeholder onClick={(e) => { if (!allowLink) { e.preventDefault() } }} to={'/blog/'}>
                                 <p className="h6 arsenal">Chcesz dowiedzieć się więcej?</p>
                                 <Button button={true} url={''} text={'Wszystkie artykuły'} className='more' />

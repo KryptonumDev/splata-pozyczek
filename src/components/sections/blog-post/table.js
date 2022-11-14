@@ -19,8 +19,8 @@ export default function Table({ changeInView, data: { title, textFirst, textSeco
                     ? <div className="body1 text" dangerouslySetInnerHTML={{ __html: textSecond }} />
                     : null}
                 <Grid>
-                    {table?.rows?.map(el => (
-                        <Row count={table.columnCount}>
+                    {table?.rows?.map((el, index) => (
+                        <Row key={index} count={table.columnCount}>
                             <Cell>
                                 {el.cellFirst}
                             </Cell>

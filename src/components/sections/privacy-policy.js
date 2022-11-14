@@ -10,8 +10,8 @@ export default function PrivacyPolicy({ data: { repeater } }) {
         <Wrapper>
             <Container>
                 <Grid className="grid">
-                    {repeater.map(el => (
-                        <div className="item">
+                    {repeater.map((el, index) => (
+                        <div key={index} className="item">
                             <h3 className="h6" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
                             <div className="body1" dangerouslySetInnerHTML={{ __html: el.text }} />
                         </div>

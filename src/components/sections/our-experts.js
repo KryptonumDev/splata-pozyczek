@@ -6,18 +6,18 @@ import { textParser } from './../../helpers/wysiwyg-modification'
 import ExpertCard from "../atoms/expert-card"
 
 export default function OurExperts({ data: { tytulSekcji, experts } }) {
-    return (
-        <Wrapper>
-            <Container>
-                <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(tytulSekcji) }} />
-                <Grid>
-                    {experts.map(el => (
-                        <ExpertCard el={el.expert}/>
-                    ))}
-                </Grid>
-            </Container>
-        </Wrapper>
-    )
+  return (
+    <Wrapper>
+      <Container>
+        <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(tytulSekcji) }} />
+        <Grid>
+          {experts.map((el, index) => (
+            <ExpertCard key={index} el={el.expert} />
+          ))}
+        </Grid>
+      </Container>
+    </Wrapper>
+  )
 }
 
 export const query = graphql`

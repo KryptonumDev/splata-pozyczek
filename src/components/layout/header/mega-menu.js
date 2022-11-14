@@ -2,9 +2,9 @@ import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 
-export default function MegaMenu({ data, level }) {
+export default function MegaMenu({ key, data, level }) {
     return (
-        <Wrapper level={level}>
+        <Wrapper key={key ? key : null} level={level}>
             <Link activeClassName="active" className="flex" target={data.url.target} to={data.url.url}>
                 <span className="body2">{data.url.title}</span>
                 {data.megaMeni
@@ -17,11 +17,11 @@ export default function MegaMenu({ data, level }) {
             {data.megaMeni
                 ? (
                     <ul>
-                        {data.megaMeni?.map(el => {
+                        {data.megaMeni?.map((el, index) => {
                             if (level === 'second') {
-                                return <li><Link activeClassName="active" target={data.url.target} to={el.url.url}><span className="body2">{el.url.title}</span></Link></li>
+                                return <li key={index}><Link activeClassName="active" target={data.url.target} to={el.url.url}><span className="body2">{el.url.title}</span></Link></li>
                             }
-                            return <MegaMenu data={el} level='second' />
+                            return <MegaMenu key={index} data={el} level='second' />
                         })}
                     </ul>
                 ) : null}

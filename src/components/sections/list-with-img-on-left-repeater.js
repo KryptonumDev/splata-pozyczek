@@ -14,8 +14,8 @@ export default function ListWithImgOnLeftRepeater({ data: { title, text, repeate
             <Container>
                 <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                 <Grid>
-                    {repeater.map(el => (
-                        <Content light={Light} medium={Medium} >
+                    {repeater.map((el, index) => (
+                        <Content key={index} light={Light} medium={Medium} >
                             <GatsbyImage className="img" image={el.img.localFile.childImageSharp.gatsbyImageData} alt={el.img.altText} />
                             <div>
                                 <h2 className="h6" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />

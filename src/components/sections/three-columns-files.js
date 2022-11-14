@@ -9,7 +9,7 @@ export default function ThreeColumnsFiles({ data: { item } }) {
       <Container>
         <Content>
           {item.map(el => (
-            <Item className="body1" as={el.file ? 'a' : undefined} to={el.link?.url} download={!!el.file} href={el.file?.localFile?.publicURL}>
+            <Item key={el.title} className="body1" as={el.file ? 'a' : undefined} to={el.link?.url} download={!!el.file} href={el.file?.localFile?.publicURL}>
               {el.file
                 ? (
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

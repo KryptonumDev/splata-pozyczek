@@ -64,7 +64,7 @@ export default function Header({ data }) {
 
   return (
     <Wrapper>
-      <a className="no-focus" href="#main" aria-label='skip link to main content' />
+      <a className="no-focus" href="#main" aria-label='skip link to main content' > </a>
       <Container>
         <Content active={offset > 0 ? 'true' : null}>
           <Link className="logo" aria-label='link do strony głównej' to='/'>
@@ -72,8 +72,8 @@ export default function Header({ data }) {
           </Link>
           <Navigation className="desctop">
             <ul className="nav">
-              {navigacja.map(el =>
-                <MegaMenu data={el} level='first' />
+              {navigacja.map((el, index) =>
+                <MegaMenu key={index} data={el} level='first' />
               )}
             </ul>
           </Navigation>

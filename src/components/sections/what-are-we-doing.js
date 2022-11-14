@@ -12,7 +12,7 @@ export default function WhatAreWeDoing({ data: { title, punkty } }) {
                     <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                     <Grid items={punkty.length}>
                         {punkty.map(el => (
-                            <Item to={el.link.url} key={el.text}>
+                            <Item to={el.link.url} key={el.link.title}>
                                 <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
                                 <p className="h6 arsenal">{el.link.title}</p>
                             </Item>

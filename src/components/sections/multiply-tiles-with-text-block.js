@@ -12,8 +12,8 @@ export default function MultiplyTilesWithTextBlock({ data: { title, text, subTit
                 <p className="body1 text" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
                 <h3 className="h4 arsenal sub" dangerouslySetInnerHTML={{ __html: textParser(subTitle) }} />
                 <Grid>
-                    {tiles.map(el => (
-                        <Item>
+                    {tiles.map((el, index) => (
+                        <Item key={index} >
                             <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
                             <h4 className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
                             <p className="body2" dangerouslySetInnerHTML={{ __html: textParser(el.text) }} />

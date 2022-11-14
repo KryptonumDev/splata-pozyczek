@@ -18,10 +18,9 @@ export default function CircularPercentCompare({ data: { title, text, subText, s
                     : null}
                 <Grid count={charts.length}>
                     {charts.map(el => {
-                        debugger
                         let percent = [{ value: el.percent, stroke: '#3B5BA9' }, { value: 100 - el.percent, stroke: '#DAE2FF' }]
                         return (
-                            <div>
+                            <div  key={el.percent}>
                                 <Item percent={el.percent}>
                                     <DonutChart data={percent} />
                                 </Item>

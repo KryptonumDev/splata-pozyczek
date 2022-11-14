@@ -24,9 +24,9 @@ export default function ExtendedListWithImgOnRight({ data: { title, listTitle, l
                         <div className="buttons">
                             {buttons.map((el, index) => {
                                 if (index) {
-                                    return <OutlinedButton target={el.link.target} to={el.link.url}>{el.link.title}</OutlinedButton>
+                                    return <OutlinedButton key={el.link.url} target={el.link.target} to={el.link.url}>{el.link.title}</OutlinedButton>
                                 }
-                                return <FilledButton target={el.link.target} to={el.link.url}>{el.link.title}</FilledButton>
+                                return <FilledButton key={el.link.url} target={el.link.target} to={el.link.url}>{el.link.title}</FilledButton>
                             })}
                         </div>
                     </div>

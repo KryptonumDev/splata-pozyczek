@@ -16,10 +16,10 @@ export default function TwoColumnsCompare({ data: { columns, link } }) {
             <Container>
                 <Grid lightGray={LightGray} darkGray={DarkGray} light={Light} medium={Medium} dark={Dark}>
                     {columns.map((el, index) => (
-                        <>
+                        <React.Fragment key={index} >
                             <p className={'h6 arsenal item item' + index} dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
                             <div className={"body2 item item" + index} dangerouslySetInnerHTML={{ __html: el.lista }} />
-                        </>
+                        </React.Fragment>
                     ))}
                     <Item />
                 </Grid>

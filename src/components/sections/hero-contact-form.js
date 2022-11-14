@@ -23,8 +23,8 @@ export default function HeroForm({ data: { pageTitle, text, link, list, formTitl
               : null}
             {list
               ? <List>
-                {list.map(el => (
-                  <li>
+                {list.map((el, index) => (
+                  <li key={index}>
                     <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
                     <div className="content" dangerouslySetInnerHTML={{ __html: textParser(el.tekstObokIkony) }} />
                   </li>

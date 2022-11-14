@@ -1,5 +1,5 @@
 import { graphql } from "gatsby"
-import React from "react"
+import React, { useEffect } from "react"
 import { useMemo } from "react"
 import styled from "styled-components"
 import { Container } from "../components/atoms/container"
@@ -113,6 +113,15 @@ export function Head({ data: { wpPost: { id, seo, author, title, slug, blogPost 
 }
 
 export default function Post({ pageContext, data: { wpPost } }) {
+  useEffect(() => {
+    document.documentElement.classList.add('overflow')
+    document.body.classList.add('overflow')
+
+    return () => {
+      document.documentElement.classList.remove('overflow')
+      document.body.classList.remove('overflow')
+    }
+  }, [])
 
   const quickLinks = useMemo(() => {
     const links = []

@@ -14,7 +14,7 @@ export default function FourTilesExtended({ data: { title, text, tiles } }) {
                 </div>
                 <Grid>
                     {tiles.map(el => (
-                        <Item>
+                        <Item key={el.title}>
                             <div className="mobile-grid">
                                 <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
                                 <h3 className="h6 arsenal mobile">{el.title}</h3>
