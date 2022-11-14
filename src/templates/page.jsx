@@ -71,13 +71,15 @@ import Citate from "../components/sections/citate"
 import { useEffect } from "react"
 import { Helmet } from "react-helmet"
 
-export function Head({ data: { wpPage: { seo } } }) {
+export function Head({ data: { wpPage: { seo, id } } }) {
 
   const canonical = 'https://splatapozyczek.pl' + seo.canonical
 
   return <>
     <meta charSet="utf-8" />
-    <meta name="robots" content="noindex" />
+    {id === "cG9zdDoxMg=="
+      ? null
+      : <meta name="robots" content="noindex" />}
     <meta property="og:site_name" content={seo.opengraphSiteName} />
     <meta name="google-site-verification" content="M2kghTKPmXOB2ezGLw7ShbO3sdW6rMn_uhsSVbHCt7I" />
 

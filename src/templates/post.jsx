@@ -15,19 +15,20 @@ import Table from "../components/sections/blog-post/table"
 import TextSection from "../components/sections/blog-post/text"
 import PercentCompare from '../components/sections/blog-post/percent-compare'
 import { textParser } from "../helpers/wysiwyg-modification"
-import CircularPercentCompare from "../components/sections/blog-post/circular-percent-compare"
+// import CircularPercentCompare from "../components/sections/blog-post/circular-percent-compare"
 import Faq from "../components/sections/blog-post/faq"
 import HorizontalChart from "../components/sections/blog-post/horizontal-chart"
 import VerticalChart from "../components/sections/blog-post/vertical-chart"
 import { useState } from "react"
 
-export function Head({ data: { wpPost: { seo, author, title, slug, blogPost } } }) {
-
+export function Head({ data: { wpPost: { id, seo, author, title, slug, blogPost } } }) {
   const canonical = 'https://splatapozyczek.pl' + seo.canonical
 
   return <>
     <meta charSet="utf-8" />
-    <meta name="robots" content="noindex" />
+    {id === "cG9zdDoxMTM0"
+      ? null
+      : <meta name="robots" content="noindex" />}
     <meta property="og:site_name" content={seo.opengraphSiteName} />
     <meta name="google-site-verification" content="M2kghTKPmXOB2ezGLw7ShbO3sdW6rMn_uhsSVbHCt7I" />
     <meta property="og:type" content='article' />
