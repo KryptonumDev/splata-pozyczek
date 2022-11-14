@@ -21,7 +21,7 @@ export default function LongPanelWithIcon({ data: { template, longPanel } }) {
                             <Content className="mobile">
                                 <div className="text">
                                     <img src={el.icon.localFile.publicURL} alt={el.icon.altText} />
-                                    <h2 className="body1 title" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
+                                    <p className="body1 title" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
                                 </div>
                                 <div className="body1 sub" dangerouslySetInnerHTML={{ __html: el.text }} />
                             </Content>

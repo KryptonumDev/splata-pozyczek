@@ -7,7 +7,7 @@ import { Button } from "./buttons"
 export default function ExpertCard({ key, el }) {
     return (
         <Item key={key}>
-            <Link className="link" to={'/zespol/' + el.slug + '/'} />
+            <Link aria-label={el.title} className="link" to={'/zespol/' + el.slug + '/'} />
             {el.ekspert.image
                 ? <GatsbyImage className="image" image={el.ekspert.image.localFile.childImageSharp.gatsbyImageData} alt={el.ekspert.image.altText} />
                 : null}
