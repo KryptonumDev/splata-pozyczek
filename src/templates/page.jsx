@@ -9,65 +9,65 @@ import WhatIsCredit from "../components/sections/what-is-credit"
 import Faq from "../components/sections/faq"
 import OurExperts from "../components/sections/our-experts"
 import ThreeColumnText from "../components/sections/three-column-text"
-// import RepeaterFourColumnText from "../components/sections/four-column-text-repeater"
-// import HeroForm from "../components/sections/hero-contact-form"
-// import FourTilesWithTitle from "../components/sections/four-tiles-with-title"
-// import FourBigTextTiles from "../components/sections/four-big-text-tiles"
-// import TwoColumnsCompare from "../components/sections/two-columns-compare"
-// import ListWithImgOnRight from "../components/sections/list-with-img-on-right"
-// import StepsToCredit from "../components/sections/steps-to-credit"
-// import TwoColumnCompareColored from "../components/sections/two-columns-compare-colored"
-// import LongPanelWithIcon from "../components/sections/long-panel-with-icon"
-// import ThreeColumnTextWithTitles from "../components/sections/three-column-text-with-titles"
-// import TwoColumnText from "../components/sections/two-column-text"
+import RepeaterFourColumnText from "../components/sections/four-column-text-repeater"
+import HeroForm from "../components/sections/hero-contact-form"
+import FourTilesWithTitle from "../components/sections/four-tiles-with-title"
+import FourBigTextTiles from "../components/sections/four-big-text-tiles"
+import TwoColumnsCompare from "../components/sections/two-columns-compare"
+import ListWithImgOnRight from "../components/sections/list-with-img-on-right"
+import StepsToCredit from "../components/sections/steps-to-credit"
+import TwoColumnCompareColored from "../components/sections/two-columns-compare-colored"
+import LongPanelWithIcon from "../components/sections/long-panel-with-icon"
+import ThreeColumnTextWithTitles from "../components/sections/three-column-text-with-titles"
+import TwoColumnText from "../components/sections/two-column-text"
 import BlogSlider from "../components/sections/blog-slider"
-// import TwoColumnRepeater from "../components/sections/two-column-repeater"
-// import ThreeStepsWithLongPanel from "../components/sections/three-steps-with-long-panel"
-// import TextWithImgOnLeft from "../components/sections/text-with-img-on-left"
-// import CreditTypes from "../components/sections/credit-types"
-// import FourTiles from "../components/sections/four-tiles"
-// import ThreeCommentsWithTitle from "../components/sections/three-comments-with-title"
-// import TextWithImgOnRight from "../components/sections/text-with-img-on-right"
-// import FourColumnText from '../components/sections/four-column-text'
-// import ExtendedListWithImgOnRight from "../components/sections/extended-list-with-img-on-right"
-// import TwoColumnRepeaterAlt from "../components/sections/two-column-repeater-alt"
-// import TwoColumnVideo from "../components/sections/two-column-video"
-// import ListWithImgOnLeftRepeater from "../components/sections/list-with-img-on-left-repeater"
-// import TextWithImgOnLeftAlt from "../components/sections/text-with-img-on-left-alt"
-// import ThreeColumnsHighlighted from "../components/sections/three-columns-highlighted"
-// import FourTilesExtended from "../components/sections/four-tiles-extended"
-// import ThreePointsWithImgOnLeft from "../components/sections/three-points-with-img-on-left"
-// import ListWithImgOnLeft from "../components/sections/list-with-img-on-left"
-// import BlogArchive from "../components/sections/blog-archive"
-// import HeroImg from "../components/sections/hero-img"
-// import ThreeColumnsFiles from "../components/sections/three-columns-files"
-// import StepsToComplaints from "../components/sections/steps-to-complaints"
-// import TwoColumnTextWithBoldText from "../components/sections/two-columnt-text-alt"
-// import BigTextTiles from "../components/sections/big-text-tiles"
-// import HeroImgExtended from "../components/sections/hero-img-extended"
-// import TwoCards from "../components/sections/two-cards"
-// import TwoColumnsWithExtendedLinks from "../components/sections/two-columns-with-extended-links"
-// import AllExperts from "../components/sections/All-experts"
-// import ContactForm from "../components/sections/contact-form"
-// import ThreeColumnsHighlightedAlt from "../components/sections/three-columns-highlighted-alt"
-// import InformAndVideo from "../components/sections/inform-and-video"
-// import Map from "../components/sections/map"
-// import TwoColumnTextHighlighted from "../components/sections/two-column-text-highlighted"
-// import ThreeTiles from "../components/sections/three-tiles"
-// import ThreeColumnTextMiddleHighlighted from "../components/sections/three-column-text-middle-highlighted"
-// import MultiplyTilesWithTextBlock from "../components/sections/multiply-tiles-with-text-block"
-// import TwoColumnsTextAndIconsList from "../components/sections/two-columns-text-and-icons-list"
-// import TwoColumnTextRepeaterSepareted from "../components/sections/two-column-text-repeater-separeted"
-// import PrivacyPolicy from "../components/sections/privacy-policy"
-// import TwoColumnTextRepeater from "../components/sections/two-column-text-repeater"
-// import TwoColumnsTextAndIconsListAlt from "../components/sections/two-columns-text-and-icons-list-alt"
-// import TabsWithThreeColumnsContent from "../components/sections/tabs-with-three-columns-content"
-// import HeroText from "../components/sections/hero-text"
-// import Calculator from "../components/sections/calculator"
-// import Reviews from "../components/sections/reviews"
-// import HeighlihtedAdres from "../components/sections/heighlihted-adres"
-// import ExpertWithContactInform from "../components/sections/expert-with-contact-inform"
-// import Citate from "../components/sections/citate"
+import TwoColumnRepeater from "../components/sections/two-column-repeater"
+import ThreeStepsWithLongPanel from "../components/sections/three-steps-with-long-panel"
+import TextWithImgOnLeft from "../components/sections/text-with-img-on-left"
+import CreditTypes from "../components/sections/credit-types"
+import FourTiles from "../components/sections/four-tiles"
+import ThreeCommentsWithTitle from "../components/sections/three-comments-with-title"
+import TextWithImgOnRight from "../components/sections/text-with-img-on-right"
+import FourColumnText from '../components/sections/four-column-text'
+import ExtendedListWithImgOnRight from "../components/sections/extended-list-with-img-on-right"
+import TwoColumnRepeaterAlt from "../components/sections/two-column-repeater-alt"
+import TwoColumnVideo from "../components/sections/two-column-video"
+import ListWithImgOnLeftRepeater from "../components/sections/list-with-img-on-left-repeater"
+import TextWithImgOnLeftAlt from "../components/sections/text-with-img-on-left-alt"
+import ThreeColumnsHighlighted from "../components/sections/three-columns-highlighted"
+import FourTilesExtended from "../components/sections/four-tiles-extended"
+import ThreePointsWithImgOnLeft from "../components/sections/three-points-with-img-on-left"
+import ListWithImgOnLeft from "../components/sections/list-with-img-on-left"
+import BlogArchive from "../components/sections/blog-archive"
+import HeroImg from "../components/sections/hero-img"
+import ThreeColumnsFiles from "../components/sections/three-columns-files"
+import StepsToComplaints from "../components/sections/steps-to-complaints"
+import TwoColumnTextWithBoldText from "../components/sections/two-columnt-text-alt"
+import BigTextTiles from "../components/sections/big-text-tiles"
+import HeroImgExtended from "../components/sections/hero-img-extended"
+import TwoCards from "../components/sections/two-cards"
+import TwoColumnsWithExtendedLinks from "../components/sections/two-columns-with-extended-links"
+import AllExperts from "../components/sections/All-experts"
+import ContactForm from "../components/sections/contact-form"
+import ThreeColumnsHighlightedAlt from "../components/sections/three-columns-highlighted-alt"
+import InformAndVideo from "../components/sections/inform-and-video"
+import Map from "../components/sections/map"
+import TwoColumnTextHighlighted from "../components/sections/two-column-text-highlighted"
+import ThreeTiles from "../components/sections/three-tiles"
+import ThreeColumnTextMiddleHighlighted from "../components/sections/three-column-text-middle-highlighted"
+import MultiplyTilesWithTextBlock from "../components/sections/multiply-tiles-with-text-block"
+import TwoColumnsTextAndIconsList from "../components/sections/two-columns-text-and-icons-list"
+import TwoColumnTextRepeaterSepareted from "../components/sections/two-column-text-repeater-separeted"
+import PrivacyPolicy from "../components/sections/privacy-policy"
+import TwoColumnTextRepeater from "../components/sections/two-column-text-repeater"
+import TwoColumnsTextAndIconsListAlt from "../components/sections/two-columns-text-and-icons-list-alt"
+import TabsWithThreeColumnsContent from "../components/sections/tabs-with-three-columns-content"
+import HeroText from "../components/sections/hero-text"
+import Calculator from "../components/sections/calculator"
+import Reviews from "../components/sections/reviews"
+import HeighlihtedAdres from "../components/sections/heighlihted-adres"
+import ExpertWithContactInform from "../components/sections/expert-with-contact-inform"
+import Citate from "../components/sections/citate"
 import { Helmet } from "react-helmet"
 
 export function Head({ data: { wpPage: { seo, id } } }) {
@@ -134,27 +134,8 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
       <Helmet>
         <link rel="canonical" href={'https://splatapozyczek.pl' + pageContext.url} />
       </Helmet>
-      {id === "cG9zdDoxMg=="
-        ? (
-          <>
-            <Hero data={sections[0].hero} />
-            <WhatAreWeDoing data={sections[1].whatAreWeDoing} />
-            <EffectiveSolutions data={sections[2].effectiveSolutions} />
 
-            <CallToAction data={sections[3].cta} />
-            <HelpTypes data={sections[4].types} />
-            {/* <ContactForm data={sections[5].contactForm} /> */}
-            <WhatIsCredit data={sections[6].whatIsCredit} />
-            <Faq data={sections[7].faq} />
-            {/* <CallToAction data={sections[8].cta} />
-            <OurExperts data={sections[9].ourExperts} />
-            <CallToAction data={sections[10].cta} />
-            <BlogSlider data={sections[11].blogSlider} posts={slider.nodes} />
-            <ThreeColumnText data={sections[12].threeColumnText} /> */}
-          </>
-        )
-        : null}
-      {/* {sections?.map((el, index) => {
+      {sections?.map((el, index) => {
         switch (el.__typename) {
           case 'WpPage_PageBuilder_Sections_Hero':
             return <React.Fragment key={el.__typename + index}> <Hero data={el.hero} /> </React.Fragment>
@@ -235,7 +216,7 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
           case 'WpPage_PageBuilder_Sections_ListWithImgOnLeft':
             return <React.Fragment key={el.__typename + index}> <ListWithImgOnLeft data={el.listWithImgOnLeft} /> </React.Fragment>
           case 'WpPage_PageBuilder_Sections_ContactForm':
-            return <React.Fragment key={el.__typename + index}> <ContactForm data={el.contactForm} /> </React.Fragment>
+            return null//<React.Fragment key={el.__typename + index}> <ContactForm data={el.contactForm} /> </React.Fragment>
           case 'WpPage_PageBuilder_Sections_BlogArchive':
             return <React.Fragment key={el.__typename + index}> <BlogArchive url={pageContext.url} slug={pageContext.slug} categories={allWpCategory.nodes} location={location} data={el.blogArchive} title={title} allPosts={blogArchive.nodes} /> </React.Fragment>
           case 'WpPage_PageBuilder_Sections_HeroImg':
@@ -295,7 +276,7 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
           default:
             return <React.Fragment key={el.__typename + index}> <p className="h2">{el.__typename}</p> </React.Fragment>
         }
-      })} */}
+      })}
     </main>
   )
 }
@@ -320,17 +301,73 @@ export const query = graphql`
       page_builder {
         sections {
         __typename
-        ...cta
-        ...whatAreWeDoing
-        ...hero
-        ...types
-        ...contactForm
-        ...whatIsCredit
-        ...faq
-        ...ourExperts
+        ...citate
+        ...expertWithContactInform
+        ...heighlihtedAdres
+        ...reviews
+        ...heroText
+        ...tabsWithThreeColumnsContent
+        ...twoColumnsTextAndIconsListAlt
+        ...twoColumnTextRepeater
+        ...privacyPolicy
+        ...twoColumnTextRepeaterSepareted
+        ...twoColumnsTextAndIconsList
+        ...multiplyTilesWithTextBlock
+        ...threeColumnTextMiddleHighlighted
+        ...threeTiles
+        ...twoColumnTextHighlighted
+        ...map
+        ...informAndVideo
+        ...threeColumnsHighlightedAlt
+        ...twoColumnsWithExtendedLinks
+        ...twoCards
+        ...heroImgExtended
+        ...bigTextTiles
+        ...twoColumnTextWithBoldText
         ...blogSlider
-        ...threeColumnText
+        ...stepsToComplaints
+        ...threeColumnsFiles
+        ...heroImg
+        ...faq
+        ...cta
+        ...hero
+        ...whatAreWeDoing
         ...effectiveSolutions
+        ...types
+        ...whatIsCredit
+        ...ourExperts
+        ...threeColumnText
+        ...repeaterFourColumnText
+        ...heroForm
+        ...fourTilesWithTitle
+        ...fourBigTextTiles
+        ...twoColumnsCompare
+        ...listWithImgOnRight
+        ...stepsToCredit
+        ...twoColumnCompareColored
+        ...longPanelWithIcon
+        ...threeColumnTextWithTitles
+        ...twoColumnText
+        ...twoColumnRepeater
+        ...twoColumnRepeaterAlt
+        ...textWithImgOnLeft
+        ...threeStepsWithLongPanel
+        ...calculator
+        ...creditTypes
+        ...fourTiles
+        ...threeCommentsWithTitle
+        ...textWithImgOnRight
+        ...fourColumnText
+        ...extendedListWithImgOnRight
+        ...twoColumnVideo
+        ...listWithImgOnLeftRepeater
+        ...textWithImgOnLeftAlt
+        ...fourTilesExtended
+        ...threeColumnsHighlighted
+        ...threePointsWithImgOnLeft
+        ...listWithImgOnLeft
+        ...contactForm
+        ...blogArchive
               }
             }
         }
