@@ -142,8 +142,8 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
             <EffectiveSolutions data={sections[2].effectiveSolutions} />
 
             <CallToAction data={sections[3].cta} />
-            {/* <HelpTypes data={sections[4].types} />
-            <ContactForm data={sections[5].contactForm} />
+            <HelpTypes data={sections[4].types} />
+            {/* <ContactForm data={sections[5].contactForm} />
             <WhatIsCredit data={sections[6].whatIsCredit} />
             <Faq data={sections[7].faq} />
             <CallToAction data={sections[8].cta} />
