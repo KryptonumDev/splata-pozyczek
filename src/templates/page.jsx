@@ -48,7 +48,7 @@ import BlogSlider from "../components/sections/blog-slider"
 // import TwoCards from "../components/sections/two-cards"
 // import TwoColumnsWithExtendedLinks from "../components/sections/two-columns-with-extended-links"
 // import AllExperts from "../components/sections/All-experts"
-import ContactForm from "../components/sections/contact-form"
+// import ContactForm from "../components/sections/contact-form"
 // import ThreeColumnsHighlightedAlt from "../components/sections/three-columns-highlighted-alt"
 // import InformAndVideo from "../components/sections/inform-and-video"
 // import Map from "../components/sections/map"
@@ -143,7 +143,7 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
 
             <CallToAction data={sections[3].cta} />
             <HelpTypes data={sections[4].types} />
-            <ContactForm data={sections[5].contactForm} />
+            {/* <ContactForm data={sections[5].contactForm} /> */}
             <WhatIsCredit data={sections[6].whatIsCredit} />
             <Faq data={sections[7].faq} />
             {/* <CallToAction data={sections[8].cta} />
