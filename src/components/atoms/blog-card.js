@@ -20,7 +20,7 @@ export default function Card({ key, el, allowLink, alternate }) {
                     <div className="categories">
                         {el.categories.nodes.map(el => (
                             <Category key={el.name} active={CATEGORY_COLORS[el.category.color].active} hover={CATEGORY_COLORS[el.category.color].hover} background={CATEGORY_COLORS[el.category.color].default}>
-                                <Link activeClassName="active" to={'/blog/tag/' + el.slug + '/'} className="body3 link" >
+                                <Link activeClassName="active" to={'/blog/tag/' + el.slug + '/'} className="body3 category" >
                                     {el.name}
                                 </Link>
                             </Category>
@@ -78,7 +78,7 @@ const Item = styled.div`
         z-index: 0;
     }
 
-    .link{
+    .category{
         position: relative;
         z-index: 1;
     }
