@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { Container } from "./../atoms/container"
 import { textParser } from './../../helpers/wysiwyg-modification'
 import { FilledButton, OutlinedButton } from "./../atoms/buttons"
-import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { graphql } from "gatsby"
 
 export default function Hero({ data: { text, pageTitle, przyciski, background } }) {
@@ -23,7 +23,7 @@ export default function Hero({ data: { text, pageTitle, przyciski, background } 
                             })}
                         </Buttons>
                     </TextPart>
-                    <StaticImage className="background" src={background.localFile.publicURL} alt={background.altText} />
+                    <GatsbyImage className="background" src={background.localFile.childImageSharp.gatsbyImageData} alt={background.altText} />
                 </Content>
             </Container>
         </Wrapper>
@@ -46,7 +46,9 @@ export const query = graphql`
       background {
         altText
         localFile {
-            publicURL
+            childImageSharp{
+                gatsbyImageData
+            }
         }
       }
     }
