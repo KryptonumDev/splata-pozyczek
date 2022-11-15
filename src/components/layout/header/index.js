@@ -226,7 +226,7 @@ const Content = styled.div`
 
     border-radius: 8px;
     box-shadow: 0px 4px 8px 3px rgba(97, 152, 193, 0.15);
-    filter: drop-shadow(0px 1px 3px rgba(97, 152, 193, 0.25));
+    /* filter: drop-shadow(0px 1px 3px rgba(97, 152, 193, 0.25)); */
     background: #FEF5F5;
     position: relative;
     width: 100%;
