@@ -1227,16 +1227,6 @@
   dependencies:
     "@floating-ui/core" "^1.0.1"
 
-"@fontsource/arsenal@^4.5.8":
-  version "4.5.8"
-  resolved "https://registry.yarnpkg.com/@fontsource/arsenal/-/arsenal-4.5.8.tgz#4da3f3988d6e86c9c2bae945d24f1a409d0d42c4"
-  integrity sha512-D2mr4Cr/hWfVJe8LtBugXdwrlNOE8Hgt0gcVH6M+fvXd4K0uURhvaVQXnI0F7KjbBhR6mItO+GIg0bLRHzHjVw==
-
-"@fontsource/source-sans-pro@^4.5.11":
-  version "4.5.11"
-  resolved "https://registry.yarnpkg.com/@fontsource/source-sans-pro/-/source-sans-pro-4.5.11.tgz#06b3f08ef1a5250d78c8198e5a0482b5d87a4d52"
-  integrity sha512-f7iw44q1EjBv3MNcHCGAgrW/QVyweaEouFsJzykPhTOGnZFSwFJRISToXornOmuAy7xUUGiVdqOLiykgZoYB8A==
-
 "@gatsbyjs/parcel-namer-relative-to-cwd@^1.6.0":
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/@gatsbyjs/parcel-namer-relative-to-cwd/-/parcel-namer-relative-to-cwd-1.6.0.tgz#d1db17b7dbd52a7c1ee913ff7892b82976e5984d"
