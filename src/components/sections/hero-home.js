@@ -7,6 +7,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import { graphql } from "gatsby"
 
 export default function Hero({ data: { text, pageTitle, przyciski, background } }) {
+    debugger
     return (
         <Wrapper>
             <Container>
@@ -23,7 +24,8 @@ export default function Hero({ data: { text, pageTitle, przyciski, background } 
                             })}
                         </Buttons>
                     </TextPart>
-                    <GatsbyImage className="background" image={background.localFile.childImageSharp.gatsbyImageData} alt={background.altText} />
+                    <img className="background" src={background.localFile.publicURL} alt={background.altText} />
+                    {/* <GatsbyImage className="background" image={background.localFile.childImageSharp.gatsbyImageData} alt={background.altText} /> */}
                 </Content>
             </Container>
         </Wrapper>
@@ -46,6 +48,7 @@ export const query = graphql`
       background {
         altText
         localFile {
+            publicURL
             childImageSharp{
                 gatsbyImageData
             }
