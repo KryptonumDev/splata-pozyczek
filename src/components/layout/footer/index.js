@@ -158,17 +158,20 @@ const Wrapper = styled.footer`
 
         img{
             height: 18px;
+            width: 18px;
         }
 
         @media (max-width: 1024px){
             img{
                 height: 28px;
+                width: 28px;
             }
         }
 
         @media (max-width: 480px){
             img{
                 height: 35px;
+                width: 35px;
             }
         }
     }
