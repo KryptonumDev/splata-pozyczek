@@ -23,7 +23,7 @@ export default function Hero({ data: { text, pageTitle, przyciski, background } 
                             })}
                         </Buttons>
                     </TextPart>
-                    <GatsbyImage className="background" src={background.localFile.childImageSharp.gatsbyImageData} alt={background.altText} />
+                    <GatsbyImage className="background" image={background.localFile.childImageSharp.gatsbyImageData} alt={background.altText} />
                 </Content>
             </Container>
         </Wrapper>
