@@ -11,7 +11,7 @@ import LabelCheckbox from "../label-checkbox"
 
 export default function Form({ setIsSended, formTitle }) {
 
-    const { wpPage: { formyKontaktowe: { linkPrivacyPolicy, meesageThemes } } } = useStaticQuery(graphql`
+    const { wpPage: { formyKontaktowe: { linkPrivacyPolicy } } } = useStaticQuery(graphql`
     query {
         wpPage(id: {eq: "cG9zdDo2MzQ="}) {
             formyKontaktowe {
@@ -19,15 +19,12 @@ export default function Form({ setIsSended, formTitle }) {
               linkPrivacyPolicy {
                 url
               }
-              meesageThemes {
-                theme
-              }
             }
         }
     }
   `)
 
-    const { reset, register, control, handleSubmit, formState: { errors } } = useForm()
+    const { reset, register, handleSubmit, formState: { errors } } = useForm()
     const [sendedCount, changeSendedCount] = useState(0)
 
     const onSubmit = data => {
