@@ -56,6 +56,10 @@ const Wrapper = styled.nav`
     pointer-events: ${props => props.isOpened ? 'all' : 'none'};
     transition: all .3s cubic-bezier(0.39, 0.575, 0.565, 1);
 
+@media (max-width: 1024px) {
+  padding: 0 clamp(16px,3.125vw,80px);
+}
+
     .container{
         max-height: 100vh;
         overflow: auto;

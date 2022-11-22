@@ -214,6 +214,13 @@ const Content = styled.div`
     margin: 25px 0 0 0;
     padding: 10px 13px;
 
+    @media (max-width: 1024px) {
+      padding: 16px 13px;
+      margin-top: 0px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
     @media (max-width: 480px) {
       padding: 10px clamp(16px,3.125vw,80px);
     }
@@ -234,11 +241,8 @@ const Content = styled.div`
 
     ${props => props.active === 'true' ? `
       margin-top: 0px;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-
-      &::before{
-      }
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
     `: null}
 `
 
@@ -264,6 +268,8 @@ const Navigation = styled.nav`
         justify-content: space-between;
         gap: 24px;
         height: 44px;
+
+      
 
         @media (max-width: 1140px) {
           gap: 16px;
