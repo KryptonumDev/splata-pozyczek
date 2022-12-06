@@ -19,7 +19,7 @@ export default function Card({ key, el, allowLink, alternate }) {
                     </div>
                     <div className="categories">
                         {el.categories.nodes.map(el => (
-                            <Category key={el.name} active={CATEGORY_COLORS[el.category.color].active} hover={CATEGORY_COLORS[el.category.color].hover} background={CATEGORY_COLORS[el.category.color].default}>
+                            <Category key={el.name} active={CATEGORY_COLORS[el?.category?.color].active} hover={CATEGORY_COLORS[el?.category?.color].hover} background={CATEGORY_COLORS[el?.category?.color].default}>
                                 <Link activeClassName="active" to={'/blog/tag/' + el.slug + '/'} className="body3 category" >
                                     {el.name}
                                 </Link>

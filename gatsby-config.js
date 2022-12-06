@@ -22,6 +22,7 @@ module.exports = {
     },
     'gatsby-transformer-sharp',
     "gatsby-plugin-styled-components",
+    'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -30,13 +31,12 @@ module.exports = {
       },
       __key: 'images'
     },
-    `gatsby-plugin-sitemap`,
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         host: null,
-        sitemap: 'https://splatapozyczekmaster.gatsbyjs.io/sitemap/sitemap-0.xml',
-        policy:  [{ userAgent: '*', allow: '/' }]
+        sitemap: 'https://splatapozyczekmaster.gatsbyjs.io/sitemap_index.xml',
+        policy: [{ userAgent: '*', allow: '/' }]
       }
     },
     // 'gatsby-plugin-offline',
@@ -50,6 +50,13 @@ module.exports = {
         background_color: `#3B5BA9`,
         theme_color: `#3B5BA9`,
         display: `standalone`
+      }
+    },
+    {
+      resolve: "gatsby-plugin-yoast-sitemap",
+      options: {
+        baseUrl: 'https://testy.kryptonum.co.uk',
+        gatsbyUrl: 'https://splatapozyczekmaster.gatsbyjs.io'
       }
     },
   ]

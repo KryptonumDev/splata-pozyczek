@@ -61,11 +61,11 @@ export default function BlogArchive({ data: { pageTitle, text, list, link, relat
       <Helmet>
         {currentFilter
           ? currentPage !== 1
-            ? <title id='title'>{`${categoryName()} - Artykuły - Strona ${currentPage} - SplataPozyczek.pl`}</title>
-            : <title id='title'>{`${categoryName()} - Artykuły - SplataPozyczek.pl`}</title>
+            ? <title>{`${categoryName()} - Artykuły - Strona ${currentPage} - SplataPozyczek.pl`}</title>
+            : <title>{`${categoryName()} - Artykuły - SplataPozyczek.pl`}</title>
           : currentPage !== 1
-            ? <title id='title'>{`Blog o kredytach i finansach - Strona ${currentPage} - SplataPozyczek.pl`}</title>
-            : <title id='title'>{`Blog o kredytach i finansach - SplataPozyczek.pl`}</title>}
+            ? <title>{`Blog o kredytach i finansach - Strona ${currentPage} - SplataPozyczek.pl`}</title>
+            : <title>{`Blog o kredytach i finansach - SplataPozyczek.pl`}</title>}
 
         <link rel="canonical" href={'https://splatapozyczek.pl' + url + (currentPage !== 1 ? '?page=' + currentPage : '')} />
       </Helmet>
@@ -126,7 +126,7 @@ export const query = graphql`
             }
           }
           date(formatString: "DD.MM.YYYY")
-          categories {
+          categories : tags{
             nodes {
               name
               slug

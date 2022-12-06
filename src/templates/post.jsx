@@ -279,7 +279,7 @@ export const query = graphql`
               }
             }
             date(formatString: "DD.MM.YYYY")
-            categories {
+            categories : tags {
               nodes {
                 name
                 slug

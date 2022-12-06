@@ -13,7 +13,7 @@ export default function HeroExpert({ pageContext, data: { wpEkspert:
 
     const [isSended, setIsSended] = useState(false)
     const formTitle = 'Wypełnij wniosek <span style="color: #3b5ba9;">online</span>'
-
+            
     return (
         <Wrapper>
             <Content>

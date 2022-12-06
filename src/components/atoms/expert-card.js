@@ -53,6 +53,7 @@ const Item = styled.div`
     .image{
         border-top-left-radius: 4px;
         border-top-right-radius: 4px;
+        aspect-ratio: 1/1.2;
     }
 
     .body1{

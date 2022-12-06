@@ -23,5 +23,10 @@ export const CATEGORY_COLORS = {
         default: '#E1E1EB',
         hover: '#C4C4CC',
         active: '#B2B2B8'
+    },
+    'undefined' : {
+        default: '#DAE2FF',
+        hover: '#B2C5FF',
+        active: '#8AA9FC'
     }
 }

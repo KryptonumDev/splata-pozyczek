@@ -70,8 +70,7 @@ import ExpertWithContactInform from "../components/sections/expert-with-contact-
 import Citate from "../components/sections/citate"
 import { Helmet } from "react-helmet"
 
-export function Head({ data: { wpPage: { seo, id } } }) {
-
+export function Head({ location, data: { wpPage: { seo, id } } }) {
   const canonical = 'https://splatapozyczek.pl' + seo.canonical
 
   return <>
@@ -99,7 +98,6 @@ export function Head({ data: { wpPage: { seo, id } } }) {
     {seo?.title
       ? (
         <>
-          <title id='title'>{seo.title}</title>
           <meta property="twitter:title" content={seo.title} />
           <meta property="og:title" content={seo.title} />
         </>
@@ -128,10 +126,11 @@ export function Head({ data: { wpPage: { seo, id } } }) {
   </>
 }
 
-export default function Page({ pageContext, location, data: { blogArchive, allWpCategory, allWpEkspert, slider, wpPage: { id, title, page_builder: { sections } } } }) {
+export default function Page({ pageContext, location, data: { blogArchive, allWpCategory, allWpEkspert, slider, wpPage: { seo, title, page_builder: { sections } } } }) {
   return (
     <main id="main">
       <Helmet>
+        <title id='title'>{seo.title}</title>
         <link rel="canonical" href={'https://splatapozyczek.pl' + pageContext.url} />
       </Helmet>
 
@@ -382,7 +381,7 @@ export const query = graphql`
       }
             }
       date(formatString: "DD.MM.YYYY")
-      categories {
+      categories : tags {
         nodes {
         name
                 slug
@@ -415,7 +414,7 @@ export const query = graphql`
       }
             }
       date(formatString: "DD.MM.YYYY")
-      categories {
+      categories : tags {
         nodes {
         name
                 slug
@@ -437,7 +436,7 @@ export const query = graphql`
             }
           }
         }
-      allWpCategory {
+      allWpCategory : allWpTag {
         nodes {
         category {
         color

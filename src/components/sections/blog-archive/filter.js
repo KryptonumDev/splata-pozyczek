@@ -24,9 +24,8 @@ export default function Filter({ categories, isAltLayout, allCount }) {
         const yellow = []
         const blue = []
         const green = []
-
         categories.forEach(el => {
-            switch (el.category.color) {
+            switch (el?.category?.color) {
                 case 'red': {
                     red.push(el)
                     break
@@ -44,7 +43,8 @@ export default function Filter({ categories, isAltLayout, allCount }) {
                     break
                 }
                 default:
-                    return null
+                    blue.push(el)
+                    break
             }
         })
 
@@ -69,7 +69,7 @@ export default function Filter({ categories, isAltLayout, allCount }) {
                             <Button activeClassName="active" to={'/blog/'} active={CATEGORY_COLORS['gray'].active} hover={CATEGORY_COLORS['gray'].hover} background={CATEGORY_COLORS['gray'].default}>Wszystkie ({allCount})</Button>
                             {filtredCategories.map(el => {
                                 if (el.count) {
-                                    return <Button key={el.name} activeClassName="active" to={'/blog/tag/' + el.slug + '/'} active={CATEGORY_COLORS[el.category.color].active} hover={CATEGORY_COLORS[el.category.color].hover} background={CATEGORY_COLORS[el.category.color].default}>{el.name} ({el.count})</Button>
+                                    return <Button key={el.name} activeClassName="active" to={'/blog/tag/' + el.slug + '/'} active={CATEGORY_COLORS[el?.category?.color].active} hover={CATEGORY_COLORS[el?.category?.color].hover} background={CATEGORY_COLORS[el?.category?.color].default}>{el.name} ({el.count})</Button>
                                 }
                                 return null
                             })}
