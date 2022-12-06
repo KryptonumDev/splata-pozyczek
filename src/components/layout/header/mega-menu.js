@@ -45,6 +45,7 @@ const Wrapper = styled.li`
     }
 
     ul{
+        border: 1px solid #ccc;
         opacity: 0;
         transform: translateY(-6px);
         pointer-events: none;

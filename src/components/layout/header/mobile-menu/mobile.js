@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 
-export default function Mobile({ data }) {
+export default function Mobile({ setMobileMenuOpened, data }) {
     return (
         <ul id='mobile'>
             {data.map((el) => (
@@ -17,10 +17,10 @@ export default function Mobile({ data }) {
                                 </summary>
                                 <ul className="second-level">
                                     <li>
-                                        <Link className="second-item h5 arsenal" to={el.url.url} target={el.url.target}>{el.url.title}</Link>
+                                        <Link onClick={() => { setMobileMenuOpened(false) }} className="second-item h5 arsenal" to={el.url.url} target={el.url.target}>{el.url.title}</Link>
                                     </li>
                                     {el.megaMeni.map((el) => (
-                                        <li  key={el.url.url}>
+                                        <li key={el.url.url}>
                                             {el.megaMeni
                                                 ? (
                                                     <details className="second">
@@ -32,24 +32,24 @@ export default function Mobile({ data }) {
                                                         </summary>
                                                         <ul className="third-level">
                                                             <li>
-                                                                <Link className="third-item h5 arsenal" to={el.url.url} target={el.url.target}>{el.url.title}</Link>
+                                                                <Link onClick={() => { setMobileMenuOpened(false) }} className="third-item h5 arsenal" to={el.url.url} target={el.url.target}>{el.url.title}</Link>
                                                             </li>
                                                             {el.megaMeni.map(el => (
                                                                 <li key={el.url.url}>
-                                                                    <Link className="third-item h5 arsenal" to={el.url.url} target={el.url.target}>{el.url.title}</Link>
+                                                                    <Link onClick={() => { setMobileMenuOpened(false) }} className="third-item h5 arsenal" to={el.url.url} target={el.url.target}>{el.url.title}</Link>
                                                                 </li>
                                                             ))}
                                                         </ul>
                                                     </details>
                                                 ) : (
-                                                    <Link className="second-item h5 arsenal" to={el.url.url} target={el.url.target}>{el.url.title}</Link>
+                                                    <Link onClick={() => { setMobileMenuOpened(false) }} className="second-item h5 arsenal" to={el.url.url} target={el.url.target}>{el.url.title}</Link>
                                                 )}
                                         </li>
                                     ))}
                                 </ul>
                             </details>
                         ) : (
-                            <Link className="first-item h5 arsenal" to={el.url.url} target={el.url.target}>{el.url.title}</Link>
+                            <Link onClick={() => { setMobileMenuOpened(false) }} className="first-item h5 arsenal" to={el.url.url} target={el.url.target}>{el.url.title}</Link>
                         )}
                 </li>
             ))}

@@ -371,7 +371,7 @@ export const query = graphql`
               }
             }
         }
-      blogArchive : allWpPost {
+      blogArchive : allWpPost(sort: {fields: date, order: DESC}) {
         nodes {
         id
             title
@@ -404,7 +404,7 @@ export const query = graphql`
             }
           }
         }
-      slider : allWpPost {
+      slider : allWpPost(sort: {fields: date, order: DESC}) {
         nodes {
         id
             title

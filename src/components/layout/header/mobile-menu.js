@@ -14,8 +14,8 @@ export default function Menu({ data, isOpened, setMobileMenuOpened }) {
                     </svg>
                 </Button>
                 <Content>
-                    <Tablet data={data} />
-                    <Mobile data={data} />
+                    <Tablet setMobileMenuOpened={setMobileMenuOpened} data={data} />
+                    <Mobile setMobileMenuOpened={setMobileMenuOpened} data={data} />
                 </Content>
             </Container>
         </Wrapper>
