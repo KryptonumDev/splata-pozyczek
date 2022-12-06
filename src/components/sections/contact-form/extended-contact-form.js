@@ -29,7 +29,7 @@ export default function ExtendedContactForm({ title }) {
             <Container>
                 <Box>
                     <Content isExtended={isExtended}>
-                        <h2 className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                        {title && <h2 className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />}
                         <ButtonFlex>
                             <button onClick={() => { changeTab(false) }} className={isExtended ? '' : 'active'}>
                                 <div>

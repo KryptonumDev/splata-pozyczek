@@ -51,9 +51,22 @@ export default function BlogArchive({ data: { pageTitle, text, list, link, relat
     })
   }, [location])
 
+  const categoryName = () => {
+    let category = categories.filter(el => el.slug === currentFilter)
+    return category[0].name
+  }
+
   return (
     <Wrapper>
       <Helmet>
+        {currentFilter
+          ? currentPage !== 1
+            ? <title id='title'>{`${categoryName()} - Artykuły - Strona ${currentPage} - SplataPozyczek.pl`}</title>
+            : <title id='title'>{`${categoryName()} - Artykuły - SplataPozyczek.pl`}</title>
+          : currentPage !== 1
+            ? <title id='title'>{`Blog o kredytach i finansach - Strona ${currentPage} - SplataPozyczek.pl`}</title>
+            : <title id='title'>{`Blog o kredytach i finansach - SplataPozyczek.pl`}</title>}
+
         <link rel="canonical" href={'https://splatapozyczek.pl' + url + (currentPage !== 1 ? '?page=' + currentPage : '')} />
       </Helmet>
       {currentFilter

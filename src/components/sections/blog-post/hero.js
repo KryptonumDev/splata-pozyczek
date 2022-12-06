@@ -74,7 +74,7 @@ export default function Hero({ data: { title, author, date, categories, blogPost
                                 </div>
                             </div>
                         </TextPart>
-                        <GatsbyImage className="image" image={blogPost.thumbnail.localFile.childImageSharp.gatsbyImageData} alt={blogPost.thumbnail.altText} />
+                        <GatsbyImage loading="eager" className="image" image={blogPost.thumbnail.localFile.childImageSharp.gatsbyImageData} alt={blogPost.thumbnail.altText} />
                         <div className="mobile">
                             <div className="add-inform">
                                 <div className="author">

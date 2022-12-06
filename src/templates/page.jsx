@@ -99,7 +99,7 @@ export function Head({ data: { wpPage: { seo, id } } }) {
     {seo?.title
       ? (
         <>
-          <title>{seo.title}</title>
+          <title id='title'>{seo.title}</title>
           <meta property="twitter:title" content={seo.title} />
           <meta property="og:title" content={seo.title} />
         </>

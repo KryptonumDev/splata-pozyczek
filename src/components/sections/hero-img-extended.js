@@ -39,7 +39,7 @@ export default function HeroImgExtended({ data: { pageTitle, text, links, list, 
             </div>
           </TextPart>
           <div className="box">
-            <GatsbyImage image={imgOnRight.localFile.childImageSharp.gatsbyImageData} alt={imgOnRight.altText} />
+            <GatsbyImage loading="eager"  image={imgOnRight.localFile.childImageSharp.gatsbyImageData} alt={imgOnRight.altText} />
           </div>
         </Content>
       </Container>

@@ -12,7 +12,7 @@ export default function ShortContactForm({ title }) {
             <Container className="container">
                 <Box>
                     <Content>
-                        <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                        {title && <h2 className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />}
                         <Form setIsSended={setIsSended} />
                     </Content>
                     <Success isSended={isSended} setIsSended={setIsSended} />

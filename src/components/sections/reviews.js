@@ -87,7 +87,7 @@ const Wrapper = styled.section`
     text-align: center;
 
     .text{
-        width: 1000px;
+        max-width: 1000px;
         background-color: var(--color-light);
         box-shadow: var(--shadow);
         padding: 10px 24px;
@@ -104,6 +104,15 @@ const Grid = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 32px;
     margin-top: 32px;
+
+    @media (max-width: 864px) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 640px) {
+        grid-template-columns: 1fr;
+    }
+
 `
 
 const Item = styled.div`
@@ -114,6 +123,11 @@ const Item = styled.div`
     display: grid;
     grid-template-columns: 32px auto;
     grid-gap: 10px;
+
+    @media (max-width: 1024px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 32px auto;
+    }
 
     .body3{
         margin: 4px 0;

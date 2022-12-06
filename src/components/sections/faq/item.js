@@ -134,6 +134,11 @@ const Item = styled.details`
         }
     }
 
+    
+    svg{
+        transform: rotateX(180deg);
+    }
+
     &:hover{
         summary{
             background: #F2F4FF;
@@ -145,7 +150,7 @@ const Item = styled.details`
             background-color: #DAE2FF;
 
             svg{
-                transform: rotateX(180deg);
+                transform: rotateX(0);
             }
         }
     }

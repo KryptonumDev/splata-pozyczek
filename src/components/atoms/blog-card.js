@@ -26,7 +26,7 @@ export default function Card({ key, el, allowLink, alternate }) {
                             </Category>
                         ))}
                     </div>
-                    <h3 className="sub2 arsenal">{el.title}</h3>
+                    <p className="sub2 arsenal">{el.title}</p>
                     <p className="body3 description" dangerouslySetInnerHTML={{ __html: textParser(el.blogPost.previewText) }} />
                     <Button button={true} url={''} text={'Przeczytaj artykuł'} className='link desctop' />
                 </div>
@@ -38,6 +38,9 @@ export default function Card({ key, el, allowLink, alternate }) {
 
 const Category = styled.div`
     a{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         border-radius: 43px;
         padding: 2px 20px;
         border: unset;
@@ -82,6 +85,10 @@ const Item = styled.div`
         position: relative;
         z-index: 1;
     }
+
+    .text{
+        max-width: 293px;
+    }
     
     &.alt{
         .wrap{
@@ -92,6 +99,7 @@ const Item = styled.div`
             color: #fff;
             border-top-right-radius: 4px;
             border-bottom-right-radius: 4px;
+            max-width: 301px;
 
             *{
                 color: #fff;
@@ -181,12 +189,31 @@ const Item = styled.div`
     .add-inform{
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
     }
 
     @media (max-width: 560px) {
+
+        &.alt{
+            background-color: var(--color-medium);
+            margin: 0 auto;
+
+            .mobile{
+                color: #fff;
+
+                rect{
+                    fill: #fff;
+
+                }
+                    path{
+                        fill: #000;
+                    }
+            }
+        }
         .mobile{
             display: grid;
             margin: 0 auto;
+            margin-top: 14px;
         }
         .desctop{
             display: none;
@@ -202,6 +229,7 @@ const Item = styled.div`
         }
         .text{
             padding: 12px 12px 12px 4px;
+            max-width: 203px !important;
         }
         .description{
             display: none;

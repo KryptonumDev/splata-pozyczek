@@ -41,7 +41,7 @@ export default function HeroImg({ data: { image, pageTitle, text, buttons, list,
               ? <img className="image" src={image} alt='404' />
               : null}
             {imgOnRight?.localFile?.childImageSharp?.gatsbyImageData
-              ? <GatsbyImage className="image" image={imgOnRight.localFile.childImageSharp.gatsbyImageData} alt={imgOnRight.altText} />
+              ? <GatsbyImage loading="eager"  className="image" image={imgOnRight.localFile.childImageSharp.gatsbyImageData} alt={imgOnRight.altText} />
               : null}
           </div>
         </Content>
@@ -108,6 +108,8 @@ const Content = styled.div`
       @media (max-width: 840px) {
         max-width: 380px;
         margin: 0 auto;
+        width: 100%;
+        aspect-ratio: 1/1;
         display: block;
       }
     }

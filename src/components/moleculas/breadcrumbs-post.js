@@ -8,7 +8,7 @@ export default function BreadcrumbsPost({ title, uri }) {
     const items = [{
         "@type": "ListItem",
         "position": 1,
-        "name": "Splatapożyczek",
+        "name": "Spłata Pożyczek",
         "item": 'https://splatapozyczek.pl/'
     }, {
         "@type": "ListItem",
@@ -35,7 +35,7 @@ export default function BreadcrumbsPost({ title, uri }) {
                     {JSON.stringify(schema)}
                 </script>
             </Helmet>
-            <Link className="body1" to='/'>Strona główna</Link>
+            <Link className="body1" to='/'>Spłata Pożyczek</Link>
             <span className="body1 divider">/</span>
             <Link className="body1" to='/blog/'>Blog</Link>
             <span className="body1 divider">/</span>

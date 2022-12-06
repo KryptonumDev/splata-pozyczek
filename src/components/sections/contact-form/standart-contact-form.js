@@ -13,8 +13,8 @@ export default function StandartContactForm({ title, type }) {
             <Container>
                 <Box>
                     <Content>
-                        <h2 className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
-                        <Form title={title} setIsSended={setIsSended} type={type}/>
+                        {title && <h2 className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />}
+                        <Form title={title} setIsSended={setIsSended} type={type} />
                     </Content>
                     <Success isSended={isSended} setIsSended={setIsSended} />
                 </Box>
