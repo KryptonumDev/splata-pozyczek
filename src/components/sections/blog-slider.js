@@ -16,8 +16,8 @@ export default function BlogSlider({ data, posts }) {
     const [maxButtonsTransform, setMaxButtonsTransform] = useState(0)
 
     useEffect(() => {
-        const parrent = document.getElementById('control-wrap')
-        const child = document.getElementById('control')
+        const parrent = document.getElementById('control-wrap-slider')
+        const child = document.getElementById('control-slider')
         const maxTransform = child.clientWidth - parrent.clientWidth
 
         setMaxButtonsTransform(maxTransform)
@@ -64,8 +64,8 @@ export default function BlogSlider({ data, posts }) {
                             <path d="M0.586667 5.89334L3.16667 8.5C3.22864 8.56249 3.30238 8.61209 3.38362 8.64593C3.46486 8.67978 3.55199 8.6972 3.64 8.6972C3.72801 8.6972 3.81515 8.67978 3.89638 8.64593C3.97762 8.61209 4.05136 8.56249 4.11333 8.5C4.2375 8.3751 4.3072 8.20613 4.3072 8.03C4.3072 7.85388 4.2375 7.68491 4.11333 7.56L1.74 5.16667L15.3333 5.16667C15.5101 5.16667 15.6797 5.09643 15.8047 4.97141C15.9298 4.84639 16 4.67682 16 4.50001V4.50001C16 4.32319 15.9298 4.15363 15.8047 4.0286C15.6797 3.90358 15.5101 3.83334 15.3333 3.83334L1.7 3.83334L4.11333 1.42667C4.17582 1.3647 4.22542 1.29096 4.25926 1.20972C4.29311 1.12848 4.31053 1.04135 4.31053 0.953339C4.31053 0.865331 4.29311 0.778194 4.25926 0.696955C4.22542 0.615715 4.17582 0.54198 4.11333 0.480005C4.05136 0.417519 3.97762 0.367923 3.89638 0.334078C3.81515 0.300232 3.72801 0.282806 3.64 0.282806C3.55199 0.282806 3.46486 0.300232 3.38362 0.334078C3.30238 0.367923 3.22864 0.417519 3.16667 0.480005L0.586668 3.06667C0.212133 3.44167 0.0017609 3.95 0.00176085 4.48C0.00176081 5.01001 0.212133 5.51834 0.586667 5.89334Z" fill="#F2F4FF" />
                         </svg>
                     </button>
-                    <ControlWrap id='control-wrap'>
-                        <Control whileDrag={{ cursor: 'grabbing' }} onDragStart={() => setAllowLink(false)} onDragEnd={() => { setTimeout(() => { setAllowLink(true) }, 1) }} style={{ x }} drag='x' dragConstraints={{ left: -maxButtonsTransform, right: 0 }} id='control'>
+                    <ControlWrap id='control-wrap-slider'>
+                        <Control whileDrag={{ cursor: 'grabbing' }} onDragStart={() => setAllowLink(false)} onDragEnd={() => { setTimeout(() => { setAllowLink(true) }, 1) }} style={{ x }} drag='x' dragConstraints={{ left: -maxButtonsTransform, right: 0 }} id='control-slider'>
                             {choosenPosts.map((el, index) => {
                                 if (el.blogPost?.previewText) {
                                     return <Card key={index} el={el} allowLink={allowLink} />
