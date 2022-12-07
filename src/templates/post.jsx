@@ -35,6 +35,7 @@ export function Head({ data: { wpPost: { id, seo, author, title, slug, blogPost 
     <meta property="article:modified_time" content={seo.opengraphModifiedTime} />
     <meta property="article:published_time" content={seo.opengraphPublishedTime} />
     <meta property="article:author" content={author.node.name} />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap_index.xml"></link>
 
     <script type="application/ld+json">
       {JSON.stringify({

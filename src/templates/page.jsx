@@ -80,6 +80,7 @@ export function Head({ location, data: { wpPage: { seo, id } } }) {
       : <meta name="robots" content="noindex" />}
     <meta property="og:site_name" content={seo.opengraphSiteName} />
     <meta name="google-site-verification" content="M2kghTKPmXOB2ezGLw7ShbO3sdW6rMn_uhsSVbHCt7I" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap_index.xml"></link>
 
     <script type="application/ld+json">
       {JSON.stringify(
