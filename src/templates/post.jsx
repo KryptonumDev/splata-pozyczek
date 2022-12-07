@@ -206,7 +206,7 @@ export default function Post({ pageContext, data: { wpPost } }) {
   return (
     <Wrapper id='main'>
     <Helmet>
-      <title id='title'>{seo.title}</title>
+      <title id='title'>{wpPost.seo.title}</title>
       <link rel="canonical" href={'https://splatapozyczek.pl' + pageContext.url} />
     </Helmet>
       <Hero data={wpPost} pageContext={pageContext} />

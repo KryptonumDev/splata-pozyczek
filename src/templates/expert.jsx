@@ -64,7 +64,7 @@ export default function Expert({ data, pageContext }) {
   return (
     <main>
       <Helmet>
-        <title id='title'>{seo.title}</title>
+        <title id='title'>{data.wpEkspert.seo.title}</title>
         <link rel="canonical" href={'https://splatapozyczek.pl' + pageContext.url} />
       </Helmet>
       <HeroExpert data={data} pageContext={pageContext} />
