@@ -75,7 +75,6 @@ export function Head({ data: { wpPost: { id, seo, author, title, slug, blogPost 
     {canonical
       ? (
         <>
-          <link rel="canonical" href={canonical} />
           <meta property="og:url" content={canonical} />
         </>
       )
@@ -84,7 +83,6 @@ export function Head({ data: { wpPost: { id, seo, author, title, slug, blogPost 
     {seo?.title
       ? (
         <>
-          <title>{seo.title}</title>
           <meta property="twitter:title" content={seo.title} />
           <meta property="og:title" content={seo.title} />
         </>
@@ -207,6 +205,10 @@ export default function Post({ pageContext, data: { wpPost } }) {
 
   return (
     <Wrapper id='main'>
+    <Helmet>
+      <title id='title'>{seo.title}</title>
+      <link rel="canonical" href={'https://splatapozyczek.pl' + pageContext.url} />
+    </Helmet>
       <Hero data={wpPost} pageContext={pageContext} />
       <Container className="container">
         <Grid>

@@ -206,7 +206,7 @@ const ControlButtonsWrap = styled.div`
 
         &.right{
             right: 0;
-            top: 12px;
+            top: calc(50% - 24px);
         }
     }
 

@@ -23,7 +23,6 @@ export function Head({ data: { wpEkspert: { seo } } }) {
     {canonical
       ? (
         <>
-          <link rel="canonical" href={canonical} />
           <meta property="og:url" content={canonical} />
         </>
       )
@@ -32,7 +31,6 @@ export function Head({ data: { wpEkspert: { seo } } }) {
     {seo?.title
       ? (
         <>
-          <title>{seo.title}</title>
           <meta property="twitter:title" content={seo.title} />
           <meta property="og:title" content={seo.title} />
         </>
@@ -65,6 +63,10 @@ export default function Expert({ data, pageContext }) {
 
   return (
     <main>
+      <Helmet>
+        <title id='title'>{seo.title}</title>
+        <link rel="canonical" href={'https://splatapozyczek.pl' + pageContext.url} />
+      </Helmet>
       <HeroExpert data={data} pageContext={pageContext} />
       {data.wpEkspert.comments.nodes.length > 0
         ? <Reviews expert={true} comments={data.wpEkspert.comments.nodes} data={{ title: 'Sprawdź opinię na temat <span style="color: #3b5ba9;">współpracy</span>.' }} />
