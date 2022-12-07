@@ -33,9 +33,9 @@ exports.createPages = async ({
     }
   });
 
-  const { data: { allWpTags: { nodes: categoryNodes } } } = await graphql(`
+  const { data: { allWpTag: { nodes: categoryNodes } } } = await graphql(`
   query{
-    allWpTags {
+    allWpTag {
       nodes {
         slug
         count
