@@ -20,6 +20,7 @@ import Faq from "../components/sections/blog-post/faq"
 import HorizontalChart from "../components/sections/blog-post/horizontal-chart"
 import VerticalChart from "../components/sections/blog-post/vertical-chart"
 import { useState } from "react"
+import { Helmet } from "react-helmet"
 
 export function Head({ data: { wpPost: { id, seo, author, title, slug, blogPost } } }) {
   const canonical = 'https://splatapozyczek.pl' + seo.canonical

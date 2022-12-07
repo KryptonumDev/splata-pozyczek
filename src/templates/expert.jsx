@@ -2,6 +2,7 @@ import { graphql } from "gatsby"
 import React from "react"
 import HeroExpert from "../components/sections/hero-expert"
 import Reviews from "../components/sections/reviews"
+import { Helmet } from "react-helmet"
 
 export function Head({ data: { wpEkspert: { seo } } }) {
 
