@@ -44,7 +44,7 @@ export default function MapaStrony({ data: { allSitePage } }) {
                     {pages.pages.map(el => {
                         return (
                             <li>
-                                <Link to={el.path}>{el.path}</Link>
+                                <Link to={el.path}>{el.pageContext.title}</Link>
                             </li>
                         )
                     })}
@@ -54,17 +54,17 @@ export default function MapaStrony({ data: { allSitePage } }) {
                     {pages.blog.map(el => {
                         return (
                             <li>
-                                <Link to={el.path}>{el.path}</Link>
+                                <Link to={el.path}>{el.pageContext.title}</Link>
                             </li>
                         )
                     })}
                 </ul>
-                <p className="arsenal h4">Blog posty</p>
+                <p className="arsenal h4">Artykuły</p>
                 <ul>
                     {pages.posts.map(el => {
                         return (
                             <li>
-                                <Link to={el.path}>{el.path}</Link>
+                                <Link to={el.path}>{el.pageContext.title}</Link>
                             </li>
                         )
                     })}
@@ -74,7 +74,7 @@ export default function MapaStrony({ data: { allSitePage } }) {
                     {pages.zespol.map(el => {
                         return (
                             <li>
-                                <Link to={el.path}>{el.path}</Link>
+                                <Link to={el.path}>{el.pageContext.title}{el.pageContext.role ? ' - ' + el.pageContext.role : ''}</Link>
                             </li>
                         )
                     })}
@@ -104,6 +104,7 @@ export const query = graphql`
         allSitePage {
           nodes {
             path
+            pageContext
           }
         }
     }

@@ -12,6 +12,7 @@ exports.createPages = async ({
     query {
       allWpPage{
         nodes {
+          title
           id
           uri
         }
@@ -19,7 +20,7 @@ exports.createPages = async ({
     }
   `);
 
-  nodes.forEach(({ id, uri }) => {
+  nodes.forEach(({ id, uri, title }) => {
     if (id !== 'cG9zdDo0MzQ=' && id !== 'cG9zdDozNzU=' && id !== 'cG9zdDo2MzQ=') {
       createPage({
         path: uri,
@@ -27,7 +28,8 @@ exports.createPages = async ({
         context: {
           id,
           slug: null,
-          url: uri
+          url: uri,
+          title: title
         },
       });
     }
@@ -39,12 +41,13 @@ exports.createPages = async ({
       nodes {
         slug
         count
+        name
       }
     }
   }
   `)
 
-  categoryNodes.forEach(({ slug, count }) => {
+  categoryNodes.forEach(({ slug, count, name }) => {
     if (count) {
       createPage({
         path: '/blog/tag/' + slug + '/',
@@ -52,7 +55,8 @@ exports.createPages = async ({
         context: {
           id: 'cG9zdDoxMDEz',
           slug,
-          url: '/blog/tag/' + slug + '/'
+          url: '/blog/tag/' + slug + '/',
+          title: name
         },
       });
     }
@@ -62,21 +66,27 @@ exports.createPages = async ({
   query{
     allWpEkspert {
       nodes {
+        ekspert {
+          workWithProducts
+        }
         id
         slug
+        title
       }
     }
   }
   `)
 
-  expertsNodes.forEach(({ slug, id }) => {
+  expertsNodes.forEach(({ slug, id, title, ekspert }) => {
     createPage({
       path: '/zespol/' + slug + '/',
       component: resolve('src/templates/expert.jsx'),
       context: {
         id: id,
         slug,
-        url: '/zespol/' + slug + '/'
+        url: '/zespol/' + slug + '/',
+        title: title,
+        role: ekspert.workWithProducts
       },
     });
   });
@@ -88,19 +98,21 @@ exports.createPages = async ({
       nodes {
         id
         slug
+        title
       }
     }
   }
   `)
 
-  postNodes.forEach(({ slug, id }) => {
+  postNodes.forEach(({ slug, id, title }) => {
     createPage({
       path: '/blog/' + slug + '/',
       component: resolve('src/templates/post.jsx'),
       context: {
         id: id,
         slug,
-        url: '/blog/' + slug + '/'
+        url: '/blog/' + slug + '/',
+        title: title
       },
     });
   });
