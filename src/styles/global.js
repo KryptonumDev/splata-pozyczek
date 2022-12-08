@@ -76,6 +76,10 @@ strong {
    color: #3B5BA9;
 }
 
+.input-wrap{
+   z-index: 0;
+}
+
 .h1 {
    font-weight: 700;
    font-size: 72px;
