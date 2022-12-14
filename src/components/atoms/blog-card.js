@@ -7,7 +7,7 @@ import { textParser } from "../../helpers/wysiwyg-modification"
 import { CATEGORY_COLORS } from "../../constants/category-colors"
 
 export default function Card({ key, el, allowLink, alternate }) {
-    if (el.title && el.slug) {
+    if (el?.title && el?.slug) {
         return (
             <Item key={key} allowLink={allowLink} className={alternate ? 'alt' : ''} onClick={(e) => { if (!allowLink) { e.preventDefault() } }} >
                 <Link aria-label={el.title} className="wrap-link" to={'/blog/' + el.slug} />
