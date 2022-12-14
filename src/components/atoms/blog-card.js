@@ -7,33 +7,36 @@ import { textParser } from "../../helpers/wysiwyg-modification"
 import { CATEGORY_COLORS } from "../../constants/category-colors"
 
 export default function Card({ key, el, allowLink, alternate }) {
-    return (
-        <Item key={key} allowLink={allowLink} className={alternate ? 'alt' : ''} onClick={(e) => { if (!allowLink) { e.preventDefault() } }} >
-            <Link aria-label={el.title} className="wrap-link" to={'/blog/' + el.slug} />
-            <div className="wrap">
-                <GatsbyImage className="img" image={el.blogPost.thumbnail.localFile.childImageSharp.gatsbyImageData} alt={el.blogPost.thumbnail.altText} />
-                <div className="text">
-                    <div className="add-inform">
-                        <span className="body3">{el.author.node.name}</span>
-                        <span className="body3">{el.date}</span>
+    if (el.title && el.slug) {
+        return (
+            <Item key={key} allowLink={allowLink} className={alternate ? 'alt' : ''} onClick={(e) => { if (!allowLink) { e.preventDefault() } }} >
+                <Link aria-label={el.title} className="wrap-link" to={'/blog/' + el.slug} />
+                <div className="wrap">
+                    <GatsbyImage className="img" image={el.blogPost.thumbnail.localFile.childImageSharp.gatsbyImageData} alt={el.blogPost.thumbnail.altText} />
+                    <div className="text">
+                        <div className="add-inform">
+                            <span className="body3">{el.author.node.name}</span>
+                            <span className="body3">{el.date}</span>
+                        </div>
+                        <div className="categories">
+                            {el.categories.nodes.map(el => (
+                                <Category key={el.name} active={CATEGORY_COLORS[el?.category?.color].active} hover={CATEGORY_COLORS[el?.category?.color].hover} background={CATEGORY_COLORS[el?.category?.color].default}>
+                                    <Link activeClassName="active" to={'/blog/tag/' + el.slug + '/'} className="body3 category" >
+                                        {el.name}
+                                    </Link>
+                                </Category>
+                            ))}
+                        </div>
+                        <p className="sub2 arsenal">{el.title}</p>
+                        <p className="body3 description" dangerouslySetInnerHTML={{ __html: textParser(el.blogPost.previewText) }} />
+                        <Button button={true} url={''} text={'Przeczytaj artykuł'} className='link desctop' />
                     </div>
-                    <div className="categories">
-                        {el.categories.nodes.map(el => (
-                            <Category key={el.name} active={CATEGORY_COLORS[el?.category?.color].active} hover={CATEGORY_COLORS[el?.category?.color].hover} background={CATEGORY_COLORS[el?.category?.color].default}>
-                                <Link activeClassName="active" to={'/blog/tag/' + el.slug + '/'} className="body3 category" >
-                                    {el.name}
-                                </Link>
-                            </Category>
-                        ))}
-                    </div>
-                    <p className="sub2 arsenal">{el.title}</p>
-                    <p className="body3 description" dangerouslySetInnerHTML={{ __html: textParser(el.blogPost.previewText) }} />
-                    <Button button={true} url={''} text={'Przeczytaj artykuł'} className='link desctop' />
                 </div>
-            </div>
-            <Button button={true} url={'/blog/' + el.slug + '/'} text={'Przeczytaj artykuł'} className='link mobile' />
-        </Item>
-    )
+                <Button button={true} url={'/blog/' + el.slug + '/'} text={'Przeczytaj artykuł'} className='link mobile' />
+            </Item>
+        )
+    }
+    return null
 }
 
 const Category = styled.div`

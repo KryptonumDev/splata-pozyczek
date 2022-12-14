@@ -8,7 +8,7 @@ import { FilledButton } from "../atoms/buttons"
 import Form from "../moleculas/forms/hero"
 import Success from "../moleculas/success-send"
 
-export default function HeroForm({ data: { pageTitle, text, link, list, formTitle }, title, uri }) {
+export default function HeroForm({ data: { typTematow, pageTitle, text, link, list, formTitle }, title, uri }) {
   const [isSended, setIsSended] = useState(false)
 
   return (
@@ -38,7 +38,7 @@ export default function HeroForm({ data: { pageTitle, text, link, list, formTitl
         </Container>
         <Container className="wrap container">
           <div className="box">
-            <Form formTitle={formTitle} setIsSended={setIsSended} />
+            <Form typTematow={typTematow} formTitle={formTitle} setIsSended={setIsSended} />
             <Success isSended={isSended} setIsSended={setIsSended} />
           </div>
         </Container>
@@ -53,6 +53,7 @@ export const query = graphql`
     heroForm {
       pageTitle
       text
+      typTematow
       formTitle : tytulFormyKontaktowej
       list {
         tekstObokIkony

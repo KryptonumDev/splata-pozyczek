@@ -39,7 +39,7 @@ export default function Item({ calculatorData, title, text }) {
                     <div>
                         <p className="h6 arsenal">Ile pieniędzy potrzebujesz?</p>
                         <input className="input" placeholder="val" value={money * 100 + ' zł'} />
-                        <input className="range" onChange={(e) => { setMoney(e.currentTarget.value) }} min='10' value={money} max='2550' type="range" />
+                        <input className="range" onChange={(e) => { setMoney(e.currentTarget.value) }} min='10' value={money} max={calculatorData.maxMoney / 100} type="range" />
                         <div className="flex">
                             <span className="min body3">1 000 zł</span>
                             <span className="max body3">{calculatorData.maxMoney} zł</span>
@@ -48,7 +48,7 @@ export default function Item({ calculatorData, title, text }) {
                     <div>
                         <p className="h6 arsenal">W jakim czasie chcesz spłacić kredyt?</p>
                         <input className="input" placeholder="val" value={time + ' miesiąc'} />
-                        <input className="range" onChange={(e) => { setTime(e.currentTarget.value) }} min='1' value={time} max='144' type="range" />
+                        <input className="range" onChange={(e) => { setTime(e.currentTarget.value) }} min='1' value={time} max={calculatorData.maxMonth} type="range" />
                         <div className="flex">
                             <span className="min body3">1 miesiąc</span>
                             <span className="max body3">{calculatorData.maxMonth} miesięcy</span>

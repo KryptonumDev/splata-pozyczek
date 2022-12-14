@@ -128,7 +128,7 @@ export function Head({ location, data: { wpPage: { seo, id } } }) {
 }
 
 export default function Page({ pageContext, location, data: { blogArchive, allWpCategory, allWpEkspert, slider, wpPage: { seo, title, page_builder: { sections } } } }) {
-  debugger
+
   return (
     <main id="main">
       <Helmet>

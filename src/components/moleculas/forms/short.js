@@ -1,5 +1,5 @@
 import { Link } from "gatsby"
-import React, { useState } from "react"
+import React, { useMemo, useState } from "react"
 import { useForm } from "react-hook-form"
 import styled from "styled-components"
 import { FilledButton } from '../../atoms/buttons'
@@ -11,9 +11,9 @@ import { checkboxController } from "../../../helpers/checkbox-controller"
 import { checkboxAll } from "../../../helpers/checkbox-all"
 import LabelSelect from "../label-select"
 
-export default function Form({ setIsSended }) {
+export default function Form({ setIsSended, typTematow }) {
 
-    const { wpPage: { formyKontaktowe: { linkPrivacyPolicy, meesageThemes } } } = useStaticQuery(graphql`
+    const { wpPage: { formyKontaktowe: { linkPrivacyPolicy, meesageThemesFirms, meesageThemesDetails } } } = useStaticQuery(graphql`
     query {
         wpPage(id: {eq: "cG9zdDo2MzQ="}) {
             formyKontaktowe {
@@ -21,13 +21,26 @@ export default function Form({ setIsSended }) {
               linkPrivacyPolicy {
                 url
               }
-              meesageThemes {
+              meesageThemesFirms {
+                theme
+              }
+              meesageThemesDetails{
                 theme
               }
             }
         }
     }
   `)
+
+    const meesageThemes = useMemo(() => {
+        if (typTematow === 'Firmowego') {
+            return meesageThemesFirms
+        }
+        if (typTematow !== 'Firmowego' && typTematow !== 'Detalicznego') {
+            console.log('Typ tematów dla formularza nie wybrany!')
+        }
+        return meesageThemesDetails
+    }, [typTematow, meesageThemesFirms, meesageThemesDetails])
 
     const { reset, register, setValue, handleSubmit, getValues, control, formState: { errors } } = useForm()
     const [sendedCount, changeSendedCount] = useState(0)
@@ -64,21 +77,21 @@ export default function Form({ setIsSended }) {
             <LabelInput
                 name='name'
                 label='Imię i nazwisko*'
-                params={{ required: true }}
+                params={{ required: true, pattern: /^[a-z ,.'-]+$/i }}
                 register={register}
                 errors={errors}
             />
             <LabelInput
                 name='email'
                 label='Adres e-mail*'
-                params={{ required: true }}
+                params={{ required: true, pattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ }}
                 register={register}
                 errors={errors}
             />
             <LabelInput
                 name='phone'
                 label='Numer telefonu*'
-                params={{ required: true }}
+                params={{ required: true, pattern: /^(0|[1-9]\d*)(\.\d+)?$/, maxLength: 9, minLength: 9 }}
                 register={register}
                 errors={errors}
             />

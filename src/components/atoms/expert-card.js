@@ -5,6 +5,7 @@ import styled from "styled-components"
 import { Button } from "./buttons"
 
 export default function ExpertCard({ key, el }) {
+    const phone = el.ekspert.numerTelefonu.toString().replace(/^(.{3})(.{3})(.{3})(.*)$/, "$1 $2 $3")
     return (
         <Item key={key}>
             <Link aria-label={el.title} className="link" to={'/zespol/' + el.slug + '/'} />
@@ -16,7 +17,7 @@ export default function ExpertCard({ key, el }) {
                 <p className="body3">
                     {el.ekspert.role}
                 </p>
-                <Button url={'tel:' + el.ekspert.numerTelefonu} text={el.ekspert.numerTelefonu} className='phone' />
+                <Button url={'tel:' + el.ekspert.numerTelefonu} text={phone} className='phone' />
                 <Button url={'mailto:' + el.ekspert.emailAdres} text={el.ekspert.emailAdres} className='mail' />
             </div>
         </Item>

@@ -5,7 +5,7 @@ import Form from "../../moleculas/forms/short"
 import { textParser } from "../../../helpers/wysiwyg-modification"
 import Success from "../../moleculas/success-send"
 
-export default function ShortContactForm({ title }) {
+export default function ShortContactForm({ typTematow, title }) {
     const [isSended, setIsSended] = useState(false)
     return (
         <Wrapper>
