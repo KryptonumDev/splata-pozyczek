@@ -148,7 +148,8 @@ export default function Form({ setIsSended }) {
 }
 
 const Wrapper = styled.form`
-    width: 340px;
+    max-width: 340px;
+    width: 100%;
     min-width: 300px;
     display: grid;
     grid-gap: 20px;

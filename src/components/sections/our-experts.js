@@ -11,9 +11,12 @@ export default function OurExperts({ data: { tytulSekcji, experts } }) {
       <Container>
         <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(tytulSekcji) }} />
         <Grid>
-          {experts.map((el, index) => (
-            <ExpertCard key={index} el={el.expert} />
-          ))}
+          {experts.map((el, index) => {
+            if (el.expert) {
+              return <ExpertCard key={index} el={el.expert} />
+            }
+            return null
+          })}
         </Grid>
       </Container>
     </Wrapper>

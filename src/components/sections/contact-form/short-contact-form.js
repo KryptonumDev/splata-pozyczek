@@ -12,7 +12,7 @@ export default function ShortContactForm({ title }) {
             <Container className="container">
                 <Box>
                     <Content>
-                        {title && <h2 className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />}
+                        {title && <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />}
                         <Form setIsSended={setIsSended} />
                     </Content>
                     <Success isSended={isSended} setIsSended={setIsSended} />
@@ -26,7 +26,7 @@ const Wrapper = styled.section`
     margin-top: var(--section);
 
     .h4{
-        max-width: 500px;
+        max-width: 464px;
         margin-right: 32px;
         font-size: clamp(27px, 4.296875vw, 38px);
 
