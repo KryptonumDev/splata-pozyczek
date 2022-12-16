@@ -29,19 +29,21 @@ export default function HeroImg({ data: { image, pageTitle, text, buttons, list,
                 ))}
               </List>
               : null}
-            {buttons?.map((el, index) => {
-              if (index) {
-                return <OutlinedButton key={el.link.title} className="link" target={el.link.target} to={el.link.url}> {el.link.title}</OutlinedButton>
-              }
-              return <FilledButton key={el.link.title} className="link" target={el.link.target} to={el.link.url}>{el.link.title}</FilledButton>
-            })}
+            <div className="buttons">
+              {buttons?.map((el, index) => {
+                if (index) {
+                  return <OutlinedButton key={el.link.title} className="link" target={el.link.target} to={el.link.url}> {el.link.title}</OutlinedButton>
+                }
+                return <FilledButton key={el.link.title} className="link" target={el.link.target} to={el.link.url}>{el.link.title}</FilledButton>
+              })}
+            </div>
           </TextPart>
           <div className="box">
             {image
               ? <img className="image" src={image} alt='404' />
               : null}
             {imgOnRight?.localFile?.childImageSharp?.gatsbyImageData
-              ? <GatsbyImage loading="eager"  className="image" image={imgOnRight.localFile.childImageSharp.gatsbyImageData} alt={imgOnRight.altText} />
+              ? <GatsbyImage loading="eager" className="image" image={imgOnRight.localFile.childImageSharp.gatsbyImageData} alt={imgOnRight.altText} />
               : null}
           </div>
         </Content>
@@ -85,6 +87,12 @@ export const query = graphql`
 `
 
 const Wrapper = styled.section`
+  .buttons{
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
 `
 
 const Content = styled.div`

@@ -6,31 +6,31 @@ import Breadcrumbs from "../moleculas/breadcrumbs"
 import { textParser } from "../../helpers/wysiwyg-modification"
 
 export default function HeroText({ data: { title, plainText, text, subTitle, list }, title: breadcrumb, uri }) {
-    return (
-        <Wrapper>
-            <Container>
-                <Content>
-                    <TextPart>
-                        <Breadcrumbs uri={uri} title={breadcrumb} />
-                        <h1 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
-                        <div className="h6 text arsenal" dangerouslySetInnerHTML={{ __html: text }} />
-                        <div className="body1 text" dangerouslySetInnerHTML={{ __html: plainText }} />
-                    </TextPart>
-                    <ListPart>
-                        <p className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(subTitle) }} />
-                        <div className="grid">
-                            {list.map((el, index) => (
-                                <Item key={el.text} >
-                                    <span className="body1">{index + 1}</span>
-                                    <div className="body1" dangerouslySetInnerHTML={{ __html: el.text }} />
-                                </Item>
-                            ))}
-                        </div>
-                    </ListPart>
-                </Content>
-            </Container>
-        </Wrapper>
-    )
+  return (
+    <Wrapper>
+      <Container>
+        <Content>
+          <TextPart>
+            <Breadcrumbs uri={uri} title={breadcrumb} />
+            <h1 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+            <div className="h6 text arsenal" dangerouslySetInnerHTML={{ __html: text }} />
+            <div className="body1 text" dangerouslySetInnerHTML={{ __html: plainText }} />
+          </TextPart>
+          <ListPart>
+            <p className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(subTitle) }} />
+            <div className="grid">
+              {list.map((el, index) => (
+                <Item key={el.text} >
+                  <span className="body1">{index + 1}</span>
+                  <div className="body1" dangerouslySetInnerHTML={{ __html: el.text }} />
+                </Item>
+              ))}
+            </div>
+          </ListPart>
+        </Content>
+      </Container>
+    </Wrapper>
+  )
 }
 
 
@@ -46,6 +46,9 @@ export const query = graphql`
       }
     }
   }
+`
+
+const Wrapper = styled.section`
 `
 
 const Item = styled.div`
@@ -77,9 +80,6 @@ const ListPart = styled.div`
         display: grid;
         grid-gap: 16px;
     }
-`
-
-const Wrapper = styled.section`
 `
 
 const Content = styled.div`

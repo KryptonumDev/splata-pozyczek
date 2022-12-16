@@ -69,6 +69,7 @@ import HeighlihtedAdres from "../components/sections/heighlihted-adres"
 import ExpertWithContactInform from "../components/sections/expert-with-contact-inform"
 import Citate from "../components/sections/citate"
 import { Helmet } from "react-helmet"
+import WniosekOnline from "../components/sections/wniosek-on-line"
 
 export function Head({ location, data: { wpPage: { seo, id } } }) {
   const canonical = 'https://splatapozyczek.pl' + seo.canonical
@@ -137,6 +138,14 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
       </Helmet>
 
       {sections?.map((el, index) => {
+        if (el.__typename === "WpPage_PageBuilder_Sections_HeroText" && sections[index + 1].__typename === "WpPage_PageBuilder_Sections_ContactForm") {
+          return <React.Fragment key={el.__typename + index}> <WniosekOnline uri={pageContext.url} title={title}  hero={el.heroText} form={sections[index + 1].contactForm} /> </React.Fragment>
+        }
+
+        if (el.__typename === "WpPage_PageBuilder_Sections_ContactForm" && sections[index - 1].__typename === "WpPage_PageBuilder_Sections_HeroText") {
+          return null
+        }
+
         switch (el.__typename) {
           case 'WpPage_PageBuilder_Sections_Hero':
             return <React.Fragment key={el.__typename + index}> <Hero data={el.hero} /> </React.Fragment>
@@ -283,24 +292,24 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
 }
 
 export const query = graphql`
-      query page($id: String!) {
-        wpPage(id: {eq: $id}){
-        slug
-            title
-      id
-      seo {
-        canonical
-              metaDesc
+query page($id: String!) {
+  wpPage(id: {eq: $id}) {
+    slug
+    title
+    id
+    seo {
+      canonical
+      metaDesc
       opengraphSiteName
       title
       opengraphImage {
         localFile {
-        publicURL
+          publicURL
+        }
       }
-              }
-            }
-      page_builder {
-        sections {
+    }
+    page_builder {
+      sections {
         __typename
         ...citate
         ...expertWithContactInform
@@ -369,104 +378,105 @@ export const query = graphql`
         ...listWithImgOnLeft
         ...contactForm
         ...blogArchive
-              }
-            }
-        }
-      blogArchive : allWpPost(sort: {fields: date, order: DESC}) {
-        nodes {
-        id
-            title
+      }
+    }
+  }
+  blogArchive: allWpPost(sort: {date: DESC})  {
+    nodes {
+      id
+      title
       slug
       author {
         node {
-        name
+          name
+        }
       }
-            }
       date(formatString: "DD.MM.YYYY")
-      categories : tags {
+      categories: tags {
         nodes {
-        name
-                slug
-      category {
-        color
+          name
+          slug
+          category {
+            color
+          }
+        }
       }
-              }
-            }
       blogPost {
         previewText
-              thumbnail {
-        altText
-                localFile {
-        childImageSharp {
-        gatsbyImageData
-      }
-                }
-              }
+        thumbnail {
+          altText
+          localFile {
+            childImageSharp {
+              gatsbyImageData
             }
           }
         }
-      slider : allWpPost(sort: {fields: date, order: DESC}) {
-        nodes {
-        id
-            title
+      }
+    }
+  }
+  slider: allWpPost(sort: {date: DESC})  {
+    nodes {
+      id
+      title
       slug
       author {
         node {
-        name
+          name
+        }
       }
-            }
       date(formatString: "DD.MM.YYYY")
-      categories : tags {
+      categories: tags {
         nodes {
-        name
-                slug
-      category {
-        color
+          name
+          slug
+          category {
+            color
+          }
+        }
       }
-              }
-            }
       blogPost {
         previewText
-              thumbnail {
-        altText
-                localFile {
-        childImageSharp {
-        gatsbyImageData
-      }
-                }
-              }
+        thumbnail {
+          altText
+          localFile {
+            childImageSharp {
+              gatsbyImageData
             }
           }
         }
-      allWpCategory : allWpTag {
-        nodes {
-        category {
+      }
+    }
+  }
+  allWpCategory: allWpTag {
+    nodes {
+      category {
         color
       }
       count
       name
       slug
-          }
-        }
-      allWpEkspert {
-        nodes {
-        id
-            slug
+    }
+  }
+  allWpEkspert {
+    nodes {
+      id
+      slug
       title
       ekspert {
+        workWithProducts
         role
-              numerTelefonu
-      emailAdres
-      image {
-        altText
-                localFile {
-        childImageSharp {
-        gatsbyImageData
-      }
-                }
-              }
+        numerTelefonu
+        emailAdres
+        image {
+          altText
+          localFile {
+            childImageSharp {
+              gatsbyImageData
             }
           }
         }
+      }
     }
+  }
+}
       `

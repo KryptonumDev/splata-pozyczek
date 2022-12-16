@@ -10,7 +10,7 @@ export default function ProvisionContactForm({ title }) {
 
     return (
         <Wrapper>
-            <Container>
+            <Container className="form-container">
                 <Box>
                     <Content>
                         {title && <h2 className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />}

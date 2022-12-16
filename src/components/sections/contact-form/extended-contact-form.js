@@ -26,7 +26,7 @@ export default function ExtendedContactForm({ typTematow, title }) {
 
     return (
         <Wrapper>
-            <Container>
+            <Container className="form-container">
                 <Box>
                     <Content isExtended={isExtended}>
                         {title && <h2 className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />}

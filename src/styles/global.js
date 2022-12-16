@@ -96,7 +96,7 @@ strong {
 
 .h3 {
    font-weight: 700;
-   font-size: 54px;
+   font-size: clamp(28px, 7.03vw, 54px);
    line-height: 111%;
    letter-spacing: -0.02em;
 }

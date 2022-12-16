@@ -9,7 +9,7 @@ export default function ShortContactForm({ typTematow, title }) {
     const [isSended, setIsSended] = useState(false)
     return (
         <Wrapper>
-            <Container className="container">
+            <Container className="form-container container">
                 <Box>
                     <Content>
                         {title && <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />}

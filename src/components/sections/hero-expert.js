@@ -28,7 +28,7 @@ export default function HeroExpert({ pageContext, data: { wpEkspert:
                                 <div>
                                     <h1>
                                         <span className="body1">{title}</span>
-                                        <span className="body3">{role}</span>
+                                        <span className="body3">{workWithProducts}</span>
                                     </h1>
                                 </div>
                             </PersonData>
@@ -301,6 +301,8 @@ const TextPart = styled.div`
 
     .subtext{
         margin-top: 8px;
+        display: grid;
+        grid-gap: 12px;
 
         @media (max-width: 840px) {
             text-align: center;

@@ -34,6 +34,7 @@ fragment ourExperts on WpPage_PageBuilder_Sections_OurExperts {
             slug
             title
             ekspert {
+              workWithProducts
               role
               numerTelefonu
               emailAdres
