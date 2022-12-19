@@ -7,7 +7,12 @@ module.exports = {
     {
       resolve: 'gatsby-source-wordpress',
       options: {
-        "url": "https://testy.kryptonum.co.uk/graphql"
+        schema: {
+          timeout: 3000000,
+          perPage: 10,
+          requestConcurrency: 10,
+        },
+        "url": "https://www-data.splatapozyczek.pl/graphql"
       }
     },
     'gatsby-plugin-image',
@@ -55,7 +60,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-yoast-sitemap",
       options: {
-        baseUrl: 'https://testy.kryptonum.co.uk',
+        baseUrl: 'https://www-data.splatapozyczek.pl',
         gatsbyUrl: 'https://splatapozyczekmaster.gatsbyjs.io'
       }
     },
