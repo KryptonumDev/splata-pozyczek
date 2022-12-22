@@ -104,10 +104,17 @@ export const query = graphql`
               }
             }
             ekspert {
-              facebook
+              socialMedia{
+                ikona{
+                  altText
+                  localFile{
+                    publicURL
+                  }
+                }
+                linkDoSocialMedia
+                nazwaSocialMedia
+              }
               workWithProducts
-              twitter
-              pinterest
               role
               numerTelefonu
               emailAdres

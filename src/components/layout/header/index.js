@@ -9,10 +9,15 @@ import Menu from "./mobile-menu"
 
 export default function Header({ data }) {
 
-  const { wpPage: { header: { navigacja } } } = useStaticQuery(graphql`
+  const { wpPage: { header: { featuredButton, navigacja } } } = useStaticQuery(graphql`
     query {
         wpPage(id: {eq: "cG9zdDo0MzQ="}) {
           header {
+            featuredButton{
+              url
+              title
+              target
+            }
             navigacja {
               url {
                 url
@@ -73,8 +78,8 @@ export default function Header({ data }) {
               )}
             </ul>
           </Navigation>
-          <FilledButton to='/wniosek-on-line/' className="button">
-            Wniosek online
+          <FilledButton to={featuredButton.url} className="button">
+            {featuredButton.title}
           </FilledButton>
           <MobileButton aria-label='open mobile menu' onClick={() => { setMobileMenuOpened(!isMobileMenuOpened) }}>
             <span />

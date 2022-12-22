@@ -12,7 +12,7 @@ module.exports = {
           perPage: 10,
           requestConcurrency: 10,
         },
-        "url": "https://www-data.splatapozyczek.pl/graphql"
+        "url": "https://wp-splatapozyczek.headlesshub.com/graphql"
       }
     },
     'gatsby-plugin-image',
@@ -60,7 +60,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-yoast-sitemap",
       options: {
-        baseUrl: 'https://www-data.splatapozyczek.pl',
+        baseUrl: 'https://wp-splatapozyczek.headlesshub.com',
         gatsbyUrl: 'https://splatapozyczekmaster.gatsbyjs.io'
       }
     },

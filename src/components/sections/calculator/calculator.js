@@ -235,6 +235,7 @@ const Options = styled.div`
         border: 1px solid #B2B2B8;
         margin: 8px auto;
         background-color: transparent;
+        pointer-events: none;
 
         
         font-family: 'Arsenal';
