@@ -6,7 +6,7 @@ import { transform } from "../../../helpers/slider"
 import { Container } from "../../atoms/container"
 import Item from "./calculator"
 
-export default function Calculator({ data: { title, text, type } }) {
+export default function Calculator({ data: { name, title, text, type, podtypKalkulatora } }) {
 
     const { wpPage: { globalCalculator: { params } } } = useStaticQuery(graphql`
     query {
@@ -20,6 +20,10 @@ export default function Calculator({ data: { title, text, type } }) {
                     maxProcent
                     maxMonth
                     maxMoney
+                    moneyTitle
+                    monthTitle
+                    procentTitle
+                    provisionTitle
                     icon {
                         altText
                         localFile {
@@ -36,6 +40,16 @@ export default function Calculator({ data: { title, text, type } }) {
 
     const [active, setActive] = useState(0)
     const [maxButtonsTransform, setMaxButtonsTransform] = useState(0)
+    const [defaultTabData] = useState(() => {
+        let data = params[0]
+        if (type === 'default') {
+            let filter = params.filter(el => el.name === podtypKalkulatora)
+            if (filter.length > 0) {
+                data = filter[0]
+            }
+        }
+        return data
+    })
 
     useEffect(() => {
         if (type === 'advanced') {
@@ -110,7 +124,7 @@ export default function Calculator({ data: { title, text, type } }) {
             {type === 'default'
                 ? (
                     <Container className="container">
-                        <Item title={title} text={text} calculatorData={params[0]} />
+                        <Item title={title} text={text} calculatorData={defaultTabData} />
                     </Container>
                 ) : null}
         </Wrapper>
@@ -123,6 +137,7 @@ export const query = graphql`
         title
         text
         type
+        podtypKalkulatora
     }
   }
 `

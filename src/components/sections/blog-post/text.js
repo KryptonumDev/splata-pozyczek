@@ -11,7 +11,7 @@ export default function TextSection({ changeInView, data: { title, text } }) {
         <Wrapper id={textParser(title)}>
             <Container className="container">
                 {title
-                    ? <InView onChange={(inView) => {changeInView(inView, textParser(title))}}><h2 className="h5 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} /></InView>
+                    ? <InView onChange={(inView) => { changeInView(inView, textParser(title)) }}><h2 className="h5 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} /></InView>
                     : null}
                 {text
                     ? <div className="body1" dangerouslySetInnerHTML={{ __html: text }} />
@@ -42,6 +42,18 @@ scroll-margin-top: 50px;
 
         p{
             color: #6F6F71;
+        }
+
+        h3, h4, h5,h6{
+            font-size: 20px;
+        }
+        h1,h2{
+            font-size: 24px;
+        }
+
+        ul, ol{
+            display: grid;
+            grid-gap: 10px;
         }
     }
 `

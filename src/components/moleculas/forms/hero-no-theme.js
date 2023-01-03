@@ -8,6 +8,8 @@ import { graphql, useStaticQuery } from "gatsby"
 import { textParser } from "../../../helpers/wysiwyg-modification"
 import LabelInput from "../label-input"
 import LabelCheckbox from "../label-checkbox"
+import { checkboxAllHero } from "../../../helpers/hero-checkbox-all"
+import { checkboxControllerHero } from "../../../helpers/hero-checkbox-controller"
 
 export default function Form({ setIsSended, formTitle }) {
 
@@ -24,7 +26,7 @@ export default function Form({ setIsSended, formTitle }) {
     }
   `)
 
-    const { reset, register, handleSubmit, formState: { errors } } = useForm()
+    const { getValues, setValue, reset, register, handleSubmit, formState: { errors } } = useForm()
     const [sendedCount, changeSendedCount] = useState(0)
 
     const onSubmit = data => {
@@ -92,18 +94,32 @@ export default function Form({ setIsSended, formTitle }) {
                 />
                 <div className="checkboxes">
                     <LabelCheckbox
-                        name='privacyTwo'
+                        name='checkAllHero'
+                        onChange={(val) => { checkboxAllHero(val, setValue) }}
+                        params={{}}
+                        className='body2'
+                        register={register}
+                        id='all-hero'
+                        errors={errors}>
+                        Akceptuję wszystkie zgody
+                    </LabelCheckbox>
+                    <LabelCheckbox
+                        wrapClass='sub'
+                        name='privacyOneHero'
                         params={{ required: true }}
                         register={register}
-                        id='two'
+                        onChange={(e) => { checkboxControllerHero(e, getValues, setValue) }}
+                        id='one-hero'
                         errors={errors}>
                         Wyrażam zgodę, aby moje dane osobowe były przetwarzane <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b>
                     </LabelCheckbox>
                     <LabelCheckbox
-                        name='privacyThree'
+                        wrapClass='sub'
+                        name='privacyTwoHero'
                         params={{ required: true }}
                         register={register}
-                        id='three'
+                        onChange={(e) => { checkboxControllerHero(e, getValues, setValue) }}
+                        id='two-hero'
                         errors={errors}>
                         Wyrażam zgodę na otrzymywanie od Habza Group Sp. z o.o. <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b>
                     </LabelCheckbox>
@@ -129,7 +145,6 @@ const Wrapper = styled.form`
 
     .checkboxes{
         display: grid;
-        grid-gap: 20px;
     }
 
     .content{
@@ -240,7 +255,7 @@ const Wrapper = styled.form`
 
         &.sub{
 
-            margin: 20px 12px 0 0;
+            margin: 0 12px 0 0;
 
             &:first-child{
                 margin-top: 6px;

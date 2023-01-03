@@ -7,7 +7,6 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import { graphql } from "gatsby"
 
 export default function Hero({ data: { text, pageTitle, przyciski, background } }) {
-    debugger
     return (
         <Wrapper>
             <Container>

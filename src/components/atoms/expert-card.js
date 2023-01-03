@@ -40,7 +40,7 @@ const Item = styled.div`
         right: 0;
         bottom: 0;
         top: 0;
-        z-index: 0;
+        z-index: 1;
     }
     
     a{

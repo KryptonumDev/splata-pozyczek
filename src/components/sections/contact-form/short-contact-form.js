@@ -4,15 +4,20 @@ import { Container } from "../../atoms/container"
 import Form from "../../moleculas/forms/short"
 import { textParser } from "../../../helpers/wysiwyg-modification"
 import Success from "../../moleculas/success-send"
+import { GatsbyImage } from "gatsby-plugin-image"
 
-export default function ShortContactForm({ typTematow, title }) {
+export default function ShortContactForm({ imageUnderTitle, textUnderImage, typTematow, title }) {
     const [isSended, setIsSended] = useState(false)
     return (
         <Wrapper>
             <Container className="form-container container">
                 <Box>
                     <Content>
-                        {title && <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />}
+                        <div>
+                            {title && <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />}
+                            {imageUnderTitle?.localFile && <GatsbyImage className="image" image={imageUnderTitle.localFile.childImageSharp.gatsbyImageData} alt={imageUnderTitle.altText} />}
+                            {textUnderImage && <p className="sub1">{textUnderImage}</p>}
+                        </div>
                         <Form setIsSended={setIsSended} />
                     </Content>
                     <Success isSended={isSended} setIsSended={setIsSended} />
@@ -24,6 +29,17 @@ export default function ShortContactForm({ typTematow, title }) {
 
 const Wrapper = styled.section`
     margin-top: var(--section);
+
+    .image{
+        border-radius: 4px;
+        box-shadow: var(--shadow);
+        margin: 12px 0 8px 0;
+        max-width: 380px;
+    }
+
+    .sub1{
+        max-width: 380px;
+    }
 
     .h4{
         max-width: 464px;

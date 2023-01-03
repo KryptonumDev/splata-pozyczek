@@ -30,14 +30,13 @@ export default function Item({ calculatorData, title, text }) {
         setMonthRate((calculatedSum / time).toFixed(2))
         setCreditPrice((calculatedSum - (money * 100)).toFixed(2))
     }, [calculatedSum, time, money])
-
     return (
         <Wrapper>
             <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }}></h2>
             <Content>
                 <Options>
                     <div>
-                        <p className="h6 arsenal">Ile pieniędzy potrzebujesz?</p>
+                        <p className="h6 arsenal">{calculatorData.moneyTitle}</p>
                         <input className="input" placeholder="val" value={money * 100 + ' zł'} />
                         <input className="range" onChange={(e) => { setMoney(e.currentTarget.value) }} min='10' value={money} max={calculatorData.maxMoney / 100} type="range" />
                         <div className="flex">
@@ -46,7 +45,7 @@ export default function Item({ calculatorData, title, text }) {
                         </div>
                     </div>
                     <div>
-                        <p className="h6 arsenal">W jakim czasie chcesz spłacić kredyt?</p>
+                        <p className="h6 arsenal">{calculatorData.monthTitle}</p>
                         <input className="input" placeholder="val" value={time + ' miesiąc'} />
                         <input className="range" onChange={(e) => { setTime(e.currentTarget.value) }} min='1' value={time} max={calculatorData.maxMonth} type="range" />
                         <div className="flex">
@@ -55,7 +54,7 @@ export default function Item({ calculatorData, title, text }) {
                         </div>
                     </div>
                     <div>
-                        <p className="h6 arsenal">Oprocentowanie nominalne w skali roku</p>
+                        <p className="h6 arsenal">{calculatorData.procentTitle}</p>
                         <input className="input" placeholder="val" value={percent / 100 + ' %'} />
                         <input className="range" onChange={(e) => { setPercent(e.currentTarget.value) }} min={calculatorData.minProcent} value={percent} max={calculatorData.maxProcent} type="range" />
                         <div className="flex">
@@ -64,7 +63,7 @@ export default function Item({ calculatorData, title, text }) {
                         </div>
                     </div>
                     <div>
-                        <p className="h6 arsenal">Prowizja</p>
+                        <p className="h6 arsenal">{calculatorData.provisionTitle}</p>
                         <input className="input" placeholder="val" value={provision + ' %'} />
                         <input className="range" onChange={(e) => { setProvision(e.currentTarget.value) }} min={calculatorData.minProvision ? calculatorData.minProvision : 0} value={provision} max={calculatorData.maxProvision} type="range" />
                         <div className="flex">
@@ -122,6 +121,14 @@ const Wrapper = styled.section`
     -webkit-appearance: none;
     width: 100%;
     background: transparent;
+
+    @supports (-moz-appearance:none) {
+        height: 4px;
+        background: linear-gradient(315deg,#EDBD35 0%,#E6D9AC 99.99%);
+        border-radius: 4px;
+        margin: 10px 0;
+    }
+
     }
     input[type=range]:focus {
     outline: none;
