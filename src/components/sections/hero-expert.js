@@ -29,20 +29,21 @@ export default function HeroExpert({ pageContext, data: { wpEkspert:
                                     : null}
                                 <div>
                                     <h1>
-                                        <span className="body1">{title}</span>
-                                        <span className="body3">{workWithProducts}</span>
+                                        <span className="h6 arsenal">{title}</span>
+                                        <span className="body2">{workWithProducts}</span>
                                     </h1>
                                 </div>
                             </PersonData>
-                            {socialMedia?.map(el => (
-                                <Social>
-                                    <a href={el.linkDoSocialMedia}>
-                                        <img src={el.ikona.localFile.publicURL} alt={el.ikona.altText}/>
-                                        <span className="body2">{el.nazwaSocialMedia}</span>
-                                    </a>
-                                </Social>
-                            ))}
-
+                            <div className="social-media">
+                                {socialMedia?.map(el => (
+                                    <Social>
+                                        <a href={el.linkDoSocialMedia}>
+                                            <img src={el.ikona.localFile.publicURL} alt={el.ikona.altText} />
+                                            <span className="body2">{el.nazwaSocialMedia}</span>
+                                        </a>
+                                    </Social>
+                                ))}
+                            </div>
                         </Flex>
                         <TextPart>
                             {addInform.title
@@ -156,6 +157,12 @@ const Flex = styled.div`
     gap: 16px;
     margin-top: 32px;
     margin-bottom: 16px;
+
+    .social-media{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
 `
 
 const Buttons = styled.div`
@@ -197,21 +204,22 @@ const Buttons = styled.div`
 
 const PersonData = styled.div`
     display: grid;
-    grid-template-columns: 48px auto;
+    grid-template-columns: 128px auto;
     grid-gap: 8px;
     align-items: center;
 
     .avatar{
-        width: 48px;
-        height: 48px;
+        width: 128px;
+        height: 128px;
         border-radius: 50%;
     }
 
     span{
         display: block;
 
-        &.body1{
+        &.h6{
             font-weight: 600;
+            color: #000 !important;
         }
 
         &.body3{

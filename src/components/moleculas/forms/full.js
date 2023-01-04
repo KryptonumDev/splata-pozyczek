@@ -11,7 +11,7 @@ import { checkboxController } from "../../../helpers/checkbox-controller"
 import { checkboxAll } from "../../../helpers/checkbox-all"
 import LabelSelect from "../label-select"
 
-export default function Form({ title, type, setIsSended, typTematow }) {
+export default function Form({ extended, title, type, setIsSended, typTematow }) {
 
     const { wpPage: { formyKontaktowe: { linkPrivacyPolicy, additionalInform, meesageThemesFirms, meesageThemesDetails } } } = useStaticQuery(graphql`
     query {
@@ -49,16 +49,20 @@ export default function Form({ title, type, setIsSended, typTematow }) {
         setIsSended(true)
 
         if (sendedCount < 3) {
-            let url = 'https://www-data.splatapozyczek.pl/wp-json/contact-form-7/v1/contact-forms/669/feedback'
+            let url = 'https://wp-splatapozyczek.headlesshub.com/wp-json/contact-form-7/v1/contact-forms/669/feedback'
             let body = new FormData()
             body.append('your-email', data.email)
             body.append("your-message", data.message)
             body.append('your-name', data.name)
             body.append('your-phone', data.phone)
-            if (type !== 'noTheme') {
-                body.append('your-subject', data.theme)
+            if (extended && typTematow === 'Firmowego') {
+                body.append('your-nip', data.nip)
             } else {
-                body.append('your-subject', title)
+                if (type !== 'noTheme') {
+                    body.append('your-subject', data.theme)
+                } else {
+                    body.append('your-subject', title)
+                }
             }
             axios.post(url, body)
                 .then((res) => {
@@ -84,15 +88,22 @@ export default function Form({ title, type, setIsSended, typTematow }) {
                         register={register}
                         errors={errors}
                     />
-                    {type !== 'noTheme'
-                        ?
-                        <LabelSelect
-                            control={control}
-                            themes={meesageThemes}
-                            name='theme'
-                            label='Wybierz temat*'
+                    {extended && typTematow === 'Firmowego'
+                        ? <LabelInput
+                            name='nip'
+                            label='NIP*'
+                            params={{ required: true }}
+                            register={register}
+                            errors={errors}
                         />
-                        : null
+                        : type !== 'noTheme'
+                            ? <LabelSelect
+                                control={control}
+                                themes={meesageThemes}
+                                name='theme'
+                                label='Wybierz temat*'
+                            />
+                            : null
                     }
                 </div>
                 <div className="flex">

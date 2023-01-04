@@ -36,7 +36,7 @@ export default function Form({ setIsSended }) {
         setIsSended(true)
 
         if (sendedCount < 3) {
-            let url = 'https://www-data.splatapozyczek.pl/wp-json/contact-form-7/v1/contact-forms/3704/feedback'
+            let url = 'https://wp-splatapozyczek.headlesshub.com/wp-json/contact-form-7/v1/contact-forms/3704/feedback'
             let body = new FormData()
             body.append('your-email', data.email)
             body.append('your-name', data.name)

@@ -40,7 +40,7 @@ export default function Form({ setIsSended }) {
         setIsSended(true)
 
         if (sendedCount < 3) {
-            axios.post('https://www-data.splatapozyczek.pl/wp-json/wp/v2/comments', {
+            axios.post('https://wp-splatapozyczek.headlesshub.com/wp-json/wp/v2/comments', {
                 post: data.theme,
                 author_name: data.name,
                 author_email: data.email,

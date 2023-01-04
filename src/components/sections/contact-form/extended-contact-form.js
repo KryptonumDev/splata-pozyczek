@@ -50,10 +50,10 @@ export default function ExtendedContactForm({ typTematow, title }) {
                         </ButtonFlex>
                         <div id='form' className="form">
                             <div className="default">
-                                <DefaultForm typTematow={typTematow} setIsSended={setIsSended} />
+                                <DefaultForm extended={true} typTematow={typTematow} setIsSended={setIsSended} />
                             </div>
                             <div className="extended">
-                                <ExtendedForm typTematow={typTematow} setIsSended={setIsSended} />
+                                <ExtendedForm extended={true} typTematow={typTematow} setIsSended={setIsSended} />
                             </div>
                         </div>
                     </Content>

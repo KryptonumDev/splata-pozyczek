@@ -7,6 +7,7 @@ import CommentContactForm from "./add-comment-form"
 import ProvisionContactForm from "./provision-contact-form"
 
 export default function ContactForm({ data: { imageUnderTitle, textUnderImage, typTematow, title, type } }) {
+
     switch (type) {
         case 'short':
             return <ShortContactForm imageUnderTitle={imageUnderTitle} textUnderImage={textUnderImage} typTematow={typTematow} title={title} />
