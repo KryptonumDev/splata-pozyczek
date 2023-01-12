@@ -2,10 +2,11 @@ import { graphql } from "gatsby"
 import React, { useMemo } from "react"
 import styled from "styled-components"
 import { Container } from "../../atoms/container"
-import { textParser } from '../../../helpers/wysiwyg-modification'
+import { htmlDelete, textParser } from '../../../helpers/wysiwyg-modification'
 import FaqItem from "../faq/item"
 import { Helmet } from "react-helmet"
 import { InView } from "react-intersection-observer"
+import { slugTransform } from "../../../helpers/slug-transform"
 
 export default function Faq({ changeInView, data: { title, repeater } }) {
 
@@ -41,7 +42,7 @@ export default function Faq({ changeInView, data: { title, repeater } }) {
     };
 
     return (
-        <Wrapper id={textParser(title)}>
+        <Wrapper id={slugTransform(title ? htmlDelete(title) : '')}>
             <Helmet>
                 <script type="application/ld+json">
                     {JSON.stringify(schema)}

@@ -71,6 +71,13 @@ const Item = styled.div`
     box-shadow: 0px 4px 8px 3px rgba(97, 152, 193, 0.15);
     position: relative;
 
+    .description{
+        display: -webkit-box;
+        -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    }
+
     .wrap-link{
         cursor: ${props => props.allowLink ? 'pointer' : 'grabbing'};
         user-select: none;

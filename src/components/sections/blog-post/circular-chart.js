@@ -2,9 +2,10 @@ import React, { useMemo } from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
 import { Container } from "../../atoms/container"
-import { textParser } from "../../../helpers/wysiwyg-modification"
+import { htmlDelete, textParser } from "../../../helpers/wysiwyg-modification"
 import DonutChart from "react-svg-donut-chart"
 import { InView } from "react-intersection-observer"
+import { slugTransform } from "../../../helpers/slug-transform"
 
 export default function CircularChart({ changeInView, data: { title, text, subText, source, chart } }) {
 
@@ -19,7 +20,7 @@ export default function CircularChart({ changeInView, data: { title, text, subTe
     }, [chart])
 
     return (
-        <Wrapper id={textParser(title)}>
+        <Wrapper id={slugTransform(title ? htmlDelete(title) : '')}>
             <Container className="container">
                 {title
                     ? <InView onChange={(inView) => { changeInView(inView, textParser(title)) }}><h2 className="h5 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} /></InView>
@@ -96,8 +97,11 @@ scroll-margin-top: 50px;
         columns: 2;
 
         @media (max-width: 880px) {
-            display: grid;
-            grid-gap: 12px;
+            columns: 1;
+
+            * + *{
+                margin-top: 16px;
+            }
         }
 
         p{

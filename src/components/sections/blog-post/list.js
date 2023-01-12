@@ -2,14 +2,15 @@ import React from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
 import { Container } from "../../atoms/container"
-import { textParser } from "../../../helpers/wysiwyg-modification"
+import { htmlDelete, textParser } from "../../../helpers/wysiwyg-modification"
 import Light from './../../../images/check-light.svg'
 import Medium from './../../../images/check-medium.svg'
 import { InView } from "react-intersection-observer"
+import { slugTransform } from "../../../helpers/slug-transform"
 
 export default function ListSection({ changeInView, data: { title, text, subTitle, list } }) {
     return (
-        <Wrapper id={textParser(title)}>
+        <Wrapper id={slugTransform(title ? htmlDelete(title) : '')}>
             <Container className="container">
                 {title
                     ? <InView onChange={(inView) => { changeInView(inView, textParser(title)) }}><h2 className="h5 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} /></InView>
@@ -57,8 +58,11 @@ scroll-margin-top: 50px;
     .text{
         margin-top: 16px;
         max-width: 690px;
-        display: grid;
-        grid-gap: 8px;
+        columns: 1;
+
+        * + *{
+            margin-top: 8px;
+        }
 
         p{
             color: #6F6F71;

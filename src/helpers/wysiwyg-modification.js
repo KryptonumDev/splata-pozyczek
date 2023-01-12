@@ -33,3 +33,12 @@ export const textParser = (text) => {
 
     return text
 }
+
+export const htmlDelete = (string) => {
+
+    if(!string){
+        return string
+    }    
+
+    return string.replace(/<[^>]*>?/gm, '');
+}

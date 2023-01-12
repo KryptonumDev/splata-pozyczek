@@ -14,13 +14,14 @@ import QuickLinks from "../components/sections/blog-post/quick-links"
 import Table from "../components/sections/blog-post/table"
 import TextSection from "../components/sections/blog-post/text"
 import PercentCompare from '../components/sections/blog-post/percent-compare'
-import { textParser } from "../helpers/wysiwyg-modification"
 // import CircularPercentCompare from "../components/sections/blog-post/circular-percent-compare"
 import Faq from "../components/sections/blog-post/faq"
 import HorizontalChart from "../components/sections/blog-post/horizontal-chart"
 import VerticalChart from "../components/sections/blog-post/vertical-chart"
 import { useState } from "react"
 import { Helmet } from "react-helmet"
+import { htmlDelete } from "../helpers/wysiwyg-modification"
+import { slugTransform } from "../helpers/slug-transform"
 
 export function Head({ data: { wpPost: { id, seo, author, title, slug, blogPost } } }) {
   const canonical = 'https://splatapozyczek.pl' + seo.canonical
@@ -130,62 +131,57 @@ export default function Post({ pageContext, data: { wpPost } }) {
       switch (el.__typename) {
         case 'WpPost_Blogpost_Sections_TextSection':
           if (el.textSection.title) {
-            links.push(textParser(el.textSection.title))
+            links.push(htmlDelete(el.textSection.title))
           }
           break
         case 'WpPost_Blogpost_Sections_ImageSection':
           if (el.imageSection.title) {
-            links.push(textParser(el.imageSection.title))
-          }
-          break
-        case 'WpPost_Blogpost_Sections_Cta':
-          if (el.cta.text) {
-            links.push(textParser(el.cta.text))
+            links.push(htmlDelete(el.imageSection.title))
           }
           break
         case 'WpPost_Blogpost_Sections_List':
           if (el.list.title) {
-            links.push(textParser(el.list.title))
+            links.push(htmlDelete(el.list.title))
           }
           break
         case 'WpPost_Blogpost_Sections_InformPanels':
           if (el.informPanels.title) {
-            links.push(textParser(el.informPanels.title))
+            links.push(htmlDelete(el.informPanels.title))
           }
           break
         case 'WpPost_Blogpost_Sections_Table':
           if (el.table.title) {
-            links.push(textParser(el.table.title))
+            links.push(htmlDelete(el.table.title))
           }
           break
         case 'WpPost_Blogpost_Sections_CircularChart':
           if (el.circularChart.title) {
-            links.push(textParser(el.circularChart.title))
+            links.push(htmlDelete(el.circularChart.title))
           }
           break
         case 'WpPost_Blogpost_Sections_PercentCompare':
           if (el.percentCompare.title) {
-            links.push(textParser(el.percentCompare.title))
+            links.push(htmlDelete(el.percentCompare.title))
           }
           break
         case 'WpPost_Blogpost_Sections_CircularPercentCompare':
           if (el.circularPercentCompare.title) {
-            links.push(textParser(el.circularPercentCompare.title))
+            links.push(htmlDelete(el.circularPercentCompare.title))
           }
           break
         case 'WpPost_Blogpost_Sections_Faq':
           if (el.faq.title) {
-            links.push(textParser(el.faq.title))
+            links.push(htmlDelete(el.faq.title))
           }
           break
         case 'WpPost_Blogpost_Sections_HorizontalChart':
           if (el.horizontalChart.title) {
-            links.push(textParser(el.horizontalChart.title))
+            links.push(htmlDelete(el.horizontalChart.title))
           }
           break
         case 'WpPost_Blogpost_Sections_VerticalChart':
           if (el.verticalChart.title) {
-            links.push(textParser(el.verticalChart.title))
+            links.push(htmlDelete(el.verticalChart.title))
           }
           break
         default:
@@ -199,17 +195,17 @@ export default function Post({ pageContext, data: { wpPost } }) {
   const [inView, setInView] = useState()
 
   const changeInView = (isInView, id) => {
-    if(isInView){
-      setInView(id)
+    if (isInView) {
+      setInView(slugTransform(htmlDelete(id)))
     }
   }
 
   return (
     <Wrapper id='main'>
-    <Helmet>
-      <title id='title'>{wpPost.seo.title}</title>
-      <link rel="canonical" href={'https://splatapozyczek.pl' + pageContext.url} />
-    </Helmet>
+      <Helmet>
+        <title id='title'>{wpPost.seo.title}</title>
+        <link rel="canonical" href={'https://splatapozyczek.pl' + pageContext.url} />
+      </Helmet>
       <Hero data={wpPost} pageContext={pageContext} />
       <Container className="container">
         <Grid>

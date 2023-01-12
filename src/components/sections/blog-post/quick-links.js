@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import { textParser } from "../../../helpers/wysiwyg-modification"
+import { htmlDelete, textParser } from "../../../helpers/wysiwyg-modification"
+import { slugTransform } from '../../../helpers/slug-transform'
 
 export default function QuickLinks({ setInView, inView, links }) {
 
@@ -12,10 +13,10 @@ export default function QuickLinks({ setInView, inView, links }) {
                     return (
                         <li key={index}>
                             <Link
-                                className={inView === textParser(el) ? 'active' : 'no'}
+                                className={inView === slugTransform(htmlDelete(el)) ? 'active' : 'no'}
                                 dangerouslySetInnerHTML={{ __html: textParser(el) }}
                                 onClick={() => { setInView(textParser(el)) }}
-                                href={'#' + textParser(el)}
+                                href={'#' + slugTransform(el)}
                             />
                         </li>
                     )

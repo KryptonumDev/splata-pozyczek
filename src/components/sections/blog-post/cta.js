@@ -20,7 +20,7 @@ const colors = {
 
 export default function CallToAction({ changeInView, data: { colorSchem, text, plainText, link } }) {
     return (
-        <Wrapper id={textParser(text)}>
+        <Wrapper>
             <Container className="container">
                 <Content color={colors[colorSchem]} background={background[colorSchem]}>
                     <TextPart>
