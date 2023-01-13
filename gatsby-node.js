@@ -50,6 +50,10 @@ exports.createPages = async ({
     const resultData = await result.text()
 
     csvParser(resultData)?.forEach(el => {
+      console.log({
+        fromPath: el['Adres URL do przekierowania'],
+        toPath: el['Docelowy URL'],
+      })
       createRedirect({
         fromPath: el['Adres URL do przekierowania'],
         toPath: el['Docelowy URL'],
