@@ -1,10 +1,61 @@
 const fs = require('fs')
 const { resolve } = require('path')
+const fetch = (...args) =>
+  import(`node-fetch`).then(({ default: fetch }) => fetch(...args))
+
+const csvParser = (data) => {
+  let lines = data.split("\r\n");
+
+  let result = [];
+
+  let headers = lines[0].split(";");
+
+  for (let i = 1; i < lines.length; i++) {
+    let obj = {};
+    let currentline = lines[i].split(";");
+    for (let j = 0; j < headers.length; j++) {
+      obj[headers[j]] = currentline[j];
+    }
+
+    result.push(obj)
+
+  }
+
+  //return result; //JavaScript object
+  return result; //JSON
+};
+
 
 exports.createPages = async ({
   graphql,
   actions: { createPage, createRedirect },
 }) => {
+
+  // Create redirects
+
+  const { data: { wpPage: { global: { csvRedirects } } } } = await graphql(`
+  query{
+    wpPage(id: {eq: "cG9zdDo2MzQ="}) {
+      global {
+        csvRedirects {
+          mediaItemUrl
+        }
+      }
+    }
+  }
+  `)
+
+  const result = await fetch(csvRedirects.mediaItemUrl)
+  const resultData = await result.text()
+
+  console.log(csvParser(resultData))
+
+  resultData?.forEach(el => {
+    createRedirect({
+      fromPath: el['Adres URL do przekierowania'],
+      toPath: el['Docelowy URL'],
+    });
+  })
 
   // Create pages
 
@@ -116,28 +167,5 @@ exports.createPages = async ({
       },
     });
   });
-
-  // Create redirects
-
-
-  const { data: { wpPage: { global: { redirects } } } } = await graphql(`
-  query{
-    wpPage(id: {eq: "cG9zdDo2MzQ="}) {
-      global {
-        redirects {
-          from
-          to
-        }
-      }
-    }
-  }
-  `)
-
-  redirects?.forEach(el => {
-    createRedirect({
-      fromPath: el.from,
-      toPath: el.to,
-    });
-  })
 
 }
