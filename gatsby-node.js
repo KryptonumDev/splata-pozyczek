@@ -45,15 +45,17 @@ exports.createPages = async ({
   }
   `)
 
-  const result = await fetch(csvRedirects.mediaItemUrl)
-  const resultData = await result.text()
+  if (csvRedirects?.mediaItemUrl) {
+    const result = await fetch(csvRedirects.mediaItemUrl)
+    const resultData = await result.text()
 
-  csvParser(resultData)?.forEach(el => {
-    createRedirect({
-      fromPath: el['Adres URL do przekierowania'],
-      toPath: el['Docelowy URL'],
-    });
-  })
+    csvParser(resultData)?.forEach(el => {
+      createRedirect({
+        fromPath: el['Adres URL do przekierowania'],
+        toPath: el['Docelowy URL'],
+      });
+    })
+  }
 
   // Create pages
 
