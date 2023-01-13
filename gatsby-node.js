@@ -48,9 +48,7 @@ exports.createPages = async ({
   const result = await fetch(csvRedirects.mediaItemUrl)
   const resultData = await result.text()
 
-  console.log(csvParser(resultData))
-
-  resultData?.forEach(el => {
+  csvParser(resultData)?.forEach(el => {
     createRedirect({
       fromPath: el['Adres URL do przekierowania'],
       toPath: el['Docelowy URL'],

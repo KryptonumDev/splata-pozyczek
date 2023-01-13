@@ -17,7 +17,9 @@ export default function ImageSection({ changeInView, data: { title, text, imgSou
                 {text
                     ? <div className="body1 text" dangerouslySetInnerHTML={{ __html: text }} />
                     : null}
-                <GatsbyImage className="image" image={image.localFile.childImageSharp.gatsbyImageData} alt={image.altText} />
+                {image.localFile?.childImageSharp?.gatsbyImageData
+                    ? <GatsbyImage className="image" image={image.localFile.childImageSharp.gatsbyImageData} alt={image.altText} />
+                    : <img className="image" image={image.localFile.publicURL} alt={image.altText} />}
                 {imgSource
                     ? <span className="body1 source">Źródło: {imgSource}</span>
                     : null}
@@ -39,6 +41,7 @@ export const query = graphql`
         image{
             altText
             localFile{
+                publicURL
                 childImageSharp{
                     gatsbyImageData
                 }
