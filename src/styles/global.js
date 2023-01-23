@@ -6,7 +6,7 @@ const Global = createGlobalStyle`
 :root {
    --shadow: 0px 4px 8px 3px rgba(97, 152, 193, 0.15), 0px 1px 3px rgba(97, 152, 193, 0.25);
    --section: clamp(40px, 10.4166666667vw, 80px);
-   --section-post: clamp(40px, 6.25vw, 64px);
+   --section-post: 40px;
 
    --color-dark: #002B73;
    --color-medium: #3B5BA9;
