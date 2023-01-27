@@ -13,12 +13,12 @@ export const checkboxController = (e, getValues, setValue) => {
 
     if (one && two && three) {
         document.getElementById('all').classList.remove('half')
-        setValue('checkAll', true)
+        setValue('checkAll', true, { shouldValidate: true })
     } else if (one || two || three) {
         document.getElementById('all').classList.add('half')
-        setValue('checkAll', false)
+        setValue('checkAll', false, { shouldValidate: true })
     } else {
         document.getElementById('all').classList.remove('half')
-        setValue('checkAll', false)
+        setValue('checkAll', false, { shouldValidate: true })
     }
 }

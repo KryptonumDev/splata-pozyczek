@@ -10,12 +10,12 @@ export const checkboxControllerHero = (e, getValues, setValue) => {
 
     if (one && two) {
         document.getElementById('all-hero').classList.remove('half')
-        setValue('checkAllHero', true)
+        setValue('checkAllHero', true, { shouldValidate: true })
     } else if (one || two) {
         document.getElementById('all-hero').classList.add('half')
-        setValue('checkAllHero', false)
+        setValue('checkAllHero', false, { shouldValidate: true })
     } else {
         document.getElementById('all-hero').classList.remove('half')
-        setValue('checkAllHero', false)
+        setValue('checkAllHero', false, { shouldValidate: true })
     }
 }

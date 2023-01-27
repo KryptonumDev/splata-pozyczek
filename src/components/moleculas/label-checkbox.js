@@ -5,7 +5,7 @@ export default function LabelCheckbox({ wrapClass, children, name, params, class
     return (
         <Label className={wrapClass}>
             <div className="input-wrap">
-                <Input {...register(name, params)} id={id} onChange={onChange} type='checkbox' />
+                <Input {...register(name, params)} id={id} onClick={onChange} type='checkbox' />
             </div>
             <span className={"label body3 " + className}>{children}</span>
             {errors[name] && <span className="error">Musisz wyrazić zgodę na powyższe zapisy.</span>}
