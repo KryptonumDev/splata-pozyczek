@@ -9,10 +9,8 @@ module.exports = {
       options: {
         schema: {
           timeout: 3000000,
-          perPage: 10,
-          requestConcurrency: 10,
         },
-        "url": "https://wp-splatapozyczek.headlesshub.com/graphql"
+        "url": "https://www-data.splatapozyczek.pl/graphql"
       }
     },
     'gatsby-plugin-image',
