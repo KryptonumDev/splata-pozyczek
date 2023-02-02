@@ -58,7 +58,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-yoast-sitemap",
       options: {
-        baseUrl: 'https://wp-splatapozyczek.headlesshub.com',
+        baseUrl: 'https://www-data.splatapozyczek.pl',
         gatsbyUrl: 'https://splatapozyczekmaster.gatsbyjs.io'
       }
     },

@@ -53,7 +53,7 @@ export default function Form({ extended, setIsSended, typTematow }) {
         setIsSended(true)
         debugger
         if (sendedCount < 3) {
-            let url = 'https://wp-splatapozyczek.headlesshub.com/wp-json/contact-form-7/v1/contact-forms/2977/feedback'
+            let url = 'https://www-data.splatapozyczek.pl/wp-json/contact-form-7/v1/contact-forms/2977/feedback'
             let body = new FormData()
             body.append('your-email', data.email)
             body.append("your-message", data.message)
