@@ -21,7 +21,6 @@ const csvParser = (data) => {
 
   }
 
-  //return result; //JavaScript object
   return result; //JSON
 };
 
@@ -50,13 +49,10 @@ exports.createPages = async ({
     const resultData = await result.text()
 
     csvParser(resultData)?.forEach(el => {
-      console.log({
-        fromPath: el['Adres URL do przekierowania'],
-        toPath: el['Docelowy URL'],
-      })
       createRedirect({
-        fromPath: el['Adres URL do przekierowania'],
-        toPath: el['Docelowy URL'],
+        fromPath: el.from,
+        toPath: el.to,
+        statusCode: el.code
       });
     })
   }
