@@ -4,8 +4,10 @@ export const checkboxControllerHero = (e, getValues, setValue) => {
 
     if (e.currentTarget.id === 'one-hero') {
         one = e.currentTarget.checked
+        setValue("privacyOneHero", e.currentTarget.checked, { shouldValidate: true })
     } else if (e.currentTarget.id === 'two-hero') {
         two = e.currentTarget.checked
+        setValue("privacyTwoHero", e.currentTarget.checked, { shouldValidate: true })
     }
 
     if (one && two) {
