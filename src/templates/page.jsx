@@ -131,13 +131,6 @@ export function Head({ pageContext, data: { wpPage: { seo, id } } }) {
               description:
                 'SplataPozyczek.pl \u2013 \u2705 kredyty got\u00f3wkowe, kredyt dla firm, po\u017cyczka konsolidacyjna, odd\u0142u\u017canie.',
               publisher: { '@id': 'https://splatapozyczek.pl/#organization' },
-              potentialAction: [
-                {
-                  '@type': 'SearchAction',
-                  target: 'https://splatapozyczek.pl/?s={search_term_string}',
-                  'query-input': 'required name=search_term_string'
-                }
-              ],
               inLanguage: 'pl-PL'
             },
             {

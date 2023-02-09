@@ -102,17 +102,17 @@ exports.createPages = async ({
 
   categoryNodes.forEach(({ slug, count, name }) => {
     if (count) {
-      for (let i = 10; i < count; i += 10) {
+      for (let i = 12; i < count; i += 12) {
         createPage({
-          path: '/blog/tag/' + slug + '/' + i / 10 + '/',
+          path: '/blog/tag/' + slug + '/' + (i / 12 + 1) + '/',
           component: resolve('src/templates/page.jsx'),
           context: {
             id: 'cG9zdDoxMDEz',
             slug,
             urlBasis: '/blog/tag/' + slug + '/',
-            url: '/blog/tag/' + slug + '/' + i / 10 + '/',
+            url: '/blog/tag/' + slug + '/' + (i / 12 + 1) + '/',
             title: 'name',
-            page: i / 10
+            page: (i / 12 + 1)
           },
         });
       }
@@ -142,17 +142,17 @@ exports.createPages = async ({
   }
   `)
 
-  for (let i = 10; i < postsCount; i += 10) {
+  for (let i = 12; i < postsCount; i += 12) {
     createPage({
-      path: '/blog/' + i / 10 + '/',
+      path: '/blog/' + (i / 12 + 1) + '/',
       component: resolve('src/templates/page.jsx'),
       context: {
         id: 'cG9zdDoxMDEz',
         slug: null,
         urlBasis: '/blog/',
-        url: '/blog/' + i / 10 + '/',
+        url: '/blog/' + (i / 12 + 1) + '/',
         title: 'Blog',
-        page: i / 10
+        page: (i / 12 + 1)
       },
     });
   }

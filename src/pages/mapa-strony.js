@@ -14,7 +14,8 @@ export default function MapaStrony({ data: { allSitePage } }) {
         }
 
         allSitePage.nodes.forEach(el => {
-            if (el.path.includes('404')) {
+
+            if (el.path.includes('404') || el?.pageContext?.page > 1) {
                 return null
             } else if (el.path === '/') {
                 arr.pages.unshift(el)
