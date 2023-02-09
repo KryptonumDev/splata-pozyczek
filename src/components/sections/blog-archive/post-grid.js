@@ -6,7 +6,7 @@ export default function PostGrid({ activeFilter, allPosts, page, categories }) {
     return (
         <Wrapper>
             {activeFilter
-                ? <p className="h6 arsenal title">Wybrana kategoria: <span className="blue">{categories.filter(el => el.slug === activeFilter)[0].name}</span></p>
+                ? <h1 className="h6 arsenal title">Wybrana kategoria: <span className="blue">{categories.filter(el => el.slug === activeFilter)[0].name}</span></h1>
                 : <p className="h6 arsenal title">Najnowsze <span className="blue">artykuły</span></p>}
             <Grid>
                 {allPosts.map((el, index) => {
