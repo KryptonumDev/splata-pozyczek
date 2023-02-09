@@ -98,7 +98,6 @@ const Wrapper = styled.section`
     }
 
     .img, iframe{
-        margin-bottom: 100px;
         height: fit-content;
         display: block;
         box-shadow: var(--shadow);
@@ -113,7 +112,7 @@ const Grid = styled.div`
     max-width: 1000px;
     margin: 0 auto;
     display: grid;
-    grid-gap: 48px; 
+    grid-gap: 100px; 
 
     @media (max-width: 860px){
         grid-gap: 36px;
