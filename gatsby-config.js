@@ -5,6 +5,13 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "GTM-T7TBF3X",
+        defaultDataLayer: { platform: "gatsby" },
+      },
+    },
+    {
       resolve: 'gatsby-source-wordpress',
       options: {
         schema: {
