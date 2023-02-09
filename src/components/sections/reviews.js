@@ -65,8 +65,8 @@ export default function Reviews({ data: { title, text }, expert, comments }) {
                 {chosenComments.length < 6
                     ? null
                     : showCount > chosenComments.length
-                        ? <OutlinedButton onClick={() => { changeShowCount(6) }} className="button">Ukryj</OutlinedButton>
-                        : <OutlinedButton onClick={() => { changeShowCount(showCount + 6) }} className="button">Wczytaj więcej</OutlinedButton>
+                        ? <OutlinedButton as='button' onClick={() => { changeShowCount(6) }} className="button">Ukryj</OutlinedButton>
+                        : <OutlinedButton as='button' onClick={() => { changeShowCount(showCount + 6) }} className="button">Wczytaj więcej</OutlinedButton>
                 }
             </Container>
         </Wrapper>
