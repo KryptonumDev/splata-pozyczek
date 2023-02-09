@@ -41,7 +41,7 @@ export const OutlinedButton = styled(Link)`
     }
 `
 
-export const FilledButton = ({ key, onClick, as, to, className, children }) => {
+export const FilledButton = ({ onClick, as, to, className, children }) => {
 
     const rippleEl = useRef(null)
 
@@ -76,7 +76,7 @@ export const FilledButton = ({ key, onClick, as, to, className, children }) => {
         rippleEl.current.style.top = y + 'px'
 
         rippleEl.current.classList.add('active')
-        
+
         if (typeof onClick !== 'undefined') {
             onClick()
         }
@@ -89,7 +89,7 @@ export const FilledButton = ({ key, onClick, as, to, className, children }) => {
 
     if (as === 'button') {
         return (
-            <StyledFilledButton key={key} className={className} onClick={e => { rippleButton(e, onClick) }}>
+            <StyledFilledButton className={className} onClick={e => { rippleButton(e, onClick) }}>
                 <span>{children}</span>
                 <Ripple ref={rippleEl} />
             </StyledFilledButton>
@@ -97,7 +97,7 @@ export const FilledButton = ({ key, onClick, as, to, className, children }) => {
     }
 
     return (
-        <StyledFilledLink key={key} as={as} to={to} className={className} onClick={e => { rippleLink(e) }}>
+        <StyledFilledLink as={as} to={to} className={className} onClick={e => { rippleLink(e) }}>
             <span>{children}</span>
             <Ripple ref={rippleEl} />
         </StyledFilledLink>

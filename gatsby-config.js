@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Spłata Pożyczek`,
-    siteUrl: ` https://splatapozyczek.pl`
+    siteUrl: `https://splatapozyczek.pl`
   },
   plugins: [
     {

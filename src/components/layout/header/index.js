@@ -74,7 +74,9 @@ export default function Header({ data }) {
           <Navigation className="desctop">
             <ul className="nav">
               {navigacja.map((el, index) =>
-                <MegaMenu key={index} data={el} level='first' />
+                <React.Fragment key={el.url.url + index} >
+                  <MegaMenu data={el} level='first' />
+                </React.Fragment>
               )}
             </ul>
           </Navigation>

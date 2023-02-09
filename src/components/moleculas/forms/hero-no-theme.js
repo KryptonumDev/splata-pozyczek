@@ -39,6 +39,7 @@ export default function Form({ setIsSended, formTitle }) {
             body.append('your-name', data.name)
             body.append('your-phone', data.phone)
             body.append("your-message", data.message)
+            body.append('post-url', window.location.href)
             axios.post(url, body)
                 .then((res) => {
                     if (res.status === 200) {

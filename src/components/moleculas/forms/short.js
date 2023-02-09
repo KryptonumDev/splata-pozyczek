@@ -57,6 +57,7 @@ export default function Form({ setIsSended, typTematow }) {
             body.append('your-name', data.name)
             body.append('your-phone', data.phone)
             body.append('your-subject', data.theme)
+            body.append('post-url', window.location.href)
             axios.post(url, body)
                 .then((res) => {
                     if (res.status === 200) {

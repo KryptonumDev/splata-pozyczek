@@ -55,6 +55,7 @@ export default function Form({ extended, title, type, setIsSended, typTematow })
             body.append("your-message", data.message)
             body.append('your-name', data.name)
             body.append('your-phone', data.phone)
+            body.append('post-url', window.location.href)
             if (extended && typTematow === 'Firmowego') {
                 body.append('your-nip', data.nip)
             } else {

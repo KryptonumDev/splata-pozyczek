@@ -70,6 +70,7 @@ export default function Form({ extended, setIsSended, typTematow }) {
             body.append('your-money-count', data.moneyCount)
             body.append('your-income-count', data.incomeCount)
             body.append('your-income-date', data.incomeDate)
+            body.append('post-url', window.location.href)
 
             axios.post(url, body)
                 .then((res) => {

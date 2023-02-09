@@ -55,7 +55,7 @@ export default function Faq({ data: { title, repeater } }) {
                     <Grid className="small">
                         <div className="grid second">
                             {arrays.first.map((el, index) => (
-                                <FaqItem el={el} open={!index} />
+                                <React.Fragment key={index}><FaqItem el={el} open={!index} /></React.Fragment>
                             ))}
                         </div>
                         <div className="grid second">
@@ -67,7 +67,7 @@ export default function Faq({ data: { title, repeater } }) {
                                     }
                                 }
                                 return (
-                                    <FaqItem el={el} open={open} />
+                                    <React.Fragment key={index}><FaqItem el={el} open={open} /></React.Fragment>
                                 )
                             }
                             )}

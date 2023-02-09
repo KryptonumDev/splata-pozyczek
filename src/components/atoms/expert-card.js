@@ -4,12 +4,12 @@ import React from "react"
 import styled from "styled-components"
 import { Button } from "./buttons"
 
-export default function ExpertCard({ key, el }) {
+export default function ExpertCard({  el }) {
     const phone = el.ekspert.numerTelefonu.toString().replace(/^(.{3})(.{3})(.{3})(.*)$/, "$1 $2 $3")
     // let a = el.ekspert.workWithProducts
     // debugger
     return (
-        <Item key={key}>
+        <Item >
             <Link aria-label={el.title} className="link" to={'/zespol/' + el.slug + '/'} />
             {el.ekspert.image
                 ? <GatsbyImage className="image" image={el.ekspert.image.localFile.childImageSharp.gatsbyImageData} alt={el.ekspert.image.altText} />
