@@ -6,22 +6,11 @@ import Filter from "./filter"
 import Pagination from "./pagination"
 import Hero from "./hero"
 import { Helmet } from "react-helmet"
+import { useQueryParam } from './../../../helpers/query-params'
 
 export default function BlogArchive({ data: { pageTitle, text, list, link, relatedPost }, title, allPosts, location, categories, slug, url }) {
 
-  const [currentPage, setCurrentPage] = useState(() => {
-    if (!location.search) {
-      return 1
-    }
-
-    if (location.search === '') {
-      return 1
-    }
-
-    const urlParams = new URLSearchParams(location.search)
-
-    return parseInt(urlParams.get('page'))
-  })
+  const [currentPage, setCurrentPage] = useQueryParam('page', '1')
   const [currentFilter] = useState(slug)
 
   const filtredPosts = useMemo(() => {
@@ -40,22 +29,10 @@ export default function BlogArchive({ data: { pageTitle, text, list, link, relat
     return posts
   }, [currentFilter, allPosts])
 
-  useEffect(() => {
-    setCurrentPage(() => {
-      if (location.search === '') {
-        return 1
-      }
-      const urlParams = new URLSearchParams(location.search)
-
-      return parseInt(urlParams.get('page'))
-    })
-  }, [location])
-
   const categoryName = () => {
     let category = categories.filter(el => el.slug === currentFilter)
     return category[0].name
   }
-
   return (
     <Wrapper>
       <Helmet>
@@ -85,10 +62,10 @@ export default function BlogArchive({ data: { pageTitle, text, list, link, relat
       <PostGrid
         activeFilter={currentFilter}
         categories={categories}
-        page={currentPage}
+        page={+currentPage}
         allPosts={filtredPosts} />
       <Pagination
-        page={currentPage}
+        page={+currentPage}
         setCurrentPage={setCurrentPage}
         posts={filtredPosts}
         url={url} />
