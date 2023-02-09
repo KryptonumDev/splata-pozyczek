@@ -65,11 +65,11 @@ export default function Filter({ categories, isAltLayout, allCount }) {
                         )
                         : null}
                     <ControlWrap className={maxButtonsTransform > 0 ? 'button' : 'no-button'} id='control-wrap'>
-                        <Control style={{ x }} drag='x' dragConstraints={{ left: maxButtonsTransform > 0 ? -maxButtonsTransform : 0, right: 0 }} maxButtonsTransform={maxButtonsTransform} id='control'>
-                            <Button activeClassName="active" to={'/blog/'} active={CATEGORY_COLORS['gray'].active} hover={CATEGORY_COLORS['gray'].hover} background={CATEGORY_COLORS['gray'].default}>Wszystkie ({allCount})</Button>
+                        <Control style={{ x }} drag='x' dragConstraints={{ left: maxButtonsTransform > 0 ? -maxButtonsTransform : 0, right: 0 }} id='control'>
+                            <Button activeClassName="active"  to={'/blog/'} active={CATEGORY_COLORS['gray'].active} hover={CATEGORY_COLORS['gray'].hover} background={CATEGORY_COLORS['gray'].default}>Wszystkie ({allCount})</Button>
                             {filtredCategories.map(el => {
                                 if (el.count) {
-                                    return <Button key={el.name} activeClassName="active" to={'/blog/tag/' + el.slug + '/'} active={CATEGORY_COLORS[el?.category?.color].active} hover={CATEGORY_COLORS[el?.category?.color].hover} background={CATEGORY_COLORS[el?.category?.color].default}>{el.name} ({el.count})</Button>
+                                    return <Button key={el.name} partiallyActive={true} activeClassName="active" to={'/blog/tag/' + el.slug + '/'} active={CATEGORY_COLORS[el?.category?.color].active} hover={CATEGORY_COLORS[el?.category?.color].hover} background={CATEGORY_COLORS[el?.category?.color].default}>{el.name} ({el.count})</Button>
                                 }
                                 return null
                             })}

@@ -60,15 +60,15 @@ exports.createPages = async ({
   // Create pages
 
   const { data: { allWpPage: { nodes } } } = await graphql(`
-    query {
-      allWpPage{
-        nodes {
-          title
-          id
-          uri
-        }
+  {
+    allWpPage(filter: {id: {ne: "cG9zdDoxMDEz"}}) {
+      nodes {
+        title
+        id
+        uri
       }
     }
+  }
   `);
 
   nodes.forEach(({ id, uri, title }) => {
@@ -86,6 +86,8 @@ exports.createPages = async ({
     }
   });
 
+  // category pages
+
   const { data: { allWpTag: { nodes: categoryNodes } } } = await graphql(`
   query{
     allWpTag {
@@ -100,18 +102,77 @@ exports.createPages = async ({
 
   categoryNodes.forEach(({ slug, count, name }) => {
     if (count) {
+      for (let i = 10; i < count; i += 10) {
+        createPage({
+          path: '/blog/tag/' + slug + '/' + i / 10 + '/',
+          component: resolve('src/templates/page.jsx'),
+          context: {
+            id: 'cG9zdDoxMDEz',
+            slug,
+            urlBasis: '/blog/tag/' + slug + '/',
+            url: '/blog/tag/' + slug + '/' + i / 10 + '/',
+            title: 'name',
+            page: i / 10
+          },
+        });
+      }
+
       createPage({
         path: '/blog/tag/' + slug + '/',
         component: resolve('src/templates/page.jsx'),
         context: {
           id: 'cG9zdDoxMDEz',
           slug,
+          urlBasis: '/blog/tag/' + slug + '/',
           url: '/blog/tag/' + slug + '/',
-          title: name
+          title: name,
+          page: 1
         },
       });
     }
   });
+
+  // blog archive
+
+  const { data: { allWpPost: { totalCount: postsCount } } } = await graphql(`
+  {
+    allWpPost {
+      totalCount
+    }
+  }
+  `)
+
+  for (let i = 10; i < postsCount; i += 10) {
+    createPage({
+      path: '/blog/' + i / 10 + '/',
+      component: resolve('src/templates/page.jsx'),
+      context: {
+        id: 'cG9zdDoxMDEz',
+        slug: null,
+        urlBasis: '/blog/',
+        url: '/blog/' + i / 10 + '/',
+        title: 'Blog',
+        page: i / 10
+      },
+    });
+  }
+
+  createPage({
+    path: '/blog/',
+    component: resolve('src/templates/page.jsx'),
+    context: {
+      id: 'cG9zdDoxMDEz',
+      slug: null,
+      urlBasis: '/blog/',
+      url: '/blog/',
+      title: 'Blog',
+      page: 1
+    },
+  });
+
+
+
+  // EXPERTS
 
   const { data: { allWpEkspert: { nodes: expertsNodes } } } = await graphql(`
   query{

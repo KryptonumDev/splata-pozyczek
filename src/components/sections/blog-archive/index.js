@@ -6,11 +6,8 @@ import Filter from "./filter"
 import Pagination from "./pagination"
 import Hero from "./hero"
 import { Helmet } from "react-helmet"
-import { useQueryParam } from './../../../helpers/query-params'
 
-export default function BlogArchive({ data: { pageTitle, text, list, link, relatedPost }, title, allPosts, location, categories, slug, url }) {
-
-  const [currentPage, setCurrentPage] = useQueryParam('page', '1')
+export default function BlogArchive({ data: { pageTitle, text, list, link, relatedPost }, page, title, allPosts, categories, slug, url }) {
   const [currentFilter] = useState(slug)
 
   const filtredPosts = useMemo(() => {
@@ -33,18 +30,19 @@ export default function BlogArchive({ data: { pageTitle, text, list, link, relat
     let category = categories.filter(el => el.slug === currentFilter)
     return category[0].name
   }
+
   return (
     <Wrapper>
       <Helmet>
         {currentFilter
-          ? currentPage !== 1
-            ? <title>{`${categoryName()} - Artykuły - Strona ${currentPage} - SplataPozyczek.pl`}</title>
+          ? page !== 1
+            ? <title>{`${categoryName()} - Artykuły - Strona ${page} - SplataPozyczek.pl`}</title>
             : <title>{`${categoryName()} - Artykuły - SplataPozyczek.pl`}</title>
-          : currentPage !== 1
-            ? <title>{`Blog o kredytach i finansach - Strona ${currentPage} - SplataPozyczek.pl`}</title>
+          : page !== 1
+            ? <title>{`Blog o kredytach i finansach - Strona ${page} - SplataPozyczek.pl`}</title>
             : <title>{`Blog o kredytach i finansach - SplataPozyczek.pl`}</title>}
 
-        <link rel="canonical" href={'https://splatapozyczek.pl' + url + (currentPage !== 1 ? '?page=' + currentPage : '')} />
+        <link rel="canonical" href={'https://splatapozyczek.pl' + url + (page !== 1 ? '/' + page + '/' : '')} />
       </Helmet>
       {currentFilter
         ? null
@@ -62,11 +60,10 @@ export default function BlogArchive({ data: { pageTitle, text, list, link, relat
       <PostGrid
         activeFilter={currentFilter}
         categories={categories}
-        page={+currentPage}
+        page={+page}
         allPosts={filtredPosts} />
       <Pagination
-        page={+currentPage}
-        setCurrentPage={setCurrentPage}
+        page={+page}
         posts={filtredPosts}
         url={url} />
     </Wrapper>
