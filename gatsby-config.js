@@ -41,7 +41,7 @@ module.exports = {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         host: null,
-        sitemap: ' https://splatapozyczek.pl/sitemap_index.xml',
+        sitemap: 'https://splatapozyczek.pl/sitemap_index.xml',
         policy: [{ userAgent: '*', allow: '/' }]
       }
     },
@@ -62,7 +62,7 @@ module.exports = {
       resolve: "gatsby-plugin-yoast-sitemap",
       options: {
         baseUrl: 'https://www-data.splatapozyczek.pl',
-        gatsbyUrl: ' https://splatapozyczek.pl'
+        gatsbyUrl: 'https://splatapozyczek.pl'
       }
     },
   ]
