@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Spłata Pożyczek`,
-    siteUrl: `https://splatapozyczekmaster.gatsbyjs.io`
+    siteUrl: ` https://splatapozyczek.pl`
   },
   plugins: [
     {
@@ -41,7 +41,7 @@ module.exports = {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         host: null,
-        sitemap: 'https://splatapozyczekmaster.gatsbyjs.io/sitemap_index.xml',
+        sitemap: ' https://splatapozyczek.pl/sitemap_index.xml',
         policy: [{ userAgent: '*', allow: '/' }]
       }
     },
@@ -62,7 +62,7 @@ module.exports = {
       resolve: "gatsby-plugin-yoast-sitemap",
       options: {
         baseUrl: 'https://www-data.splatapozyczek.pl',
-        gatsbyUrl: 'https://splatapozyczekmaster.gatsbyjs.io'
+        gatsbyUrl: ' https://splatapozyczek.pl'
       }
     },
   ]
