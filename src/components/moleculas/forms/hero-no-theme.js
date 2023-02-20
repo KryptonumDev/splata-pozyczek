@@ -10,6 +10,7 @@ import LabelInput from "../label-input"
 import LabelCheckbox from "../label-checkbox"
 import { checkboxAllHero } from "../../../helpers/hero-checkbox-all"
 import { checkboxControllerHero } from "../../../helpers/hero-checkbox-controller"
+import { datalayerArguments } from "../../../helpers/datalayer"
 
 export default function Form({ setIsSended, formTitle }) {
 
@@ -46,6 +47,14 @@ export default function Form({ setIsSended, formTitle }) {
                         changeSendedCount(sendedCount + 1)
                         setIsSended(true)
                         reset()
+
+                        datalayerArguments("form submit", {
+                            'email': data.email,
+                            'name': data.name,
+                            'phone': data.phone,
+                            'message': data.message,
+                            'url': window.location
+                        });
                     } else {
                         alert('wystąpił problem, sprobuj póżniej')
                     }

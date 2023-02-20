@@ -10,6 +10,7 @@ import LabelCheckbox from "../label-checkbox"
 import { checkboxController } from "../../../helpers/checkbox-controller"
 import { checkboxAll } from "../../../helpers/checkbox-all"
 import LabelSelect from "../label-select"
+import { datalayerArguments } from "../../../helpers/datalayer"
 
 export default function Form({ setIsSended }) {
 
@@ -49,6 +50,14 @@ export default function Form({ setIsSended }) {
                         changeSendedCount(sendedCount + 1)
                         setIsSended(true)
                         reset()
+
+                        datalayerArguments("form submit", {
+                            'email': data.email,
+                            'name': data.name,
+                            'provision': data.theme,
+                            'phone': data.phone,
+                            'url': window.location
+                        });
                     } else {
                         alert('wystąpił problem, sprobuj póżniej')
                     }

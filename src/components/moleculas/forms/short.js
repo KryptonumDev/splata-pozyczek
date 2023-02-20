@@ -10,6 +10,7 @@ import LabelCheckbox from "../label-checkbox"
 import { checkboxController } from "../../../helpers/checkbox-controller"
 import { checkboxAll } from "../../../helpers/checkbox-all"
 import LabelSelect from "../label-select"
+import { datalayerArguments } from "../../../helpers/datalayer"
 
 export default function Form({ setIsSended, typTematow }) {
 
@@ -48,7 +49,6 @@ export default function Form({ setIsSended, typTematow }) {
     const onSubmit = data => {
         setIsSended(true)
 
-
         if (sendedCount < 3) {
             let url = 'https://www-data.splatapozyczek.pl/wp-json/contact-form-7/v1/contact-forms/669/feedback'
             let body = new FormData()
@@ -64,6 +64,16 @@ export default function Form({ setIsSended, typTematow }) {
                         changeSendedCount(sendedCount + 1)
                         setIsSended(true)
                         reset()
+
+                        datalayerArguments("form submit", {
+                            'email': data.email,
+                            'message': data.message,
+                            'name': data.name,
+                            'phone': data.phone,
+                            'subject': data.theme,
+                            'url': window.location
+                        });
+
                     } else {
                         alert('wystąpił problem, sprobuj póżniej')
                     }

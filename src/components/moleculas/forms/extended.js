@@ -8,6 +8,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import LabelInput from "../label-input"
 import LabelCheckbox from "../label-checkbox"
 import LabelSelect from "../label-select"
+import { datalayerArguments } from "../../../helpers/datalayer"
 
 const incomeDates = [
     { theme: '0-3 miesięcy' },
@@ -78,6 +79,19 @@ export default function Form({ extended, setIsSended, typTematow }) {
                         changeSendedCount(sendedCount + 1)
                         setIsSended(true)
                         reset()
+
+                        datalayerArguments("form submit", {
+                            'email': data.email,
+                            'name': data.name,
+                            'phone': data.phone,
+                            'message': data.message,
+                            'url': window.location,
+                            'nip': data.nip ? data.nip : 'bez NIP',
+                            'subject': data.theme,
+                            'place': data.place,
+                            'money-count': data.moneyCount,
+                            'income-count': data.incomeDate
+                        });
                     } else {
                         alert('wystąpił problem, sprobuj póżniej')
                     }
