@@ -69,7 +69,7 @@ module.exports = {
       resolve: "gatsby-plugin-yoast-sitemap",
       options: {
         baseUrl: 'https://www-data.splatapozyczek.pl',
-        gatsbyUrl: 'https://splatapozyczek.pl'
+        gatsbyUrl: 'https://splatapozyczek.pl' 
       }
     },
   ]
