@@ -8,7 +8,7 @@ import { IconFast } from "../../../images/icon-fast-contact"
 import { IconExtended } from "../../../images/icon-extended-contact"
 import DefaultForm from "../../moleculas/forms/full"
 
-export default function ExtendedContactForm({ typTematow, title }) {
+export default function ExtendedContactForm({ ip, typTematow, title }) {
 
     const [isSended, setIsSended] = useState(false)
     const [isExtended, setIsExtended] = useState(false)
@@ -50,10 +50,10 @@ export default function ExtendedContactForm({ typTematow, title }) {
                         </ButtonFlex>
                         <div id='form' className="form">
                             <div className="default">
-                                <DefaultForm extended={true} typTematow={typTematow} setIsSended={setIsSended} />
+                                <DefaultForm ip={ip} extended={true} typTematow={typTematow} setIsSended={setIsSended} />
                             </div>
                             <div className="extended">
-                                <ExtendedForm extended={true} typTematow={typTematow} setIsSended={setIsSended} />
+                                <ExtendedForm ip={ip} extended={true} typTematow={typTematow} setIsSended={setIsSended} />
                             </div>
                         </div>
                     </Content>

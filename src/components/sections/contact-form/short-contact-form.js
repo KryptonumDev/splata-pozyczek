@@ -6,7 +6,7 @@ import { textParser } from "../../../helpers/wysiwyg-modification"
 import Success from "../../moleculas/success-send"
 import { GatsbyImage } from "gatsby-plugin-image"
 
-export default function ShortContactForm({ imageUnderTitle, textUnderImage, typTematow, title }) {
+export default function ShortContactForm({ imageUnderTitle, textUnderImage, title, ip }) {
     const [isSended, setIsSended] = useState(false)
     return (
         <Wrapper>
@@ -18,7 +18,7 @@ export default function ShortContactForm({ imageUnderTitle, textUnderImage, typT
                             {imageUnderTitle?.localFile && <GatsbyImage className="image" image={imageUnderTitle.localFile.childImageSharp.gatsbyImageData} alt={imageUnderTitle.altText} />}
                             {textUnderImage && <p className="sub1">{textUnderImage}</p>}
                         </div>
-                        <Form setIsSended={setIsSended} />
+                        <Form ip={ip} setIsSended={setIsSended} />
                     </Content>
                     <Success isSended={isSended} setIsSended={setIsSended} />
                 </Box>

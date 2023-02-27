@@ -12,7 +12,7 @@ import { checkboxAll } from "../../../helpers/checkbox-all"
 import LabelSelect from "../label-select"
 import { datalayerArguments } from "../../../helpers/datalayer"
 
-export default function Form({ setIsSended }) {
+export default function Form({ ip, setIsSended }) {
 
     const { wpPage: { formyKontaktowe: { linkPrivacyPolicy, provisionTypes } } } = useStaticQuery(graphql`
     query {
@@ -44,6 +44,7 @@ export default function Form({ setIsSended }) {
             body.append('your-phone', data.phone)
             body.append('your-provision', data.theme)
             body.append('post-url', window.location.href)
+            body.append('your-ip', ip)
             axios.post(url, body)
                 .then((res) => {
                     if (res.status === 200) {
@@ -56,7 +57,8 @@ export default function Form({ setIsSended }) {
                             'name': data.name,
                             'provision': data.theme,
                             'phone': data.phone,
-                            'url': window.location
+                            'url': window.location,
+                            'ip': ip
                         });
                     } else {
                         alert('wystąpił problem, sprobuj póżniej')

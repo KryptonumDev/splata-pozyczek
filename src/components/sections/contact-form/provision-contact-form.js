@@ -5,7 +5,7 @@ import Form from "../../moleculas/forms/provision"
 import Success from "../../moleculas/success-send"
 import { textParser } from "../../../helpers/wysiwyg-modification"
 
-export default function ProvisionContactForm({ title }) {
+export default function ProvisionContactForm({ ip, title }) {
     const [isSended, setIsSended] = useState(false)
 
     return (
@@ -14,7 +14,7 @@ export default function ProvisionContactForm({ title }) {
                 <Box>
                     <Content>
                         {title && <h2 className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />}
-                        <Form setIsSended={setIsSended} />
+                        <Form ip={ip} setIsSended={setIsSended} />
                     </Content>
                     <Success isSended={isSended} setIsSended={setIsSended} />
                 </Box>

@@ -12,7 +12,7 @@ import { checkboxAll } from "../../../helpers/checkbox-all"
 import LabelSelect from "../label-select"
 import { datalayerArguments } from "../../../helpers/datalayer"
 
-export default function Form({ extended, title, type, setIsSended, typTematow }) {
+export default function Form({ ip, extended, title, type, setIsSended, typTematow }) {
 
     const { wpPage: { formyKontaktowe: { linkPrivacyPolicy, additionalInform, meesageThemesFirms, meesageThemesDetails } } } = useStaticQuery(graphql`
     query {
@@ -57,6 +57,7 @@ export default function Form({ extended, title, type, setIsSended, typTematow })
             body.append('your-name', data.name)
             body.append('your-phone', data.phone)
             body.append('post-url', window.location.href)
+            body.append('your-ip', ip)
             if (extended && typTematow === 'Firmowego') {
                 body.append('your-nip', data.nip)
             } else {
@@ -78,9 +79,10 @@ export default function Form({ extended, title, type, setIsSended, typTematow })
                             'name': data.name,
                             'phone': data.phone,
                             'message': data.message,
-                            'url': window.location, 
+                            'url': window.location,
                             'nip': data.nip ? data.nip : 'bez NIP',
-                            'subject': data.theme ? data.theme : title
+                            'subject': data.theme ? data.theme : title,
+                            'ip': ip
                         });
                     } else {
                         alert('wystąpił problem, sprobuj póżniej')

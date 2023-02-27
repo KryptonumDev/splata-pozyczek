@@ -16,7 +16,7 @@ const incomeDates = [
     { theme: 'powyżej 12 miesięcy' }
 ]
 
-export default function Form({ extended, setIsSended, typTematow }) {
+export default function Form({ ip, extended, setIsSended, typTematow }) {
 
     const { wpPage: { formyKontaktowe: { linkPrivacyPolicy, additionalInform, meesageThemesFirms, meesageThemesDetails } } } = useStaticQuery(graphql`
     query {
@@ -60,6 +60,7 @@ export default function Form({ extended, setIsSended, typTematow }) {
             body.append("your-message", data.message)
             body.append('your-name', data.name)
             body.append('your-phone', data.phone)
+            body.append('your-ip', ip)
             if (extended && typTematow === 'Firmowego') {
                 body.append('your-nip', data.nip)
             } else {
@@ -87,10 +88,11 @@ export default function Form({ extended, setIsSended, typTematow }) {
                             'message': data.message,
                             'url': window.location,
                             'nip': data.nip ? data.nip : 'bez NIP',
-                            'subject': data.theme,
+                            'subject': data.theme ? data.theme : 'bez tematu',
                             'place': data.place,
                             'money-count': data.moneyCount,
-                            'income-count': data.incomeDate
+                            'income-count': data.incomeDate,
+                            'ip': ip
                         });
                     } else {
                         alert('wystąpił problem, sprobuj póżniej')

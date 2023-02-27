@@ -12,7 +12,7 @@ import { checkboxAll } from "../../../helpers/checkbox-all"
 import LabelSelect from "../label-select"
 import { datalayerArguments } from "../../../helpers/datalayer"
 
-export default function Form({ setIsSended, typTematow }) {
+export default function Form({ ip, setIsSended, typTematow }) {
 
     const { wpPage: { formyKontaktowe: { linkPrivacyPolicy, meesageThemesFirms, meesageThemesDetails } } } = useStaticQuery(graphql`
     query {
@@ -58,6 +58,7 @@ export default function Form({ setIsSended, typTematow }) {
             body.append('your-phone', data.phone)
             body.append('your-subject', data.theme)
             body.append('post-url', window.location.href)
+            body.append('your-ip', ip)
             axios.post(url, body)
                 .then((res) => {
                     if (res.status === 200) {
@@ -71,7 +72,8 @@ export default function Form({ setIsSended, typTematow }) {
                             'name': data.name,
                             'phone': data.phone,
                             'subject': data.theme,
-                            'url': window.location
+                            'url': window.location,
+                            'ip': ip
                         });
 
                     } else {
