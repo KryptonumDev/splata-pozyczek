@@ -67,10 +67,18 @@ const Content = styled.section`
     .h6{
         color: ${props => props.color};
         font-family: 'Arsenal';
+        
+        *{
+            color: ${props => props.color};
+        }
     }
 
     .body1{
         color: ${props => props.color};
+        
+        *{
+            color: ${props => props.color};
+        }
     }
     
 `
