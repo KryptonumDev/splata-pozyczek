@@ -66,7 +66,7 @@ module.exports = {
       }
     },
     {
-      resolve: "gatsby-plugin-yoast-sitemap",
+      resolve: "kryptonum-gatsby-plugin-yoast-sitemap",
       options: {
         baseUrl: 'https://www-data.splatapozyczek.pl',
         gatsbyUrl: 'https://splatapozyczek.pl' 

@@ -6088,15 +6088,6 @@ gatsby-plugin-utils@^4.6.0:
     joi "^17.7.0"
     mime "^3.0.0"
 
-gatsby-plugin-yoast-sitemap@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-yoast-sitemap/-/gatsby-plugin-yoast-sitemap-0.0.2.tgz#5f882d26029c29f9dd14707fa1ee162135f13723"
-  integrity sha512-iz/FVtwrt44dQ46WBTFfCEO+EvME8Dn4oFY9vmIQLZ7pG7tIN2B2BRXRj6XdMkPRW9ReCHArzzVA189Jtpm9tg==
-  dependencies:
-    axios "^0.21.1"
-    cheerio "^1.0.0-rc.5"
-    fs-extra "^9.1.0"
-
 gatsby-react-router-scroll@^6.6.0:
   version "6.6.0"
   resolved "https://registry.yarnpkg.com/gatsby-react-router-scroll/-/gatsby-react-router-scroll-6.6.0.tgz#83109eccb4262b4ac1a9fb8b513e51adc58d7c95"
@@ -7506,6 +7497,15 @@ klona@^2.0.4:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.5.tgz#d166574d90076395d9963aa7a928fabb8d76afbc"
   integrity sha512-pJiBpiXMbt7dkzXe8Ghj/u4FfXOOa98fPW+bihOJ4SjnoijweJrNThJfd3ifXpXhREjpoF2mZVH1GfS9LV3kHQ==
+
+kryptonum-gatsby-plugin-yoast-sitemap@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/kryptonum-gatsby-plugin-yoast-sitemap/-/kryptonum-gatsby-plugin-yoast-sitemap-0.0.4.tgz#158463797f56254d9394009428e4628a6ff45efd"
+  integrity sha512-Qk+ByjUNpufiM9ybD5KhUVMDSMZyTvQFiV59tOurktaBn271ZCLCL6a+bjMCjbXimBsAgQUmY8EtmNbFhq2DJg==
+  dependencies:
+    axios "^0.21.1"
+    cheerio "^1.0.0-rc.5"
+    fs-extra "^9.1.0"
 
 language-subtag-registry@~0.3.2:
   version "0.3.22"
