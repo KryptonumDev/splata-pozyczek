@@ -7498,10 +7498,10 @@ klona@^2.0.4:
   resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.5.tgz#d166574d90076395d9963aa7a928fabb8d76afbc"
   integrity sha512-pJiBpiXMbt7dkzXe8Ghj/u4FfXOOa98fPW+bihOJ4SjnoijweJrNThJfd3ifXpXhREjpoF2mZVH1GfS9LV3kHQ==
 
-kryptonum-gatsby-plugin-yoast-sitemap@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/kryptonum-gatsby-plugin-yoast-sitemap/-/kryptonum-gatsby-plugin-yoast-sitemap-0.0.5.tgz#4fd7b1c50b269668a9c7f02b67c7a2316e02e891"
-  integrity sha512-A2GUmsGL6qFEu963AgfABGdG3UWa0IHSMxdAql75en+KKLBptts4wiUfkIujREiSDFPk5aJhoHNUKGbE1C3EWQ==
+kryptonum-gatsby-plugin-yoast-sitemap@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/kryptonum-gatsby-plugin-yoast-sitemap/-/kryptonum-gatsby-plugin-yoast-sitemap-0.0.6.tgz#2fe279d4bcaa425f59370ff8c2b64b1f0122d0a7"
+  integrity sha512-klxq6IKTggqSy1XbU35ip6AHGg95DfvxH0uLlVt+3oqStxO5KJBJ/rfkViQ4zFm93UfWr2Wd02pNuEvXIf1gDw==
   dependencies:
     axios "^0.21.1"
     cheerio "^1.0.0-rc.5"

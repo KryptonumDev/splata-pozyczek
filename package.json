@@ -31,7 +31,7 @@
     "gatsby-source-wordpress": "^7.6.0",
     "gatsby-transformer-sharp": "^5.6.0",
     "html-react-parser": "^3.0.8",
-    "kryptonum-gatsby-plugin-yoast-sitemap": "^0.0.5",
+    "kryptonum-gatsby-plugin-yoast-sitemap": "^0.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
