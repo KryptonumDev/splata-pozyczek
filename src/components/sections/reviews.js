@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react"
+import React, { useLayoutEffect, useState } from "react"
 import styled from "styled-components"
 import { graphql, useStaticQuery } from "gatsby"
 import { Container } from "../atoms/container"
@@ -25,7 +25,7 @@ export default function Reviews({ data: { title, text }, expert, comments }) {
 
     const [chosenComments, setComments] = useState([])
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         axios('https://www-data.splatapozyczek.pl/wp-json/wp/v2/comments')
             .then(response => {
                 setComments(response.data.filter(el => el.acf.is_shown === true))
