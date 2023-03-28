@@ -4,9 +4,6 @@ import HeroExpert from "../components/sections/hero-expert"
 import Reviews from "../components/sections/reviews"
 import { Helmet } from "react-helmet"
 
-import Logo from './../../static/logo.svg'
-import OG from './../../static/og.jpg'
-
 export function Head({ pageContext, data: { wpEkspert: { seo } } }) {
 
   const canonical = 'https://splatapozyczek.pl' + pageContext.url
@@ -47,7 +44,7 @@ export function Head({ pageContext, data: { wpEkspert: { seo } } }) {
                 '@type': 'ImageObject',
                 '@id': 'https://splatapozyczek.pl/#logo',
                 inLanguage: 'pl-PL',
-                url: Logo,
+                url: 'https://splatapozyczek.pl/logo.svg',
                 width: 181,
                 height: 43,
                 caption: 'Splatapozyczek.pl'
@@ -129,11 +126,11 @@ export function Head({ pageContext, data: { wpEkspert: { seo } } }) {
         <>
           <meta
             property='og:image'
-            content={'https://splatapozyczek.pl' + OG}
+            content={'https://splatapozyczek.pl/og.jpg'}
           />
           <meta
             property='twitter:image'
-            content={'https://splatapozyczek.pl' + OG}
+            content={'https://splatapozyczek.pl/og.jpg'}
           />
         </>
       )}

@@ -23,12 +23,8 @@ import { Helmet } from "react-helmet"
 import { htmlDelete } from "../helpers/wysiwyg-modification"
 import { slugTransform } from "../helpers/slug-transform"
 
-import Logo from './../../static/logo.svg'
-import OG from './../../static/og.jpg'
-
 export function Head({ pageContext, data: { wpPost: { id, seo, author, title, slug, blogPost } } }) {
   const canonical = 'https://splatapozyczek.pl' + pageContext.url
-
 return (
   <>
     <meta charSet='utf-8' />
@@ -73,18 +69,17 @@ return (
           'https://splatapozyczek.pl' +
           (seo.opengraphImage?.localFile?.publicURL
             ? seo.opengraphImage.localFile.publicURL
-            : OG),
+            : 'https://splatapozyczek.pl/og.jpg'),
         author: {
           '@type': 'Person',
-          name: author.node.name,
-          url: 'https://splatapozyczek.pl/blog/' + slug + '/' // TODO
+          name: author.node.name
         },
         publisher: {
           '@type': 'Organization',
           name: 'Splata Pożyczek',
           logo: {
             '@type': 'ImageObject',
-            url: Logo
+            url: 'https://splatapozyczek.pl/logo.svg'
           }
         },
         datePublished: seo.opengraphPublishedTime,
@@ -110,7 +105,7 @@ return (
               '@type': 'ImageObject',
               '@id': 'https://splatapozyczek.pl/#logo',
               inLanguage: 'pl-PL',
-              url: Logo,
+              url: 'https://splatapozyczek.pl/logo.svg',
               width: 181,
               height: 43,
               caption: 'Splatapozyczek.pl'
@@ -187,10 +182,10 @@ return (
       </>
     ) : (
       <>
-        <meta property='og:image' content={'https://splatapozyczek.pl' + OG} />
+        <meta property='og:image' content={'https://splatapozyczek.pl/og.jpg'} />
         <meta
           property='twitter:image'
-          content={'https://splatapozyczek.pl' + OG}
+          content={'https://splatapozyczek.pl/og.jpg'}
         />
       </>
     )}
