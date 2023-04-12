@@ -41,7 +41,6 @@ export default function Pagination({ url: pageUrl, page, posts, setCurrentPage }
                     <Left url={pageUrl} setCurrentPage={setCurrentPage} currentPage={page} />
                     strona
                     {buttons.map((el, index) => {
-                        debugger
                         let url = index === 0 ? pageUrl : pageUrl +  (el + 1) + '/'
                         if (page === 1 && (index === page - 1 || index === page || index === page + 1 || index === page + 2 || index === page + 3 || index === page + 4 || index === pagesCount - 1)) {
                             return (

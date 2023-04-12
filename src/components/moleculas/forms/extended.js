@@ -52,7 +52,6 @@ export default function Form({ ip, extended, setIsSended, typTematow }) {
 
     const onSubmit = data => {
         setIsSended(true)
-        debugger
         if (sendedCount < 3) {
             let url = 'https://www-data.splatapozyczek.pl/wp-json/contact-form-7/v1/contact-forms/2977/feedback'
             let body = new FormData()

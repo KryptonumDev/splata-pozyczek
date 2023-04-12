@@ -10,13 +10,16 @@ import { CATEGORY_COLORS } from "../../../constants/category-colors"
 export default function Hero({ data: { title, author, date, categories, blogPost }, pageContext }) {
     return (
         <Wrapper>
+            <div className="publisher" itemprop="publisher" itemscope itemtype="https://schema.org/Organization" >
+                <span itemprop="name">Splatapozyczek.pl</span>
+            </div>
             <Container className="container">
                 <Box>
                     <BreadcrumbsPost title={title} uri={pageContext.url} />
                     <Flex>
                         <TextPart>
                             <div>
-                                <h1 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                                <h1 itemprop="headline" className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                                 <span className="body1 date mobile">{date}</span>
                                 <div className="categories">
                                     {categories.nodes.map(el => (
@@ -29,7 +32,7 @@ export default function Hero({ data: { title, author, date, categories, blogPost
                                 </div>
                             </div>
                             <div className="desctop">
-                                <div className="share">
+                                {/* <div className="share">
                                     <span className="body3"><span style={{ color: '#3b5ba9' }}>Udostępnij</span> artykuł:</span>
                                     <div className="social">
                                         <Social>
@@ -64,13 +67,13 @@ export default function Hero({ data: { title, author, date, categories, blogPost
                                             </a>
                                         </Social>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="add-inform">
                                     <div className="author">
                                         <img src={author.node.avatar.url} alt={'Avatar'} />
                                         <span className="body1">{author.node.name}</span>
                                     </div>
-                                    <span className="body1 date">{date}</span>
+                                    <span itemprop="datePublished" datetime={date} className="body1 date">{date}</span>
                                 </div>
                             </div>
                         </TextPart>
@@ -79,10 +82,10 @@ export default function Hero({ data: { title, author, date, categories, blogPost
                             <div className="add-inform">
                                 <div className="author">
                                     <img src={author.node.avatar.url} alt={'Avatar'} />
-                                    <span className="body1">{author.node.name}</span>
+                                    <span itemprop="author" className="body1">{author.node.name}</span>
                                 </div>
                             </div>
-                            <div className="share">
+                            {/*  <div className="share">
                                 <span className="body3"><span style={{ color: '#3b5ba9' }}>Udostępnij</span> artykuł:</span>
                                 <div className="social">
                                     <Social>
@@ -117,7 +120,7 @@ export default function Hero({ data: { title, author, date, categories, blogPost
                                         </a>
                                     </Social>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </Flex>
                 </Box>
@@ -126,12 +129,16 @@ export default function Hero({ data: { title, author, date, categories, blogPost
     )
 }
 
-const Wrapper = styled.section`
+const Wrapper = styled.header`
     .image{
         border-radius: 4px;
         box-shadow: var(--shadow);
         width: fit-content;
         margin: 0 auto;
+    }
+
+    .publisher{
+        display: none;
     }
 
     .mobile{

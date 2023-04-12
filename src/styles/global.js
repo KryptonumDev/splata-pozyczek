@@ -50,7 +50,7 @@ body {
    background: #FEF5F5;
 }
 
-main {
+main, article {
    margin-top: clamp(110px, 21.4375vw, 180px);
 }
 
