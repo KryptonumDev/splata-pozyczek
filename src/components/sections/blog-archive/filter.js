@@ -69,7 +69,7 @@ export default function Filter({ categories, isAltLayout, allCount }) {
                             <Button activeClassName="active"  to={'/blog/'} active={CATEGORY_COLORS['gray'].active} hover={CATEGORY_COLORS['gray'].hover} background={CATEGORY_COLORS['gray'].default}>Wszystkie ({allCount})</Button>
                             {filtredCategories.map(el => {
                                 if (el.count) {
-                                    return <Button key={el.name} partiallyActive={true} activeClassName="active" to={'/blog/tag/' + el.slug + '/'} active={CATEGORY_COLORS[el?.category?.color].active} hover={CATEGORY_COLORS[el?.category?.color].hover} background={CATEGORY_COLORS[el?.category?.color].default}>{el.name} ({el.count})</Button>
+                                    return <Button key={el.name} partiallyActive={true} activeClassName="active" to={'/tag/' + el.slug + '/'} active={CATEGORY_COLORS[el?.category?.color].active} hover={CATEGORY_COLORS[el?.category?.color].hover} background={CATEGORY_COLORS[el?.category?.color].default}>{el.name} ({el.count})</Button>
                                 }
                                 return null
                             })}

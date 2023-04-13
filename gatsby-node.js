@@ -104,7 +104,7 @@ exports.createPages = async ({
     if (count) {
       for (let i = 12; i < count; i += 12) {
         createPage({
-          path: '/blog/tag/' + slug + '/' + (i / 12 + 1) + '/',
+          path: '/tag/' + slug + '/' + (i / 12 + 1) + '/',
           component: resolve('src/templates/page.jsx'),
           context: {
             id: 'cG9zdDoxMDEz',
@@ -118,7 +118,7 @@ exports.createPages = async ({
       }
 
       createPage({
-        path: '/blog/tag/' + slug + '/',
+        path: '/tag/' + slug + '/',
         component: resolve('src/templates/page.jsx'),
         context: {
           id: 'cG9zdDoxMDEz',
