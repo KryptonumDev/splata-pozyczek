@@ -109,8 +109,8 @@ exports.createPages = async ({
           context: {
             id: 'cG9zdDoxMDEz',
             slug,
-            urlBasis: '/blog/tag/' + slug + '/',
-            url: '/blog/tag/' + slug + '/' + (i / 12 + 1) + '/',
+            urlBasis: '/tag/' + slug + '/',
+            url: '/tag/' + slug + '/' + (i / 12 + 1) + '/',
             title: 'name',
             page: (i / 12 + 1)
           },
@@ -123,8 +123,8 @@ exports.createPages = async ({
         context: {
           id: 'cG9zdDoxMDEz',
           slug,
-          urlBasis: '/blog/tag/' + slug + '/',
-          url: '/blog/tag/' + slug + '/',
+          urlBasis: '/tag/' + slug + '/',
+          url: '/tag/' + slug + '/',
           title: name,
           page: 1
         },
