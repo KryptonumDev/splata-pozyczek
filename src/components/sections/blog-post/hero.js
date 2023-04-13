@@ -24,7 +24,7 @@ export default function Hero({ data: { title, author, date, categories, blogPost
                                 <div className="categories">
                                     {categories.nodes.map(el => (
                                         <Category key={el.name} active={CATEGORY_COLORS[el.category.color].active} hover={CATEGORY_COLORS[el.category.color].hover} background={CATEGORY_COLORS[el.category.color].default}>
-                                            <Link activeClassName="active" to={'/blog/tag/' + el.slug + '/'} className="body2" >
+                                            <Link activeClassName="active" to={'/tag/' + el.slug + '/'} className="body2" >
                                                 {el.name}
                                             </Link>
                                         </Category>
