@@ -85,7 +85,7 @@ const Content = styled.div`
 
   .h6{
     color: #6F6F71;
-    font-family: 'Arsenal';
+    font-family: 'Arsenal', sans-serif;
   }
 
   .link{

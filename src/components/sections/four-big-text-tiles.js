@@ -96,7 +96,7 @@ const Highlighted = styled.div`
     box-shadow: var(--shadow);
     border-radius: 4px;
     color: #F2F4FF;
-    font-family: 'Arsenal';
+    font-family: 'Arsenal', sans-serif;
 
     @media (max-width: 1024px) {
         padding: 20px 30px;

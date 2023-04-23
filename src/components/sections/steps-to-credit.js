@@ -138,7 +138,7 @@ const Item = styled.div`
         box-shadow: var(--shadow);
         margin-bottom: 12px;
         
-        font-family: 'Arsenal';
+        font-family: 'Arsenal', sans-serif;
     }
 
     &:first-child{

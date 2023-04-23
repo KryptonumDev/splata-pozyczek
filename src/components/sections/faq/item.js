@@ -56,7 +56,7 @@ const Item = styled.details`
 
     em{
         font-style: normal;
-        font-family: 'Source Sans Pro';
+        font-family: 'Source Sans Pro', sans-serif;
         font-style: normal;
         font-weight: 400;
         font-size: 16px;

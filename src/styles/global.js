@@ -139,7 +139,7 @@ strong {
 }
 
 .body1 {
-   font-family: 'Source Sans Pro';
+   font-family: 'Source Sans Pro', sans-serif;
    font-style: normal;
    font-weight: 400;
    font-size: 16px;
@@ -148,7 +148,7 @@ strong {
 }
 
 .body1 p {
-   font-family: 'Source Sans Pro';
+   font-family: 'Source Sans Pro', sans-serif;
    font-style: normal;
    font-weight: 400;
    font-size: 16px;
@@ -157,7 +157,7 @@ strong {
 }
 
 .body2 {
-   font-family: 'Source Sans Pro';
+   font-family: 'Source Sans Pro', sans-serif;
    font-style: normal;
    font-weight: 400;
    font-size: 14px;
@@ -166,7 +166,7 @@ strong {
 }
 
 .body2 p {
-   font-family: 'Source Sans Pro';
+   font-family: 'Source Sans Pro', sans-serif;
    font-style: normal;
    font-weight: 400;
    font-size: 14px;
@@ -194,7 +194,7 @@ strong {
 }
 
 .button {
-   font-family: 'Source Sans Pro';
+   font-family: 'Source Sans Pro', sans-serif;
    font-style: normal;
    font-weight: 600;
    /* 15/768*100 */
@@ -206,7 +206,7 @@ strong {
 .filled {
    display: block;
    width: fit-content;
-   font-family: 'Source Sans Pro';
+   font-family: 'Source Sans Pro', sans-serif;
    border: none;
    font-weight: 600;
    font-size: 16px;
