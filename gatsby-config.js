@@ -29,7 +29,7 @@ module.exports = {
       options: {
         defaults: {
           placeholder: `blurred`,
-          quality: 90,
+          quality: 80,
         },
       },
     },
@@ -47,12 +47,11 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: null,
+        host: 'https://splatapozyczek.pl',
         sitemap: 'https://splatapozyczek.pl/sitemap_index.xml',
         policy: [{ userAgent: '*', allow: '/' }]
       }
     },
-    // 'gatsby-plugin-offline',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
