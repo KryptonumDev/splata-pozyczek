@@ -15,7 +15,6 @@ const Global = createGlobalStyle`
 }
 
 * {
-   font-family: 'Source Sans Pro', sans-serif;
    color: #050505;
    margin: 0;
    padding: 0;
@@ -48,6 +47,7 @@ html, body{
 
 body {
    background: #FEF5F5;
+   font-family: 'Source Sans Pro', sans-serif;
 }
 
 main, article {
