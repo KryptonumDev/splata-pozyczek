@@ -65,11 +65,11 @@ strong {
 }
 
 .arsenal {
-   font-family: 'Arsenal', 'Source Sans Pro';
+   font-family: 'Arsenal', sans-serif;
 }
 
 .arsenal * {
-   font-family: 'Arsenal', 'Source Sans Pro';
+   font-family: 'Arsenal', sans-serif;
 }
 
 .blue {
