@@ -20,6 +20,14 @@ export default function ContactForm({ data: { imageUnderTitle, textUnderImage, t
         getData()
     }, [])
 
+    return (
+        <>
+            {(() => {
+                return <StandartContactForm ip={ip} title={title} type={type} />
+            })()}
+        </>
+    )
+
     switch (type) {
         case 'short':
             return <ShortContactForm ip={ip} imageUnderTitle={imageUnderTitle} textUnderImage={textUnderImage} title={title} />
@@ -32,7 +40,7 @@ export default function ContactForm({ data: { imageUnderTitle, textUnderImage, t
         case 'extendedWithTabs':
             return <ExtendedContactForm ip={ip} typTematow={typTematow} title={title} />
         case 'provisionBack':
-            return <ProvisionContactForm  ip={ip}title={title} />
+            return <ProvisionContactForm ip={ip} title={title} />
         default:
             return null
     }
