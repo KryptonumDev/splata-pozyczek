@@ -1,5 +1,5 @@
 import { graphql } from "gatsby"
-import React from "react"
+import React, { useMemo } from "react"
 import EffectiveSolutions from "../components/sections/effective-solutions"
 import Hero from "../components/sections/hero-home"
 import WhatAreWeDoing from "../components/sections/what-are-we-doing"
@@ -208,6 +208,10 @@ export function Head({ pageContext, data: { wpPage: { seo, id } } }) {
 
 export default function Page({ pageContext, location, data: { blogArchive, allWpCategory, allWpEkspert, slider, wpPage: { seo, title, page_builder: { sections } } } }) {
 
+  const builder = useMemo(() => {
+    return sections
+  }, [sections])
+
   return (
     <main id="main">
       <Helmet>
@@ -215,7 +219,7 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
         <link rel="canonical" href={'https://splatapozyczek.pl' + pageContext.url} />
       </Helmet>
 
-      {sections?.map((el, index) => {
+      {builder?.map((el, index) => {
         if (el.__typename === "WpPage_PageBuilder_Sections_HeroText" && sections[index + 1].__typename === "WpPage_PageBuilder_Sections_ContactForm") {
           return <React.Fragment key={el.__typename + index}> <WniosekOnline uri={pageContext.url} title={title} hero={el.heroText} form={sections[index + 1].contactForm} /> </React.Fragment>
         }

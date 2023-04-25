@@ -281,6 +281,9 @@ export default function Post({ pageContext, data: { wpPost } }) {
       setInView(slugTransform(htmlDelete(id)))
     }
   }
+  const builder = useMemo(() => {
+    return wpPost.blogPost.sections
+  }, [wpPost.blogPost.sections])
 
   return (
     <Wrapper itemscope itemtype="https://schema.org/NewsArticle" id='main'>
@@ -291,7 +294,7 @@ export default function Post({ pageContext, data: { wpPost } }) {
           <div>
             <Description itemprop="description" className="body1" dangerouslySetInnerHTML={{ __html: wpPost.blogPost.description }} />
             <div itemprop="articleBody">
-              {wpPost.blogPost.sections?.map(el => {
+              {builder?.map(el => {
                 switch (el.__typename) {
                   case 'WpPost_Blogpost_Sections_TextSection':
                     return <TextSection changeInView={changeInView} data={el.textSection} />
