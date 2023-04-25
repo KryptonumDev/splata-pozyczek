@@ -95,7 +95,14 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
     return (
         <Wrapper onSubmit={handleSubmit(onSubmit)}>
             <div className="content">
-                <div className="flex">
+                <LabelInput
+                    name='personEmail'
+                    label=' Adres e-mail*'
+                    params={{ required: true, pattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, minLength: 3 }}
+                    register={register}
+                    errors={errors}
+                />
+                {/* <div className="flex">
                     <LabelInput
                         name='personName'
                         label='Imię i nazwisko*'
@@ -122,13 +129,6 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                     }
                 </div>
                 <div className="flex">
-                    <LabelInput
-                        name='personEmail'
-                        label=' Adres e-mail*'
-                        params={{ required: true, pattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, minLength: 3 }}
-                        register={register}
-                        errors={errors}
-                    />
                     <LabelInput
                         name='phone'
                         label='Numer telefonu*'
@@ -194,7 +194,7 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                         <span className="required body3"><b>*</b>  – Pola obowiązkowe</span>
                         <div className="body3 text" dangerouslySetInnerHTML={{ __html: additionalInform }} />
                     </div>
-                </div>
+                </div> */}
             </div>
         </Wrapper>
     )
