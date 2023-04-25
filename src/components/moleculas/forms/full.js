@@ -96,11 +96,11 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
         <Wrapper onSubmit={handleSubmit(onSubmit)}>
             <div className="content">
                 <div className="flex">
-                    {/* <Label>
-                        <span className="label body2">{'Imię i nazwisko*'}</span>
-                        <Input {...register('name', { required: true, pattern: /^[a-z ,.'-]+$/i, minLength: 3 })} />
-                        {errors['name'] && <span className="error">Wymagane jest wypełnienie tego pola.</span>}
-                    </Label> */}
+                    <Label>
+                        <span className="label body2">{'testField*'}</span>
+                        <Input {...register('testField')} />
+                        {errors['testField'] && <span className="error">Wymagane jest wypełnienie tego pola.</span>}
+                    </Label>
                     {extended && typTematow === 'Firmowego'
                         ? <LabelInput
                             name='nip'
