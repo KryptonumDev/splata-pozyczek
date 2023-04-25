@@ -94,7 +94,7 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
     return (
         <Wrapper onSubmit={handleSubmit(onSubmit)}>
             <div className="content">
-                {/* <div className="flex">
+                <div className="flex">
                     <LabelInput
                         name='name'
                         label='Imię i nazwisko*'
@@ -102,7 +102,7 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                         register={register}
                         errors={errors}
                     />
-                    {extended && typTematow === 'Firmowego'
+                    {/* {extended && typTematow === 'Firmowego'
                         ? <LabelInput
                             name='nip'
                             label='NIP*'
@@ -118,9 +118,9 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                                 label='Wybierz temat*'
                             />
                             : null
-                    }
+                    } */}
                 </div>
-                <div className="flex">
+                {/* <div className="flex">
                     <LabelInput
                         name='email'
                         label='Adres e-mail*'
