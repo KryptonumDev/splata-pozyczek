@@ -102,7 +102,7 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                     register={register}
                     errors={errors}
                 />
-                {/* <div className="flex">
+                <div className="flex">
                     <LabelInput
                         name='personName'
                         label='Imię i nazwisko*'
@@ -128,7 +128,7 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                             : null
                     }
                 </div>
-                <div className="flex">
+                {/* <div className="flex">
                     <LabelInput
                         name='phone'
                         label='Numer telefonu*'
