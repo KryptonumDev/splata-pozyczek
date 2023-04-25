@@ -135,7 +135,7 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                         register={register}
                         errors={errors}
                     />
-                </div>
+                </div>*/}
                 <LabelInput
                     name='message'
                     label='Wiadomość*'
@@ -144,7 +144,7 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                     errors={errors}
                     type='textarea'
                     rows='4'
-                />*/}
+                />
                 <div className="flex">
                     <div>
                         <LabelCheckbox
