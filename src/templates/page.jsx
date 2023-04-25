@@ -307,8 +307,8 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
           //   return <React.Fragment key={el.__typename + index}> <ThreePointsWithImgOnLeft data={el.threePointsWithImgOnLeft} /> </React.Fragment>
           // case 'WpPage_PageBuilder_Sections_ListWithImgOnLeft':
           //   return <React.Fragment key={el.__typename + index}> <ListWithImgOnLeft data={el.listWithImgOnLeft} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_ContactForm':
-          //   return <React.Fragment key={el.__typename + index}> <ContactForm data={el.contactForm} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_ContactForm':
+            return <React.Fragment key={el.__typename + index}> <ContactForm data={el.contactForm} /> </React.Fragment>
           // case 'WpPage_PageBuilder_Sections_BlogArchive':
           //   return <React.Fragment key={el.__typename + index}> <BlogArchive page={pageContext.page} url={pageContext.urlBasis} slug={pageContext.slug} categories={allWpCategory.nodes} location={location} data={el.blogArchive} title={title} allPosts={blogArchive.nodes} /> </React.Fragment>
           // case 'WpPage_PageBuilder_Sections_HeroImg':
