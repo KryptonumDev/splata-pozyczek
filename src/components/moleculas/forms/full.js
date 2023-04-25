@@ -94,7 +94,7 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
     return (
         <Wrapper onSubmit={handleSubmit(onSubmit)}>
             <div className="content">
-                <div className="flex">
+                {/* <div className="flex">
                     <LabelInput
                         name='name'
                         label='Imię i nazwisko*'
@@ -191,9 +191,9 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                     </div>
                     <div>
                         <span className="required body3"><b>*</b>  – Pola obowiązkowe</span>
-                        {/* <div className="body3 text" dangerouslySetInnerHTML={{ __html: additionalInform }} /> */}
+                        <div className="body3 text" dangerouslySetInnerHTML={{ __html: additionalInform }} />
                     </div>
-                </div>
+                </div> */}
             </div>
         </Wrapper>
     )
