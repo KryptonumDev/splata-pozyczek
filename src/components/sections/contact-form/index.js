@@ -27,7 +27,7 @@ export default function ContactForm({ data: { imageUnderTitle, textUnderImage, t
                     case 'short':
                         return <div>short</div>// <ShortContactForm ip={ip} imageUnderTitle={imageUnderTitle} textUnderImage={textUnderImage} title={title} />
                     case 'standart':
-                        return <div>standart</div>//<StandartContactForm ip={ip} title={title} type={type} />
+                        return <StandartContactForm ip={ip} title={title} type={type} />
                     case 'noTheme':
                         return <div>noTheme</div>//<StandartContactForm ip={ip} typTematow={typTematow} title={title} type={type} />
                     case 'addComment':
