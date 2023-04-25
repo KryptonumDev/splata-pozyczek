@@ -11,7 +11,6 @@ import { checkboxController } from "../../../helpers/checkbox-controller"
 import { checkboxAll } from "../../../helpers/checkbox-all"
 import LabelSelect from "../label-select"
 import { datalayerArguments } from "../../../helpers/datalayer"
-import { Input, Label } from "../../atoms/input"
 
 export default function Form({ ip, extended, title, type, setIsSended, typTematow }) {
 
@@ -53,9 +52,9 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
         if (sendedCount < 3) {
             let url = 'https://www-data.splatapozyczek.pl/wp-json/contact-form-7/v1/contact-forms/669/feedback'
             let body = new FormData()
-            body.append('your-email', data.personEmail)
+            body.append('your-email', data.email)
             body.append("your-message", data.message)
-            body.append('your-name', data.personName)
+            body.append('your-name', data.name)
             body.append('your-phone', data.phone)
             body.append('post-url', window.location.href)
             body.append('your-ip', ip)
@@ -76,8 +75,8 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                         reset()
 
                         datalayerArguments("form submit", {
-                            'email': data.personEmail,
-                            'name': data.personName,
+                            'email': data.email,
+                            'name': data.name,
                             'phone': data.phone,
                             'message': data.message,
                             'url': window.location,
@@ -95,45 +94,49 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
     return (
         <Wrapper onSubmit={handleSubmit(onSubmit)}>
             <div className="content">
-                <LabelInput
-                    name='personEmail'
-                    label=' Adres e-mail*'
-                    params={{ required: true, pattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, minLength: 3 }}
-                    register={register}
-                    errors={errors}
-                />
-                <LabelInput
-                    name='phone'
-                    label='Numer telefonu*'
-                    params={{ required: true, pattern: /^(0|[1-9]\d*)(\.\d+)?$/, maxLength: 9, minLength: 9 }}
-                    register={register}
-                    errors={errors}
-                />
-                <LabelInput
-                    name='personName'
-                    label='Imię i nazwisko*'
-                    params={{ required: true, pattern: /^[a-z ,.'-]+$/i, minLength: 3 }}
-                    register={register}
-                    errors={errors}
-                />
-                {/* {extended && typTematow === 'Firmowego'
-                    ? <LabelInput
-                        name='nip'
-                        label='NIP*'
-                        params={{ required: true }}
+                <div className="flex">
+                    <LabelInput
+                        name='name'
+                        label='Imię i nazwisko*'
+                        params={{ required: true, pattern: /^[a-z ,.'-]+$/i }}
                         register={register}
                         errors={errors}
                     />
-                    : type !== 'noTheme'
-                        ? <LabelSelect
-                            control={control}
-                            themes={meesageThemes}
-                            name='theme'
-                            label='Wybierz temat*'
+                    {extended && typTematow === 'Firmowego'
+                        ? <LabelInput
+                            name='nip'
+                            label='NIP*'
+                            params={{ required: true }}
+                            register={register}
+                            errors={errors}
                         />
-                        : null
-                } */}
-                {/* <LabelInput
+                        : type !== 'noTheme'
+                            ? <LabelSelect
+                                control={control}
+                                themes={meesageThemes}
+                                name='theme'
+                                label='Wybierz temat*'
+                            />
+                            : null
+                    }
+                </div>
+                <div className="flex">
+                    <LabelInput
+                        name='email'
+                        label='Adres e-mail*'
+                        params={{ required: true, pattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ }}
+                        register={register}
+                        errors={errors}
+                    />
+                    <LabelInput
+                        name='phone'
+                        label='Numer telefonu*'
+                        params={{ required: true, pattern: /^(0|[1-9]\d*)(\.\d+)?$/, maxLength: 9, minLength: 9 }}
+                        register={register}
+                        errors={errors}
+                    />
+                </div>
+                <LabelInput
                     name='message'
                     label='Wiadomość*'
                     params={{ required: true }}
@@ -190,7 +193,7 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                         <span className="required body3"><b>*</b>  – Pola obowiązkowe</span>
                         <div className="body3 text" dangerouslySetInnerHTML={{ __html: additionalInform }} />
                     </div>
-                </div> */}
+                </div>
             </div>
         </Wrapper>
     )

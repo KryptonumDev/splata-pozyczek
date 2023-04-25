@@ -20,30 +20,22 @@ export default function ContactForm({ data: { imageUnderTitle, textUnderImage, t
         getData()
     }, [])
 
-    return (
-        <>
-            {(() => {
-                switch (type) {
-                    case 'short':
-                        return <div>short</div>// <ShortContactForm ip={ip} imageUnderTitle={imageUnderTitle} textUnderImage={textUnderImage} title={title} />
-                    case 'standart':
-                        return <StandartContactForm ip={ip} title={title} type={type} />
-                    case 'noTheme':
-                        return <div>noTheme</div>//<StandartContactForm ip={ip} typTematow={typTematow} title={title} type={type} />
-                    case 'addComment':
-                        return <div>addComment</div>//<CommentContactForm title={title} />
-                    case 'extendedWithTabs':
-                        return <div>extendedWithTabs</div>//<ExtendedContactForm ip={ip} typTematow={typTematow} title={title} />
-                    case 'provisionBack':
-                        return <div>provisionBack</div>//<ProvisionContactForm ip={ip} title={title} />
-                    default:
-                        return null
-                }
-            })()}
-        </>
-    )
-
-
+    switch (type) {
+        case 'short':
+            return <ShortContactForm ip={ip} imageUnderTitle={imageUnderTitle} textUnderImage={textUnderImage} title={title} />
+        case 'standart':
+            return <StandartContactForm ip={ip} title={title} type={type} />
+        case 'noTheme':
+            return <StandartContactForm ip={ip} typTematow={typTematow} title={title} type={type} />
+        case 'addComment':
+            return <CommentContactForm title={title} />
+        case 'extendedWithTabs':
+            return <ExtendedContactForm ip={ip} typTematow={typTematow} title={title} />
+        case 'provisionBack':
+            return <ProvisionContactForm  ip={ip}title={title} />
+        default:
+            return null
+    }
 }
 
 export const query = graphql`

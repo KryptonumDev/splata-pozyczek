@@ -1,5 +1,5 @@
 import { graphql } from "gatsby"
-import React, { useMemo } from "react"
+import React from "react"
 import EffectiveSolutions from "../components/sections/effective-solutions"
 import Hero from "../components/sections/hero-home"
 import WhatAreWeDoing from "../components/sections/what-are-we-doing"
@@ -208,10 +208,6 @@ export function Head({ pageContext, data: { wpPage: { seo, id } } }) {
 
 export default function Page({ pageContext, location, data: { blogArchive, allWpCategory, allWpEkspert, slider, wpPage: { seo, title, page_builder: { sections } } } }) {
 
-  const builder = useMemo(() => {
-    return sections
-  }, [sections])
-
   return (
     <main id="main">
       <Helmet>
@@ -219,7 +215,7 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
         <link rel="canonical" href={'https://splatapozyczek.pl' + pageContext.url} />
       </Helmet>
 
-      {builder?.map((el, index) => {
+      {sections?.map((el, index) => {
         if (el.__typename === "WpPage_PageBuilder_Sections_HeroText" && sections[index + 1].__typename === "WpPage_PageBuilder_Sections_ContactForm") {
           return <React.Fragment key={el.__typename + index}> <WniosekOnline uri={pageContext.url} title={title} hero={el.heroText} form={sections[index + 1].contactForm} /> </React.Fragment>
         }
@@ -235,136 +231,136 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
             return <React.Fragment key={el.__typename + index}> <WhatAreWeDoing data={el.whatAreWeDoing} /> </React.Fragment>
           case 'WpPage_PageBuilder_Sections_EffectiveSolutions':
             return <React.Fragment key={el.__typename + index}> <EffectiveSolutions data={el.effectiveSolutions} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_Types':
-          //   return <React.Fragment key={el.__typename + index}> <HelpTypes data={el.types} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_WhatIsCredit':
-          //   return <React.Fragment key={el.__typename + index}> <WhatIsCredit data={el.whatIsCredit} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_Types':
+            return <React.Fragment key={el.__typename + index}> <HelpTypes data={el.types} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_WhatIsCredit':
+            return <React.Fragment key={el.__typename + index}> <WhatIsCredit data={el.whatIsCredit} /> </React.Fragment>
           case 'WpPage_PageBuilder_Sections_Cta':
             return <React.Fragment key={el.__typename + index}> <CallToAction data={el.cta} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_Faq':
-          //   return <React.Fragment key={el.__typename + index}> <Faq data={el.faq} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_OurExperts':
-          //   return <React.Fragment key={el.__typename + index}> <OurExperts data={el.ourExperts} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_ThreeColumnText':
-          //   return <React.Fragment key={el.__typename + index}> <ThreeColumnText data={el.threeColumnText} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections__RepeaterFourColumnText':
-          //   return <React.Fragment key={el.__typename + index}> <RepeaterFourColumnText data={el.repeaterFourColumnText} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_HeroForm':
-          //   return <React.Fragment key={el.__typename + index}> <HeroForm data={el.heroForm} uri={pageContext.url} title={title} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_FourTilesWithTitle':
-          //   return <React.Fragment key={el.__typename + index}> <FourTilesWithTitle data={el.fourTilesWithTitle} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_FourBigTextTiles':
-          //   return <React.Fragment key={el.__typename + index}> <FourBigTextTiles data={el.fourBigTextTiles} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_TwoColumnsCompare':
-          //   return <React.Fragment key={el.__typename + index}> <TwoColumnsCompare data={el.twoColumnsCompare} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_ListWithImgOnRight':
-          //   return <React.Fragment key={el.__typename + index}> <ListWithImgOnRight data={el.listWithImgOnRight} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_StepsToCredit':
-          //   return <React.Fragment key={el.__typename + index}> <StepsToCredit data={el.stepsToCredit} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_TwoColumnCompareColored':
-          //   return <React.Fragment key={el.__typename + index}> <TwoColumnCompareColored data={el.twoColumnCompareColored} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_LongPanelWithIcon':
-          //   return <React.Fragment key={el.__typename + index}> <LongPanelWithIcon data={el.longPanelWithIcon} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_ThreeColumnTextWithTitles':
-          //   return <React.Fragment key={el.__typename + index}> <ThreeColumnTextWithTitles data={el.threeColumnTextWithTitles} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_TwoColumnText':
-          //   return <React.Fragment key={el.__typename + index}> <TwoColumnText data={el.twoColumnText} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_BlogSlider':
-          //   return <React.Fragment key={el.__typename + index}> <BlogSlider data={el.blogSlider} posts={slider.nodes} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_TwoColumnFlex':
-          //   return <React.Fragment key={el.__typename + index}> <TwoColumnRepeater data={el.twoColumnFlex} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_ThreeStepsWithLongPanel':
-          //   return <React.Fragment key={el.__typename + index}> <ThreeStepsWithLongPanel data={el.threeStepsWithLongPanel} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_TextWithImgOnLeft':
-          //   return <React.Fragment key={el.__typename + index}> <TextWithImgOnLeft data={el.textWithImgOnLeft} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_Calculator':
-          //   return <React.Fragment key={el.__typename + index}> <Calculator data={el.calculator} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_CreditTypes':
-          //   return <React.Fragment key={el.__typename + index}> <CreditTypes data={el.creditTypes} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_FourTiles':
-          //   return <React.Fragment key={el.__typename + index}> <FourTiles data={el.fourTiles} /> </React.Fragment>
-          // case "WpPage_PageBuilder_Sections_ThreeCommentsWithTitle":
-          //   return <React.Fragment key={el.__typename + index}> <ThreeCommentsWithTitle data={el.threeCommentsWithTitle} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_TextWithImgOnRight':
-          //   return <React.Fragment key={el.__typename + index}> <TextWithImgOnRight data={el.textWithImgOnRight} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_FourColumnText':
-          //   return <React.Fragment key={el.__typename + index}> <FourColumnText data={el.fourColumnText} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_ExtendedListWithImgOnRight':
-          //   return <React.Fragment key={el.__typename + index}> <ExtendedListWithImgOnRight data={el.extendedListWithImgOnRight} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_TwoColumnFlexAlt':
-          //   return <React.Fragment key={el.__typename + index}> <TwoColumnRepeaterAlt data={el.twoColumnFlexAlt} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_TwoColumnVideo':
-          //   return <React.Fragment key={el.__typename + index}> <TwoColumnVideo data={el.twoColumnVideo} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_ListWithImgOnLeftRepeater':
-          //   return <React.Fragment key={el.__typename + index}> <ListWithImgOnLeftRepeater data={el.listWithImgOnLeftRepeater} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_TextWithImgOnLeftAlt':
-          //   return <React.Fragment key={el.__typename + index}> <TextWithImgOnLeftAlt data={el.textWithImgOnLeftAlt} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_ThreeColumnsHighlighted':
-          //   return <React.Fragment key={el.__typename + index}> <ThreeColumnsHighlighted data={el.threeColumnsHighlighted} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_FourTilesExtended':
-          //   return <React.Fragment key={el.__typename + index}> <FourTilesExtended data={el.fourTilesExtended} /> </React.Fragment>
-          // case "WpPage_PageBuilder_Sections_ThreePointsWithImgOnLeft":
-          //   return <React.Fragment key={el.__typename + index}> <ThreePointsWithImgOnLeft data={el.threePointsWithImgOnLeft} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_ListWithImgOnLeft':
-          //   return <React.Fragment key={el.__typename + index}> <ListWithImgOnLeft data={el.listWithImgOnLeft} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_Faq':
+            return <React.Fragment key={el.__typename + index}> <Faq data={el.faq} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_OurExperts':
+            return <React.Fragment key={el.__typename + index}> <OurExperts data={el.ourExperts} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_ThreeColumnText':
+            return <React.Fragment key={el.__typename + index}> <ThreeColumnText data={el.threeColumnText} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections__RepeaterFourColumnText':
+            return <React.Fragment key={el.__typename + index}> <RepeaterFourColumnText data={el.repeaterFourColumnText} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_HeroForm':
+            return <React.Fragment key={el.__typename + index}> <HeroForm data={el.heroForm} uri={pageContext.url} title={title} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_FourTilesWithTitle':
+            return <React.Fragment key={el.__typename + index}> <FourTilesWithTitle data={el.fourTilesWithTitle} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_FourBigTextTiles':
+            return <React.Fragment key={el.__typename + index}> <FourBigTextTiles data={el.fourBigTextTiles} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_TwoColumnsCompare':
+            return <React.Fragment key={el.__typename + index}> <TwoColumnsCompare data={el.twoColumnsCompare} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_ListWithImgOnRight':
+            return <React.Fragment key={el.__typename + index}> <ListWithImgOnRight data={el.listWithImgOnRight} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_StepsToCredit':
+            return <React.Fragment key={el.__typename + index}> <StepsToCredit data={el.stepsToCredit} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_TwoColumnCompareColored':
+            return <React.Fragment key={el.__typename + index}> <TwoColumnCompareColored data={el.twoColumnCompareColored} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_LongPanelWithIcon':
+            return <React.Fragment key={el.__typename + index}> <LongPanelWithIcon data={el.longPanelWithIcon} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_ThreeColumnTextWithTitles':
+            return <React.Fragment key={el.__typename + index}> <ThreeColumnTextWithTitles data={el.threeColumnTextWithTitles} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_TwoColumnText':
+            return <React.Fragment key={el.__typename + index}> <TwoColumnText data={el.twoColumnText} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_BlogSlider':
+            return <React.Fragment key={el.__typename + index}> <BlogSlider data={el.blogSlider} posts={slider.nodes} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_TwoColumnFlex':
+            return <React.Fragment key={el.__typename + index}> <TwoColumnRepeater data={el.twoColumnFlex} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_ThreeStepsWithLongPanel':
+            return <React.Fragment key={el.__typename + index}> <ThreeStepsWithLongPanel data={el.threeStepsWithLongPanel} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_TextWithImgOnLeft':
+            return <React.Fragment key={el.__typename + index}> <TextWithImgOnLeft data={el.textWithImgOnLeft} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_Calculator':
+            return <React.Fragment key={el.__typename + index}> <Calculator data={el.calculator} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_CreditTypes':
+            return <React.Fragment key={el.__typename + index}> <CreditTypes data={el.creditTypes} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_FourTiles':
+            return <React.Fragment key={el.__typename + index}> <FourTiles data={el.fourTiles} /> </React.Fragment>
+          case "WpPage_PageBuilder_Sections_ThreeCommentsWithTitle":
+            return <React.Fragment key={el.__typename + index}> <ThreeCommentsWithTitle data={el.threeCommentsWithTitle} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_TextWithImgOnRight':
+            return <React.Fragment key={el.__typename + index}> <TextWithImgOnRight data={el.textWithImgOnRight} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_FourColumnText':
+            return <React.Fragment key={el.__typename + index}> <FourColumnText data={el.fourColumnText} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_ExtendedListWithImgOnRight':
+            return <React.Fragment key={el.__typename + index}> <ExtendedListWithImgOnRight data={el.extendedListWithImgOnRight} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_TwoColumnFlexAlt':
+            return <React.Fragment key={el.__typename + index}> <TwoColumnRepeaterAlt data={el.twoColumnFlexAlt} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_TwoColumnVideo':
+            return <React.Fragment key={el.__typename + index}> <TwoColumnVideo data={el.twoColumnVideo} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_ListWithImgOnLeftRepeater':
+            return <React.Fragment key={el.__typename + index}> <ListWithImgOnLeftRepeater data={el.listWithImgOnLeftRepeater} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_TextWithImgOnLeftAlt':
+            return <React.Fragment key={el.__typename + index}> <TextWithImgOnLeftAlt data={el.textWithImgOnLeftAlt} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_ThreeColumnsHighlighted':
+            return <React.Fragment key={el.__typename + index}> <ThreeColumnsHighlighted data={el.threeColumnsHighlighted} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_FourTilesExtended':
+            return <React.Fragment key={el.__typename + index}> <FourTilesExtended data={el.fourTilesExtended} /> </React.Fragment>
+          case "WpPage_PageBuilder_Sections_ThreePointsWithImgOnLeft":
+            return <React.Fragment key={el.__typename + index}> <ThreePointsWithImgOnLeft data={el.threePointsWithImgOnLeft} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_ListWithImgOnLeft':
+            return <React.Fragment key={el.__typename + index}> <ListWithImgOnLeft data={el.listWithImgOnLeft} /> </React.Fragment>
           case 'WpPage_PageBuilder_Sections_ContactForm':
             return <React.Fragment key={el.__typename + index}> <ContactForm data={el.contactForm} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_BlogArchive':
-          //   return <React.Fragment key={el.__typename + index}> <BlogArchive page={pageContext.page} url={pageContext.urlBasis} slug={pageContext.slug} categories={allWpCategory.nodes} location={location} data={el.blogArchive} title={title} allPosts={blogArchive.nodes} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_HeroImg':
-          //   return <React.Fragment key={el.__typename + index}> <HeroImg data={el.heroImg} uri={pageContext.url} title={title} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_HeroImgExtended':
-          //   return <React.Fragment key={el.__typename + index}> <HeroImgExtended data={el.heroImgExtended} uri={pageContext.url} title={title} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_ThreeColumnsFiles':
-          //   return <React.Fragment key={el.__typename + index}> <ThreeColumnsFiles data={el.threeColumnsFiles} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_StepsToComplaints':
-          //   return <React.Fragment key={el.__typename + index}> <StepsToComplaints data={el.stepsToComplaints} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_TwoColumnTextWithBoldText':
-          //   return <React.Fragment key={el.__typename + index}> <TwoColumnTextWithBoldText data={el.twoColumnTextWithBoldText} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_BigTextTiles':
-          //   return <React.Fragment key={el.__typename + index}> <BigTextTiles data={el.bigTextTiles} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_TwoCards':
-          //   return <React.Fragment key={el.__typename + index}> <TwoCards data={el.twoCards} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_TwoColumnsWithExtendedLinks':
-          //   return <React.Fragment key={el.__typename + index}> <TwoColumnsWithExtendedLinks data={el.twoColumnsWithExtendedLinks} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_AllExperts':
-          //   return <React.Fragment key={el.__typename + index}> <AllExperts experts={allWpEkspert.nodes} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_ThreeColumnsHighlightedAlt':
-          //   return <React.Fragment key={el.__typename + index}> <ThreeColumnsHighlightedAlt data={el.threeColumnsHighlightedAlt} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_InformAndVideo':
-          //   return <React.Fragment key={el.__typename + index}> <InformAndVideo data={el.informAndVideo} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_Map':
-          //   return <React.Fragment key={el.__typename + index}> <Map data={el.map} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_TwoColumnTextHighlighted':
-          //   return <React.Fragment key={el.__typename + index}> <TwoColumnTextHighlighted data={el.twoColumnTextHighlighted} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_ThreeTiles':
-          //   return <React.Fragment key={el.__typename + index}> <ThreeTiles data={el.threeTiles} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_ThreeColumnTextMiddleHighlighted':
-          //   return <React.Fragment key={el.__typename + index}> <ThreeColumnTextMiddleHighlighted data={el.threeColumnTextMiddleHighlighted} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_MultiplyTilesWithTextBlock':
-          //   return <React.Fragment key={el.__typename + index}> <MultiplyTilesWithTextBlock data={el.multiplyTilesWithTextBlock} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_TwoColumnsTextAndIconsList':
-          //   return <React.Fragment key={el.__typename + index}> <TwoColumnsTextAndIconsList data={el.twoColumnsTextAndIconsList} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_TwoColumnTextRepeaterSepareted':
-          //   return <React.Fragment key={el.__typename + index}> <TwoColumnTextRepeaterSepareted data={el.twoColumnTextRepeaterSepareted} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_PrivacyPolicy':
-          //   return <React.Fragment key={el.__typename + index}> <PrivacyPolicy data={el.privacyPolicy} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_TwoColumnTextRepeater':
-          //   return <React.Fragment key={el.__typename + index}> <TwoColumnTextRepeater data={el.twoColumnTextRepeater} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_TwoColumnsTextAndIconsListAlt':
-          //   return <React.Fragment key={el.__typename + index}> <TwoColumnsTextAndIconsListAlt data={el.twoColumnsTextAndIconsListAlt} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_TabsWithThreeColumnsContent':
-          //   return <React.Fragment key={el.__typename + index}> <TabsWithThreeColumnsContent data={el.tabsWithThreeColumnsContent} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_HeroText':
-          //   return <React.Fragment key={el.__typename + index}> <HeroText data={el.heroText} uri={pageContext.url} title={title} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_Reviews':
-          //   return <React.Fragment key={el.__typename + index}> <Reviews data={el.reviews} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_HeighlihtedAdres':
-          //   return <React.Fragment key={el.__typename + index}> <HeighlihtedAdres data={el.heighlihtedAdres} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_ExpertWithContactInform':
-          //   return <React.Fragment key={el.__typename + index}> <ExpertWithContactInform data={el.expertWithContactInform} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_Citate':
-          //   return <React.Fragment key={el.__typename + index}> <Citate data={el.citate} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_BlogArchive':
+            return <React.Fragment key={el.__typename + index}> <BlogArchive page={pageContext.page} url={pageContext.urlBasis} slug={pageContext.slug} categories={allWpCategory.nodes} location={location} data={el.blogArchive} title={title} allPosts={blogArchive.nodes} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_HeroImg':
+            return <React.Fragment key={el.__typename + index}> <HeroImg data={el.heroImg} uri={pageContext.url} title={title} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_HeroImgExtended':
+            return <React.Fragment key={el.__typename + index}> <HeroImgExtended data={el.heroImgExtended} uri={pageContext.url} title={title} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_ThreeColumnsFiles':
+            return <React.Fragment key={el.__typename + index}> <ThreeColumnsFiles data={el.threeColumnsFiles} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_StepsToComplaints':
+            return <React.Fragment key={el.__typename + index}> <StepsToComplaints data={el.stepsToComplaints} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_TwoColumnTextWithBoldText':
+            return <React.Fragment key={el.__typename + index}> <TwoColumnTextWithBoldText data={el.twoColumnTextWithBoldText} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_BigTextTiles':
+            return <React.Fragment key={el.__typename + index}> <BigTextTiles data={el.bigTextTiles} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_TwoCards':
+            return <React.Fragment key={el.__typename + index}> <TwoCards data={el.twoCards} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_TwoColumnsWithExtendedLinks':
+            return <React.Fragment key={el.__typename + index}> <TwoColumnsWithExtendedLinks data={el.twoColumnsWithExtendedLinks} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_AllExperts':
+            return <React.Fragment key={el.__typename + index}> <AllExperts experts={allWpEkspert.nodes} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_ThreeColumnsHighlightedAlt':
+            return <React.Fragment key={el.__typename + index}> <ThreeColumnsHighlightedAlt data={el.threeColumnsHighlightedAlt} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_InformAndVideo':
+            return <React.Fragment key={el.__typename + index}> <InformAndVideo data={el.informAndVideo} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_Map':
+            return <React.Fragment key={el.__typename + index}> <Map data={el.map} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_TwoColumnTextHighlighted':
+            return <React.Fragment key={el.__typename + index}> <TwoColumnTextHighlighted data={el.twoColumnTextHighlighted} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_ThreeTiles':
+            return <React.Fragment key={el.__typename + index}> <ThreeTiles data={el.threeTiles} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_ThreeColumnTextMiddleHighlighted':
+            return <React.Fragment key={el.__typename + index}> <ThreeColumnTextMiddleHighlighted data={el.threeColumnTextMiddleHighlighted} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_MultiplyTilesWithTextBlock':
+            return <React.Fragment key={el.__typename + index}> <MultiplyTilesWithTextBlock data={el.multiplyTilesWithTextBlock} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_TwoColumnsTextAndIconsList':
+            return <React.Fragment key={el.__typename + index}> <TwoColumnsTextAndIconsList data={el.twoColumnsTextAndIconsList} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_TwoColumnTextRepeaterSepareted':
+            return <React.Fragment key={el.__typename + index}> <TwoColumnTextRepeaterSepareted data={el.twoColumnTextRepeaterSepareted} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_PrivacyPolicy':
+            return <React.Fragment key={el.__typename + index}> <PrivacyPolicy data={el.privacyPolicy} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_TwoColumnTextRepeater':
+            return <React.Fragment key={el.__typename + index}> <TwoColumnTextRepeater data={el.twoColumnTextRepeater} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_TwoColumnsTextAndIconsListAlt':
+            return <React.Fragment key={el.__typename + index}> <TwoColumnsTextAndIconsListAlt data={el.twoColumnsTextAndIconsListAlt} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_TabsWithThreeColumnsContent':
+            return <React.Fragment key={el.__typename + index}> <TabsWithThreeColumnsContent data={el.tabsWithThreeColumnsContent} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_HeroText':
+            return <React.Fragment key={el.__typename + index}> <HeroText data={el.heroText} uri={pageContext.url} title={title} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_Reviews':
+            return <React.Fragment key={el.__typename + index}> <Reviews data={el.reviews} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_HeighlihtedAdres':
+            return <React.Fragment key={el.__typename + index}> <HeighlihtedAdres data={el.heighlihtedAdres} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_ExpertWithContactInform':
+            return <React.Fragment key={el.__typename + index}> <ExpertWithContactInform data={el.expertWithContactInform} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_Citate':
+            return <React.Fragment key={el.__typename + index}> <Citate data={el.citate} /> </React.Fragment>
           default:
             return <React.Fragment key={el.__typename + index}> <p className="h2">{el.__typename}</p> </React.Fragment>
         }
