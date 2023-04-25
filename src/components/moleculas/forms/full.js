@@ -94,14 +94,14 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
     return (
         <Wrapper onSubmit={handleSubmit(onSubmit)}>
             <div className="content">
-                {/* <div className="flex">
-                    <LabelInput
+                <div className="flex">
+                    {/* <LabelInput
                         name='name'
                         label='Imię i nazwisko*'
                         params={{ required: true, pattern: /^[a-z ,.'-]+$/i }}
                         register={register}
                         errors={errors}
-                    />
+                    /> */}
                     {extended && typTematow === 'Firmowego'
                         ? <LabelInput
                             name='nip'
@@ -120,7 +120,7 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                             : null
                     }
                 </div>
-                <div className="flex">
+                {/* <div className="flex">
                     <LabelInput
                         name='email'
                         label='Adres e-mail*'
