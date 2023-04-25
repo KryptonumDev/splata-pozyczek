@@ -128,7 +128,7 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                             : null
                     }
                 </div>
-                {/* <div className="flex">
+                <div className="flex">
                     <LabelInput
                         name='phone'
                         label='Numer telefonu*'
@@ -137,7 +137,7 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                         errors={errors}
                     />
                 </div>
-                <LabelInput
+                {/* <LabelInput
                     name='message'
                     label='Wiadomość*'
                     params={{ required: true }}
