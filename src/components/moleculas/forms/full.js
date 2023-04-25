@@ -144,7 +144,7 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                     errors={errors}
                     type='textarea'
                     rows='4'
-                />
+                />*/}
                 <div className="flex">
                     <div>
                         <LabelCheckbox
@@ -176,24 +176,24 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                             id='two'
                             errors={errors}>
                             Wyrażam zgodę, aby moje dane osobowe były przetwarzane <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b>
-                         </LabelCheckbox>*/}
-                <LabelCheckbox
-                    wrapClass='sub'
-                    name='privacyThree'
-                    onChange={(e) => { checkboxController(e, getValues, setValue) }}
-                    params={{ required: true }}
-                    register={register}
-                    id='three'
-                    errors={errors}>
-                    Wyrażam zgodę na otrzymywanie od Habza Group Sp. z o.o. <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b>
-                </LabelCheckbox>
-                {/* <FilledButton className="submit" as='button' type="submit">Wyślij</FilledButton>
+                        </LabelCheckbox>
+                        <LabelCheckbox
+                            wrapClass='sub'
+                            name='privacyThree'
+                            onChange={(e) => { checkboxController(e, getValues, setValue) }}
+                            params={{ required: true }}
+                            register={register}
+                            id='three'
+                            errors={errors}>
+                            Wyrażam zgodę na otrzymywanie od Habza Group Sp. z o.o. <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b>
+                        </LabelCheckbox>
+                        <FilledButton className="submit" as='button' type="submit">Wyślij</FilledButton>
                     </div>
                     <div>
                         <span className="required body3"><b>*</b>  – Pola obowiązkowe</span>
                         <div className="body3 text" dangerouslySetInnerHTML={{ __html: additionalInform }} />
                     </div>
-                </div> */}
+                </div>
             </div>
         </Wrapper>
     )
