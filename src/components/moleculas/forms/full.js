@@ -120,14 +120,14 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                             : null
                     }
                 </div>
-                {/* <div className="flex">
-                    <LabelInput
+                <div className="flex">
+                    {/* <LabelInput
                         name='email'
                         label='Adres e-mail*'
                         params={{ required: true, pattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ }}
                         register={register}
                         errors={errors}
-                    />
+                    />*/}
                     <LabelInput
                         name='phone'
                         label='Numer telefonu*'
@@ -135,7 +135,7 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                         register={register}
                         errors={errors}
                     />
-                </div>*/}
+                </div>
                 <LabelInput
                     name='message'
                     label='Wiadomość*'
