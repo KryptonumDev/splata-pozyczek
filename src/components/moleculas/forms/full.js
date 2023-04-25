@@ -102,41 +102,37 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                     register={register}
                     errors={errors}
                 />
-                <div className="flex">
-                    <LabelInput
-                        name='personName'
-                        label='Imię i nazwisko*'
-                        params={{ required: true, pattern: /^[a-z ,.'-]+$/i, minLength: 3 }}
+                <LabelInput
+                    name='phone'
+                    label='Numer telefonu*'
+                    params={{ required: true, pattern: /^(0|[1-9]\d*)(\.\d+)?$/, maxLength: 9, minLength: 9 }}
+                    register={register}
+                    errors={errors}
+                />
+                <LabelInput
+                    name='personName'
+                    label='Imię i nazwisko*'
+                    params={{ required: true, pattern: /^[a-z ,.'-]+$/i, minLength: 3 }}
+                    register={register}
+                    errors={errors}
+                />
+                {extended && typTematow === 'Firmowego'
+                    ? <LabelInput
+                        name='nip'
+                        label='NIP*'
+                        params={{ required: true }}
                         register={register}
                         errors={errors}
                     />
-                    {extended && typTematow === 'Firmowego'
-                        ? <LabelInput
-                            name='nip'
-                            label='NIP*'
-                            params={{ required: true }}
-                            register={register}
-                            errors={errors}
+                    : type !== 'noTheme'
+                        ? <LabelSelect
+                            control={control}
+                            themes={meesageThemes}
+                            name='theme'
+                            label='Wybierz temat*'
                         />
-                        : type !== 'noTheme'
-                            ? <LabelSelect
-                                control={control}
-                                themes={meesageThemes}
-                                name='theme'
-                                label='Wybierz temat*'
-                            />
-                            : null
-                    }
-                </div>
-                <div className="flex">
-                    <LabelInput
-                        name='phone'
-                        label='Numer telefonu*'
-                        params={{ required: true, pattern: /^(0|[1-9]\d*)(\.\d+)?$/, maxLength: 9, minLength: 9 }}
-                        register={register}
-                        errors={errors}
-                    />
-                </div>
+                        : null
+                }
                 {/* <LabelInput
                     name='message'
                     label='Wiadomość*'
