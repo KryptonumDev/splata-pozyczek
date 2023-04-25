@@ -18,7 +18,7 @@ export const onRenderBody = ({ setHeadComponents, setHtmlAttributes }) => {
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
-            key="interFont"
+            key="Arsenal-Bold"
         />,
         <link
             rel="preload"
@@ -26,7 +26,7 @@ export const onRenderBody = ({ setHeadComponents, setHtmlAttributes }) => {
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
-            key="interFont"
+            key="Arsenal-Regular"
         />,
         <link
             rel="preload"
@@ -34,7 +34,7 @@ export const onRenderBody = ({ setHeadComponents, setHtmlAttributes }) => {
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
-            key="interFont"
+            key="SourceSansPro-SemiBold"
         />,
         <link
             rel="preload"
@@ -42,7 +42,7 @@ export const onRenderBody = ({ setHeadComponents, setHtmlAttributes }) => {
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
-            key="interFont"
+            key="SourceSansPro-Regular"
         />,
     ])
 }
