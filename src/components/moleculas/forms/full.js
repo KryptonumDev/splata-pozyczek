@@ -53,7 +53,7 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
         if (sendedCount < 3) {
             let url = 'https://www-data.splatapozyczek.pl/wp-json/contact-form-7/v1/contact-forms/669/feedback'
             let body = new FormData()
-            body.append('your-email', data.personemail)
+            body.append('your-email', data.personEmail)
             body.append("your-message", data.message)
             body.append('your-name', data.personName)
             body.append('your-phone', data.phone)
@@ -76,7 +76,7 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                         reset()
 
                         datalayerArguments("form submit", {
-                            'email': data.personemail,
+                            'email': data.personEmail,
                             'name': data.personName,
                             'phone': data.phone,
                             'message': data.message,
@@ -123,9 +123,9 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                 </div>
                 <div className="flex">
                     <LabelInput
-                        name='personemail'
-                        label='Adres e-mail*'
-                        params={{ required: true, pattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ }}
+                        name='personEmail'
+                        label=' Adres e-mail*'
+                        params={{ required: true, pattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, minLength: 3 }}
                         register={register}
                         errors={errors}
                     />
