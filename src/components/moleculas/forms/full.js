@@ -52,7 +52,7 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
         if (sendedCount < 3) {
             let url = 'https://www-data.splatapozyczek.pl/wp-json/contact-form-7/v1/contact-forms/669/feedback'
             let body = new FormData()
-            body.append('your-email', data.eMail)
+            body.append('your-email', data.email)
             body.append("your-message", data.message)
             body.append('your-name', data.name)
             body.append('your-phone', data.phone)
@@ -122,9 +122,9 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                 </div>
                 <div className="flex">
                     <LabelInput
-                        name='eMail'
+                        name='email'
                         label='Adres e-mail*'
-                        params={{ required: true, pattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ }}
+                        params={{ }}
                         register={register}
                         errors={errors}
                     />
