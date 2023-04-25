@@ -1,7 +1,7 @@
 import React from "react"
 import { Input, Label } from "../atoms/input"
 
-export default function LabelInput({ type, label, name, params, register, errors, rows }) {
+export default function LabelInput({ type = 'input', label, name, params, register, errors, rows }) {
     return (
         <Label>
             <span className="label body2">{label}</span>

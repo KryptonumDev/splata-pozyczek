@@ -11,6 +11,7 @@ import { checkboxController } from "../../../helpers/checkbox-controller"
 import { checkboxAll } from "../../../helpers/checkbox-all"
 import LabelSelect from "../label-select"
 import { datalayerArguments } from "../../../helpers/datalayer"
+import { Input, Label } from "../../atoms/input"
 
 export default function Form({ ip, extended, title, type, setIsSended, typTematow }) {
 
@@ -95,13 +96,11 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
         <Wrapper onSubmit={handleSubmit(onSubmit)}>
             <div className="content">
                 <div className="flex">
-                    <LabelInput
-                        name='name'
-                        label='Imię i nazwisko*'
-                        params={{ required: true, pattern: /^[a-z ,.'-]+$/i, minLength: 3 }}
-                        register={register}
-                        errors={errors}
-                    />
+                    <Label>
+                        <span className="label body2">{'Imię i nazwisko*'}</span>
+                        <Input {...register('name', { required: true, pattern: /^[a-z ,.'-]+$/i, minLength: 3 })} />
+                        {errors['name'] && <span className="error">Wymagane jest wypełnienie tego pola.</span>}
+                    </Label>
                     {extended && typTematow === 'Firmowego'
                         ? <LabelInput
                             name='nip'
