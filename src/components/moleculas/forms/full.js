@@ -94,7 +94,7 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
     return (
         <Wrapper onSubmit={handleSubmit(onSubmit)}>
             <div className="content">
-                <div className="flex">
+                {/* <div className="flex">
                     <LabelInput
                         name='name'
                         label='Imię i nazwisko*'
@@ -102,7 +102,7 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                         register={register}
                         errors={errors}
                     />
-                    {/* {extended && typTematow === 'Firmowego'
+                    {extended && typTematow === 'Firmowego'
                         ? <LabelInput
                             name='nip'
                             label='NIP*'
@@ -118,9 +118,9 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                                 label='Wybierz temat*'
                             />
                             : null
-                    } */}
+                    }
                 </div>
-                {/* <div className="flex">
+                <div className="flex">
                     <LabelInput
                         name='email'
                         label='Adres e-mail*'
@@ -176,18 +176,18 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                             id='two'
                             errors={errors}>
                             Wyrażam zgodę, aby moje dane osobowe były przetwarzane <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b>
-                        </LabelCheckbox>
-                        <LabelCheckbox
-                            wrapClass='sub'
-                            name='privacyThree'
-                            onChange={(e) => { checkboxController(e, getValues, setValue) }}
-                            params={{ required: true }}
-                            register={register}
-                            id='three'
-                            errors={errors}>
-                            Wyrażam zgodę na otrzymywanie od Habza Group Sp. z o.o. <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b>
-                        </LabelCheckbox>
-                        <FilledButton className="submit" as='button' type="submit">Wyślij</FilledButton>
+                         </LabelCheckbox>*/}
+                <LabelCheckbox
+                    wrapClass='sub'
+                    name='privacyThree'
+                    onChange={(e) => { checkboxController(e, getValues, setValue) }}
+                    params={{ required: true }}
+                    register={register}
+                    id='three'
+                    errors={errors}>
+                    Wyrażam zgodę na otrzymywanie od Habza Group Sp. z o.o. <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b>
+                </LabelCheckbox>
+                {/* <FilledButton className="submit" as='button' type="submit">Wyślij</FilledButton>
                     </div>
                     <div>
                         <span className="required body3"><b>*</b>  – Pola obowiązkowe</span>
