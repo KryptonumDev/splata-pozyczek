@@ -53,9 +53,9 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
         if (sendedCount < 3) {
             let url = 'https://www-data.splatapozyczek.pl/wp-json/contact-form-7/v1/contact-forms/669/feedback'
             let body = new FormData()
-            body.append('your-email', data.email)
+            body.append('your-email', data.personemail)
             body.append("your-message", data.message)
-            body.append('your-name', data.name)
+            body.append('your-name', data.personName)
             body.append('your-phone', data.phone)
             body.append('post-url', window.location.href)
             body.append('your-ip', ip)
@@ -76,8 +76,8 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                         reset()
 
                         datalayerArguments("form submit", {
-                            'email': data.email,
-                            'name': data.name,
+                            'email': data.personemail,
+                            'name': data.personName,
                             'phone': data.phone,
                             'message': data.message,
                             'url': window.location,
@@ -122,13 +122,13 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                     }
                 </div>
                 <div className="flex">
-                    {/* <LabelInput
-                        name='email'
+                    <LabelInput
+                        name='personemail'
                         label='Adres e-mail*'
                         params={{ required: true, pattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ }}
                         register={register}
                         errors={errors}
-                    /> */}
+                    />
                     <LabelInput
                         name='phone'
                         label='Numer telefonu*'
