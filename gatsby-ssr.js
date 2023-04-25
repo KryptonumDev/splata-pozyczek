@@ -11,38 +11,38 @@ export const wrapPageElement = ({ element, props }) => (
 
 export const onRenderBody = ({ setHeadComponents, setHtmlAttributes }) => {
     setHtmlAttributes({ lang: "pl" })
-    // setHeadComponents([
-    //     <link
-    //         rel="preload"
-    //         href="/fonts/arsenal-bold.woff2"
-    //         as="font"
-    //         type="font/woff2"
-    //         crossOrigin="anonymous"
-    //         key="Arsenal-Bold"
-    //     />,
-    //     <link
-    //         rel="preload"
-    //         href="/fonts/arsenal-bold-polish.woff2"
-    //         as="font"
-    //         type="font/woff2"
-    //         crossOrigin="anonymous"
-    //         key="Arsenal-Bold-Polish"
-    //     />,
-    //     <link
-    //         rel="preload"
-    //         href="/fonts/source-regular.woff2"
-    //         as="font"
-    //         type="font/woff2"
-    //         crossOrigin="anonymous"
-    //         key="Source-Regular"
-    //     />,
-    //     <link
-    //         rel="preload"
-    //         href="/fonts/source-regular-polish.woff2"
-    //         as="font"
-    //         type="font/woff2"
-    //         crossOrigin="anonymous"
-    //         key="Source-Regular-Polish"
-    //     />,
-    // ])
+    setHeadComponents([
+        <link
+            rel="preload"
+            href="/fonts/arsenal.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+            key="Arsenal-Bold"
+        />,
+        <link
+            rel="preload"
+            href="/fonts/arsenal-polish.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+            key="Arsenal-Bold-Polish"
+        />,
+        <link
+            rel="preload"
+            href="/fonts/source-regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+            key="Source-Regular"
+        />,
+        <link
+            rel="preload"
+            href="/fonts/source-regular-polish.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+            key="Source-Regular-Polish"
+        />,
+    ])
 }
