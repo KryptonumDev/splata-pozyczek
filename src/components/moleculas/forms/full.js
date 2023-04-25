@@ -95,13 +95,13 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
         <Wrapper onSubmit={handleSubmit(onSubmit)}>
             <div className="content">
                 <div className="flex">
-                    {/* <LabelInput
+                    <LabelInput
                         name='name'
                         label='Imię i nazwisko*'
-                        params={{ required: true, pattern: /^[a-z ,.'-]+$/i }}
+                        params={{ required: true, pattern: /^[a-z ,.'-]+$/i, minLength: 3 }}
                         register={register}
                         errors={errors}
-                    /> */}
+                    />
                     {extended && typTematow === 'Firmowego'
                         ? <LabelInput
                             name='nip'
