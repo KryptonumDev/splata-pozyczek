@@ -231,10 +231,10 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
         switch (el.__typename) {
           case 'WpPage_PageBuilder_Sections_Hero':
             return <React.Fragment key={el.__typename + index}> <Hero data={el.hero} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_WhatAreWeDoing':
-          //   return <React.Fragment key={el.__typename + index}> <WhatAreWeDoing data={el.whatAreWeDoing} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_EffectiveSolutions':
-          //   return <React.Fragment key={el.__typename + index}> <EffectiveSolutions data={el.effectiveSolutions} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_WhatAreWeDoing':
+            return <React.Fragment key={el.__typename + index}> <WhatAreWeDoing data={el.whatAreWeDoing} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_EffectiveSolutions':
+            return <React.Fragment key={el.__typename + index}> <EffectiveSolutions data={el.effectiveSolutions} /> </React.Fragment>
           // case 'WpPage_PageBuilder_Sections_Types':
           //   return <React.Fragment key={el.__typename + index}> <HelpTypes data={el.types} /> </React.Fragment>
           // case 'WpPage_PageBuilder_Sections_WhatIsCredit':
