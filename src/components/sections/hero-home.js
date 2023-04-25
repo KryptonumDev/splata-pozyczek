@@ -97,6 +97,10 @@ const Content = styled.div`
     padding-bottom: 160px;
     position: relative;
 
+    .h6{
+        margin-right: 6px;
+    }
+
     @media (max-width: 900px){
         padding-bottom: 0;
 
