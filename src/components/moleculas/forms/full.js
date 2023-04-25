@@ -116,7 +116,7 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                     register={register}
                     errors={errors}
                 />
-                {extended && typTematow === 'Firmowego'
+                {/* {extended && typTematow === 'Firmowego'
                     ? <LabelInput
                         name='nip'
                         label='NIP*'
@@ -132,7 +132,7 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                             label='Wybierz temat*'
                         />
                         : null
-                }
+                } */}
                 {/* <LabelInput
                     name='message'
                     label='Wiadomość*'
