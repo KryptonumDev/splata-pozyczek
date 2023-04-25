@@ -239,8 +239,8 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
           //   return <React.Fragment key={el.__typename + index}> <HelpTypes data={el.types} /> </React.Fragment>
           // case 'WpPage_PageBuilder_Sections_WhatIsCredit':
           //   return <React.Fragment key={el.__typename + index}> <WhatIsCredit data={el.whatIsCredit} /> </React.Fragment>
-          // case 'WpPage_PageBuilder_Sections_Cta':
-          //   return <React.Fragment key={el.__typename + index}> <CallToAction data={el.cta} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_Cta':
+            return <React.Fragment key={el.__typename + index}> <CallToAction data={el.cta} /> </React.Fragment>
           // case 'WpPage_PageBuilder_Sections_Faq':
           //   return <React.Fragment key={el.__typename + index}> <Faq data={el.faq} /> </React.Fragment>
           // case 'WpPage_PageBuilder_Sections_OurExperts':
