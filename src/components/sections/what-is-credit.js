@@ -54,7 +54,7 @@ const Wrapper = styled.section`
     margin-top: var(--section);
 
     .h4{
-        font-family: 'Arsenal', sans-serif;
+        font-family: 'Sans', sans-serif;
         font-size: clamp(30px, 4.296875vw, 38px);
     }
 

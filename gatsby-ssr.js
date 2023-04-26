@@ -14,35 +14,11 @@ export const onRenderBody = ({ setHeadComponents, setHtmlAttributes }) => {
     setHeadComponents([
         <link
             rel="preload"
-            href="/fonts/arsenal.woff2"
+            href="/fonts/sans.woff2"
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
-            key="Arsenal-Bold"
-        />,
-        <link
-            rel="preload"
-            href="/fonts/arsenal-polish.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-            key="Arsenal-Bold-Polish"
-        />,
-        <link
-            rel="preload"
-            href="/fonts/source-regular.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-            key="Source-Regular"
-        />,
-        <link
-            rel="preload"
-            href="/fonts/source-regular-polish.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-            key="Source-Regular-Polish"
+            key="sans"
         />,
     ])
 }

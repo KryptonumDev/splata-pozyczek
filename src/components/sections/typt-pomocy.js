@@ -87,7 +87,7 @@ const Content = styled.div`
     }
 
     .h4, .h6{
-        font-family: 'Arsenal', sans-serif;
+        font-family: 'Sans', sans-serif;
     }
 
     @media (max-width: 640px) {

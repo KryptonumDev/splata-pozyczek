@@ -47,7 +47,7 @@ html, body{
 
 body {
    background: #FEF5F5;
-   font-family: 'Source Sans Pro', sans-serif;
+   font-family: 'Sans', sans-serif;
 }
 
 main, article {
@@ -65,11 +65,11 @@ strong {
 }
 
 .arsenal {
-   font-family: 'Arsenal', sans-serif;
+   font-family: 'Sans', sans-serif;
 }
 
 .arsenal * {
-   font-family: 'Arsenal', sans-serif;
+   font-family: 'Sans', sans-serif;
 }
 
 .blue {
@@ -84,21 +84,31 @@ strong {
    font-weight: 700;
    font-size: 72px;
    line-height: 111%;
-   letter-spacing: -0.02em;
+   letter-spacing: -0.03em;
+
+   *{
+      font-weight: 700;
+   }
 }
 
 .h2 {
    font-weight: 700;
    font-size: 60px;
    line-height: 110%;
-   letter-spacing: -0.02em;
+   letter-spacing: -0.03em;
+   *{
+      font-weight: 700;
+   }
 }
 
 .h3 {
    font-weight: 700;
    font-size: clamp(28px, 7.03vw, 54px);
    line-height: 111%;
-   letter-spacing: -0.02em;
+   letter-spacing: -0.03em;
+   *{
+      font-weight: 700;
+   }
 }
 
 .h4 {
@@ -106,14 +116,20 @@ strong {
    /* 33/768*100 */
    font-size: clamp(28px, 4.296875vw, 38px);
    line-height: 118%;
-   letter-spacing: -0.01em;
+   letter-spacing: -0.03em;
+   *{
+      font-weight: 700;
+   }
 }
 
 .h5 {
    font-weight: 700;
    font-size: clamp(25px, 3.515625vw, 29px);
    line-height: 128%;
-   letter-spacing: -0.005em;
+   letter-spacing: -0.03em;
+   *{
+      font-weight: 700;
+   }
 }
 
 .h6 {
@@ -121,6 +137,9 @@ strong {
    /* 18/768*100 */
    font-size: clamp(18px, 2.34375vw, 20px);
    line-height: 130%;
+   *{
+      font-weight: 700;
+   }
 }
 
 .sub1 {
@@ -129,6 +148,9 @@ strong {
    font-size: 17px;
    line-height: 124%;
    letter-spacing: 0.02em;
+   *{
+      font-weight: 700;
+   }
 }
 
 .sub2 {
@@ -136,10 +158,13 @@ strong {
    font-size: 14px;
    line-height: 136%;
    letter-spacing: 0.02em;
+   *{
+      font-weight: 700;
+   }
 }
 
 .body1 {
-   font-family: 'Source Sans Pro', sans-serif;
+   font-family: 'Sans', sans-serif;
    font-style: normal;
    font-weight: 400;
    font-size: 16px;
@@ -148,7 +173,7 @@ strong {
 }
 
 .body1 p {
-   font-family: 'Source Sans Pro', sans-serif;
+   font-family: 'Sans', sans-serif;
    font-style: normal;
    font-weight: 400;
    font-size: 16px;
@@ -157,7 +182,7 @@ strong {
 }
 
 .body2 {
-   font-family: 'Source Sans Pro', sans-serif;
+   font-family: 'Sans', sans-serif;
    font-style: normal;
    font-weight: 400;
    font-size: 14px;
@@ -166,7 +191,7 @@ strong {
 }
 
 .body2 p {
-   font-family: 'Source Sans Pro', sans-serif;
+   font-family: 'Sans', sans-serif;
    font-style: normal;
    font-weight: 400;
    font-size: 14px;
@@ -194,7 +219,7 @@ strong {
 }
 
 .button {
-   font-family: 'Source Sans Pro', sans-serif;
+   font-family: 'Sans', sans-serif;
    font-style: normal;
    font-weight: 600;
    /* 15/768*100 */
@@ -206,7 +231,7 @@ strong {
 .filled {
    display: block;
    width: fit-content;
-   font-family: 'Source Sans Pro', sans-serif;
+   font-family: 'Sans', sans-serif;
    border: none;
    font-weight: 600;
    font-size: 16px;

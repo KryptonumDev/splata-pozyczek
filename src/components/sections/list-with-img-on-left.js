@@ -151,7 +151,7 @@ const Content = styled.div`
             color: #6F6F71;
 
             em strong, strong em, strong em span, em strong span{
-                font-family: 'Source Sans Pro', sans-serif;
+                font-family: 'Sans', sans-serif;
                 font-style: normal;
                 font-weight: 600;
                 font-size: 16px;

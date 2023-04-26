@@ -79,7 +79,7 @@ const Wrapper = styled.section`
         margin-bottom: 24px;
         text-align: center;
         max-width: 1000px;
-        font-family: 'Arsenal', sans-serif;
+        font-family: 'Sans', sans-serif;
 
         @media (max-width: 860px){
             margin-bottom: 16px;

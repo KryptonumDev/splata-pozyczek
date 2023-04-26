@@ -245,7 +245,7 @@ const Options = styled.div`
         pointer-events: none;
 
         
-        font-family: 'Arsenal', sans-serif;
+        font-family: 'Sans', sans-serif;
         font-style: normal;
         font-weight: 700;
         font-size: 14px;
