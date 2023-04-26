@@ -56,6 +56,11 @@ exports.createPages = async ({
       });
     })
   }
+  createRedirect({
+    fromPath: '/blog/tag/*',
+    toPath: '/tag/*',
+    isPermanent: '301'
+  });
 
   // Create pages
 
