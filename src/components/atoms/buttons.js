@@ -5,7 +5,7 @@ import React, { useRef } from "react"
 export const OutlinedButton = styled(Link)`
     display: block;
     width: fit-content;
-    font-family: 'Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-weight: 600;
     font-size: 16px;
     line-height: 125%;
@@ -127,7 +127,7 @@ const StyledFilledButton = styled.button`
     display: block;
     overflow: hidden;
     width: fit-content;
-    font-family: 'Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     position: relative;
     border: none;
     font-weight: 600;
@@ -186,7 +186,7 @@ const StyledFilledLink = styled(Link)`
     display: block;
     overflow: hidden;
     width: fit-content;
-    font-family: 'Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     position: relative;
     border: none;
     font-weight: 600;

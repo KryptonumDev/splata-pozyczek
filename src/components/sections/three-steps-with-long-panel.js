@@ -115,7 +115,7 @@ const Item = styled.div`
         box-shadow: var(--shadow);
         margin-bottom: 12px;
         
-        font-family: 'Sans', sans-serif;
+        font-family: 'Arsenal', sans-serif;
     }
 
     .content{

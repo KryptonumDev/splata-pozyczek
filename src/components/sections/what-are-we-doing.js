@@ -93,7 +93,7 @@ const Item = styled(Link)`
     .h6{
         text-align: center;
         color: var(--color-white);
-        font-family: 'Sans', sans-serif;
+        font-family: 'Arsenal', sans-serif;
         font-size: 20px !important;
     }
 

@@ -58,7 +58,7 @@ const Wrapper = styled.section`
     margin-top: var(--section);
 
     .h4{
-        font-family: 'Sans', sans-serif;
+        font-family: 'Arsenal', sans-serif;
         text-align: center;
         margin-bottom: clamp(16px, ${24 / 768 * 100}vw, 32px);
     }

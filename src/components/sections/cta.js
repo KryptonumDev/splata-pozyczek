@@ -64,7 +64,7 @@ const Content = styled.section`
     background-color: ${props => props.background};
     .h6{
         color: ${props => props.color};
-        font-family: 'Sans', sans-serif;
+        font-family: 'Arsenal', sans-serif;
 
         *{
             color: ${props => props.color};

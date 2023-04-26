@@ -52,7 +52,7 @@ exports.createPages = async ({
       createRedirect({
         fromPath: el.from,
         toPath: el.to,
-        isPermanent: el.code === '301'
+        statusCode: el.code
       });
     })
   }
