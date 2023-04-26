@@ -22,7 +22,7 @@ module.exports = {
         },
         "url": "https://www-data.splatapozyczek.pl/graphql"
       }
-    },
+    }, 
     'gatsby-plugin-image',
     {
       resolve: `gatsby-plugin-sharp`,
