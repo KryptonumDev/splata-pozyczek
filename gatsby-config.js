@@ -45,13 +45,6 @@ module.exports = {
       __key: 'images'
     },
     {
-      resolve: 'gatsby-plugin-robots-txt',
-      options: {
-        sitemap: 'https://splatapozyczek.pl/sitemap_index.xml',
-        policy: [{ userAgent: '*', allow: '/' }]
-      }
-    },
-    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         icon: 'src/images/logo.png',

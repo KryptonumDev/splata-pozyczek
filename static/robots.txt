@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://splatapozyczek.pl/sitemap_index.xml
