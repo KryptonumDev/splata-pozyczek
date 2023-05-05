@@ -47,7 +47,6 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://splatapozyczek.pl',
         sitemap: 'https://splatapozyczek.pl/sitemap_index.xml',
         policy: [{ userAgent: '*', allow: '/' }]
       }
