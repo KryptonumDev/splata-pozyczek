@@ -4,8 +4,9 @@ module.exports = {
     siteUrl: `https://splatapozyczek.pl`
   },
   plugins: [
+    `gatsby-plugin-preact`,
     {
-      resolve: 'gatsby-plugin-brotli',
+      resolve: 'gatsby-plugin-zopfli',
       options: {
         extensions: ['css', 'html', 'js', 'svg']
       }
