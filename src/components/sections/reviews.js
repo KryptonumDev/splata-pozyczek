@@ -30,6 +30,14 @@ export default function Reviews({ data: { title, text }, expert, comments }) {
             .then(response => {
                 setComments(response.data.filter(el => el.acf.is_shown === true))
             })
+
+        axios(`https://mybusiness.googleapis.com/v4/accounts/6c4f4c800d8b88b5/locations/ChIJyyceLHDNHkcRtYiLDYBMT2w/reviews`, {
+            headers: {
+                'Authorization': `Bearer ${'AIzaSyCFevQz4QmtyPsfNDy4HU12UAREihWLxGc'}`
+            }
+        }).then(res => {
+            debugger
+        })
     }, [])
 
     const [showCount, changeShowCount] = useState(6)
