@@ -1,10 +1,9 @@
-import React, { useLayoutEffect, useState } from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { graphql, useStaticQuery } from "gatsby"
 import { Container } from "../atoms/container"
 import { textParser } from "../../helpers/wysiwyg-modification"
 import { OutlinedButton } from "../atoms/buttons"
-import axios from "axios"
 
 export default function Reviews({ data: { title, text }, expert, comments }) {
 
