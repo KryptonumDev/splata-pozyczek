@@ -61,24 +61,22 @@ export default function Form({ ip, setIsSended, typTematow }) {
             body.append('your-ip', ip)
             axios.post(url, body)
                 .then((res) => {
-                    if (res.status === 200) {
-                        changeSendedCount(sendedCount + 1)
-                        setIsSended(true)
-                        reset()
+                    changeSendedCount(sendedCount + 1)
+                    setIsSended(true)
+                    reset()
 
-                        datalayerArguments("form submit", {
-                            'email': data.email,
-                            'message': data.message,
-                            'name': data.name,
-                            'phone': data.phone,
-                            'subject': data.theme,
-                            'url': window.location,
-                            'ip': ip
-                        });
-
-                    } else {
-                        alert('wystąpił problem, sprobuj póżniej')
-                    }
+                    datalayerArguments("form submit", {
+                        'email': data.email,
+                        'message': data.message,
+                        'name': data.name,
+                        'phone': data.phone,
+                        'subject': data.theme,
+                        'url': window.location,
+                        'ip': ip
+                    });
+                })
+                .catch((err) => {
+                    alert('wystąpił problem, sprobuj póżniej')
                 })
         }
     }

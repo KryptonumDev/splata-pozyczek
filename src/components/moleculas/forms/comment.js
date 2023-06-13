@@ -47,13 +47,13 @@ export default function Form({ setIsSended }) {
                 content: data.message,
             })
                 .then((res) => {
-                    if (res.status === 200) {
-                        changeSendedCount(sendedCount + 1)
-                        setIsSended(true)
-                        reset()
-                    } else {
-                        reset()
-                    }
+                    changeSendedCount(sendedCount + 1)
+                    setIsSended(true)
+                    reset()
+                })
+                .catch((err) => {
+                    alert('wystąpił problem, sprobuj póżniej')
+                    reset()
                 })
         }
     }

@@ -75,27 +75,26 @@ export default function Form({ ip, extended, setIsSended, typTematow }) {
 
             axios.post(url, body)
                 .then((res) => {
-                    if (res.status === 200) {
-                        changeSendedCount(sendedCount + 1)
-                        setIsSended(true)
-                        reset()
+                    changeSendedCount(sendedCount + 1)
+                    setIsSended(true)
+                    reset()
 
-                        datalayerArguments("form submit", {
-                            'email': data.email,
-                            'name': data.name,
-                            'phone': data.phone,
-                            'message': data.message,
-                            'url': window.location,
-                            'nip': data.nip ? data.nip : 'bez NIP',
-                            'subject': data.theme ? data.theme : 'bez tematu',
-                            'place': data.place,
-                            'money-count': data.moneyCount,
-                            'income-count': data.incomeDate,
-                            'ip': ip
-                        });
-                    } else {
-                        alert('wystąpił problem, sprobuj póżniej')
-                    }
+                    datalayerArguments("form submit", {
+                        'email': data.email,
+                        'name': data.name,
+                        'phone': data.phone,
+                        'message': data.message,
+                        'url': window.location,
+                        'nip': data.nip ? data.nip : 'bez NIP',
+                        'subject': data.theme ? data.theme : 'bez tematu',
+                        'place': data.place,
+                        'money-count': data.moneyCount,
+                        'income-count': data.incomeDate,
+                        'ip': ip
+                    });
+                })
+                .catch((err) => {
+                    alert('wystąpił problem, sprobuj póżniej')
                 })
         }
     }

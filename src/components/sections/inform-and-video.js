@@ -24,7 +24,7 @@ export default function InformAndVideo({ data: { video, title, text, icon } }) {
                         <div className="body1 sub" dangerouslySetInnerHTML={{ __html: text }} />
                     </Panel>
 
-                    <iframe loading="lazy" src={video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe loading="lazy" src={video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 </Flex>
             </Container>
         </Wrapper>

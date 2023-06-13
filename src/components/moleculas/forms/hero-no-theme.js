@@ -43,21 +43,20 @@ export default function Form({ setIsSended, formTitle }) {
             body.append('post-url', window.location.href)
             axios.post(url, body)
                 .then((res) => {
-                    if (res.status === 200) {
-                        changeSendedCount(sendedCount + 1)
-                        setIsSended(true)
-                        reset()
+                    changeSendedCount(sendedCount + 1)
+                    setIsSended(true)
+                    reset()
 
-                        datalayerArguments("form submit", {
-                            'email': data.email,
-                            'name': data.name,
-                            'phone': data.phone,
-                            'message': data.message,
-                            'url': window.location
-                        });
-                    } else {
-                        alert('wystąpił problem, sprobuj póżniej')
-                    }
+                    datalayerArguments("form submit", {
+                        'email': data.email,
+                        'name': data.name,
+                        'phone': data.phone,
+                        'message': data.message,
+                        'url': window.location
+                    });
+                })
+                .catch((err) => {
+                    alert('wystąpił problem, sprobuj póżniej')
                 })
         }
     }

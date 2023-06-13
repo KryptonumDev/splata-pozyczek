@@ -10,9 +10,9 @@ export default function Map({ data: { url } }) {
                 <iframe
                     title="video"
                     src={url}
-                    allowfullscreen=""
+                    allowFullScreen=""
                     loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
+                    referrerPolicy="no-referrer-when-downgrade"
                 />
             </Container>
         </Wrapper>
