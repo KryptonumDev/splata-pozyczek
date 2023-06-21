@@ -42,7 +42,7 @@ export default function BlogArchive({ data: { pageTitle, text, list, link, relat
             ? <title>{`Blog o kredytach i finansach - Strona ${page} - SplataPozyczek.pl`}</title>
             : <title>{`Blog o kredytach i finansach - SplataPozyczek.pl`}</title>}
 
-        <link rel="canonical" href={'https://splatapozyczek.pl' + url + (page !== 1 ? '/' + page + '/' : '')} />
+        <link rel="canonical" href={'https://splatapozyczek.pl' + url + (page !== 1 ? page + '/' : '')} />
       </Helmet>
       {currentFilter
         ? null
