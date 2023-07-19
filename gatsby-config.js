@@ -15,6 +15,7 @@ module.exports = {
       options: {
         id: "GTM-WMRZK4K",
         defaultDataLayer: { platform: "gatsby" },
+        includeInDevelopment: true,
       },
     },
     {

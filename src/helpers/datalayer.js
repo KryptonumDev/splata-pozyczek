@@ -1,7 +1,7 @@
 
-export function datalayerArguments() {
-    if (typeof window !== "undefined" && !!arguments) {
+export function datalayerArguments(data) {
+    if (typeof window !== "undefined" && !!data) {
         window.dataLayer = window.dataLayer || []
-        window.dataLayer.push(arguments)
+        window.dataLayer.push(data)
     }
 }

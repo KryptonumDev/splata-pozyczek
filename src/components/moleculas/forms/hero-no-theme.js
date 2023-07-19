@@ -46,13 +46,15 @@ export default function Form({ setIsSended, formTitle }) {
                     changeSendedCount(sendedCount + 1)
                     setIsSended(true)
                     reset()
-
-                    datalayerArguments("form submit", {
-                        'email': data.email,
-                        'name': data.name,
-                        'phone': data.phone,
-                        'message': data.message,
-                        'url': window.location
+                    datalayerArguments({
+                        "event": 'Custom Form Submit',
+                        "data": {
+                            'email': data.email,
+                            'name': data.name,
+                            'phone': data.phone,
+                            'message': data.message,
+                            'url': window.location
+                        }
                     });
                 })
                 .catch((err) => {
