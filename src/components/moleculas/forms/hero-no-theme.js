@@ -14,12 +14,15 @@ import { datalayerArguments } from "../../../helpers/datalayer"
 
 export default function Form({ setIsSended, formTitle }) {
 
-    const { wpPage: { formyKontaktowe: { linkPrivacyPolicy } } } = useStaticQuery(graphql`
+    const { wpPage: { formyKontaktowe: { linkPrivacyPolicySecond, linkPrivacyPolicyThird } } } = useStaticQuery(graphql`
     query {
         wpPage(id: {eq: "cG9zdDo2MzQ="}) {
             formyKontaktowe {
               additionalInform
-              linkPrivacyPolicy {
+              linkPrivacyPolicySecond {
+                url
+              }
+              linkPrivacyPolicyThird {
                 url
               }
             }
@@ -122,7 +125,7 @@ export default function Form({ setIsSended, formTitle }) {
                         onChange={(e) => { checkboxControllerHero(e, getValues, setValue) }}
                         id='one-hero'
                         errors={errors}>
-                        Wyrażam zgodę, aby moje dane osobowe były przetwarzane <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b>
+                        Wyrażam zgodę, aby moje dane osobowe były przetwarzane <Link to={linkPrivacyPolicySecond.url}>czytaj więcej</Link><b>*</b>
                     </LabelCheckbox>
                     <LabelCheckbox
                         wrapClass='sub'
@@ -132,7 +135,7 @@ export default function Form({ setIsSended, formTitle }) {
                         onChange={(e) => { checkboxControllerHero(e, getValues, setValue) }}
                         id='two-hero'
                         errors={errors}>
-                        Wyrażam zgodę na otrzymywanie od Habza Group Sp. z o.o. <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b>
+                        Wyrażam zgodę na otrzymywanie od Habza Group Sp. z o.o. <Link to={linkPrivacyPolicyThird.url}>czytaj więcej</Link><b>*</b>
                     </LabelCheckbox>
                 </div>
 

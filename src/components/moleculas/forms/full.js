@@ -14,12 +14,18 @@ import { datalayerArguments } from "../../../helpers/datalayer"
 
 export default function Form({ ip, extended, title, type, setIsSended, typTematow }) {
 
-    const { wpPage: { formyKontaktowe: { linkPrivacyPolicy, additionalInform, meesageThemesFirms, meesageThemesDetails } } } = useStaticQuery(graphql`
+    const { wpPage: { formyKontaktowe: { linkPrivacyPolicyFirst, linkPrivacyPolicySecond, linkPrivacyPolicyThird, additionalInform, meesageThemesFirms, meesageThemesDetails } } } = useStaticQuery(graphql`
     query {
         wpPage(id: {eq: "cG9zdDo2MzQ="}) {
             formyKontaktowe {
               additionalInform
-              linkPrivacyPolicy {
+              linkPrivacyPolicyFirst {
+                url
+              }
+              linkPrivacyPolicySecond {
+                url
+              }
+              linkPrivacyPolicyThird {
                 url
               }
               meesageThemesFirms {
@@ -166,7 +172,7 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                             register={register}
                             id='one'
                             errors={errors}>
-                            Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to={linkPrivacyPolicy.url}>Polityce prywatności</Link><b>*</b>
+                            Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to={linkPrivacyPolicyFirst.url}>Polityce prywatności</Link><b>*</b>
                         </LabelCheckbox>
                         <LabelCheckbox
                             wrapClass='sub'
@@ -176,7 +182,7 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                             register={register}
                             id='two'
                             errors={errors}>
-                            Wyrażam zgodę, aby moje dane osobowe były przetwarzane <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b>
+                            Wyrażam zgodę, aby moje dane osobowe były przetwarzane <Link to={linkPrivacyPolicySecond.url}>czytaj więcej</Link><b>*</b>
                         </LabelCheckbox>
                         <LabelCheckbox
                             wrapClass='sub'
@@ -186,7 +192,7 @@ export default function Form({ ip, extended, title, type, setIsSended, typTemato
                             register={register}
                             id='three'
                             errors={errors}>
-                            Wyrażam zgodę na otrzymywanie od Habza Group Sp. z o.o. <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b>
+                            Wyrażam zgodę na otrzymywanie od Habza Group Sp. z o.o. <Link to={linkPrivacyPolicyThird.url}>czytaj więcej</Link><b>*</b>
                         </LabelCheckbox>
                         <FilledButton className="submit" as='button' type="submit">Wyślij</FilledButton>
                     </div>

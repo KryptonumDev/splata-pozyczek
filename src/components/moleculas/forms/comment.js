@@ -13,7 +13,7 @@ import LabelSelect from "../label-select"
 
 export default function Form({ setIsSended }) {
 
-    const { allWpEkspert, wpPage: { formyKontaktowe: { linkPrivacyPolicy } } } = useStaticQuery(graphql`
+    const { allWpEkspert, wpPage: { formyKontaktowe: { linkPrivacyPolicyFirst, linkPrivacyPolicySecond, linkPrivacyPolicyThird } } } = useStaticQuery(graphql`
     query {
         allWpEkspert {
           nodes {
@@ -23,7 +23,13 @@ export default function Form({ setIsSended }) {
         }
         wpPage(id: {eq: "cG9zdDo2MzQ="}) {
             formyKontaktowe {
-              linkPrivacyPolicy {
+              linkPrivacyPolicyFirst {
+                url
+              }
+              linkPrivacyPolicySecond {
+                url
+              }
+              linkPrivacyPolicyThird {
                 url
               }
             }
@@ -114,7 +120,7 @@ export default function Form({ setIsSended }) {
                             register={register}
                             id='one'
                             errors={errors}>
-                            Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to={linkPrivacyPolicy.url}>Polityce prywatności</Link><b>*</b>
+                            Wyrażam zgodę na przetwarzanie moich danych osobowych na zasadach określonych w <Link to={linkPrivacyPolicyFirst.url}>Polityce prywatności</Link><b>*</b>
                         </LabelCheckbox>
                         <LabelCheckbox
                             wrapClass='sub'
@@ -124,7 +130,7 @@ export default function Form({ setIsSended }) {
                             register={register}
                             id='two'
                             errors={errors}>
-                            Wyrażam zgodę, aby moje dane osobowe były przetwarzane <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b>
+                            Wyrażam zgodę, aby moje dane osobowe były przetwarzane <Link to={linkPrivacyPolicySecond.url}>czytaj więcej</Link><b>*</b>
                         </LabelCheckbox>
                         <LabelCheckbox
                             wrapClass='sub'
@@ -134,7 +140,7 @@ export default function Form({ setIsSended }) {
                             register={register}
                             id='three'
                             errors={errors}>
-                            Wyrażam zgodę na otrzymywanie od Habza Group Sp. z o.o. <Link to={linkPrivacyPolicy.url}>czytaj więcej</Link><b>*</b>
+                            Wyrażam zgodę na otrzymywanie od Habza Group Sp. z o.o. <Link to={linkPrivacyPolicyThird.url}>czytaj więcej</Link><b>*</b>
                         </LabelCheckbox>
                         <FilledButton className="submit" as='button' type="submit">Wyślij</FilledButton>
                     </div>
