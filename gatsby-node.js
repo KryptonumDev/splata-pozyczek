@@ -24,11 +24,7 @@ const csvParser = (data) => {
   return result; //JSON
 };
 
-
-exports.createPages = async ({
-  graphql,
-  actions: { createPage, createRedirect },
-}) => {
+exports.onPostBuild = async ({ graphql }) => {
 
   // Create redirects
 
@@ -48,19 +44,30 @@ exports.createPages = async ({
     const result = await fetch(csvRedirects.mediaItemUrl)
     const resultData = await result.text()
 
-    csvParser(resultData)?.forEach(el => {
-      createRedirect({
-        fromPath: el.from,
-        toPath: el.to,
-        statusCode: el.code
-      });
-    })
+    const redirectConfig = csvParser(resultData)?.map(el => (
+      `[[redirects]]
+        from = "${el.from}"
+        to = "${el.to}"
+        status = ${el.code}
+        force = ${el.force || false}`
+    ))
+
+    redirectConfig.push(`[[redirects]]
+      from = "/blog/tag/*"
+      to = "/tag/*"
+      status = 301
+      force = false
+    `)
+
+    fs.writeFileSync('netlify.toml', redirectConfig.join('\n'));
   }
-  createRedirect({
-    fromPath: '/blog/tag/*',
-    toPath: '/tag/*',
-    isPermanent: '301'
-  });
+};
+
+exports.createPages = async ({
+  graphql,
+  actions: { createPage },
+}) => {
+
 
   // Create pages
 
