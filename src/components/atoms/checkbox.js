@@ -111,7 +111,7 @@ export const Input = styled.input`
     &::after {
         content: '✓';
         color: #fff;
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 300;
         transition: 120ms opacity ease-in-out;
         position: absolute;

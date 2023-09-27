@@ -19,9 +19,9 @@ import Faq from "../components/sections/blog-post/faq"
 import HorizontalChart from "../components/sections/blog-post/horizontal-chart"
 import VerticalChart from "../components/sections/blog-post/vertical-chart"
 import { useState } from "react"
-import { Helmet } from "react-helmet"
 import { htmlDelete } from "../helpers/wysiwyg-modification"
 import { slugTransform } from "../helpers/slug-transform"
+import BlogSlider from "../components/sections/blog-related-slider"
 
 export function Head({ pageContext, data: { wpPost: { id, seo, author, title, slug, blogPost } } }) {
   const canonical = 'https://splatapozyczek.pl' + pageContext.url
@@ -69,9 +69,9 @@ export function Head({ pageContext, data: { wpPost: { id, seo, author, title, sl
           description: blogPost.previewText,
           image:
             'https://splatapozyczek.pl' +
-            (seo.opengraphImage?.localFile?.publicURL
-              ? seo.opengraphImage.localFile.publicURL
-              : 'https://splatapozyczek.pl/og.jpg'),
+            (blogPost?.thumbnail?.localFile?.publicURL
+              ? blogPost?.thumbnail?.localFile?.publicURL
+              : '/og.jpg'),
           author: {
             '@type': 'Person',
             name: author.node.name
@@ -195,7 +195,7 @@ export function Head({ pageContext, data: { wpPost: { id, seo, author, title, sl
   )
 }
 
-export default function Post({ pageContext, data: { wpPost } }) {
+export default function Post({ pageContext, data: { wpPost, related } }) {
   useEffect(() => {
     document.documentElement.classList.add('overflow')
     document.body.classList.add('overflow')
@@ -330,12 +330,51 @@ export default function Post({ pageContext, data: { wpPost } }) {
           </div>
         </Grid>
       </Container>
+      {related.nodes.length > 1 && (
+        <BlogSlider posts={related.nodes} />
+      )}
     </Wrapper>
   )
 }
-
+// 
 export const query = graphql`
-    query post($id: String!) {
+    query post($id: String!, $category: [String]) {
+        related : allWpPost(
+          limit: 3
+          filter: {tags: {nodes: {elemMatch: {name: {in: $category}}}}}
+        )  {
+          nodes{
+            id
+            title
+            slug
+            author {
+              node {
+                name
+              }
+            }
+            date(formatString: "DD.MM.YYYY")
+            categories : tags {
+              nodes {
+                name
+                slug
+                category {
+                  color
+                }
+              }
+            }
+            blogPost {
+              previewText
+              thumbnail {
+                altText
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+            }
+          }
+        }
         wpPost(id: {eq: $id}) {
             id
             title
@@ -377,6 +416,7 @@ export const query = graphql`
                 thumbnail {
                   altText
                   localFile {
+                    publicURL
                     childImageSharp {
                       gatsbyImageData
                     }

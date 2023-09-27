@@ -223,12 +223,17 @@ exports.createPages = async ({
         id
         slug
         title
+        categories : tags {
+          nodes {
+            name
+          }
+        }
       }
     }
   }
   `)
 
-  postNodes.forEach(({ slug, id, title }) => {
+  postNodes.forEach(({ slug, id, title, categories }) => {
     createPage({
       path: '/blog/' + slug + '/',
       component: resolve('src/templates/post.jsx'),
@@ -236,7 +241,8 @@ exports.createPages = async ({
         id: id,
         slug,
         url: '/blog/' + slug + '/',
-        title: title
+        title: title,
+        category: categories.nodes.map(el => el.name)
       },
     });
   });

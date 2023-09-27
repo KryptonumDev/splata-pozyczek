@@ -129,7 +129,7 @@ const ButtonFlex = styled.div`
             @media (max-width: 640px) {
                 padding: 0 0 4px 0;
                 span{
-                    font-size: 14px;
+                    font-size: 16px;
                 }
                 svg{
                     display: block;

@@ -2,6 +2,7 @@ import { graphql, Link } from "gatsby"
 import React, { useMemo } from "react"
 import styled from "styled-components"
 import { Container } from "../components/atoms/container"
+import { Helmet } from "react-helmet"
 
 export default function MapaStrony({ data: { allSitePage } }) {
 
@@ -39,6 +40,9 @@ export default function MapaStrony({ data: { allSitePage } }) {
 
     return (
         <Wrapper>
+            <Helmet>
+                <title>Mapa Strony - Splatapozyczek.pl</title>
+            </Helmet>
             <Container>
                 <p className="arsenal h4">Strony</p>
                 <ul>

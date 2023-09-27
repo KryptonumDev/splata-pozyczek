@@ -381,7 +381,7 @@ const Wrapper = styled.form`
             width: 100%;
 
             font-weight: 400;
-            font-size: 14px;
+            font-size: 16px;
             line-height: 129%;
             font-feature-settings: 'pnum' on, 'onum' on;
             color: #050505;
@@ -389,7 +389,7 @@ const Wrapper = styled.form`
             &::placeholder{
                 color: #B2B2B8;
                 font-weight: 400;
-                font-size: 14px;
+                font-size: 16px;
                 line-height: 129%;
                 font-feature-settings: 'pnum' on, 'onum' on;
             }
@@ -431,7 +431,7 @@ const Wrapper = styled.form`
 
             &::after {
                 content: '✓';
-                font-size: 14px;
+                font-size: 16px;
                 font-weight: 300;
                 transition: 120ms transform ease-in-out;
                 position: absolute;

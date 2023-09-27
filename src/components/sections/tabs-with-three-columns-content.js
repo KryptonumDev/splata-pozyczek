@@ -208,7 +208,7 @@ const Control = styled(motion.div)`
 
             @media (max-width: 480px) {
                 padding: 0 8px 4px 8px;
-                font-size: 14px;
+                font-size: 16px;
             }
 
             &::after{

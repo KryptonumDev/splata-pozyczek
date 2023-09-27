@@ -73,11 +73,11 @@ const Box = styled.div`
         }
 
         blockquote{
-            font-size: 14px;
+            font-size: 16px;
         }
 
         figcaption{
-            font-size: 14px;
+            font-size: 16px;
         }
     }
 

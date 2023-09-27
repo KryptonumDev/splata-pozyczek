@@ -133,7 +133,7 @@ strong {
 
 .sub2 {
    font-weight: 700;
-   font-size: 14px;
+   font-size: 16px;
    line-height: 136%;
    letter-spacing: 0.02em;
 }
@@ -160,7 +160,7 @@ strong {
    font-family: 'Source Sans Pro', sans-serif;
    font-style: normal;
    font-weight: 400;
-   font-size: 14px;
+   font-size: 16px;
    line-height: 129%;
    font-feature-settings: 'pnum' on, 'onum' on;
 }
@@ -169,7 +169,7 @@ strong {
    font-family: 'Source Sans Pro', sans-serif;
    font-style: normal;
    font-weight: 400;
-   font-size: 14px;
+   font-size: 16px;
    line-height: 129%;
    font-feature-settings: 'pnum' on, 'onum' on;
 }

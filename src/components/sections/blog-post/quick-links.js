@@ -29,7 +29,7 @@ export default function QuickLinks({ setInView, inView, links }) {
 const Link = styled.a`
     color: #6F6F71 !important;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 129%;
     font-feature-settings: 'pnum' on, 'onum' on;
     text-decoration: none;
@@ -38,7 +38,7 @@ const Link = styled.a`
     *{
         color: #6F6F71 !important;            
         font-weight: 400;
-        font-size: 14px;
+        font-size: 16px;
         line-height: 129%;
         font-feature-settings: 'pnum' on, 'onum' on;
     }

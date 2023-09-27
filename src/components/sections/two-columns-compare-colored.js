@@ -71,7 +71,7 @@ const Grid = styled.div`
             li{
                 list-style: none;
                 font-weight: 400;
-                font-size: 14px;
+                font-size: 16px;
                 line-height: 129%;
                 font-feature-settings: 'pnum' on, 'onum' on;
                 color: #050505;

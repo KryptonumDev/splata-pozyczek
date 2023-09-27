@@ -123,9 +123,9 @@ const Wrapper = styled.footer`
 
     @media (max-width: 876px) {
         .body3{
-            font-size: 14px;
+            font-size: 16px;
             *{
-                font-size: 14px;
+                font-size: 16px;
             }
         }
 

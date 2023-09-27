@@ -70,13 +70,13 @@ const Item = styled.div`
         margin-bottom: 8px;
         color: #3B5BA9;
         text-decoration: none;
-        font-size: 14px;
+        font-size: 16px;
     }
 
     .mail{
         color: #6F6F71;
         text-decoration: none;
-        font-size: 14px;
+        font-size: 16px;
         svg{
             rect{
                 fill: #6F6F71;

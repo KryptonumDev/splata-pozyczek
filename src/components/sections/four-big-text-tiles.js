@@ -136,7 +136,7 @@ const Item = styled.div`
         }
 
         @media (max-width: 600px){
-            font-size: 14px;
+            font-size: 16px;
         }
     }
 

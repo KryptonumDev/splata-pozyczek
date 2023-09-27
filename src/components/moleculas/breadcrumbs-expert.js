@@ -61,7 +61,7 @@ const Wrapper = styled.div`
 
     @media (max-width: 480px) {
         .body1{
-            font-size: 14px;
+            font-size: 16px;
         }
     }
 

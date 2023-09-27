@@ -248,7 +248,7 @@ const Options = styled.div`
         font-family: 'Arsenal', sans-serif;
         font-style: normal;
         font-weight: 700;
-        font-size: 14px;
+        font-size: 16px;
         line-height: 136%;
         letter-spacing: 0.02em;
         color: #050505;

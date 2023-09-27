@@ -86,7 +86,7 @@ const Item = styled.div`
         color: #6E6E70;
 
         @media (max-width: 1024px) {
-            font-size: 14px;
+            font-size: 16px;
         }
 
         @media (max-width: 520px) {
@@ -103,7 +103,7 @@ const Item = styled.div`
         }
 
     @media (max-width: 520px) {
-        font-size: 14px;
+        font-size: 16px;
     }
     }
 
