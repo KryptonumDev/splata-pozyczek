@@ -37,7 +37,7 @@ a {
    color: #3B5BA9;
 }
 
-html, body{
+html, body, article{
    overflow-x: hidden;
 }
 
@@ -54,6 +54,13 @@ main, article {
    margin-top: clamp(110px, 21.4375vw, 180px);
 }
 
+details > summary {
+  list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
 a,
 span {
    font-weight: 600;

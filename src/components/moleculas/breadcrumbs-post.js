@@ -39,17 +39,18 @@ export default function BreadcrumbsPost({ title, uri }) {
             <span className="body1 divider">/</span>
             <Link className="body1" to='/blog/'>Blog</Link>
             <span className="body1 divider">/</span>
-            <span className="body1">{title.split(' ').slice(0, 3).join(' ') }</span>
+            <span className="body1">{title}</span>
         </Wrapper>
     )
 }
 
 const Wrapper = styled.div`
-    display: flex;
-    justify-content: flex-start;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 
     .divider{
-        display: block;
         margin: 0 4px;
         color: #6F6F71;
     }
