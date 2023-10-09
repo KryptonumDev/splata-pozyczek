@@ -79,7 +79,7 @@ const Grid = styled.div`
     grid-template-columns: 1fr 1fr;
     grid-gap: 32px;
 
-    @media (max-width: 764px) {
+    @media (max-width: 768px) {
         grid-gap: 16px 24px;
     }
 
@@ -102,7 +102,7 @@ const Highlighted = styled.div`
         padding: 20px 30px;
     }
 
-    @media (max-width: 764px) {
+    @media (max-width: 768px) {
         padding: 20px;
     }
 `
@@ -131,7 +131,7 @@ const Item = styled.div`
             margin-right: 0;
         }
 
-        @media (max-width: 764px){
+        @media (max-width: 768px){
             font-size: 12px;
         }
 

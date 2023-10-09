@@ -464,7 +464,7 @@ const Grid = styled.div`
     grid-template-columns: 277fr 796fr;
     grid-gap: 32px;
 
-    @media (max-width: 764px) {
+    @media (max-width: 768px) {
         grid-template-columns: 1fr;
     }
 

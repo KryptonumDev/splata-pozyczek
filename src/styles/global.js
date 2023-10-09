@@ -37,8 +37,14 @@ a {
    color: #3B5BA9;
 }
 
-html, body, article{
+html, body{
    overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+   article{
+      overflow: hidden;
+   }
 }
 
 .overflow{

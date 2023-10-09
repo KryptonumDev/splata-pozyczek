@@ -60,7 +60,7 @@ const Wrapper = styled.aside`
     height: fit-content;
     min-width: 250px;
 
-    @media (max-width: 764px) {
+    @media (max-width: 768px) {
         position: static;
     }
 

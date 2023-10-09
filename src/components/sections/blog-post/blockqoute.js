@@ -97,7 +97,7 @@ const Box = styled.div`
             grid-gap: 6px;
             height: fit-content;
         }
-        @media (max-width: 764px){
+        @media (max-width: 768px){
             padding: 16px 10px;
             grid-gap: 10px;
             grid-template-columns: 32px 1fr;

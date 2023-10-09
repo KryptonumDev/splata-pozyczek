@@ -119,7 +119,7 @@ const Cell = styled.td`
     text-align: right;
     font-feature-settings: 'pnum' on, 'lnum' on;
 
-    @media (max-width: 764px) {
+    @media (max-width: 768px) {
         font-size: clamp(11px, ${11 / 480 * 100}vw, 16px);
     }
 

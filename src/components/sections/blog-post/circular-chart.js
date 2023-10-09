@@ -75,7 +75,7 @@ const ChartBox = styled.div`
     align-items: center;
     grid-template-columns: clamp(250px, ${250 / 768 * 100}vw, 375px) auto;
 
-    @media (max-width: 764px) {
+    @media (max-width: 768px) {
         grid-template-columns: clamp(250px, ${250 / 480 * 100}vw, 375px) auto;
     }
 

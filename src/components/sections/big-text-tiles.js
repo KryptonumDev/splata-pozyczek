@@ -104,7 +104,7 @@ margin-top: clamp(24px, ${28 / 768 * 100}vw, 32px);
     grid-template-columns: 1fr 1fr;
     grid-gap: 32px;
 
-    @media (max-width: 764px) {
+    @media (max-width: 768px) {
         grid-gap: 16px 24px;
     }
 
@@ -175,7 +175,7 @@ const Item = styled.div`
             margin-right: 0;
         }
 
-        @media (max-width: 764px){
+        @media (max-width: 768px){
             font-size: 12px;
         }
 

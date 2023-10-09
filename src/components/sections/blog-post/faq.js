@@ -123,7 +123,7 @@ const Grid = styled.div`
         grid-template-columns: 1fr;
     }
 
-    @media (max-width: 764px) {
+    @media (max-width: 768px) {
         grid-template-columns: 1fr 1fr;
     }
 
