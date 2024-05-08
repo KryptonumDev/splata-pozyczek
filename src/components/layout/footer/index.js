@@ -1,335 +1,272 @@
-import { graphql, useStaticQuery } from "gatsby"
-import React from "react"
-import styled from "styled-components"
-import { Container } from "../../atoms/container"
-import Five from "./five-column"
-import Four from "./four-column"
-import One from "./one.column"
-import Three from "./three-column"
-import Two from "./two-column"
+import { graphql, useStaticQuery } from "gatsby";
+import React from "react";
+import styled from "styled-components";
+import { Container } from "../../atoms/container";
+import All from "./all-columns";
+// import Five from "./five-column"
+// import Four from "./four-column"
+// import One from "./one.column"
+// import Three from "./three-column"
+// import Two from "./two-column"
 
 export default function Footer() {
-
-    const { wpPage: { footer: { columns, contact, copyright, informPart } } } = useStaticQuery(graphql`
+  const {
+    wpPage: {
+      footer: { columns, contact, copyright, informPart },
+    },
+  } = useStaticQuery(graphql`
     query {
-        wpPage(id: {eq: "cG9zdDozNzU="}) {
-            footer {
-              informPart {
-                text
-                socialMedia {
-                  link
-                  icon {
-                    altText
-                    localFile {
-                      publicURL
-                    }
-                  }
-                }
-              }
-              copyright
-              contact {
-                title
-                text
-                buttons {
-                  url
-                  name
-                }
-              }
-              columns {
-                pierwszaGornaKolumna {
-                  tytul
-                  linki {
-                    link{
-                        url
-                        title
-                        target
-                    }
-                  }
-                }
-                trzeciaKolumna {
-                  tytul
-                  linki {
-                    link{
-                        url
-                        title
-                        target
-                    }
-                  }
-                }
-                pierwszaDolnaKolumna {
-                  tytul
-                  linki {
-                    link{
-                        url
-                        title
-                        target
-                    }
-                  }
-                }
-                drugaGornaKolumna {
-                  tytul
-                  linki {
-                    link{
-                        url
-                        title
-                        target
-                    }
-                  }
-                }
-                drugaDolnaKolumna {
-                  tytul
-                  linki {
-                    link{
-                        url
-                        title
-                        target
-                    }
-                  }
+      wpPage(id: { eq: "cG9zdDozNzU=" }) {
+        footer {
+          informPart {
+            text
+            socialMedia {
+              link
+              icon {
+                altText
+                localFile {
+                  publicURL
                 }
               }
             }
           }
+          copyright
+          contact {
+            title
+            text
+            buttons {
+              url
+              name
+            }
+          }
+          columns {
+            pierwszaGornaKolumna {
+              tytul
+              linki {
+                link {
+                  url
+                  title
+                  target
+                }
+              }
+            }
+            trzeciaKolumna {
+              tytul
+              linki {
+                link {
+                  url
+                  title
+                  target
+                }
+              }
+            }
+            pierwszaDolnaKolumna {
+              tytul
+              linki {
+                link {
+                  url
+                  title
+                  target
+                }
+              }
+            }
+            drugaGornaKolumna {
+              tytul
+              linki {
+                link {
+                  url
+                  title
+                  target
+                }
+              }
+            }
+            drugaDolnaKolumna {
+              tytul
+              linki {
+                link {
+                  url
+                  title
+                  target
+                }
+              }
+            }
+          }
+        }
+      }
     }
-  `)
+  `);
 
-
-    return (
-        <Wrapper>
-            <Container>
-                <Content className="five">
-                    <Five columns={columns} contact={contact} copyright={copyright} informPart={informPart} />
-                </Content>
-                <Content className="four">
-                    <Four columns={columns} contact={contact} copyright={copyright} informPart={informPart} />
-                </Content>
-                <Content className="three">
-                    <Three columns={columns} contact={contact} copyright={copyright} informPart={informPart} />
-                </Content>
-                <Content className="two">
-                    <Two columns={columns} contact={contact} copyright={copyright} informPart={informPart} />
-                </Content>
-                <Content className="one">
-                    <One columns={columns} contact={contact} copyright={copyright} informPart={informPart} />
-                </Content>
-            </Container>
-        </Wrapper>
-    )
+  return (
+    <Wrapper>
+      <Container>
+        <div className="all">
+          <All
+            columns={columns}
+            contact={contact}
+            copyright={copyright}
+            informPart={informPart}
+          />
+        </div>
+        <div
+          className="copyright body3"
+          dangerouslySetInnerHTML={{ __html: copyright }}
+        />
+      </Container>
+    </Wrapper>
+  );
 }
 
 const Wrapper = styled.footer`
-    margin-top: var(--section);
-    background: #F2F4FF;
-    padding: 48px 0;
+  margin-top: var(--section);
+  background: #f2f4ff;
+  padding: 48px 0;
 
-    @media (max-width: 876px) {
-        .body3{
-            font-size: 16px;
-            *{
-                font-size: 16px;
-            }
-        }
-
-        .sub{
-            grid-gap: 12px !important;
-        }
-
-        .inform{
-            height: fit-content !important;
-        }
-    }
-
-    .inform{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        gap: 32px;
-        height: 100%;
-        .body2{
-            margin-top: 16px;
-            margin-bottom: 32px;
-        }
-
-        .sub{
-            .body2{
-                margin-top: 0;
-                margin-bottom: 10px;
-            }
-        }
-
-        img{
-            height: 18px;
-            width: 18px;
-        }
-
-        @media (max-width: 1024px){
-            img{
-                height: 28px;
-                width: 28px;
-            }
-        }
-
-        @media (max-width: 480px){
-            img{
-                height: 35px;
-                width: 35px;
-            }
-        }
-    }
-
-    .copyright{
-        display: flex;
-        align-items: flex-end;
-
-        p{
-            
-        }
-
-        a{
-            color: #6F6F71;
-            font-weight: 600;
-            text-decoration: none;
-        }
-    }
-
-    .socials{
-        display: flex;
-        gap: 18px;
-        align-items: center;
-
-        @media (max-width: 1024px) {
-            gap: 24px;
-        }
-
-        @media (max-width: 480px){
-            gap: 32px;
-        }
-    }
-
-    .contact{
-        padding: 32px 26px;
-        background: #3B5BA9;
-        box-shadow: var(--shadow);
-        border-radius: 8px;
-        min-width: 250px;
-
-        a{
-            color: #ffd662;
-        }
-
-        p, span{
-            color: #F2F4FF;
-        }
-
-        .body2{
-            margin-top: 0;
-            margin-bottom: 16px;
-            display: block;
-        }
-
-        .body3{
-            display: grid;
-            grid-gap: 12px;
-            margin-bottom: 16px;
-            color: #F2F4FF;
-        }
-
-        .outlined{
-            border-color: #FEF5F5;
-            color: #FEF5F5;
-            margin-top: 12px;
-
-            &:hover{
-                background-color: #FEF5F5;
-                color: #000000;
-            }
-        }
-    }
-
-    .sub{
-        display: grid;
-        grid-gap: 6px;
-
-        &.second{
-            margin-top: 24px;
-        }
-
-        .title{
-            margin-bottom: 10px;
-            display: block;
-            color: #050505;
-            font-weight: 600;
-        }
-
-        a{
-            text-decoration: none;
-            font-weight: 400;
-            line-height: 127%;
-            font-feature-settings: 'pnum' on, 'onum' on;
-            color: #6F6F71;
-        }
-    }
-
-`
-
-const Content = styled.div`
+  .all {
     grid-gap: 32px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "desc"
+      "contact"
+      "links";
 
-    *{
-        height: fit-content;
+    @media (min-width: 480px) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "desc contact"
+        "links links";
+    }
+    @media (min-width: 768px) {
+      grid-template-columns: min-content 1fr;
+      grid-template-areas:
+        "desc links"
+        "contact links";
     }
 
-    display: none;
+    @media (min-width: 1024px) {
+      grid-template-columns: 1fr 2fr 1fr;
+      grid-template-areas: "desc links contact";
+    }
+  }
 
-    &.five{
-        display: grid;
-        grid-template-columns: 28fr 17fr 17fr 17fr 28fr;
+  .inform {
+    grid-area: desc;
+    display: grid;
+    gap: 32px;
+    height: min-content;
+  }
 
-        @media (max-width: 1024px) {
-            display: none;
-        }
+  .socials {
+    display: inline-grid;
+    gap: 18px;
+    align-items: center;
+    justify-content: flex-start;
+    grid-auto-flow: column;
+    a {
+      height: auto;
+      width: 24px;
+      aspect-ratio: 1/1;
+    }
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+  }
+
+  .links {
+    display: grid;
+    gap: 1rem;
+    grid-area: links;
+    height: min-content;
+    @media (min-width: 400px) {
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     }
 
-    &.four{
-        @media (max-width: 1024px) {
-            display: grid;
-            grid-template-columns: 28fr 17fr 17fr 28fr;
-        }
+    .links-column {
+      display: grid;
+      gap: inherit;
+    }
+  }
 
-        @media (max-width: 876px) {
-            display: none;
-        }
+  .sub {
+    display: grid;
+    grid-gap: 6px;
+
+    .title {
+      margin-bottom: 10px;
+      display: block;
+      color: #050505;
+      font-weight: 600;
     }
 
-    &.three{
-        @media (max-width: 876px) {
-            display: grid;
-            grid-template-columns: 300px 1fr 1fr;
-        }
-        @media (max-width: 768px) {
-            display: none;
-        }
+    a {
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.25;
+      font-feature-settings: "pnum" on, "onum" on;
+      color: #6f6f71;
+    }
+  }
+
+  .contact {
+    grid-area: contact;
+    display: grid;
+    align-content: space-between;
+    gap: 12px;
+    padding: 16px 10%;
+    background: #3b5ba9;
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+    min-width: 250px;
+    max-width: fit-content;
+
+    p,
+    span {
+      color: #f2f4ff;
     }
 
-    &.two{
-        @media (max-width: 768px) {
-            display: grid;
-            grid-template-columns: 340px auto;
-        }
-
-        @media (max-width: 600px) {
-            grid-template-columns: 1fr auto;
-        }
-
-        @media (max-width: 480px) {
-            display: none;
-        }
+    a {
+      color: #ffd662;
     }
 
-    &.one{
-        @media (max-width: 480px) {
-            display: grid;
-            grid-template-columns: 1fr;
-            max-width: 340px;
-        }
+    .body2 {
+      display: block;
     }
-`
+
+    .body3 {
+      display: grid;
+      grid-gap: 12px;
+      color: #f2f4ff;
+    }
+
+    .buttons {
+      display: grid;
+      gap: 12px;
+      & > a {
+        width: 100%;
+        padding-inline: 1rem;
+        height: min-content;
+      }
+    }
+    .outlined {
+      border-color: #fef5f5;
+      color: #fef5f5;
+      &:hover {
+        background-color: #fef5f5;
+        color: #000000;
+      }
+    }
+  }
+
+  .copyright {
+    margin-top: 16px;
+    a {
+      color: #6f6f71;
+      font-weight: 600;
+      text-decoration: none;
+    }
+  }
+`;
