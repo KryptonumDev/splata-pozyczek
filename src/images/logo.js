@@ -2,7 +2,7 @@ import React from "react"
 
 export default function Logo() {
     return (
-        <svg width="142" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg role="img" aria-label="splatapozyczek.pl" width="142" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g className="leters">
                 <path d="M27.3206 14.2041H21.47L20.0742 12.8361V10.6786H22.2391V12.3979H26.5539V9.01284H21.523L20.1446 7.64484V3.37954L21.5222 2.01154H27.2304L28.6262 3.37954V5.72933H26.4621V3.82158H22.2929V7.20667H27.3206L28.6982 8.57467V12.84L27.3206 14.2041Z" fill="#050505" />
                 <path d="M32.2574 17.7727H30.1851V4.98538H32.0487V5.98253L33.0606 4.98538H36.5415L37.9169 6.30857V12.9086L36.5415 14.2493H32.2574V17.7727ZM35.8276 6.89455H33.0237L32.2574 7.54741V12.3773H35.8276V6.89455Z" fill="#050505" />
