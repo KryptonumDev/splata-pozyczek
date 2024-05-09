@@ -13,7 +13,7 @@ export default function BreadcrumbsPost({ title, uri }) {
     }, {
         "@type": "ListItem",
         "position": 2,
-        "name": "Zespół",
+        "name": "Blog",
         "item": 'https://splatapozyczek.pl/blog/'
     }, {
         "@type": "ListItem",
