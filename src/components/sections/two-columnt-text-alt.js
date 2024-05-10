@@ -10,8 +10,8 @@ export default function TwoColumnTextWithBoldText({ data: { right, leftTitle, le
             <Container>
                 <Content>
                     <div className="flex first">
-                        {leftTitle && <h2 className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(leftTitle) }} /> }
-                        <div className="body1 arsenal" dangerouslySetInnerHTML={{ __html: textParser(leftText) }} />
+                        { leftTitle && <h2 className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(leftTitle) }} /> }
+                        { leftText && <div className="body1 arsenal" dangerouslySetInnerHTML={{ __html: textParser(leftText) }} /> }
                     </div>
                     <div className="flex second">
                         <div className="body1" dangerouslySetInnerHTML={{ __html: textParser(right) }} />

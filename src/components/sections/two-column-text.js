@@ -10,12 +10,12 @@ export default function TwoColumnText({ data: { rightBottom, rightTop, leftTitle
             <Container>
                 <Content>
                     <div className="flex first">
-                        <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(leftTitle) }} />
-                        <h3 className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(leftText) }} />
+                        { leftTitle && <div className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(leftTitle) }} />}
+                        { leftText && <div className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(leftText) }} />}
                     </div>
                     <div className="flex second">
-                        <p className="body2" dangerouslySetInnerHTML={{ __html: textParser(rightTop) }} />
-                        <p className="body3" dangerouslySetInnerHTML={{ __html: textParser(rightBottom) }} />
+                        { rightTop && <div className="body2" dangerouslySetInnerHTML={{ __html: textParser(rightTop) }} />}
+                        { rightBottom && <div className="body3" dangerouslySetInnerHTML={{ __html: textParser(rightBottom) }} />}
                     </div>
                 </Content>
             </Container>

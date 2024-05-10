@@ -13,12 +13,12 @@ export default function TwoColumnTextRepeater({ data: { repeater } }) {
                     {repeater.map((el, index) => (
                         <Item key={index} >
                             <div>
-                                <h3 className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(el.titleLeft) }} />
-                                <div className="body1" dangerouslySetInnerHTML={{ __html: el.textLeft }} />
+                                {el.titleLeft && <div className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(el.titleLeft) }} />}
+                                {el.textLeft && <div className="body1" dangerouslySetInnerHTML={{ __html: el.textLeft }} />}
                             </div>
                             <div>
-                                <h4 className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(el.titleRight) }} />
-                                <div className="body1" dangerouslySetInnerHTML={{ __html: el.textRight }} />
+                                {el.titleRight && <div className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(el.titleRight) }} />}
+                                {el.textRight && <div className="body1" dangerouslySetInnerHTML={{ __html: el.textRight }} />}
                             </div>
                         </Item>
                     ))}

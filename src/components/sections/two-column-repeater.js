@@ -11,8 +11,8 @@ export default function TwoColumnRepeater({ data: { title, text, repeater } }) {
     return (
         <Wrapper>
             <Container>
-                <p className="h4" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
-                <p className="body1 text" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
+                {title && <p className="h4" dangerouslySetInnerHTML={{ __html: textParser(title) }} />}
+                {text && <p className="body1 text" dangerouslySetInnerHTML={{ __html: textParser(text) }} />}
                 <Grid>
                     {repeater.map((el, index) => (
                         <Item key={index}>
