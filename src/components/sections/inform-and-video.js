@@ -3,8 +3,9 @@ import styled from "styled-components"
 import { graphql } from "gatsby"
 import { Container } from "../atoms/container"
 import { textParser } from "../../helpers/wysiwyg-modification"
+import VideoEmbed from "../atoms/video-embed"
 
-export default function InformAndVideo({ data: { video, title, text, icon } }) {
+export default function InformAndVideo({ data: { video, videoTitle, videoDate, title, text, icon } }) {
     return (
         <Wrapper>
             <Container>
@@ -23,8 +24,7 @@ export default function InformAndVideo({ data: { video, title, text, icon } }) {
                         </div>
                         <div className="body1 sub" dangerouslySetInnerHTML={{ __html: text }} />
                     </Panel>
-
-                    <iframe loading="lazy" src={video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                    <VideoEmbed url={video} title={videoTitle ?? title} date={videoDate} />
                 </Flex>
             </Container>
         </Wrapper>
@@ -35,6 +35,8 @@ export const query = graphql`
   fragment informAndVideo on WpPage_PageBuilder_Sections_InformAndVideo {
     informAndVideo {
         video
+        videoTitle
+        videoDate
         title
         text
         icon{

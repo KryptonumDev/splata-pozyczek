@@ -5,6 +5,7 @@ import { Container } from "../atoms/container"
 import { textParser } from './../../helpers/wysiwyg-modification'
 import { GatsbyImage } from "gatsby-plugin-image"
 import { FilledButton, OutlinedButton } from "../atoms/buttons"
+import VideoEmbed from "../atoms/video-embed"
 
 export default function TwoColumnRepeater({ data: { title, text, repeater } }) {
     return (
@@ -16,7 +17,7 @@ export default function TwoColumnRepeater({ data: { title, text, repeater } }) {
                     {repeater.map((el, index) => (
                         <Item key={index}>
                             {el.videoLink
-                                ? <iframe loading="lazy" src={el.videoLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                ? <VideoEmbed url={el.videoLink} title={el.videoTitle ?? title} date={el.videoDate} />
                                 : <GatsbyImage className="img" image={el.img?.localFile?.childImageSharp?.gatsbyImageData} />}
                             <div className="text-part">
                                 <h3 className="h6" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
@@ -58,6 +59,8 @@ export const query = graphql`
           }
         }
         videoLink
+        videoTitle 
+        videoDate
         img {
           altText
           localFile {
