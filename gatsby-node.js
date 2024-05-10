@@ -78,12 +78,14 @@ exports.createPages = async ({
         title
         id
         uri
+        date
+        modified
       }
     }
   }
   `);
 
-  nodes.forEach(({ id, uri, title }) => {
+  nodes.forEach(({ id, uri, title, date, modified }) => {
     if (id !== 'cG9zdDo0MzQ=' && id !== 'cG9zdDozNzU=' && id !== 'cG9zdDo2MzQ=') {
       createPage({
         path: uri,
@@ -92,7 +94,9 @@ exports.createPages = async ({
           id,
           slug: null,
           url: uri,
-          title: title
+          title: title,
+          date: date,
+          dateModified: modified
         },
       });
     }
@@ -196,12 +200,14 @@ exports.createPages = async ({
         id
         slug
         title
+        date
+        modified
       }
     }
   }
   `)
 
-  expertsNodes.forEach(({ slug, id, title, ekspert }) => {
+  expertsNodes.forEach(({ slug, id, title, ekspert, date, modified }) => {
     createPage({
       path: '/zespol/' + slug + '/',
       component: resolve('src/templates/expert.jsx'),
@@ -210,7 +216,9 @@ exports.createPages = async ({
         slug,
         url: '/zespol/' + slug + '/',
         title: title,
-        role: ekspert.workWithProducts
+        role: ekspert.workWithProducts,
+        date: date,
+        dateModified: modified
       },
     });
   });
