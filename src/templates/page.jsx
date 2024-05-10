@@ -70,6 +70,7 @@ import ExpertWithContactInform from "../components/sections/expert-with-contact-
 import Citate from "../components/sections/citate"
 import { Helmet } from "react-helmet"
 import WniosekOnline from "../components/sections/wniosek-on-line"
+import { LocalBusiness } from "../schemas/schemas"
 
 export function Head({ pageContext, data: { wpPage: { seo, id } } }) {
   const canonical = 'https://splatapozyczek.pl' + pageContext.url
@@ -147,7 +148,8 @@ export function Head({ pageContext, data: { wpPage: { seo, id } } }) {
                   target: ['https://splatapozyczek.pl/']
                 }
               ]
-            }
+            },
+            pageContext.url === '/kontakt/' ? LocalBusiness() : null
           ]
         })}
       </script>
