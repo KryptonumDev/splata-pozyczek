@@ -11,7 +11,6 @@ export function Head({ pageContext, data: { wpEkspert: { seo } } }) {
 
   return (
     <>
-    {console.log(seo)}
       <meta charSet='utf-8' />
       <meta
         name='robots'
