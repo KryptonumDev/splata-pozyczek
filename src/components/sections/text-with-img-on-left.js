@@ -10,7 +10,7 @@ export default function TextWithImgOnLeft({ data: { title, subTitle, tekst, imgD
         <Wrapper>
             <Container>
                 <Content>
-                    <h2 className="h4" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                    <p className="h4" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                     <Flex>
                         <div className="img-wrap">
                             <GatsbyImage className="img" alt={img.altText} image={img.localFile.childImageSharp.gatsbyImageData} />

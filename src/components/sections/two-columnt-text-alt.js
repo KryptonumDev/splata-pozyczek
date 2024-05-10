@@ -10,11 +10,11 @@ export default function TwoColumnTextWithBoldText({ data: { right, leftTitle, le
             <Container>
                 <Content>
                     <div className="flex first">
-                        <h2 className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(leftTitle) }} />
-                        <h3 className="body1 arsenal" dangerouslySetInnerHTML={{ __html: textParser(leftText) }} />
+                        {leftTitle && <h2 className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(leftTitle) }} /> }
+                        <div className="body1 arsenal" dangerouslySetInnerHTML={{ __html: textParser(leftText) }} />
                     </div>
                     <div className="flex second">
-                        <p className="body1" dangerouslySetInnerHTML={{ __html: textParser(right) }} />
+                        <div className="body1" dangerouslySetInnerHTML={{ __html: textParser(right) }} />
                     </div>
                 </Content>
             </Container>
@@ -54,15 +54,19 @@ const Content = styled.div`
 
     .h6{
         color: #050505;
+        margin-bottom: 12px;
     }
 
     .first .body1{
-        margin-top: clamp(8px, ${8 / 768 * 100}vw, 16px);
-        color: #6F6F71;
+        &,&>p{
+            color: #6F6F71;
+        }
     }
 
     .second .body1{
-        font-weight: 600;
+        &,&>p{
+            font-weight: 600;
+        }
     }
 
     @media (max-width: 640px) {

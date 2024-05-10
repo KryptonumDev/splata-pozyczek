@@ -9,7 +9,7 @@ export default function FourTilesWithTitle({ data: { title, tekstWyrozniony, pla
         <Wrapper>
             <Container>
                 <Content>
-                    <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                    <p className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                     {tekstWyrozniony
                         ? <div className="title body1" dangerouslySetInnerHTML={{ __html: tekstWyrozniony }} />
                         : null}

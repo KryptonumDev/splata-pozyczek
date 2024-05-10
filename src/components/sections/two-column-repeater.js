@@ -11,7 +11,7 @@ export default function TwoColumnRepeater({ data: { title, text, repeater } }) {
     return (
         <Wrapper>
             <Container>
-                <h2 className="h4" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                <p className="h4" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                 <p className="body1 text" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
                 <Grid>
                     {repeater.map((el, index) => (
@@ -20,7 +20,7 @@ export default function TwoColumnRepeater({ data: { title, text, repeater } }) {
                                 ? <VideoEmbed url={el.videoLink} title={el.videoTitle ?? title} date={el.videoDate} />
                                 : <GatsbyImage className="img" image={el.img?.localFile?.childImageSharp?.gatsbyImageData} />}
                             <div className="text-part">
-                                <h3 className="h6" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
+                                <p className="h6" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
                                 <div className="body2" dangerouslySetInnerHTML={{ __html: el.text }} />
                                 {el.tytulPrzyciskow
                                     ? <p className="body1" dangerouslySetInnerHTML={{ __html: textParser(el.tytulPrzyciskow) }} />
