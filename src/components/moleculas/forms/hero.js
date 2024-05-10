@@ -87,7 +87,7 @@ export default function Form({ setIsSended, formTitle, typTematow }) {
         <Wrapper onSubmit={handleSubmit(onSubmit)}>
             <div className="content">
                 {formTitle
-                    ? <h2 className="h5 arsenal" dangerouslySetInnerHTML={{ __html: textParser(formTitle) }} />
+                    ? <p className="h5 arsenal" dangerouslySetInnerHTML={{ __html: textParser(formTitle) }} />
                     : null}
                 <div className="flex">
                     <LabelSelect
