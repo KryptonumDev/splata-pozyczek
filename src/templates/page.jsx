@@ -74,7 +74,8 @@ import { LocalBusiness } from "../schemas/schemas"
 
 export function Head({ pageContext, data: { wpPage: { seo, id } } }) {
   const canonical = 'https://splatapozyczek.pl' + pageContext.url
-
+  const dateUpdated = pageContext.dateModified < pageContext.date ? pageContext.date : pageContext.dateModified
+  
   return (
     <>
       <meta charSet='utf-8' />
@@ -133,14 +134,13 @@ export function Head({ pageContext, data: { wpPage: { seo, id } } }) {
             {
               '@type': 'WebPage',
               '@id': 'https://splatapozyczek.pl/#webpage',
-              url: 'https://splatapozyczek.pl/',
-              name: 'Z nami uzyskasz nawet najtrudniejszy kredyt - Splatapozyczek.pl',
+              url: canonical,
+              name: seo.title,
               isPartOf: { '@id': 'https://splatapozyczek.pl/#website' },
               about: { '@id': 'https://splatapozyczek.pl/#organization' },
-              datePublished: '2015-11-18T08:37:53+00:00',
-              dateModified: '2022-07-20T09:58:31+00:00',
-              description:
-                'Niestandardowa umowa pracownicza? Brak zdolno\u015bci kredytowej? Inne zobowi\u0105zania? Mo\u017cemy uzyska\u0107 kredyt dla Ciebie nawet w 24 H.',
+              datePublished: pageContext.date,
+              dateModified: dateUpdated,
+              description: seo.metaDesc,
               inLanguage: 'pl-PL',
               potentialAction: [
                 {
