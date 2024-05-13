@@ -14,7 +14,7 @@ export default function TextWithImgOnRight({ data: { title, text, boldText, link
         <Content>
           <div>
             <div className="text body2" dangerouslySetInnerHTML={{ __html: text }} />
-            <h3 className="h6" dangerouslySetInnerHTML={{ __html: textParser(boldText) }} />
+            { boldText && <p className="h6" dangerouslySetInnerHTML={{ __html: textParser(boldText) }} />}
             <FilledButton className="link" target={link.target} to={link.url}>{link.title}</FilledButton>
           </div>
           <GatsbyImage className="image" image={image.localFile.childImageSharp.gatsbyImageData} alt={image.altText} />
