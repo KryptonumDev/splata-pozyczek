@@ -21,6 +21,7 @@
     "gatsby-plugin-google-tagmanager": "^5.9.0",
     "gatsby-plugin-image": "^3.9.0",
     "gatsby-plugin-manifest": "^5.9.0",
+    "gatsby-plugin-netlify": "^5.1.1",
     "gatsby-plugin-react-helmet": "^6.9.0",
     "gatsby-plugin-sharp": "^5.9.0",
     "gatsby-plugin-styled-components": "^6.9.0",
