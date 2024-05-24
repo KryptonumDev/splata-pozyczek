@@ -1,9 +1,16 @@
+const adapter = require('gatsby-adapter-netlify').default
+
 module.exports = {
   siteMetadata: {
     title: `Spłata Pożyczek`,
     siteUrl: `https://splatapozyczek.pl`
   },
+  adapter: adapter({
+    excludeDatastoreFromEngineFunction: false,
+    imageCDN: false,
+  }),
   plugins: [
+    `gatsby-plugin-catch-links`,
     {
       resolve: 'gatsby-plugin-zopfli',
       options: {
