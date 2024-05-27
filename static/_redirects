@@ -183,7 +183,8 @@
 /blog/karta-przedplacona-czym-jest-i-do-czego-sluzy/	/	301
 /blog/kredyt-gotowkowy-dla-firm-co-musisz-wiedziec	/	410
 /blog/kredyt-w-skoku-jak-dziala/	/	301
-/blog/kto-splaca-dlugi-po-smierci-dluznika//1000	/	301
+/blog/kto-splaca-dlugi-po-smierci-dluznika/*/1000	/	301
+/blog/kto-splaca-dlugi-po-smierci-dluznika/*/*	/	301
 /blog/mikrofaktoring-co-to-jest-i-czy-warto-z-niego-skorzystac/	/	301
 /blog/pracodawca-spoznia-sie-z-wyplata-jak-zareagowac/	/	301
 /blog/profile/agnieszka-trabinska	/	301
@@ -200,6 +201,7 @@
 /blog/tag/obcokrajowiec/	/	301
 /blog/ubezpieczenie-dla-dzieci/	/	301
 /blog/uchylenie-mandatu-co-trzeba-wiedziec/	/	301
+/blog/wspolne-konto-bankowe-jak-dziala/*	/	301
 /blog/wspolne-konto-bankowe-jak-dziala/#wspolne-konto-bankowe-a-smierc	/	301
 /blog/wspolne-konto-bankowe-jak-dziala/	/	301
 /dziekujemy	/	301
@@ -228,10 +230,13 @@
 /wp-content/cache/wpfc-minified/jpu63e89/cawtj.js	/	301
 /wp-content/cache/wpfc-minified/m1h9cc6n/cawtj.css	/	301
 /wp-content/cache/wpfc-minified/t01y740/cawtj.css	/	301
-/wp-content/plugins/wpseo-local/js/dist/wp-seo-local-store-locator-1221.min.js ver=:id	/	301
+/wp-content/plugins/wpseo-local/js/dist/wp-seo-local-store-locator-1221.min.js ver=:ver	/	301
 /wp-content/plugins/wpseo-local/js/dist/wp-seo-local-store-locator-1221.min.js?ver=12.2.1	/	301
+/wp-content/plugins/wpseo-local/js/dist/wp-seo-local-store-locator-1221.min.js	/	301
+/wp-content/uploads/2020/03/jaka-jest-placa-minimalna-2020-wykres-placa-minimalna.png *	/	301
 /wp-content/uploads/2020/03/jaka-jest-placa-minimalna-2020-wykres-placa-minimalna.png x36650	/	301
 /wp-content/uploads/2020/03/jaka-jest-placa-minimalna-2020-wykres-placa-minimalna.png?x36650	/	301
+/wp-content/uploads/2020/03/jaka-jest-placa-minimalna-2020-wykres-placa-minimalna.png	/	301
 /wp-content/uploads/2020/06/kredyt-refinansowy-kredyt-refinansowy-online.jpg x36650	/	301
 /wp-content/uploads/2020/06/kredyt-refinansowy-kredyt-refinansowy-online.jpg	/	301
 /wp-content/uploads/2020/11/zdj2-1024x330.jpg*	/	301
