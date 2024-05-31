@@ -1,6 +1,7 @@
 Wordpress/GraphQL/
 
 .wordpress-cache
+*.bak
 
 # Logs
 logs
