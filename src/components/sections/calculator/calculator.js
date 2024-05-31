@@ -37,7 +37,7 @@ export default function Item({ calculatorData, title, text }) {
                 <Options>
                     <div>
                         <p className="h6 arsenal">{calculatorData.moneyTitle}</p>
-                        <input className="input" placeholder="val" value={money * 100 + ' zł'} />
+                        <input className="input" placeholder="val" value={money * 100 + ' zł'} onChange={() => {}}/>
                         <input className="range" onChange={(e) => { setMoney(e.currentTarget.value) }} min='10' value={money} max={calculatorData.maxMoney / 100} type="range" />
                         <div className="flex">
                             <span className="min body3">1 000 zł</span>
@@ -46,7 +46,7 @@ export default function Item({ calculatorData, title, text }) {
                     </div>
                     <div>
                         <p className="h6 arsenal">{calculatorData.monthTitle}</p>
-                        <input className="input" placeholder="val" value={time + ' miesiąc'} />
+                        <input className="input" placeholder="val" value={time < 2 ? `${time} miesiąc` : time < 5 ? `${time} miesiące` : `${time} miesięcy`} onChange={() => {}}/>
                         <input className="range" onChange={(e) => { setTime(e.currentTarget.value) }} min='1' value={time} max={calculatorData.maxMonth} type="range" />
                         <div className="flex">
                             <span className="min body3">1 miesiąc</span>
@@ -55,7 +55,7 @@ export default function Item({ calculatorData, title, text }) {
                     </div>
                     <div>
                         <p className="h6 arsenal">{calculatorData.procentTitle}</p>
-                        <input className="input" placeholder="val" value={percent / 100 + ' %'} />
+                        <input className="input" placeholder="val" value={percent / 100 + ' %'} onChange={() => {}}/>
                         <input className="range" onChange={(e) => { setPercent(e.currentTarget.value) }} min={calculatorData.minProcent} value={percent} max={calculatorData.maxProcent} type="range" />
                         <div className="flex">
                             <span className="min body3">{calculatorData.minProcent / 100}%</span>
@@ -64,7 +64,7 @@ export default function Item({ calculatorData, title, text }) {
                     </div>
                     <div>
                         <p className="h6 arsenal">{calculatorData.provisionTitle}</p>
-                        <input className="input" placeholder="val" value={provision + ' %'} />
+                        <input className="input" placeholder="val" value={provision + ' %'} onChange={(e) => {}}/>
                         <input className="range" onChange={(e) => { setProvision(e.currentTarget.value) }} min={calculatorData.minProvision ? calculatorData.minProvision : 0} value={provision} max={calculatorData.maxProvision} type="range" />
                         <div className="flex">
                             <span className="min body3">{calculatorData.minProvision ? calculatorData.minProvision : 0}%</span>
