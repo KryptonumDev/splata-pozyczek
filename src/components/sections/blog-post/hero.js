@@ -201,35 +201,35 @@ const Wrapper = styled.header`
     }
 `
 
-const Social = styled.div`
-    a{
-        display: grid;
-        grid-gap: 2px;
-        grid-template-columns: auto auto;
-        align-items: center;
-        text-decoration: none;
+// const Social = styled.div`
+//     a{
+//         display: grid;
+//         grid-gap: 2px;
+//         grid-template-columns: auto auto;
+//         align-items: center;
+//         text-decoration: none;
 
-        span{
-            font-weight: 600;
-            color: #6F6F71;
-            transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1);
-        }
+//         span{
+//             font-weight: 600;
+//             color: #6F6F71;
+//             transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1);
+//         }
 
-        path{
-            transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1);
-        }
+//         path{
+//             transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1);
+//         }
 
-        &:hover{
-            span{
-                color: var(--color-medium);
-            }
+//         &:hover{
+//             span{
+//                 color: var(--color-medium);
+//             }
 
-            path{
-                fill: var(--color-medium);
-            }
-        }
-    }
-`
+//             path{
+//                 fill: var(--color-medium);
+//             }
+//         }
+//     }
+// `
 
 const Box = styled.div`
     margin: 0 auto;
