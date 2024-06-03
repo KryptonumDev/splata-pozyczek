@@ -5,9 +5,11 @@ import { Container } from "../../atoms/container"
 import { textParser } from '../../../helpers/wysiwyg-modification'
 import FaqItem from "./item"
 import { Helmet } from "react-helmet"
+import useWindowWidth from "../../../hooks/useWindowWidth"
 
 export default function Faq({ data: { title, repeater } }) {
 
+    const windowWidth = useWindowWidth();
 
     const arrays = useMemo(() => {
         const first = []
@@ -60,14 +62,9 @@ export default function Faq({ data: { title, repeater } }) {
                         </div>
                         <div className="grid second">
                             {arrays.second.map((el, index) => {
-                                let open = false
-                                if (typeof window !== 'undefined') {
-                                    if (window.innerWidth > 640 && !index) {
-                                        open = true
-                                    }
-                                }
+                                    let isOpen = (!index && windowWidth !== null) && windowWidth > 640
                                 return (
-                                    <React.Fragment key={index}><FaqItem el={el} open={open} /></React.Fragment>
+                                    <React.Fragment key={index}><FaqItem el={el} open={isOpen} /></React.Fragment>
                                 )
                             }
                             )}
