@@ -5,11 +5,11 @@ import styled from "styled-components"
 import { FilledButton } from '../../atoms/buttons'
 import axios from "axios"
 import { graphql, useStaticQuery } from "gatsby"
-import LabelInput from "../label-input"
 import LabelCheckbox from "../label-checkbox"
 import { checkboxController } from "../../../helpers/checkbox-controller"
 import { checkboxAll } from "../../../helpers/checkbox-all"
 import LabelSelect from "../label-select"
+import { NameInput, EmailInput, MessageInput } from "../form-inputs/specialized"
 
 export default function Form({ setIsSended }) {
 
@@ -68,38 +68,18 @@ export default function Form({ setIsSended }) {
         <Wrapper onSubmit={handleSubmit(onSubmit)}>
             <div className="content">
                 <div className="flex">
-                    <LabelInput
-                        name='name'
-                        label='Imię i nazwisko*'
-                        params={{ required: true, pattern: /^[a-z ,.'-]+$/i }}
-                        register={register}
-                        errors={errors}
-                    />
-                    <LabelInput
-                        name='email'
-                        label='Adres e-mail*'
-                        params={{ required: true, pattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ }}
-                        register={register}
-                        errors={errors}
-                    />
+                    <NameInput register={register} errors={errors} />
+                    <EmailInput register={register} errors={errors} />
                 </div>
                 <div className="flex">
                     <LabelSelect
                         control={control}
                         themes={themes}
                         name='theme'
-                        label='Wybierz doradce'
+                        label='Wybierz doradcę'
                     />
                 </div>
-                <LabelInput
-                    name='message'
-                    label='Opinia*'
-                    params={{ required: true }}
-                    register={register}
-                    errors={errors}
-                    type='textarea'
-                    rows='4'
-                />
+                <MessageInput label="Opinia*" register={register} errors={errors} />
                 <div className="flex">
                     <div>
                         <LabelCheckbox

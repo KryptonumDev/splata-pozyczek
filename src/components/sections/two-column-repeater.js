@@ -18,7 +18,7 @@ export default function TwoColumnRepeater({ data: { title, text, repeater } }) {
                         <Item key={index}>
                             {el.videoLink
                                 ? <VideoEmbed url={el.videoLink} title={el.videoTitle ?? title} date={el.videoDate} />
-                                : <GatsbyImage className="img" image={el.img?.localFile?.childImageSharp?.gatsbyImageData} />}
+                                : <GatsbyImage className="img" alt={el.img?.altText} image={el.img?.localFile?.childImageSharp?.gatsbyImageData} />}
                             <div className="text-part">
                                 <p className="h6" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
                                 <div className="body2" dangerouslySetInnerHTML={{ __html: el.text }} />

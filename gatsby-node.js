@@ -24,44 +24,44 @@ const csvParser = (data) => {
   return result; //JSON
 };
 
-exports.onPostBuild = async ({ graphql }) => {
+// exports.onPostBuild = async ({ graphql }) => {
 
-  // Create redirects
+//   // Create redirects
 
-  const { data: { wpPage: { global: { csvRedirects } } } } = await graphql(`
-  query{
-    wpPage(id: {eq: "cG9zdDo2MzQ="}) {
-      global {
-        csvRedirects {
-          mediaItemUrl
-        }
-      }
-    }
-  }
-  `)
+//   const { data: { wpPage: { global: { csvRedirects } } } } = await graphql(`
+//   query{
+//     wpPage(id: {eq: "cG9zdDo2MzQ="}) {
+//       global {
+//         csvRedirects {
+//           mediaItemUrl
+//         }
+//       }
+//     }
+//   }
+//   `)
 
-  if (csvRedirects?.mediaItemUrl) {
-    const result = await fetch(csvRedirects.mediaItemUrl)
-    const resultData = await result.text()
+//   if (csvRedirects?.mediaItemUrl) {
+//     const result = await fetch(csvRedirects.mediaItemUrl)
+//     const resultData = await result.text()
 
-    const redirectConfig = csvParser(resultData)?.map(el => (
-      `[[redirects]]
-        from = "${el.from}"
-        to = "${el.to}"
-        status = ${el.code}
-        force = ${el.force || false}`
-    ))
+//     const redirectConfig = csvParser(resultData)?.map(el => (
+//       `[[redirects]]
+//         from = "${el.from}"
+//         to = "${el.to}"
+//         status = ${el.code}
+//         force = ${el.force || false}`
+//     ))
 
-    redirectConfig.push(`[[redirects]]
-      from = "/blog/tag/*"
-      to = "/tag/*"
-      status = 301
-      force = false
-    `)
+//     redirectConfig.push(`[[redirects]]
+//       from = "/blog/tag/*"
+//       to = "/tag/*"
+//       status = 301
+//       force = false
+//     `)
 
-    fs.writeFileSync('netlify.toml', redirectConfig.join('\n'));
-  }
-};
+//     fs.writeFileSync('netlify.toml', redirectConfig.join('\n'));
+//   }
+// };
 
 exports.createPages = async ({
   graphql,
