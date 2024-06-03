@@ -21,6 +21,7 @@ export default function LabelSelect({ control, themes, label, name, }) {
                     <Select
                         className="react-select"
                         classNamePrefix="react-select"
+                        instanceId={`select-${name}`}
                         options={options}
                         inputRef={ref}
                         value={options.filter(c => value.includes(c.value))}

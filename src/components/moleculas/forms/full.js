@@ -9,6 +9,7 @@ import LabelCheckbox from "../label-checkbox";
 import { checkboxController } from "../../../helpers/checkbox-controller";
 import { checkboxAll } from "../../../helpers/checkbox-all";
 import LabelSelect from "../label-select";
+import { textParser } from "../../../helpers/wysiwyg-modification"
 import { datalayerArguments } from "../../../helpers/datalayer";
 import {
   EmailInput,
@@ -227,7 +228,7 @@ export default function Form({
             </span>
             <div
               className="body3 text"
-              dangerouslySetInnerHTML={{ __html: additionalInform }}
+              dangerouslySetInnerHTML={{ __html: textParser(additionalInform) }}
             />
           </div>
         </div>
