@@ -217,7 +217,7 @@
 /tag/konto-bankowe/	/	301
 /tag/nowy-lad/	/	301
 /tag/prawo/	/	301
-/tag/*	/	301
+/wp-content/cache/	/	301
 /wp-content/cache/wpfc-minified/1rjaumw7/cawtj.css	/	301
 /wp-content/cache/wpfc-minified/2brq2sgt/cawtj.js	/	301
 /wp-content/cache/wpfc-minified/31k3m6xg/cawtj.css	/	301
@@ -231,19 +231,23 @@
 /wp-content/cache/wpfc-minified/m1h9cc6n/cawtj.css	/	301
 /wp-content/cache/wpfc-minified/t01y740/cawtj.css	/	301
 /wp-content/plugins/wpseo-local/js/dist/wp-seo-local-store-locator-1221.min.js	/?	301
-/wp-content/plugins/wpseo-local/js/dist/wp-seo-local-store-locator-1221.min.js ver=:ver	/	301
-/wp-content/plugins/wpseo-local/js/dist/wp-seo-local-store-locator-1221.min.js?ver=12.2.1	/	301
+/wp-content/plugins/wpseo-local/js/dist/wp-seo-local-store-locator-1221.min.js*	/?	301
+/wp-content/plugins/wpseo-local/js/dist/wp-seo-local-store-locator-1221.min.js ver=:ver	/?	301
+/wp-content/plugins/wpseo-local/js/dist/wp-seo-local-store-locator-1221.min.js?ver=12.2.1	/?	301
 /wp-content/plugins/wpseo-local/js/dist/wp-seo-local-store-locator-1221.min.js	/	301
 /wp-content/uploads/2020/03/jaka-jest-placa-minimalna-2020-wykres-placa-minimalna.png	/?	301
-/wp-content/uploads/2020/03/jaka-jest-placa-minimalna-2020-wykres-placa-minimalna.png *	/	301
-/wp-content/uploads/2020/03/jaka-jest-placa-minimalna-2020-wykres-placa-minimalna.png?x36650	/	301
+/wp-content/uploads/2020/03/jaka-jest-placa-minimalna-2020-wykres-placa-minimalna.png*	/?	301
+/wp-content/uploads/2020/03/jaka-jest-placa-minimalna-2020-wykres-placa-minimalna.png?x36650	/?	301
 /wp-content/uploads/2020/03/jaka-jest-placa-minimalna-2020-wykres-placa-minimalna.png	/	301
 /wp-content/uploads/2020/06/kredyt-refinansowy-kredyt-refinansowy-online.jpg	/?	301
-/wp-content/uploads/2020/06/kredyt-refinansowy-kredyt-refinansowy-online.jpg?x36650	/	301
+/wp-content/uploads/2020/06/kredyt-refinansowy-kredyt-refinansowy-online.jpg*	/?	301
+/wp-content/uploads/2020/06/kredyt-refinansowy-kredyt-refinansowy-online.jpg?x36650	/?	301
 /wp-content/uploads/2020/06/kredyt-refinansowy-kredyt-refinansowy-online.jpg	/	301
 /wp-content/uploads/2020/11/zdj2-1024x330.jpg	/?	301
-/wp-content/uploads/2020/11/zdj2-1024x330.jpg?x40331	/	301
+/wp-content/uploads/2020/11/zdj2-1024x330.jpg*	/?	301
+/wp-content/uploads/2020/11/zdj2-1024x330.jpg?x40331	/?	301
 /wp-content/uploads/2020/11/zdj2-1024x330.jpg	/	301
 /wp-content/uploads/2022/04/karta_przedplacona_-_wykres_platnosci_w_sklepach.jpg	/?	301
-/wp-content/uploads/2022/04/karta_przedplacona_-_wykres_platnosci_w_sklepach.jpg?x36650	/	301
+/wp-content/uploads/2022/04/karta_przedplacona_-_wykres_platnosci_w_sklepach.jpg*	/?	301
+/wp-content/uploads/2022/04/karta_przedplacona_-_wykres_platnosci_w_sklepach.jpg?x36650	/?	301
 /wp-content/uploads/2022/04/karta_przedplacona_-_wykres_platnosci_w_sklepach.jpg	/	301
