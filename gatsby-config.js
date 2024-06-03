@@ -5,6 +5,9 @@ module.exports = {
     title: `Spłata Pożyczek`,
     siteUrl: `https://splatapozyczek.pl`
   },
+  flags: {
+    DEV_SSR: process.env.NODE_ENV === `development` ? true : false,
+  },
   adapter: adapter({
     excludeDatastoreFromEngineFunction: false,
     imageCDN: false,
