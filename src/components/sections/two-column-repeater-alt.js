@@ -13,7 +13,7 @@ export default function TwoColumnRepeaterAlt({ data: { repeater } }) {
                 <Grid>
                     {repeater.map((el, index) => (
                         <Item key={index}>
-                            <GatsbyImage className="img" image={el.img.localFile.childImageSharp.gatsbyImageData} />
+                            <GatsbyImage className="img" image={el.img.localFile.childImageSharp.gatsbyImageData} alt={el.img.altText}/>
                             <div className="text-part">
                                 <h3 className="h6" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
                                 <div className="body2" dangerouslySetInnerHTML={{ __html: el.text }} />

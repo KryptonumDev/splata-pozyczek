@@ -11,7 +11,7 @@ export default function TwoColumnsTextAndIconsListAlt({ data: { title, text, rep
                 <Flex>
                     <div>
                         <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
-                        <p className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
+                        <div className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
                     </div>
                     <Grid>
                         {repeater.map((el, index) => (
@@ -41,7 +41,7 @@ export default function TwoColumnsTextAndIconsListAlt({ data: { title, text, rep
 
                                 <div className="text">
                                     <h3 className="body1" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
-                                    <div className="body2" dangerouslySetInnerHTML={{ __html: el.text }} />
+                                    <div className="body2" dangerouslySetInnerHTML={{ __html: textParser(el.text) }} />
                                 </div>
                             </Item>
                         ))}

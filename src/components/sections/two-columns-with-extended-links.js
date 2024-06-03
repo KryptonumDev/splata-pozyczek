@@ -12,15 +12,15 @@ export default function TwoColumnsWithExtendedLinks({ data: { title, text, links
                 <Grid>
                     <div className="text">
                         <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
-                        <p className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
+                        <div className="h6 arsenal" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
                     </div>
                     <div>
                         {links.map((el, index) => (
-                            <Item key={index} to={el.link.url} target={el.link.target}>
+                            <Item key={index} to={el.link.url} target={el.link.target || '_self'}>
                                 <GatsbyImage className="image" image={el.img.localFile.childImageSharp.gatsbyImageData} alt={el.img.altText} />
                                 <div>
-                                    <p className="h6">{el.link.title}</p>
-                                    <div className="body1" dangerouslySetInnerHTML={{ __html: el.text }} />
+                                    <div className="h6">{el.link.title}</div>
+                                    <div className="body1" dangerouslySetInnerHTML={{ __html: textParser(el.text) }} />
                                 </div>
                             </Item>
                         ))}

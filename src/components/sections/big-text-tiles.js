@@ -26,7 +26,7 @@ export default function BigTextTiles({ data: { title, text, tiles } }) {
                                     <h3 className="body1" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
                                 </div>
                                 {el.text
-                                    ? <p className="body2" dangerouslySetInnerHTML={{ __html: textParser(el.text) }} />
+                                    ? <div className="body2" dangerouslySetInnerHTML={{ __html: textParser(el.text) }} />
                                     : null}
                             </div>
                         </Item>
