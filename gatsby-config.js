@@ -6,7 +6,7 @@ module.exports = {
     siteUrl: `https://splatapozyczek.pl`
   },
   flags: {
-    DEV_SSR: process.env.NODE_ENV === `development` ? true : false,
+    // DEV_SSR: process.env.NODE_ENV === `development` ? true : false,
   },
   adapter: adapter({
     excludeDatastoreFromEngineFunction: false,
@@ -59,7 +59,7 @@ module.exports = {
             },
           },
           Post: {
-            limit: process.env.NODE_ENV === `development` ? 50 : null,
+            // limit: process.env.NODE_ENV === `development` ? 50 : null,
           },
         },
       },
