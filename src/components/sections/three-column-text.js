@@ -9,9 +9,9 @@ export default function ThreeColumnText({ data: { left, right, center } }) {
         <Wrapper>
             <Container>
                 <Grid>
-                    <p className="body2" dangerouslySetInnerHTML={{ __html: textParser(left) }} />
-                    <p className="body3" dangerouslySetInnerHTML={{ __html: textParser(center) }} />
-                    <p className="body3" dangerouslySetInnerHTML={{ __html: textParser(right) }} />
+                    <div className="body2" dangerouslySetInnerHTML={{ __html: textParser(left) }} />
+                    <div className="body3" dangerouslySetInnerHTML={{ __html: textParser(center) }} />
+                    <div className="body3" dangerouslySetInnerHTML={{ __html: textParser(right) }} />
                 </Grid>
             </Container>
         </Wrapper>

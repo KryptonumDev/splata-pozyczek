@@ -10,7 +10,7 @@ export default function FourTilesExtended({ data: { title, text, tiles } }) {
             <Container>
                 <div className="flex">
                     <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
-                    <p className="text body1" dangerouslySetInnerHTML={{ __html: text }} />
+                    <div className="text body1" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
                 </div>
                 <Grid>
                     {tiles.map(el => (
@@ -21,7 +21,7 @@ export default function FourTilesExtended({ data: { title, text, tiles } }) {
                             </div>
                             <div>
                                 <h3 className="h6 arsenal desctop">{el.title}</h3>
-                                <div className="body2" dangerouslySetInnerHTML={{ __html: el.text }} />
+                                <div className="body2" dangerouslySetInnerHTML={{ __html: textParser(el.text) }} />
                             </div>
                         </Item>
                     ))}

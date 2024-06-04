@@ -10,7 +10,7 @@ export default function FourBigTextTiles({ data: { title, text, highlighted, til
             <Container>
                 <h2 className="h4" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                 {text
-                    ? <p className="h6 subtext" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
+                    ? <div className="h6 subtext" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
                     : null}
                 <Grid>
                     {tiles.map((el, index) => {
@@ -18,7 +18,7 @@ export default function FourBigTextTiles({ data: { title, text, highlighted, til
                             return <Item key={el.text}>
                                 <h3 className="body1" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
                                 {el.text
-                                    ? <p className="body2" dangerouslySetInnerHTML={{ __html: textParser(el.text) }} />
+                                    ? <div className="body2" dangerouslySetInnerHTML={{ __html: textParser(el.text) }} />
                                     : null}
                             </Item>
                         }
@@ -30,7 +30,7 @@ export default function FourBigTextTiles({ data: { title, text, highlighted, til
                             return <Item key={el.text}>
                                 <h3 className="body1" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
                                 {el.text
-                                    ? <p className="body2" dangerouslySetInnerHTML={{ __html: textParser(el.text) }} />
+                                    ? <div className="body2" dangerouslySetInnerHTML={{ __html: textParser(el.text) }} />
                                     : null}
                             </Item>
                         }
