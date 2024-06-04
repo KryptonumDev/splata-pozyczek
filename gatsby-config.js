@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 const adapter = require('gatsby-adapter-netlify').default
 
 module.exports = {
@@ -6,7 +10,8 @@ module.exports = {
     siteUrl: `https://splatapozyczek.pl`
   },
   flags: {
-    // DEV_SSR: process.env.NODE_ENV === `development` ? true : false,
+    DEV_SSR: process.env.DEV_SSR,
+    PRESERVE_FILE_DOWNLOAD_CACHE: process.env.PRESERVE_CACHE,
   },
   adapter: adapter({
     excludeDatastoreFromEngineFunction: false,
