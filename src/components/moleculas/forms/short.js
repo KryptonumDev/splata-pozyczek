@@ -67,6 +67,22 @@ export default function Form({ ip, setIsSended, typTematow }) {
             body.append('your-subject', data.theme)
             body.append('post-url', window.location.href)
             body.append('your-ip', ip)
+            const utm_campaign = sessionStorage.getItem('utm_campaign');
+            const utm_source = sessionStorage.getItem('utm_source');
+            const utm_medium = sessionStorage.getItem('utm_medium');
+            const utm_term = sessionStorage.getItem('utm_term');
+            if (utm_campaign) {
+              body.append("utm_campaign", utm_campaign);
+            }
+            if (utm_source) {
+              body.append("utm_source", utm_source);
+            }
+            if (utm_medium) {
+              body.append("utm_medium", utm_medium);
+            }
+            if (utm_term) {
+              body.append("utm_term", utm_term);
+            }
             axios.post(url, body)
                 .then((res) => {
                     changeSendedCount(sendedCount + 1)
