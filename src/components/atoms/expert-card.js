@@ -4,8 +4,8 @@ import React from "react"
 import styled from "styled-components"
 import { Button } from "./buttons"
 
-export default function ExpertCard({  el }) {
-    const phone = el.ekspert.numerTelefonu.toString().replace(/^(.{3})(.{3})(.{3})(.*)$/, "$1 $2 $3")
+export default function ExpertCard({ el }) {
+    const phone = el.ekspert.numerTelefonu && el.ekspert.numerTelefonu.toString().replace(/^(.{3})(.{3})(.{3})(.*)$/, "$1 $2 $3");
     return (
         <Item >
             <Link aria-label={el.title} className="link" to={'/zespol/' + el.slug + '/'} />
@@ -17,11 +17,10 @@ export default function ExpertCard({  el }) {
                 <p className="body3">
                     {el.ekspert.workWithProducts}
                 </p>
-                <Button url={'tel:' + el.ekspert.numerTelefonu} text={phone} className='phone' />
+                { el.ekspert.numerTelefonu && <Button url={'tel:' + el.ekspert.numerTelefonu} text={phone} className='phone' /> }
                 <Button url={'mailto:' + el.ekspert.emailAdres} text={el.ekspert.emailAdres} className='mail' />
             </div>
         </Item>
-
     )
 }
 
