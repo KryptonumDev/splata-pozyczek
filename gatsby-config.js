@@ -54,7 +54,7 @@ module.exports = {
         },
         url: "https://www-data.splatapozyczek.pl/graphql",
         develop: {
-          nodeUpdateInterval: 180,
+          nodeUpdateInterval: 60,
           hardCacheMediaFiles: true,
           hardCacheData: true,
         },
