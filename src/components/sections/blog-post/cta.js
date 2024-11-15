@@ -55,9 +55,9 @@ fragment calltoaaction on WpPost_Blogpost_Sections_Cta {
 
 const Wrapper = styled.section`
     scroll-margin-top: 50px;
-    padding-top: var(--section-post);
-    /* padding-top: calc(var(--section-post) * 2);
-    margin-top: calc(var(--section-post) * -1); */
+    padding-top: var(--section-post-spacing);
+    /* padding-top: calc(var(--section-post-spacing) * 2);
+    margin-top: calc(var(--section-post-spacing) * -1); */
 `
 
 const Content = styled.section`

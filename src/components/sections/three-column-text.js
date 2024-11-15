@@ -30,7 +30,7 @@ fragment threeColumnText on WpPage_PageBuilder_Sections_ThreeColumnText {
 
 
 const Wrapper = styled.section`
-    margin-top: var(--section);
+    margin-top: var(--section-spacing);
 `
 
 const Grid = styled.div`

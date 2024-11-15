@@ -65,7 +65,7 @@ export default function ExtendedContactForm({ ip, typTematow, title }) {
 }
 
 const Wrapper = styled.section`
-    margin-top: var(--section);
+    margin-top: var(--section-spacing);
 
     .h4{
         max-width: 500px;

@@ -94,7 +94,7 @@ const Item = styled(Link)`
 `
 
 const Wrapper = styled.section`
-    margin-top: var(--section);
+    margin-top: var(--section-spacing);
 
     .container{
         max-width: 1100px;

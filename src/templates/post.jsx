@@ -459,7 +459,7 @@ const Description = styled.div`
 
 const Grid = styled.div`
     max-width: 1100px;
-    margin: var(--section) auto 0 auto;
+    margin: var(--section-spacing) auto 0 auto;
     display: grid;
     grid-template-columns: 277fr 796fr;
     grid-gap: 32px;

@@ -56,14 +56,14 @@ export const query = graphql`
 `
 
 const Wrapper = styled.section`
-    margin-bottom: calc(-1 * var(--section));
+    margin-bottom: calc(-1 * var(--section-spacing));
 
     @media (max-width: 900px) {
-        margin-bottom: calc(-100px + (-1 * var(--section)));
+        margin-bottom: calc(-100px + (-1 * var(--section-spacing)));
     }
 
     @media (max-width: 480px) {
-        margin-bottom: calc(-1 * var(--section));
+        margin-bottom: calc(-1 * var(--section-spacing));
     }
 
     .background{

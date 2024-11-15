@@ -52,7 +52,7 @@ const Title = styled.div`
 `
 
 const Wrapper = styled.section`
-    margin-top: var(--section);
+    margin-top: var(--section-spacing);
 
     .body1{
         color: #6F6F71;

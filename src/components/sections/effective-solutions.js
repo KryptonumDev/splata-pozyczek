@@ -52,7 +52,7 @@ fragment effectiveSolutions on WpPage_PageBuilder_Sections_EffectiveSolutions {
 `
 
 const Wrapper = styled.section`
-    margin-top: var(--section);
+    margin-top: var(--section-spacing);
 `
 
 const Content = styled.div`

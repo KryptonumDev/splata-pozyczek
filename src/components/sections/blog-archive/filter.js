@@ -92,7 +92,7 @@ export default function Filter({ categories, isAltLayout, allCount }) {
 
 const Wrapper = styled.div`
     ${props => props.isAltLayout ? null : `
-        margin-top: var(--section);
+        margin-top: var(--section-spacing);
     `}
 `
 

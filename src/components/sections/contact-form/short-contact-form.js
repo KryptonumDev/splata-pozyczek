@@ -28,7 +28,7 @@ export default function ShortContactForm({ imageUnderTitle, textUnderImage, titl
 }
 
 const Wrapper = styled.section`
-    margin-top: var(--section);
+    margin-top: var(--section-spacing);
 
     .image{
         border-radius: 4px;

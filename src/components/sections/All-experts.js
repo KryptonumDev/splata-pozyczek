@@ -18,7 +18,7 @@ export default function AllExperts({ experts }) {
 }
 
 const Wrapper = styled.section`
-    margin-top: var(--section);
+    margin-top: var(--section-spacing);
 `
 
 const Grid = styled.div`

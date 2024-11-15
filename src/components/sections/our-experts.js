@@ -55,7 +55,7 @@ fragment ourExperts on WpPage_PageBuilder_Sections_OurExperts {
 `
 
 const Wrapper = styled.section`
-    margin-top: var(--section);
+    margin-top: var(--section-spacing);
 
     .h4{
         font-family: 'Arsenal', sans-serif;

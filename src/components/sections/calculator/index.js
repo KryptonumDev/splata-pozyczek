@@ -151,7 +151,7 @@ const CalculatorWrapper = styled.div`
 
 const Wrapper = styled.div`
     margin: 0 auto;
-    margin-top: var(--section);
+    margin-top: var(--section-spacing);
 
     .container{
         max-width: var(--inner-container-width);

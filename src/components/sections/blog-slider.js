@@ -176,7 +176,7 @@ const Placeholder = styled(Link)`
 `
 
 const Wrapper = styled.section`
-    margin-top: var(--section);
+    margin-top: var(--section-spacing);
 
     .h4{
         margin-bottom: clamp(12px, ${24 / 768 * 100}vw, 24px);

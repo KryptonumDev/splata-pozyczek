@@ -24,7 +24,7 @@ export default function ProvisionContactForm({ ip, title }) {
 }
 
 const Wrapper = styled.section`
-    margin-top: var(--section);
+    margin-top: var(--section-spacing);
 
     
 

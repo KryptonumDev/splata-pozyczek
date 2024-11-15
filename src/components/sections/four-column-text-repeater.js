@@ -50,7 +50,7 @@ fragment repeaterFourColumnText on WpPage_PageBuilder_Sections_RepeaterFourColum
 
 
 const Wrapper = styled.section`
-    margin-top: var(--section);
+    margin-top: var(--section-spacing);
 `
 
 const Grid = styled.div`

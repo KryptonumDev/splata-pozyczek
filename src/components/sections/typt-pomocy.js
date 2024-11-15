@@ -61,7 +61,7 @@ fragment types on WpPage_PageBuilder_Sections_Types {
 
 
 const Wrapper = styled.section`
-    margin-top: var(--section);
+    margin-top: var(--section-spacing);
 `
 
 const Content = styled.div`

@@ -66,7 +66,7 @@ export const query = graphql`
 `
 
 const Wrapper = styled.section`
-    margin-top: var(--section);
+    margin-top: var(--section-spacing);
 
     .h4{
         font-size: clamp(25px, ${29 / 768 * 100}vw, 38px);

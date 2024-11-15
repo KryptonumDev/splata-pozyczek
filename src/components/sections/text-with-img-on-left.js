@@ -47,7 +47,7 @@ export const query = graphql`
 `
 
 const Wrapper = styled.section`
-    margin-top: var(--section);
+    margin-top: var(--section-spacing);
 `
 
 const Content = styled.div`

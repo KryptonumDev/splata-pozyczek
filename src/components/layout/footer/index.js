@@ -117,7 +117,7 @@ export default function Footer() {
 }
 
 const Wrapper = styled.footer`
-  margin-top: var(--section);
+  margin-top: var(--section-spacing);
   background: #f2f4ff;
   padding: 48px 0;
 

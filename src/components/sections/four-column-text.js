@@ -36,7 +36,7 @@ fragment fourColumnText on WpPage_PageBuilder_Sections_FourColumnText {
 
 
 const Wrapper = styled.section`
-    margin-top: var(--section);
+    margin-top: var(--section-spacing);
 `
 
 const Grid = styled.div`

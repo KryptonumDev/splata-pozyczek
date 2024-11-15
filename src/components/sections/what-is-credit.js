@@ -51,7 +51,7 @@ fragment whatIsCredit on WpPage_PageBuilder_Sections_WhatIsCredit {
 `
 
 const Wrapper = styled.section`
-    margin-top: var(--section);
+    margin-top: var(--section-spacing);
 
     .h4{
         font-family: 'Arsenal', sans-serif;

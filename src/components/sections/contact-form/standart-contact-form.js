@@ -24,7 +24,7 @@ export default function StandartContactForm({ ip, title, type }) {
 }
 
 const Wrapper = styled.section`
-    margin-top: var(--section);
+    margin-top: var(--section-spacing);
 
     
 

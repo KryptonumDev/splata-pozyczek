@@ -50,7 +50,7 @@ const Wrapper = styled.section`
     border-radius: 8px;
     padding: 40px 0;
     max-width: 1366px;
-    margin: var(--section) auto 0 auto;
+    margin: var(--section-spacing) auto 0 auto;
 
     @media (max-width: 900px) {
         border-radius: 0px;

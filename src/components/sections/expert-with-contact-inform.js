@@ -91,7 +91,7 @@ const TextPart = styled.div`
 `
 
 const Wrapper = styled.section`
-    margin-top: var(--section);
+    margin-top: var(--section-spacing);
 
     .image{
         border-radius: 4px;

@@ -58,7 +58,7 @@ export const query = graphql`
 `
 
 const Wrapper = styled.section`
-    margin-top: var(--section);
+    margin-top: var(--section-spacing);
 
     .h4{
         max-width: 762px;
