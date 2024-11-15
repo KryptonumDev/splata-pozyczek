@@ -30,6 +30,10 @@ fragment fourColumnText on WpPage_PageBuilder_Sections_FourColumnText {
 }
 `
 
+// body1{ font-size: 24px;margin-bottom:2rem }
+// body3{ font-size: 16px }
+// Grid{ grid-template-columns: repeat(3, 1fr; }
+
 
 const Wrapper = styled.section`
     margin-top: var(--section);
