@@ -50,7 +50,7 @@ const Wrapper = styled.section`
 
     .main{
         text-align: center;
-        max-width: 1000px;
+        max-width: var(--inner-container-width);
         margin: 0 auto;
         margin-bottom: 16px;
     }
@@ -61,14 +61,14 @@ const Wrapper = styled.section`
         border-radius: 4px;
         background-color: var(--color-light);
         text-align: center;
-        max-width: 1000px;
+        max-width: var(--inner-container-width);
         margin: 0 auto;
         margin-bottom: clamp(24px, ${32 / 768 * 100}vw, 48px);
     }
 
     .sub{
         text-align: center;
-        max-width: 1000px;
+        max-width: var(--inner-container-width);
         margin: 0 auto;
         margin-bottom: clamp(24px, ${32 / 768 * 100}vw, 32px);
     }

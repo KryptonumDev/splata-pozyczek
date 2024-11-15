@@ -65,12 +65,12 @@ const Wrapper = styled.section`
 `
 
 const Content = styled.div`
-    max-width: 1000px;
+    max-width: var(--inner-container-width);
     margin: 0 auto;
     text-align: center;
 
     .body1{
-        max-width: 540px;
+        max-width: 768px;
         margin: clamp(16px, ${16 / 768 * 100}vw, 24px) auto 0 auto;
         color: #6F6F71;
         font-weight: 400;
@@ -82,7 +82,7 @@ const Content = styled.div`
 
     .h4{
         font-size: clamp(28px, ${38 / 768 * 100}vw, 38px);
-        max-width: 700px;
+        max-width: 992px;
         margin: 0 auto;
     }
 

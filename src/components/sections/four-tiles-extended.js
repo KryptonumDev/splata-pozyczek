@@ -57,7 +57,7 @@ const Wrapper = styled.section`
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 32px;
-        max-width: 1000px;
+        max-width: var(--inner-container-width);
         margin: 0 auto clamp(24px, ${24 / 768 * 100}vw, 32px) auto;
 
         @media (max-width: 640px) {
@@ -89,7 +89,7 @@ const Grid = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: clamp(24px, ${24 / 768 * 100}vw, 32px);
-    max-width: 1000px;
+    max-width: var(--inner-container-width);
     margin: 0 auto;
 
     @media (max-width: 640px) {

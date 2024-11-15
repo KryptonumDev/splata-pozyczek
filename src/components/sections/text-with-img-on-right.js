@@ -56,7 +56,7 @@ const Wrapper = styled.section`
     }
 
     .container{
-      max-width: 1000px;
+      max-width: var(--inner-container-width);
     }
 `
 

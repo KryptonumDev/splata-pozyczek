@@ -46,7 +46,7 @@ const Wrapper = styled.section`
 
     .h4{
         text-align: center;
-        max-width: 1000px;
+        max-width: var(--inner-container-width);
         margin: 0 auto;
         font-size: clamp(28px, 4.296875vw, 38px);
     }

@@ -47,7 +47,7 @@ const Content = styled.div`
     grid-template-columns: auto auto;
     align-items: center;
     grid-gap: clamp(12px, ${24 / 768 * 100}vw, 32px);
-    max-width: 1000px;
+    max-width: var(--inner-container-width);
     margin: 0 auto;
 
     .img{

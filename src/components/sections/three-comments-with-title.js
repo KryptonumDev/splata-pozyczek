@@ -52,7 +52,7 @@ const Wrapper = styled.section`
 
     .h4{
         margin-bottom: 16px;
-        max-width: 1000px;
+        max-width: var(--inner-container-width);
         text-align: center;
         margin: 0 auto;
         font-size: clamp(25px, 4.296875vw, 38px);
@@ -60,7 +60,7 @@ const Wrapper = styled.section`
 
     .text{
         margin: 0 auto;
-        max-width: 1000px;
+        max-width: var(--inner-container-width);
         background: var(--color-light);
         box-shadow: var(--shadow);
         border-radius: 4px;

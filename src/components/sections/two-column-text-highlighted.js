@@ -41,7 +41,7 @@ const Wrapper = styled.section`
 `
 
 const Box = styled.div`
-    max-width: 1000px;
+    max-width: var(--inner-container-width);
     margin: 0 auto;
     display: grid;
     grid-gap: 32px;

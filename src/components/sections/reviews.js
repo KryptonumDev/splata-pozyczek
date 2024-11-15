@@ -75,7 +75,7 @@ const Wrapper = styled.section`
     text-align: center;
 
     .text{
-        max-width: 1000px;
+        max-width: var(--inner-container-width);
         background-color: var(--color-light);
         box-shadow: var(--shadow);
         padding: 10px 24px;

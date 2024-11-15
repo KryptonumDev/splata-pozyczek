@@ -82,7 +82,7 @@ const Grid = styled.div`
 `
 
 const Content = styled.div`
-    max-width: 1000px;
+    max-width: var(--inner-container-width);
     width: 100%;
     margin: 0 auto;
     display: grid;

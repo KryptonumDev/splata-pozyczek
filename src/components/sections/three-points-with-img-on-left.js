@@ -69,7 +69,7 @@ const Content = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1000px;
+    max-width: var(--inner-container-width);
     margin: 0 auto;
 
     .content{

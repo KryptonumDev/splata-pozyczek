@@ -154,7 +154,7 @@ const Wrapper = styled.div`
     margin-top: var(--section);
 
     .container{
-        max-width: 1000px;
+        max-width: var(--inner-container-width);
         opacity: 1;
         transition: opacity .3s cubic-bezier(0.39, 0.575, 0.565, 1);
 
@@ -199,12 +199,12 @@ const ControlButtonsWrap = styled.div`
 `
 
 const ControlWrap = styled.div`
-    max-width: 1000px;
+    max-width: var(--inner-container-width);
     margin: 0 68px;
     overflow: hidden;
 
     &.no-button {
-        max-width: 1000px;
+        max-width: var(--inner-container-width);
         margin: 0 auto;
         overflow: unset;
     }

@@ -34,7 +34,7 @@ const Wrapper = styled.section`
 `
 
 const Grid = styled.div`
-    max-width: 1000px;
+    max-width: var(--inner-container-width);
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;

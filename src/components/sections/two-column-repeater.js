@@ -81,7 +81,7 @@ const Wrapper = styled.section`
         margin: 0 auto;
         margin-bottom: 24px;
         text-align: center;
-        max-width: 1000px;
+        max-width: var(--inner-container-width);
         font-family: 'Arsenal', sans-serif;
 
         @media (max-width: 860px){
@@ -112,7 +112,7 @@ const Wrapper = styled.section`
 `
 
 const Grid = styled.div`
-    max-width: 1000px;
+    max-width: var(--inner-container-width);
     margin: 0 auto;
     display: grid;
     grid-gap: 100px; 

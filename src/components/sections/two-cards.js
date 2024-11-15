@@ -64,7 +64,7 @@ const Wrapper = styled.section`
     margin-top: var(--section);
 
     .container{
-        max-width: 1000px;
+        max-width: var(--inner-container-width);
     }
 `
 

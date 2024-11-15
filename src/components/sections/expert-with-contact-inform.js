@@ -104,7 +104,7 @@ const Wrapper = styled.section`
 `
 
 const Flex = styled.div`
-    max-width: 1000px;
+    max-width: var(--inner-container-width);
     margin: 0 auto;
     display: grid;
     align-items: center;

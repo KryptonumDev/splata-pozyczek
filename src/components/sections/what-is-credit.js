@@ -66,12 +66,12 @@ const Wrapper = styled.section`
 `
 
 const Content = styled.div`
-    max-width: 1000px;
+    max-width: var(--inner-container-width);
     margin: 0 auto;
 `
 
 const Plate = styled.div`
-    max-width: 1000px;
+    max-width: var(--inner-container-width);
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;

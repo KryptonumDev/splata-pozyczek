@@ -23,7 +23,7 @@ export default function PostGrid({ activeFilter, allPosts, page, categories }) {
 }
 
 const Wrapper = styled.section`
-    max-width: 1000px;
+    max-width: var(--inner-container-width);
     margin: 0 auto;
     margin-top: clamp(24px, ${32 / 768 * 100}vw, 48px);
 

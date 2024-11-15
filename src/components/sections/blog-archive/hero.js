@@ -63,10 +63,10 @@ const List = styled.ul`
 `
 
 const Content = styled.div`
+  max-width: var(--inner-container-width);  
   display: grid;
   grid-gap: 32px;
   grid-template-columns: 1fr 1fr;
-  max-width: 1000px;
   margin: 0 auto;
 
   @media (max-width: 840px) {
