@@ -132,7 +132,7 @@ const ControlButtonsWrap = styled.div`
 `
 
 const ControlWrap = styled.div`
-    max-width: var(--inner-container-width);
+    max-width: 1000px;
     margin: 0 auto 0 auto;
     overflow: hidden;
     padding: 12px 0;
