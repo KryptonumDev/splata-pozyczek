@@ -8,7 +8,7 @@ export default function FourTilesWithTitle({ data: { title, tekstWyrozniony, pla
     return (
         <Wrapper>
             <Container>
-                    <p className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
+                    {title && <p className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />}
                     {tekstWyrozniony
                         ? <div className="title body1" dangerouslySetInnerHTML={{ __html: tekstWyrozniony }} />
                         : null}
@@ -61,10 +61,6 @@ const Wrapper = styled.section`
         box-shadow: var(--shadow);
         border-radius: 4px;
     }
-`
-
-const Content = styled.div`
-    margin: 0 auto;
 `
 
 const Grid = styled.div`

@@ -61,12 +61,12 @@ const Wrapper = styled.section`
 
 const Grid = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: clamp(24px, ${24/768*100}vw, 32px);
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
     margin: 0 auto;
 
-    @media (max-width: 480px) {
-        grid-template-columns: 1fr;
+    @media (min-width: 640px) {
+        grid-template-columns: repeat(2, 1fr);
     }
 `
 
