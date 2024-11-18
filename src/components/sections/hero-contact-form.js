@@ -12,9 +12,9 @@ export default function HeroForm({ data: { typTematow, pageTitle, text, link, li
   const [isSended, setIsSended] = useState(false)
 
   return (
-    <Wrapper>
+    <Container>
       <Content>
-        <Container className="wrap">
+        <div className="wrap">
           <TextPart>
             <Breadcrumbs uri={uri} title={title} />
             <h1 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(pageTitle) }} />
@@ -35,15 +35,15 @@ export default function HeroForm({ data: { typTematow, pageTitle, text, link, li
               ? <FilledButton className="link" target={link.target} to={link.url}>{link.title}</FilledButton>
               : null}
           </TextPart>
-        </Container>
-        <Container className="wrap container">
+        </div>
+        <div className="formWrap">
           <div className="box">
             <Form typTematow={typTematow} formTitle={formTitle} setIsSended={setIsSended} />
             <Success isSended={isSended} setIsSended={setIsSended} />
           </div>
-        </Container>
+        </div>
       </Content>
-    </Wrapper>
+    </Container>
   )
 }
 
@@ -69,32 +69,6 @@ export const query = graphql`
         target
         url
       }
-    }
-  }
-`
-
-const Wrapper = styled.section`
-  padding: 0 clamp(16px,3.125vw,80px);
-
-  .wrap{
-    padding: 0;
-    width: 100%;
-  }
-
-  @media (max-width: 840px) {
-    
-    padding: 0;
-
-    .wrap{
-      padding: 0 clamp(16px,3.125vw,80px);
-      width: 100%;
-      box-sizing: border-box;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .container{
-      padding: 0;
     }
   }
 `

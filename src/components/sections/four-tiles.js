@@ -8,8 +8,8 @@ export default function FourTiles({ data: { title, text, tiles } }) {
     return (
         <Wrapper>
             <Container>
-                <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
-                <div className="text body1" dangerouslySetInnerHTML={{ __html: textParser(text) }} />
+                {title && <h2 className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />}
+                {text && <div className="text body1" dangerouslySetInnerHTML={{ __html: textParser(text) }} />}
                 <Grid>
                     {tiles.map((el, index) => (
                         <Item key={index}>
@@ -63,7 +63,6 @@ const Grid = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: clamp(24px, ${24/768*100}vw, 32px);
-    max-width: 794px;
     margin: 0 auto;
 
     @media (max-width: 480px) {

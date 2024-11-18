@@ -8,7 +8,6 @@ export default function FourTilesWithTitle({ data: { title, tekstWyrozniony, pla
     return (
         <Wrapper>
             <Container>
-                <Content>
                     <p className="h4 arsenal" dangerouslySetInnerHTML={{ __html: textParser(title) }} />
                     {tekstWyrozniony
                         ? <div className="title body1" dangerouslySetInnerHTML={{ __html: tekstWyrozniony }} />
@@ -21,7 +20,6 @@ export default function FourTilesWithTitle({ data: { title, tekstWyrozniony, pla
                             </Item>
                         ))}
                     </Grid>
-                </Content>
             </Container>
         </Wrapper>
     )
@@ -50,7 +48,7 @@ const Wrapper = styled.section`
 
     .h4{
         text-align: center;
-        margin-bottom: clamp(12px, ${16 / 768 * 100}vw, 16px);
+        margin-bottom: 1rem;
         font-size: clamp(25px, 4.296875vw, 38px);
     }
 
@@ -62,17 +60,15 @@ const Wrapper = styled.section`
         background: var(--color-light);
         box-shadow: var(--shadow);
         border-radius: 4px;
-        font-weight: 600;
     }
 `
 
 const Content = styled.div`
-    max-width: var(--inner-container-width);
     margin: 0 auto;
 `
 
 const Grid = styled.div`
-margin-top: clamp(24px, ${32 / 768 * 100}vw, 32px);
+    margin-top: clamp(24px, ${32 / 768 * 100}vw, 32px);
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 32px;
@@ -90,6 +86,7 @@ const Item = styled.div`
     border-radius: 4px;
     display: grid;
     grid-template-columns: auto auto;
+    align-items: center;
 
     img{
         width: clamp(48px, ${56 / 768 * 100}vw, 76px);
@@ -103,7 +100,6 @@ const Item = styled.div`
 
     .text{
         padding: 10px;
-         font-weight: 600;
     }
 
 `
