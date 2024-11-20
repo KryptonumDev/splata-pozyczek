@@ -11,8 +11,8 @@ module.exports = {
   },
   flags: {
     DEV_SSR: process.env.DEV_SSR,
-    PRESERVE_FILE_DOWNLOAD_CACHE: process.env.PRESERVE_CACHE,
-    FAST_DEV: process.env.FAST_DEV,
+    // PRESERVE_FILE_DOWNLOAD_CACHE: process.env.PRESERVE_CACHE,
+    // FAST_DEV: process.env.FAST_DEV,
   },
   adapter: adapter({
     excludeDatastoreFromEngineFunction: false,
