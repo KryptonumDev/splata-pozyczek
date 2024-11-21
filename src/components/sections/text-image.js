@@ -4,21 +4,29 @@ import { graphql } from "gatsby"
 import { Container } from "../atoms/container"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { textParser } from '../../helpers/wysiwyg-modification'
+import { FilledButton, OutlinedButton } from "../atoms/buttons"
 
-export default function TextImage({ data: { title, subTitle, text, order, imgDescription, img } }) {
+
+export default function TextImage({ data: { title, subTitle, text, order, buttonA, buttonB, imgDescription, img, buttonLayout, buttonLayoutJustify } }) {
+    const buttonsLayouts = `${buttonLayout} ${buttonLayoutJustify}`;
+    
     return (
         <Wrapper>
             <Container>
                 <Content>
-                    {title && <p className="h4" dangerouslySetInnerHTML={{ __html: textParser(title) }} />}
+                    {title && <div className="h4 arsenal" dangerouslySetInnerHTML={{ __html: title }} />}
                     <Grid className={order}>
                         <div className="img-wrap">
                             <GatsbyImage className="img" alt={img.altText} image={img.localFile.childImageSharp.gatsbyImageData} />
-                            {imgDescription && <span className="sub1" dangerouslySetInnerHTML={{ __html: textParser(imgDescription) }} />}
+                            {imgDescription && <div className="under-img" dangerouslySetInnerHTML={{ __html: textParser(imgDescription) }} />}
                         </div>
                         <div className="text">
-                            {subTitle && <h3 className="h6" dangerouslySetInnerHTML={{ __html: textParser(subTitle) }} />}
+                            {subTitle && <div className="h6" dangerouslySetInnerHTML={{ __html: subTitle }} />}
                             <div className="body1" dangerouslySetInnerHTML={{ __html: text }} />
+                            <Buttons className={buttonsLayouts}>
+                                {buttonA && <FilledButton target={buttonA.target} to={buttonA.url}>{buttonA.title}</FilledButton>}
+                                {buttonB && <OutlinedButton target={buttonB.target} to={buttonB.url}>{buttonB.title}</OutlinedButton>}
+                            </Buttons>
                         </div>
                     </Grid>
                 </Content>
@@ -34,6 +42,18 @@ export const query = graphql`
       subTitle
       text
       order
+      buttonA {
+            url
+            title
+            target
+        }
+      buttonB {
+            url
+            title
+            target
+        }
+      buttonLayout
+      buttonLayoutJustify
       imgDescription
       img {
         altText
@@ -54,6 +74,7 @@ const Wrapper = styled.section`
 const Content = styled.div`
     margin: 0 auto;
 `
+
 
 const Grid = styled.div`
     margin-top: 3rem;
@@ -77,16 +98,19 @@ const Grid = styled.div`
 
     .img-wrap{
         justify-self: center;
-        .sub1{
-            display: block;
-            margin-top: 0.5rem;
-        }
+        box-shadow: var(--shadow);
+        border-radius: 4px;
+        background-color: var(--color-light);
     }
 
     .img{
         border-radius: 4px;
-        box-shadow: var(--shadow);
         width: 100%;
+    }
+
+    .under-img{
+        padding: 10px;
+        text-align: center;
     }
 
     .text{
@@ -99,6 +123,34 @@ const Grid = styled.div`
             p{
                 color: #6F6F71;
             }
+        }
+    }
+`
+const Buttons = styled.div`
+    display: grid;
+    gap: 0.5rem 1rem;
+    padding-top: 2rem;
+    &.vertical{
+        &.justify-center{
+            justify-items: center;
+        }
+        &.justify-start{
+            justify-items: flex-start;
+        }
+        &.justify-end{
+            justify-items: flex-end;
+        }
+    }
+    &.horizontal{
+        grid-auto-flow: column;
+        &.justify-center{
+            justify-content: center;
+        }
+        &.justify-start{
+            justify-content: flex-start;
+        }
+        &.justify-end{
+            justify-content: flex-end;
         }
     }
 `
