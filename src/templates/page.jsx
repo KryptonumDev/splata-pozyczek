@@ -1,6 +1,7 @@
 import { graphql } from "gatsby"
 import React from "react"
 import TextImage from "../components/sections/text-image"
+import TextFields from "../components/sections/text-fields"
 import EffectiveSolutions from "../components/sections/effective-solutions"
 import Hero from "../components/sections/hero-home"
 import WhatAreWeDoing from "../components/sections/what-are-we-doing"
@@ -232,6 +233,8 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
             return <React.Fragment key={el.__typename + index}> <Hero data={el.hero} /> </React.Fragment>
           case 'WpPage_PageBuilder_Sections_TextImage':
             return <React.Fragment key={el.__typename + index}> <TextImage data={el.textImage} /> </React.Fragment>
+          case 'WpPage_PageBuilder_Sections_TextFields':
+            return <React.Fragment key={el.__typename + index}> <TextFields data={el.textFields} /> </React.Fragment>
           case 'WpPage_PageBuilder_Sections_WhatAreWeDoing':
             return <React.Fragment key={el.__typename + index}> <WhatAreWeDoing data={el.whatAreWeDoing} /> </React.Fragment>
           case 'WpPage_PageBuilder_Sections_EffectiveSolutions':
@@ -395,6 +398,7 @@ query page($id: String!) {
       sections {
         __typename
         ...textImage
+        ...textFields
         ...citate
         ...expertWithContactInform
         ...heighlihtedAdres
