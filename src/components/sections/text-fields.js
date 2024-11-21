@@ -29,9 +29,6 @@ export const query = graphql`
 
 const Wrapper = styled.section`
     margin-top: var(--section-spacing);
-    .text{
-        color: #6F6F71;
-    }
 `
 
 const Fields = styled.section`
@@ -43,8 +40,8 @@ const Fields = styled.section`
             margin-bottom: 1rem;
         }
     
-    .text{
-        color: #6F6F71;
-    }
+        .text{
+            color: #6F6F71;
+        }
 `
 
