@@ -163,7 +163,7 @@ const ControlButtonsWrap = styled.div`
 `
 
 const ControlWrap = styled.div`
-    max-width: var(--inner-container-width);
+    max-width: 1000px;
     margin: 0 auto;
     overflow: hidden;
 
@@ -284,7 +284,6 @@ const Control = styled(motion.div)`
 `
 
 const Content = styled.div`
-    max-width: 1136px;
     margin: 0 auto;
 
     .h4{
