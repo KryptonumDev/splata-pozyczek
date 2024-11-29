@@ -84,7 +84,6 @@ const Box = styled.div`
 const Content = styled.div`
     max-width: 960px;
     padding: 0 32px;
-    box-sizing: content-box;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;

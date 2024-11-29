@@ -153,54 +153,37 @@ strong {
 }
 
 .body1 {
-   font-family: 'Source Sans Pro', sans-serif;
-   font-style: normal;
-   font-weight: 400;
-   font-size: 16px;
-   line-height: 131%;
-   font-feature-settings: 'pnum' on, 'onum' on;
-}
-
-.body1 p {
-   font-family: 'Source Sans Pro', sans-serif;
-   font-style: normal;
-   font-weight: 400;
-   font-size: 16px;
-   line-height: 131%;
-   font-feature-settings: 'pnum' on, 'onum' on;
+   &,p{
+      font-family: 'Source Sans Pro', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 131%;
+      font-feature-settings: 'pnum' on, 'onum' on;
+   }
 }
 
 .body2 {
-   font-family: 'Source Sans Pro', sans-serif;
-   font-style: normal;
-   font-weight: 400;
-   font-size: 16px;
-   line-height: 129%;
-   font-feature-settings: 'pnum' on, 'onum' on;
-}
-
-.body2 p {
-   font-family: 'Source Sans Pro', sans-serif;
-   font-style: normal;
-   font-weight: 400;
-   font-size: 16px;
-   line-height: 129%;
-   font-feature-settings: 'pnum' on, 'onum' on;
+   &,p{
+      font-family: 'Source Sans Pro', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 129%;
+      font-feature-settings: 'pnum' on, 'onum' on;
+   }
 }
 
 .body3 {
-   font-weight: 400;
-   font-size: 11px;
-   line-height: 127%;
-   font-feature-settings: 'pnum' on, 'onum' on;
+   &,p{
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 127%;
+      font-feature-settings: 'pnum' on, 'onum' on;
+   }
 }
 
-.body3 p {
-   font-weight: 400;
-   font-size: 11px;
-   line-height: 127%;
-   font-feature-settings: 'pnum' on, 'onum' on;
-}
+
 
 
 strong {

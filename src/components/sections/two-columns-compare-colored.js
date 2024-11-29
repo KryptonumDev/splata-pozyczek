@@ -46,6 +46,7 @@ const Grid = styled.div`
     }
 
     .h6{
+        font-weight: 400;
         p{
             font-size: clamp(13px, ${18 / 768 * 100}vw, 18px);
             line-height: 130%;

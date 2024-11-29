@@ -217,7 +217,7 @@ const Wrapper = styled.section`
 
 const Content = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr auto;
     grid-gap: 32px;
 
 @media (max-width: 768px) {

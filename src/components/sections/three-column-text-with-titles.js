@@ -46,12 +46,13 @@ const Wrapper = styled.section`
 
 const Grid = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 32px;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
 
     .body2{
         margin-bottom: 8px;
         font-weight: 600;
+        font-size: 20px;
     }
 
     .body3{
@@ -59,28 +60,13 @@ const Grid = styled.div`
         grid-gap: 8px;
         p{
         color: #6F6F71;
+        font-size:16px;
         }
     }
 
-    @media (max-width: 768px) {
-        display: block;
-        columns: 2;
-        div{
-            break-inside: avoid;
-        }
 
-        .second{
-            margin-bottom: 16px;
-        }
-    }
-
-    @media (max-width: 640px) {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-gap: 8px;
-
-        .second{
-            margin-bottom: 0;
-        }
+    @media (min-width: 1025px) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
     }
 `

@@ -73,7 +73,7 @@ const Item = styled.div`
 
     .description{
         display: -webkit-box;
-        -webkit-line-clamp: 7;
+        -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
     }
