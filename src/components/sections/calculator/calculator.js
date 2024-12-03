@@ -220,12 +220,13 @@ const Content = styled.div`
     grid-template-columns: 1fr auto;
     grid-gap: 32px;
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     grid-template-columns: 1fr 250px;
 }
 
     @media (max-width: 640px) {
         grid-template-columns: 1fr;
+        justify-items: center;
     }
 `
 
@@ -262,6 +263,7 @@ const Review = styled.div`
     padding: 41px 64px;
     box-sizing: border-box;
     height: fit-content;
+    max-width: 400px;
 
     @media (max-width: 1024px) {
         padding: clamp(12px, ${16 / 768 * 100}vw, 41px) clamp(12px, ${16 / 768 * 100}vw, 64px);
@@ -288,10 +290,9 @@ const Review = styled.div`
         @media (max-width: 640px){
             margin-left: auto;
             max-width: unset;
+            text-align: center;
             .filled{
                 padding: 12px 44px;
-                width: fit-content;
-                margin-left: auto;
             }
         }
 
@@ -299,7 +300,6 @@ const Review = styled.div`
             .filled{
                 width: 100%;
                 padding: 12px;
-                text-align: center;
             }
         }
     }
