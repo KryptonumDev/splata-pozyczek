@@ -23,7 +23,7 @@ export default function BigTextTiles({ data: { title, text, tiles } }) {
                                     {el.icon
                                         ? <img className="mobile" src={el.icon.localFile.publicURL} alt={el.icon.altText} />
                                         : null}
-                                    <h3 className="body1" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
+                                    <h2 className="body1" dangerouslySetInnerHTML={{ __html: textParser(el.title) }} />
                                 </div>
                                 {el.text
                                     ? <div className="body2" dangerouslySetInnerHTML={{ __html: textParser(el.text) }} />
