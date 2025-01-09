@@ -9,15 +9,15 @@ export default function ThreeColumnTextWithTitles({ data: { left, leftTitle, rig
             <Container>
                 <Grid>
                     <div>
-                        <h3 className="body2">{leftTitle}</h3>
+                        <h2 className="body2">{leftTitle}</h2>
                         <div className="body3" dangerouslySetInnerHTML={{ __html: left }} />
                     </div>
                     <div className="second">
-                        <h3 className="body2">{centerTitle}</h3>
+                        <h2 className="body2">{centerTitle}</h2>
                         <div className="body3" dangerouslySetInnerHTML={{ __html: center }} />
                     </div>
                     <div>
-                        <h3 className="body2">{rightTitle}</h3>
+                        <h2 className="body2">{rightTitle}</h2>
                         <div className="body3" dangerouslySetInnerHTML={{ __html: right }} />
                     </div>
                 </Grid>
