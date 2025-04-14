@@ -17,7 +17,7 @@ export default function TextImage({ data: { title, subTitle, text, order, button
                     {title && <div className="h4 arsenal" dangerouslySetInnerHTML={{ __html: title }} />}
                     <Grid className={order}>
                         <div className="img-wrap">
-                            <GatsbyImage className="img" alt={img.altText} image={img.localFile.childImageSharp.gatsbyImageData} />
+                            {img && <GatsbyImage className="img" alt={img?.altText} image={img.localFile.childImageSharp.gatsbyImageData} />}
                             {imgDescription && <div className="under-img" dangerouslySetInnerHTML={{ __html: textParser(imgDescription) }} />}
                         </div>
                         <div className="text">
