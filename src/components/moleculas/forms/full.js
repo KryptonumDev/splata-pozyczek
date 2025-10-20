@@ -84,69 +84,70 @@ export default function Form({
   } = useForm();
   const [sendedCount, changeSendedCount] = useState(0);
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+    if (sendedCount >= 3) {
+      return;
+    }
+
     setIsSended(true);
-
-    if (sendedCount < 3) {
-      let url =
-        "https://www-data.splatapozyczek.pl/wp-json/contact-form-7/v1/contact-forms/669/feedback";
-      let body = new FormData();
-      body.append("your-email", data.email);
-      body.append("your-message", data.message);
-      body.append("your-name", data.name);
-      body.append("your-phone", data.phone);
-      body.append("post-url", window.location.href);
-      body.append("your-ip", ip);
-      if (extended && typTematow === "Firmowego") {
-        body.append("your-nip", data.nip);
+    let url =
+      "https://www-data.splatapozyczek.pl/wp-json/contact-form-7/v1/contact-forms/669/feedback";
+    let body = new FormData();
+    body.append("your-email", data.email);
+    body.append("your-message", data.message);
+    body.append("your-name", data.name);
+    body.append("your-phone", data.phone);
+    body.append("post-url", window.location.href);
+    body.append("your-ip", ip);
+    if (extended && typTematow === "Firmowego") {
+      body.append("your-nip", data.nip);
+    } else {
+      if (type !== "noTheme") {
+        body.append("your-subject", data.theme);
       } else {
-        if (type !== "noTheme") {
-          body.append("your-subject", data.theme);
-        } else {
-          body.append("your-subject", title);
-        }
+        body.append("your-subject", title);
       }
+    }
 
-      const utm_campaign = sessionStorage.getItem('utm_campaign');
-      const utm_source = sessionStorage.getItem('utm_source');
-      const utm_medium = sessionStorage.getItem('utm_medium');
-      const utm_term = sessionStorage.getItem('utm_term');
-      if (utm_campaign) {
-        body.append("utm_campaign", utm_campaign);
-      }
-      if (utm_source) {
-        body.append("utm_source", utm_source);
-      }
-      if (utm_medium) {
-        body.append("utm_medium", utm_medium);
-      }
-      if (utm_term) {
-        body.append("utm_term", utm_term);
-      }
+    const utm_campaign = sessionStorage.getItem('utm_campaign');
+    const utm_source = sessionStorage.getItem('utm_source');
+    const utm_medium = sessionStorage.getItem('utm_medium');
+    const utm_term = sessionStorage.getItem('utm_term');
+    if (utm_campaign) {
+      body.append("utm_campaign", utm_campaign);
+    }
+    if (utm_source) {
+      body.append("utm_source", utm_source);
+    }
+    if (utm_medium) {
+      body.append("utm_medium", utm_medium);
+    }
+    if (utm_term) {
+      body.append("utm_term", utm_term);
+    }
 
-      axios
-        .post(url, body)
-        .then((res) => {
-          changeSendedCount(sendedCount + 1);
-          setIsSended(true);
-          reset();
-          datalayerArguments({
-            event: "Custom Form Submit",
-            data: {
-              email: data.email,
-              name: data.name,
-              phone: data.phone,
-              message: data.message,
-              url: window.location,
-              nip: data.nip ? data.nip : "bez NIP",
-              subject: data.theme ? data.theme : title,
-              ip: ip,
-            },
-          });
-        })
-        .catch((err) => {
-          alert("wystąpił problem, sprobuj póżniej");
-        });
+    try {
+      const res = await axios.post(url, body);
+      changeSendedCount(sendedCount + 1);
+      reset();
+      
+      // Track form submission only on success
+      datalayerArguments({
+        event: "Custom Form Submit",
+        data: {
+          email: data.email,
+          name: data.name,
+          phone: data.phone,
+          message: data.message,
+          url: window.location,
+          nip: data.nip ? data.nip : "bez NIP",
+          subject: data.theme ? data.theme : title,
+          ip: ip,
+        },
+      });
+    } catch (err) {
+      setIsSended(false);
+      alert("wystąpił problem, sprobuj póżniej");
     }
   };
 
