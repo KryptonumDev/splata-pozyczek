@@ -68,22 +68,50 @@ exports.createPages = async ({
   actions: { createPage },
 }) => {
 
+  // new: get available root query fields once
+  const getRootFields = async () => {
+    const res = await graphql(`
+      {
+        __schema {
+          queryType {
+            fields {
+              name
+            }
+          }
+        }
+      }
+    `);
+    return (res && res.data && res.data.__schema && res.data.__schema.queryType)
+      ? res.data.__schema.queryType.fields.map(f => f.name)
+      : [];
+  };
+
+  const availableRootFields = await getRootFields();
+
+  // helper to check availability
+  const hasRootField = (name) => availableRootFields.includes(name);
 
   // Create pages
 
-  const { data: { allWpPage: { nodes } } } = await graphql(`
-  {
-    allWpPage(filter: {id: {ne: "cG9zdDoxMDEz"}}) {
-      nodes {
-        title
-        id
-        uri
-        date
-        modified
+  let nodes = [];
+  if (hasRootField('allWpPage')) {
+    const result = await graphql(`
+    {
+      allWpPage(filter: {id: {ne: "cG9zdDoxMDEz"}}) {
+        nodes {
+          title
+          id
+          uri
+          date
+          modified
+        }
       }
     }
+    `);
+    nodes = result?.data?.allWpPage?.nodes || [];
+  } else {
+    console.log('Skipping allWpPage query: root field not present in schema.');
   }
-  `);
 
   nodes.forEach(({ id, uri, title, date, modified }) => {
     if (id !== 'cG9zdDo0MzQ=' && id !== 'cG9zdDozNzU=' && id !== 'cG9zdDo2MzQ=') {
@@ -104,17 +132,23 @@ exports.createPages = async ({
 
   // category pages
 
-  const { data: { allWpTag: { nodes: categoryNodes } } } = await graphql(`
-  query{
-    allWpTag {
-      nodes {
-        slug
-        count
-        name
+  let categoryNodes = [];
+  if (hasRootField('allWpTag')) {
+    const res = await graphql(`
+    query{
+      allWpTag {
+        nodes {
+          slug
+          count
+          name
+        }
       }
     }
+    `)
+    categoryNodes = res?.data?.allWpTag?.nodes || [];
+  } else {
+    console.log('Skipping allWpTag query: root field not present in schema.');
   }
-  `)
 
   categoryNodes.forEach(({ slug, count, name }) => {
     if (count) {
@@ -150,13 +184,19 @@ exports.createPages = async ({
 
   // blog archive
 
-  const { data: { allWpPost: { totalCount: postsCount } } } = await graphql(`
-  {
-    allWpPost {
-      totalCount
+  let postsCount = 0;
+  if (hasRootField('allWpPost')) {
+    const res = await graphql(`
+    {
+      allWpPost {
+        totalCount
+      }
     }
+    `)
+    postsCount = res?.data?.allWpPost?.totalCount || 0;
+  } else {
+    console.log('Skipping allWpPost totalCount query: root field not present in schema.');
   }
-  `)
 
   for (let i = 12; i < postsCount; i += 12) {
     createPage({
@@ -190,22 +230,28 @@ exports.createPages = async ({
 
   // EXPERTS
 
-  const { data: { allWpEkspert: { nodes: expertsNodes } } } = await graphql(`
-  query{
-    allWpEkspert {
-      nodes {
-        ekspert {
-          workWithProducts
+  let expertsNodes = [];
+  if (hasRootField('allWpEkspert')) {
+    const res = await graphql(`
+    query{
+      allWpEkspert {
+        nodes {
+          ekspert {
+            workWithProducts
+          }
+          id
+          slug
+          title
+          date
+          modified
         }
-        id
-        slug
-        title
-        date
-        modified
       }
     }
+    `)
+    expertsNodes = res?.data?.allWpEkspert?.nodes || [];
+  } else {
+    console.log('Skipping allWpEkspert query: root field not present in schema.');
   }
-  `)
 
   expertsNodes.forEach(({ slug, id, title, ekspert, date, modified }) => {
     createPage({
@@ -224,22 +270,28 @@ exports.createPages = async ({
   });
 
 
-  const { data: { allWpPost: { nodes: postNodes } } } = await graphql(`
-  query{
-    allWpPost {
-      nodes {
-        id
-        slug
-        title
-        categories : tags {
-          nodes {
-            name
+  let postNodes = [];
+  if (hasRootField('allWpPost')) {
+    const res = await graphql(`
+    query{
+      allWpPost {
+        nodes {
+          id
+          slug
+          title
+          categories : tags {
+            nodes {
+              name
+            }
           }
         }
       }
     }
+    `)
+    postNodes = res?.data?.allWpPost?.nodes || [];
+  } else {
+    console.log('Skipping allWpPost nodes query: root field not present in schema.');
   }
-  `)
 
   postNodes.forEach(({ slug, id, title, categories }) => {
     createPage({
