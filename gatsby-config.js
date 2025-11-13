@@ -48,8 +48,8 @@ module.exports = {
         },
         schema: {
           timeout: 3000000,
-          perPage: 50, // currently set to 100
-          requestConcurrency: 20, // currently set to 15
+          perPage: 25, // currently set to 100
+          requestConcurrency: 15, // currently set to 15
           previewRequestConcurrency: 5, // currently set to 5
         },
         url: "https://www-data.splatapozyczek.pl/graphql",
