@@ -12,21 +12,26 @@ import { checkboxAllHero } from "../../../helpers/hero-checkbox-all";
 import { datalayerArguments } from "../../../helpers/datalayer";
 import { textParser } from "../../../helpers/wysiwyg-modification";
 import { EmailInput, NameInput, PhoneInput } from "../form-inputs/specialized";
+import UniversalInput from "../form-inputs/universal";
 
 // 2-step screening form, ported from the kredito.com.pl "Kredyt LP" form.
-// Field names match the CF7 form tags (see docs/cf7-lp-krokowy.md), except name/email/phone
-// which come from the shared inputs and are renamed on submit.
+// Field names match the CF7 form tags (see docs/cf7-lp-krokowy.md). Fields shared with the other
+// site forms use their CF7 names (your-*), so the leads integration maps them the same way;
+// CF7_NAMES maps those back to the local field names for CF7 validation errors.
 
 const STEP_FIELDS = [
-  ["name", "phone", "email", "kwota", "liczba_zobowiazan"],
+  ["name", "phone", "email", "moneyCount", "liczba_zobowiazan"],
   ["komornik", "bazy", "opoznienia", "windykacja", "dochod", "privacyOneHero", "privacyTwoHero"],
 ];
 
-const CF7_NAMES = { imie: "name", telefon: "phone" };
+const CF7_NAMES = {
+  "your-name": "name",
+  "your-email": "email",
+  "your-phone": "phone",
+  "your-money-count": "moneyCount",
+};
 
 const SELECTS = {
-  kwota: ["do 5 tys. zł", "5–15 tys. zł", "15–30 tys. zł", "powyżej 30 tys. zł"],
-  liczba_zobowiazan: ["1–2", "3–5", "powyżej 5"],
   komornik: ["Nie", "Tak"],
   bazy: ["Nie", "Tak", "Nie wiem"],
   opoznienia: ["Nie", "Tak"],
@@ -112,12 +117,14 @@ export default function StepForm({ setIsSended, formTitle, formId, pageTitle }) 
 
     setSending(true);
     const body = new FormData();
-    body.append("imie", data.name);
-    body.append("telefon", data.phone);
-    body.append("email", data.email);
+    body.append("your-name", data.name);
+    body.append("your-phone", data.phone);
+    body.append("your-email", data.email);
+    body.append("your-money-count", data.moneyCount);
+    body.append("liczba_zobowiazan", data.liczba_zobowiazan);
     Object.keys(SELECTS).forEach((key) => body.append(key, data[key]));
     body.append("lead_segment", leadSegment(data));
-    body.append("strona", pageTitle);
+    body.append("your-subject", pageTitle);
     body.append("post-url", window.location.href);
     ["utm_source", "utm_medium", "utm_campaign", "utm_term", "gclid"].forEach((key) => {
       const value = sessionStorage.getItem(key);
@@ -183,11 +190,43 @@ export default function StepForm({ setIsSended, formTitle, formId, pageTitle }) 
         <div className="step" hidden={step !== 0}>
           <NameInput register={register} errors={errors} autoComplete="name" />
           <div className="flex">
-            <PhoneInput register={register} errors={errors} autoComplete="tel" inputMode="tel" />
+            <PhoneInput
+              register={register}
+              errors={errors}
+              autoComplete="tel"
+              inputMode="tel"
+              // CF7 your-phone allows max 10 characters (the shared input allows 11)
+              validationRules={{
+                required: "Numer telefonu jest wymagany",
+                pattern: { value: /^[0-9]{9,10}$/, message: "Nieprawidłowy numer telefonu" },
+              }}
+            />
             <EmailInput register={register} errors={errors} autoComplete="email" inputMode="email" />
           </div>
-          <SelectField name="kwota" label="Kwota zadłużenia łącznie" register={register} errors={errors} />
-          <SelectField name="liczba_zobowiazan" label="Liczba chwilówek / pożyczek" register={register} errors={errors} />
+          <UniversalInput
+            label="Kwota zadłużenia łącznie (zł)*"
+            name="moneyCount"
+            inputMode="numeric"
+            placeholder="np. 20000"
+            register={register}
+            errors={errors}
+            validationRules={{
+              required: "Kwota jest wymagana",
+              pattern: { value: /^[0-9]{3,9}$/, message: "Podaj kwotę w złotych, same cyfry" },
+            }}
+          />
+          <UniversalInput
+            label="Liczba chwilówek / pożyczek*"
+            name="liczba_zobowiazan"
+            inputMode="numeric"
+            placeholder="np. 3"
+            register={register}
+            errors={errors}
+            validationRules={{
+              required: "Podaj liczbę",
+              pattern: { value: /^[1-9][0-9]?$/, message: "Podaj liczbę od 1 do 99" },
+            }}
+          />
           <FilledButton as="button">Dalej →</FilledButton>
         </div>
 
