@@ -1,5 +1,5 @@
-import { graphql } from "gatsby"
-import React from "react"
+import { graphql, navigate } from "gatsby"
+import React, { useEffect } from "react"
 import TextImage from "../components/sections/text-image"
 import TextFields from "../components/sections/text-fields"
 import EffectiveSolutions from "../components/sections/effective-solutions"
@@ -73,15 +73,18 @@ import Citate from "../components/sections/citate"
 import { Helmet } from "react-helmet"
 import WniosekOnline from "../components/sections/wniosek-on-line"
 import { LocalBusiness } from "../schemas/schemas"
+import { isAdVisit } from "../helpers/ads"
 
-export function Head({ pageContext, data: { wpPage: { seo, id } } }) {
+export function Head({ pageContext, data: { wpPage: { seo, id, adsLanding } } }) {
   const canonical = 'https://splatapozyczek.pl' + pageContext.url
   const dateUpdated = pageContext.dateModified < pageContext.date ? pageContext.date : pageContext.dateModified
   
   return (
     <>
       <meta charSet='utf-8' />
-      {id === 'cG9zdDoxMg==' ? null : (
+      {adsLanding?.adsOnly ? (
+        <meta name='robots' content='noindex, nofollow' />
+      ) : id === 'cG9zdDoxMg==' ? null : (
         <meta
           name='robots'
           content='index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
@@ -210,7 +213,15 @@ export function Head({ pageContext, data: { wpPage: { seo, id } } }) {
   )
 }
 
-export default function Page({ pageContext, location, data: { blogArchive, allWpCategory, allWpEkspert, slider, wpPage: { seo, title, page_builder: { sections } } } }) {
+export default function Page({ pageContext, location, data: { blogArchive, allWpCategory, allWpEkspert, slider, wpPage: { seo, title, adsLanding, page_builder: { sections } } } }) {
+  const adsOnly = adsLanding?.adsOnly
+
+  // Ads-only landing: visitors who didn't come from an ad go to the regular page.
+  useEffect(() => {
+    if (adsOnly && adsLanding.fallbackUrl && !isAdVisit()) {
+      navigate(adsLanding.fallbackUrl, { replace: true })
+    }
+  }, [adsOnly, adsLanding])
 
   return (
     <main id="main">
@@ -254,7 +265,7 @@ export default function Page({ pageContext, location, data: { blogArchive, allWp
           case 'WpPage_PageBuilder_Sections__RepeaterFourColumnText':
             return <React.Fragment key={el.__typename + index}> <RepeaterFourColumnText data={el.repeaterFourColumnText} /> </React.Fragment>
           case 'WpPage_PageBuilder_Sections_HeroForm':
-            return <React.Fragment key={el.__typename + index}> <HeroForm data={el.heroForm} uri={pageContext.url} title={title} /> </React.Fragment>
+            return <React.Fragment key={el.__typename + index}> <HeroForm data={el.heroForm} uri={pageContext.url} title={title} stepFormId={adsOnly ? adsLanding.stepFormId : null} /> </React.Fragment>
           case 'WpPage_PageBuilder_Sections_FourTilesWithTitle':
             return <React.Fragment key={el.__typename + index}> <FourTilesWithTitle data={el.fourTilesWithTitle} /> </React.Fragment>
           case 'WpPage_PageBuilder_Sections_FourBigTextTiles':
@@ -383,6 +394,11 @@ query page($id: String!) {
     slug
     title
     id
+    adsLanding {
+      adsOnly
+      stepFormId
+      fallbackUrl
+    }
     seo {
       canonical
       metaDesc

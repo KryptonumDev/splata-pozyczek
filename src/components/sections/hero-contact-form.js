@@ -6,9 +6,10 @@ import Breadcrumbs from "../moleculas/breadcrumbs"
 import { textParser } from "../../helpers/wysiwyg-modification"
 import { FilledButton } from "../atoms/buttons"
 import Form from "../moleculas/forms/hero"
+import StepForm from "../moleculas/forms/steps"
 import Success from "../moleculas/success-send"
 
-export default function HeroForm({ data: { typTematow, pageTitle, text, link, list, formTitle }, title, uri }) {
+export default function HeroForm({ data: { typTematow, pageTitle, text, link, list, formTitle }, title, uri, stepFormId }) {
   const [isSended, setIsSended] = useState(false)
 
   return (
@@ -38,7 +39,9 @@ export default function HeroForm({ data: { typTematow, pageTitle, text, link, li
         </div>
         <div className="formWrap">
           <div className="box">
-            <Form typTematow={typTematow} formTitle={formTitle} setIsSended={setIsSended} />
+            {stepFormId
+              ? <StepForm formId={stepFormId} formTitle={formTitle} pageTitle={title} setIsSended={setIsSended} />
+              : <Form typTematow={typTematow} formTitle={formTitle} setIsSended={setIsSended} />}
             <Success isSended={isSended} setIsSended={setIsSended} />
           </div>
         </div>
