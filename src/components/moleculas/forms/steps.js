@@ -39,6 +39,10 @@ const SELECTS = {
   dochod: ["Umowa o pracę", "Umowa zlecenie / o dzieło", "Działalność gospodarcza", "Emerytura / renta", "Inne"],
 };
 
+// Product category for the leads integration (Ceremeo); same value as the "Kredyt indywidualny"
+// topic in the other forms' your-subject (formyKontaktowe.meesageThemesDetails in WP).
+const PRODUCT = "Kredyt indywidualny";
+
 const leadSegment = (data) => {
   if (data.windykacja === "Tak") return "review";
   if (data.bazy === "Tak" || data.opoznienia === "Tak") return "standard";
@@ -60,7 +64,7 @@ function SelectField({ name, label, register, errors }) {
   );
 }
 
-export default function StepForm({ setIsSended, formTitle, formId, pageTitle }) {
+export default function StepForm({ setIsSended, formTitle, formId }) {
   const {
     wpPage: {
       formyKontaktowe: { linkPrivacyPolicySecond, linkPrivacyPolicyThird },
@@ -124,7 +128,7 @@ export default function StepForm({ setIsSended, formTitle, formId, pageTitle }) 
     body.append("liczba_zobowiazan", data.liczba_zobowiazan);
     Object.keys(SELECTS).forEach((key) => body.append(key, data[key]));
     body.append("lead_segment", leadSegment(data));
-    body.append("your-subject", pageTitle);
+    body.append("your-subject", PRODUCT);
     body.append("post-url", window.location.href);
     ["utm_source", "utm_medium", "utm_campaign", "utm_term", "gclid"].forEach((key) => {
       const value = sessionStorage.getItem(key);
@@ -147,7 +151,7 @@ export default function StepForm({ setIsSended, formTitle, formId, pageTitle }) 
             email: data.email,
             name: data.name,
             phone: data.phone,
-            subject: pageTitle,
+            subject: PRODUCT,
             segment: leadSegment(data),
             url: window.location,
           },

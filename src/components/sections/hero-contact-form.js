@@ -40,7 +40,7 @@ export default function HeroForm({ data: { typTematow, pageTitle, text, link, li
         <div className="formWrap">
           <div className="box">
             {stepFormId
-              ? <StepForm formId={stepFormId} formTitle={formTitle} pageTitle={title} setIsSended={setIsSended} />
+              ? <StepForm formId={stepFormId} formTitle={formTitle} setIsSended={setIsSended} />
               : <Form typTematow={typTematow} formTitle={formTitle} setIsSended={setIsSended} />}
             <Success isSended={isSended} setIsSended={setIsSended} />
           </div>
