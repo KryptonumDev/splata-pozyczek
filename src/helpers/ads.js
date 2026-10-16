@@ -1,7 +1,7 @@
 // Ad click IDs (Google, Meta, Microsoft, TikTok) and utm_medium values that mean paid traffic.
-// `ads` is our own marker (?ads=1 in the ads' Final URL): tracking-param strippers (uBlock URL
+// `from_cmp` is our own marker (?from_cmp=1 in the ads' Final URL): tracking-param strippers (uBlock URL
 // tracking list, ClearURLs, Brave, Safari) remove gclid/utm_* before the request, but not this.
-const AD_CLICK_IDS = ['ads', 'gclid', 'gbraid', 'wbraid', 'fbclid', 'msclkid', 'ttclid']
+const AD_CLICK_IDS = ['from_cmp', 'gclid', 'gbraid', 'wbraid', 'fbclid', 'msclkid', 'ttclid']
 const PAID_MEDIUM = /^(cpc|ppc|paid|paid[-_]?social|ads?|display|cpm)$/i
 // Ad platforms review the landing page with crawlers that carry no click ID; bouncing them
 // would show the reviewer a different page than users get (looks like cloaking).
