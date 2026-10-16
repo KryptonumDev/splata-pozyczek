@@ -65,8 +65,49 @@ const csvParser = (data) => {
 
 exports.createPages = async ({
   graphql,
-  actions: { createPage },
+  reporter,
+  actions: { createPage, createRedirect },
 }) => {
+
+  // Redirects from the WP Redirection plugin (exposed by the splata-redirects-export mu-plugin).
+  // Appended after static/_redirects by gatsby-adapter-netlify, so static rules still win.
+
+  const redirectsUrl = 'https://www-data.splatapozyczek.pl/wp-json/splata/v1/redirects'
+  let redirects = []
+  try {
+    const res = await fetch(redirectsUrl)
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    redirects = await res.json()
+  } catch (err) {
+    // Fails `gatsby build` (a silent skip would drop every redirect on that deploy); only logs in develop.
+    reporter.panicOnBuild(`Could not fetch redirects from ${redirectsUrl}: ${err.message}`)
+  }
+
+  let skipped = 0
+  const noSlash = (path) => path.replace(/\/+$/, '')
+  redirects.forEach(({ id, from, to, code, regex }) => {
+    // gatsby-adapter-netlify turns the first ?/& into a Netlify query condition
+    // ("/a/&nb" becomes "/a/ nb", i.e. a rule on /a/), so those stay in static/_redirects.
+    if (regex || !from.startsWith('/') || /[?&]/.test(from) || !to) {
+      reporter.warn(`Redirect #${id} skipped (regex, query or unsupported source): ${from} -> ${to}`)
+      skipped++
+      return
+    }
+    // Backend rules like "/ -> https://splatapozyczek.pl/" would loop forever on Netlify.
+    const toPath = to.replace(/^https?:\/\/(www-data\.|www\.)?splatapozyczek\.pl/, '') || '/'
+    if (noSlash(toPath) === noSlash(from)) {
+      reporter.warn(`Redirect #${id} skipped (points to itself): ${from} -> ${to}`)
+      skipped++
+      return
+    }
+    createRedirect({
+      fromPath: from,
+      toPath,
+      statusCode: code,
+      force: false, // like static/_redirects: an existing page wins, so a stale rule can't hide a live page
+    })
+  })
+  reporter.info(`Created ${redirects.length - skipped} redirects from WP Redirection (${skipped} skipped)`)
 
 
   // Create pages
